@@ -73,8 +73,8 @@
                     <ul class="main-nav nav navbar-nav navbar-right">
                         <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="index.jsp">Home</a></li>
                         <li class="wow fadeInDown" data-wow-delay="0.2s"><a class="" href="properties.html">Type</a></li>
-                        <li class="wow fadeInDown" data-wow-delay="0.3s"><a class="" href="#about" data-scroll="true">About</a></li>
-                        <li class="wow fadeInDown" data-wow-delay="0.5s"><a href="contact.html">Contact</a></li>
+                        <li class="wow fadeInDown" data-wow-delay="0.3s"><a href="#about" data-scroll="true">About</a></li>
+                        <li class="wow fadeInDown" data-wow-delay="0.5s"><a href="#contact" data-scroll="true">Contact</a></li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
@@ -228,66 +228,25 @@
         <!-- End About -->
         
         <!-- Start Contact -->
-        <div class="Welcome-area">
-            <div class="container">
+        <div class="content-area home-area-1 recent-property" style="background-color: #FCFCFC; padding-bottom: 55px;">
+            <div class="container" id="contact">
                 <div class="row">
-                    <div class="col-md-12 Welcome-entry  col-sm-12">
-                        <div class="col-md-5 col-md-offset-2 col-sm-6 col-xs-12">
-                            <div class="welcome_text wow fadeInLeft" data-wow-delay="0.3s" data-wow-offset="100">
-                                <div class="row">
-                                    <div class="col-md-10 col-md-offset-1 col-sm-12 text-center page-title">
-                                        <!-- /.feature title -->
-                                        <h2>Contact</h2>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-5 col-sm-6 col-xs-12">
-                            <div  class="welcome_services wow fadeInRight" data-wow-delay="0.3s" data-wow-offset="100">
-                                <div class="row">
-                                    <div class="col-xs-6 m-padding">
-                                        <div class="welcome-estate">
-                                            <div class="welcome-icon">
-                                                <i class="pe-7s-home pe-4x"></i>
-                                            </div>
-                                            <h3>Any property</h3>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-6 m-padding">
-                                        <div class="welcome-estate">
-                                            <div class="welcome-icon">
-                                                <i class="pe-7s-users pe-4x"></i>
-                                            </div>
-                                            <h3>More Clients</h3>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="col-xs-12 text-center">
-                                        <i class="welcome-circle"></i>
-                                    </div>
-
-                                    <div class="col-xs-6 m-padding">
-                                        <div class="welcome-estate">
-                                            <div class="welcome-icon">
-                                                <i class="pe-7s-notebook pe-4x"></i>
-                                            </div>
-                                            <h3>Easy to use</h3>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-6 m-padding">
-                                        <div class="welcome-estate">
-                                            <div class="welcome-icon">
-                                                <i class="pe-7s-help2 pe-4x"></i>
-                                            </div>
-                                            <h3>Any help </h3>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
+                    <div class="col-md-10 col-md-offset-1 col-sm-12 text-center page-title">
+                        <!-- /.feature title -->
+                        <h2>Contact</h2>
+                        <p>Nulla quis dapibus nisl. Suspendisse ultricies commodo arcu nec pretium. Nullam sed arcu ultricies . </p>
                     </div>
+                </div>
+
+                <div class="row">
+                    <div class="proerty-th">
+                        <div class="col-sm-6 col-md-3 p0">
+                            <div class="box-two proerty-item">
+                                
+                            </div>
+                        </div>
+
+                        </div>
                 </div>
             </div>
         </div>
