@@ -73,7 +73,8 @@
                     <ul class="main-nav nav navbar-nav navbar-right">
                         <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="index.jsp">Home</a></li>
                         <li class="wow fadeInDown" data-wow-delay="0.2s"><a class="" href="properties.html">Type</a></li>
-                        <li class="wow fadeInDown" data-wow-delay="0.3s"><a class="" href="property.html">About</a></li>
+                        <!-- วื้ดๆแค่ About -->
+                        <li class="wow fadeInDown" data-wow-delay="0.3s"><a class="" href="#about" id="about" data-scroll="true">About</a></li>
                         <li class="wow fadeInDown" data-wow-delay="0.5s"><a href="contact.html">Contact</a></li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
@@ -194,13 +195,13 @@
         </div>
         <!-- End find area & Slide main picture -->
         
-        <!-- Start About Me -->
+        <!-- Start About -->
         <div class="content-area home-area-1 recent-property" style="background-color: #FCFCFC; padding-bottom: 55px;">
-            <div class="container">
+            <div class="container" id="about"> <!------------- ไอดีวื้ดๆ ----------------->
                 <div class="row">
                     <div class="col-md-10 col-md-offset-1 col-sm-12 text-center page-title">
                         <!-- /.feature title -->
-                        <h2>ABOUT ME</h2>
+                        <h2>ABOUT</h2>
                         <p>Nulla quis dapibus nisl. Suspendisse ultricies commodo arcu nec pretium. Nullam sed arcu ultricies . </p>
                     </div>
                 </div>
@@ -221,41 +222,13 @@
                             </div>
                         </div>
 
-                        <div class="col-sm-6 col-md-3 p0">
-                            <div class="box-two proerty-item">
-                                <div class="item-thumb">
-                                    <a href="property-2.html" ><img src="assets/img/demo/property-2.jpg"></a>
-                                </div>
-                                <div class="item-entry overflow">
-                                    <h5><a href="property-2.html" >Super nice villa </a></h5>
-                                    <div class="dot-hr"></div>
-                                    <span class="pull-left"><b>Area :</b> 120m </span>
-                                    <span class="proerty-price pull-right">$ 300,000</span>
-                                </div>
-                            </div>
                         </div>
-
-                        <div class="col-sm-6 col-md-3 p0">
-                            <div class="box-two proerty-item">
-                                <div class="item-thumb">
-                                    <a href="property-3.html" ><img src="assets/img/demo/property-3.jpg"></a>
-
-                                </div>
-                                <div class="item-entry overflow">
-                                    <h5><a href="property-3.html" >Super nice villa </a></h5>
-                                    <div class="dot-hr"></div>
-                                    <span class="pull-left"><b>Area :</b> 120m </span>
-                                    <span class="proerty-price pull-right">$ 300,000</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
-        <!-- End About Me -->
+        <!-- End About -->
         
-        <!-- Start About Me -->
+        <!-- Start Contact -->
         <div class="Welcome-area">
             <div class="container">
                 <div class="row">
@@ -265,7 +238,7 @@
                                 <div class="row">
                                     <div class="col-md-10 col-md-offset-1 col-sm-12 text-center page-title">
                                         <!-- /.feature title -->
-                                        <h2>GARO ESTATE </h2>
+                                        <h2>Contact</h2>
                                     </div>
                                 </div>
                             </div>
@@ -319,7 +292,7 @@
                 </div>
             </div>
         </div>
-        <!-- End About Me -->
+        <!-- End Contact -->
         
         <!-- Footer area-->
         <div class="footer-area">
@@ -478,5 +451,6 @@
 
         <script src="assets/js/main.js"></script>
         <!-- End Script -->
+    
     </body>
 </html>
