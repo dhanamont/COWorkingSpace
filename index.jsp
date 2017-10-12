@@ -73,8 +73,7 @@
                     <ul class="main-nav nav navbar-nav navbar-right">
                         <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="index.jsp">Home</a></li>
                         <li class="wow fadeInDown" data-wow-delay="0.2s"><a class="" href="properties.html">Type</a></li>
-                        <!-- วื้ดๆแค่ About -->
-                        <li class="wow fadeInDown" data-wow-delay="0.3s"><a class="" href="#about" id="about" data-scroll="true">About</a></li>
+                        <li class="wow fadeInDown" data-wow-delay="0.3s"><a class="" href="#about" data-scroll="true">About</a></li>
                         <li class="wow fadeInDown" data-wow-delay="0.5s"><a href="contact.html">Contact</a></li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
@@ -197,7 +196,7 @@
         
         <!-- Start About -->
         <div class="content-area home-area-1 recent-property" style="background-color: #FCFCFC; padding-bottom: 55px;">
-            <div class="container" id="about"> <!------------- ไอดีวื้ดๆ ----------------->
+            <div class="container" id="about">
                 <div class="row">
                     <div class="col-md-10 col-md-offset-1 col-sm-12 text-center page-title">
                         <!-- /.feature title -->
@@ -434,22 +433,19 @@
         
         <!-- Start Script -->
         <script src="assets/js/modernizr-2.6.2.min.js"></script>
-
         <script src="assets/js/jquery-1.10.2.min.js"></script> 
         <script src="bootstrap/js/bootstrap.min.js"></script>
         <script src="assets/js/bootstrap-select.min.js"></script>
         <script src="assets/js/bootstrap-hover-dropdown.js"></script>
-
         <script src="assets/js/easypiechart.min.js"></script>
         <script src="assets/js/jquery.easypiechart.min.js"></script>
-
         <script src="assets/js/owl.carousel.min.js"></script>
         <script src="assets/js/wow.js"></script>
-
         <script src="assets/js/icheck.min.js"></script>
         <script src="assets/js/price-range.js"></script>
-
         <script src="assets/js/main.js"></script>
+
+        <script src="assets/js/scrolling.js"></script>
         <!-- End Script -->
     
     </body>
