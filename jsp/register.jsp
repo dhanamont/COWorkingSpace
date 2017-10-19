@@ -109,7 +109,7 @@
                     <div class="box-for overflow">
                         <div class="col-md-12 col-xs-12 register-blocks">
                             <h2>New account : </h2> 
-                            <form name="SignUpEnt" method="post" action="SignUpEntrepreneur">
+                            <form name="SignUpMem" method="post" action="SignUpMember">
                                 <div class="form-group">
                                     <label for="Username">Username</label>
                                     <input type="text" class="form-control" id="username">
