@@ -115,4 +115,9 @@ public class Account {
         return Password;
     }
     
+     public String getRole_ID(String usernameIn) {
+        getAccount(usernameIn);
+        return Role_ID;
+    }
+    
 }
