@@ -11,10 +11,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-/**
- *
- * @author test
- */
 public class User {
      Connection conn;
 
