@@ -10,20 +10,18 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-import javax.sql.DataSource;
 
 
 public class Account {
     Connection conn;
 
-    public Account() throws SQLException {
-        this.conn = DriverManager.getConnection("jdbc:mysql://ihost.it.kmitl.ac.th:3306/coworking_db", 
+    public Account() throws SQLException, ClassNotFoundException {
+        Class.forName("com.mysql.jdbc.Driver");
+        this.conn = DriverManager.getConnection("jdbc:mysql://ihost.it.kmitl.ac.th:3306/it58070122_se?zeroDateTimeBehavior=convertToNull&amp;characterEncoding=utf8", 
                 "it58070122_se",
                 "chFKW9lGV");
     }
+    
     private String User_ID;
     private String Username;
     private String Password;
@@ -71,22 +69,25 @@ public class Account {
         return null;
     }
 
-    public void insertAccount(String User_ID, String role, String username, String password) {
+    public void insertAccount(String UserID, String role, String username, String password) {
         try {
             Statement stmt = conn.createStatement();
-            String sql = "Insert into Account values('" + User_ID + "', '" + username + "', '" + password + "', '" + role + "', '"+User_ID+"')";
-            stmt.executeUpdate(sql);
+            String sql1 = "Insert into Account values('" + username + "', '" + password + "', '" + role + "', '" + UserID + "')";
+            
+            stmt.executeUpdate(sql1);
         } catch (SQLException ex) {
+            
+            System.out.println("Account SQL ERROR");
         }
     }
 
     public String createMemUser_ID() {
         numAccountMem();
-        Role_ID = "MEM";
         User_ID = "1";
         for (int i = numAccountMem.length(); i < 3; i++) {
             User_ID += "0";
         }
+        User_ID += numAccountMem;
         return User_ID;
     }
 
@@ -97,6 +98,7 @@ public class Account {
         for (int i = numAccountEnt.length(); i < 3; i++) {
             User_ID += "0";
         }
+        User_ID += numAccountEnt;
         return User_ID;
     }
 
