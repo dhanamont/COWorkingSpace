@@ -56,10 +56,9 @@
                            url="jdbc:mysql://ihost.it.kmitl.ac.th:3306/it58070122_se" 
                            user="it58070122_se" password="chFKW9IGV"/>
         
-        <% String Role_id = (String) session.getAttribute("Role_id");%>
+        <% String Role_ID = (String) session.getAttribute("Role_ID");%>
         <% String User_ID = (String) session.getAttribute("User_ID");%>
                 
-        <% if (Role_id == null) { %>       <!-- If user is a guest not member -->
         <!-- Start Navbar Guest -->
         <nav class="navbar navbar-default ">
             <div class="container">
@@ -91,119 +90,7 @@
             </div><!-- /.container-fluid -->
         </nav>
         <!-- End Navbar -->
-                
-                
-        <% } else if (Role_id.equals("MEM")) {%>       
-        <!-- Start Navbar Member -->
-        <nav class="navbar navbar-default ">
-            <div class="container">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigation">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="index.jsp"><img src="assets/img/logo.png" alt=""></a>
-                </div>
 
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse yamm" id="navigation">
-                    <div class="button navbar-right">
-                        <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.open('register.jsp')" data-wow-delay="0.45s">Sign In</button>
-                        <button class="navbar-btn nav-button wow fadeInRight" onclick=" window.open('submit-property.html')" data-wow-delay="0.48s">Submit</button>
-                    </div>
-                    <ul class="main-nav nav navbar-nav navbar-right">
-                        <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="index.jsp">Home</a></li>
-                        <li class="wow fadeInDown" data-wow-delay="0.2s"><a class="" href="properties.html">Type</a></li>
-                        <!-- ???????? About -->
-                        <li class="wow fadeInDown" data-wow-delay="0.3s"><a class="" href="#about" id="about" data-scroll="true">About</a></li>
-                        <li class="wow fadeInDown" data-wow-delay="0.5s"><a href="contact.html">Contact</a></li>
-                    </ul>
-                </div><!-- /.navbar-collapse -->
-            </div><!-- /.container-fluid -->
-        </nav>
-        <!-- End Navbar -->
-                
-        
-        
-        
-        
-        
-        <% } else if (Role_id.equals("ADM")) {%>
-                <!-- Start Navbar Admin -->
-        <nav class="navbar navbar-default ">
-            <div class="container">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigation">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="index.jsp"><img src="assets/img/logo.png" alt=""></a>
-                </div>
-
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse yamm" id="navigation">
-                    <div class="button navbar-right">
-                        <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.open('register.jsp')" data-wow-delay="0.45s">Sign In</button>
-                    
-                        
-                        <button class="navbar-btn nav-button wow fadeInRight" onclick=" window.open('submit-property.html')" data-wow-delay="0.48s">Submit</button>
-                    </div>
-                    <ul class="main-nav nav navbar-nav navbar-right">
-                        <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="index.jsp">Home</a></li>
-                        <li class="wow fadeInDown" data-wow-delay="0.2s"><a class="" href="properties.html">Type</a></li>
-                        <!-- ???????? About -->
-                        <li class="wow fadeInDown" data-wow-delay="0.3s"><a class="" href="#about" id="about" data-scroll="true">About</a></li>
-                        <li class="wow fadeInDown" data-wow-delay="0.5s"><a href="contact.html">Contact</a></li>
-                    </ul>
-                </div><!-- /.navbar-collapse -->
-            </div><!-- /.container-fluid -->
-        </nav>
-        <!-- End Navbar -->
-
-        <% } else if (Role_id.equals("ENT")) {%>
-                <!-- Start Navbar ENT -->
-        <nav class="navbar navbar-default ">
-            <div class="container">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigation">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="index.jsp"><img src="assets/img/logo.png" alt=""></a>
-                </div>
-
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse yamm" id="navigation">
-                    <div class="button navbar-right">
-                        <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.open('register.jsp')" data-wow-delay="0.45s">Sign In</button>
-                    
-                        
-                        <button class="navbar-btn nav-button wow fadeInRight" onclick=" window.open('submit-property.html')" data-wow-delay="0.48s">Submit</button>
-                    </div>
-                    <ul class="main-nav nav navbar-nav navbar-right">
-                        <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="index.jsp">Home</a></li>
-                        <li class="wow fadeInDown" data-wow-delay="0.2s"><a class="" href="properties.html">Type</a></li>
-                        <!-- ???????? About -->
-                        <li class="wow fadeInDown" data-wow-delay="0.3s"><a class="" href="#about" id="about" data-scroll="true">About</a></li>
-                        <li class="wow fadeInDown" data-wow-delay="0.5s"><a href="contact.html">Contact</a></li>
-                    </ul>
-                </div><!-- /.navbar-collapse -->
-            </div><!-- /.container-fluid -->
-        </nav>
-        <% } %>
-        <!-- End Navbar -->
-
-        
-        
         
         
         
@@ -227,18 +114,38 @@
                     <div class="box-for overflow">
                         <div class="col-md-12 col-xs-12 register-blocks">
                             <h2>New account : </h2> 
-                            <form action="" method="post">
+                            <form name="SignUpMem" method="post" action="SignUpMem">
                                 <div class="form-group">
-                                    <label for="name">Name</label>
-                                    <input type="text" class="form-control" id="name">
+                                    <label for="Username">Username</label>
+                                    <input type="text" class="form-control" name="usernameM">
                                 </div>
                                 <div class="form-group">
-                                    <label for="email">Email</label>
-                                    <input type="text" class="form-control" id="email">
+                                    <label for="Password">Password</label>
+                                    <input type="password" class="form-control" name="passwordM">
                                 </div>
                                 <div class="form-group">
-                                    <label for="password">Password</label>
-                                    <input type="password" class="form-control" id="password">
+                                    <label for="FirstName">FirstName</label>
+                                    <input type="text" class="form-control" name="FnameM">
+                                </div>
+                                <div class="form-group">
+                                    <label for="LastName">LastName</label>
+                                    <input type="text" class="form-control" name="LnameM">
+                                </div>
+                                <div class="form-group">
+                                    <label for="Email">Email</label>
+                                    <input type="text" class="form-control" name="EmailM">
+                                </div>
+                                <div class="form-group">
+                                    <label for="Address">Address</label>
+                                    <input type="text" class="form-control" name="AddressM">
+                                </div>
+                                <div class="form-group">
+                                    <label for="PhoneNumber">PhoneNumber</label>
+                                    <input type="text" class="form-control" name="PhoneNumberM">
+                                </div>
+                                <div class="form-group">
+                                    <label for="IDCard">IDCard</label>
+                                    <input type="text" class="form-control" name="IDcardM">
                                 </div>
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-default">Register</button>
@@ -246,23 +153,24 @@
                             </form>
                         </div>
                     </div>
-                </div>
-
-                <div class="col-md-6">
+                </div>      <!-- End register part -->
+                
+                <!-- Sign in part //TEM -->
+                <div class="col-md-6">   
                     <div class="box-for overflow">                         
                         <div class="col-md-12 col-xs-12 login-blocks">
                             <h2>Sign in : </h2> 
                             <form action="" method="post">
                                 <div class="form-group">
-                                    <label for="email">Username</label>
-                                    <input type="text" class="form-control" id="email">
+                                    <label for="Username">Username</label>
+                                    <input type="text" class="form-control" name="Username">
                                 </div>
                                 <div class="form-group">
-                                    <label for="password">Password</label>
-                                    <input type="password" class="form-control" id="password">
+                                    <label for="Password">Password</label>
+                                    <input type="password" class="form-control" name="Passowrd">
                                 </div>
                                 <div class="text-center">
-                                    <button type="submit" class="btn btn-default"> Sign in</button>
+                                    <button type="submit" class="btn btn-default">Sign in</button>
                                 </div>
                             </form>
                             <br>
@@ -280,7 +188,7 @@
                 </div>
 
             </div>
-        </div>          
+        </div>         <!-- END Sign in part //TEM --> 
 
           <!-- Footer area-->
         <div class="footer-area">
@@ -295,7 +203,7 @@
                                 <div class="footer-title-line"></div>
 
                                 <img src="assets/img/footer-logo.png" alt="" class="wow pulse" data-wow-delay="1s">
-                                <p>Lorem ipsum dolor cum necessitatibus su quisquam molestias. Vel unde, blanditiis.</p>
+                                <p>Unlike in a typical office environment, those coworking are usually not employed by the same organization.</p>
                                 <ul class="footer-adress">
                                     <li><i class="pe-7s-map-marker strong"> </i> 9089 your adress her</li>
                                     <li><i class="pe-7s-mail strong"> </i> email@yourcompany.com</li>
@@ -372,7 +280,7 @@
                             <div class="single-footer news-letter">
                                 <h4>Stay in touch</h4>
                                 <div class="footer-title-line"></div>
-                                <p>Lorem ipsum dolor sit amet, nulla  suscipit similique quisquam molestias. Vel unde, blanditiis.</p>
+                                <p>Unlike in a typical office environment, those coworking are usually not employed by the same organization.</p>
 
                                 <form>
                                     <div class="input-group">
