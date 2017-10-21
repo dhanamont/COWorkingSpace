@@ -8,6 +8,7 @@ package servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -51,7 +52,7 @@ public class SignUpEnt extends HttpServlet {
             String emailE = request.getParameter("EmailE");
             String companyName = request.getParameter("Company_Name");
             String phoneCompany = request.getParameter("Phone_Company");
-            
+                           
             try {
                 //Create object
                 Account account = new Account();
@@ -59,7 +60,7 @@ public class SignUpEnt extends HttpServlet {
                 Entrepreneur entrepreneur = new Entrepreneur();
                 
                 //Create User_ID จาก java class
-                User_IDE = account.createUser_ID();
+                User_IDE = account.createEntUser_ID();
                 
                 //เอาค่าเข้า java class
                 account.insertAccount(User_IDE, "ENT", usernameE, passwordE);
@@ -68,8 +69,8 @@ public class SignUpEnt extends HttpServlet {
                 
 
                 request.getRequestDispatcher("index.jsp").forward(request, response);
-                
-            } catch (Exception ex) {
+          
+            } catch (SQLException ex) {
                 Logger.getLogger(SignUpEnt.class.getName()).log(Level.SEVERE, null, ex);
             }
             
