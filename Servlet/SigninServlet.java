@@ -16,7 +16,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import model.User;
 import model.Account;
 
 @WebServlet(name = "SigninServlet", urlPatterns = {"/SigninServlet"})
@@ -32,26 +31,26 @@ public class SigninServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, SQLException {
+            throws ServletException, IOException, ClassNotFoundException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             
 //            รับค่าจาก jsp          
-            String username = request.getParameter("Username");
-            String password = request.getParameter("Password");
+            String usernameIn = request.getParameter("username");
+            String passwordIn = request.getParameter("password");
             
             try {
-                HttpSession session = request.getSession();                
+                HttpSession session = request.getSession();
+                
 //                สร้าง Object
                 Account account = new Account();
-                User user = new User();
                 
-                String Username = account.getUsername(username);
-                String Password = account.getPassword(username);
-                String User_ID = account.getUser_ID(username);
-                String Role_ID = account.getRole_ID(username);
+                String Username = account.getUsername(usernameIn);
+                String Password = account.getPassword(usernameIn);
+                String User_ID = account.getUser_ID(usernameIn);
+                String Role_ID = account.getRole_ID(usernameIn);
                 
-                if (Username.equals(username) && Password.equals(password)) {
+                if (Username.equals(usernameIn) && Password.equals(passwordIn)) {
                     
                     session.setAttribute("Username", Username);
                     session.setAttribute("User_ID", User_ID);
@@ -61,8 +60,8 @@ public class SigninServlet extends HttpServlet {
                 } else {
                     response.sendRedirect("register.jsp");
                 }
-            } catch (IOException e) {
-                
+            } catch (SQLException ex) {
+                Logger.getLogger(SigninServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
@@ -81,7 +80,7 @@ public class SigninServlet extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
-        } catch (SQLException ex) {
+        } catch (ClassNotFoundException ex) {
             Logger.getLogger(SigninServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -99,7 +98,7 @@ public class SigninServlet extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
-        } catch (SQLException ex) {
+        } catch (ClassNotFoundException ex) {
             Logger.getLogger(SigninServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
