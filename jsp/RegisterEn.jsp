@@ -268,13 +268,13 @@
                                                 </div>
                                                 
                                                 <div class="form-group">
-                                                    <label>Company_name<small>(required)</small></label>
-                                                    <input name="propertyname" type="text" class="form-control" placeholder="Super villa ...">
+                                                    <label>CompanyName<small>(required)</small></label>
+                                                    <input name="Company_name" type="text" class="form-control" placeholder="Super villa ...">
                                                 </div>
                                                 
                                                 <div class="form-group">
-                                                    <label>Phone_company<small>(required)</small></label>
-                                                    <input name="propertyname" type="text" class="form-control" placeholder="Super villa ...">
+                                                    <label>PhoneCompany<small>(required)</small></label>
+                                                    <input name="Phone_company" type="text" class="form-control" placeholder="Super villa ...">
                                                 </div>
                                         </form>
                                      </div>
