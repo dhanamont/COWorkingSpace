@@ -13,8 +13,11 @@ import java.sql.Statement;
 public class Member {
      Connection conn;
 
-    public Member() throws SQLException {
-        this.conn = DriverManager.getConnection("jdbc:mysql://ihost.it.kmitl.ac.th:3306/coworking_db", 
+    public Member() throws SQLException, ClassNotFoundException {
+        
+        Class.forName("com.mysql.jdbc.Driver");        
+        
+        this.conn = DriverManager.getConnection("jdbc:mysql://ihost.it.kmitl.ac.th:3306/it58070122_se?zeroDateTimeBehavior=convertToNull&amp;characterEncoding=utf8", 
                 "it58070122_se",
                 "chFKW9lGV");
     }
@@ -32,7 +35,7 @@ public class Member {
     public void insertMember(String User_ID, String phone, String address, String card) {
         try {
             Statement stmt = conn.createStatement();
-            String sql = "Insert into Member values('" + User_ID + "', '" + phone + "', '" + address + "', '" + card + "', NULL)";
+            String sql = "Insert into Member values('" + User_ID + "', '" + phone + "', '" + address + "', '" + card + "')";
             
             stmt.executeUpdate(sql);
         } catch (SQLException ex) {
