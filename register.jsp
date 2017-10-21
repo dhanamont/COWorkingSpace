@@ -3,12 +3,18 @@
     Created on : Oct 12, 2017, 10:17:44 PM
     Author     : tem
 --%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
+<%@ page import="java.util.List"%>
 
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -46,53 +52,15 @@
             <div id="status">&nbsp;</div>
         </div>
         
+        <sql:setDataSource var="it58070122_se" driver="com.mysql.jdbc.Driver" 
+                           url="jdbc:mysql://ihost.it.kmitl.ac.th:3306/it58070122_se" 
+                           user="it58070122_se" password="chFKW9IGV"/>
         
-        
-        
-        <%//sign in part%>
-                <% String checkRoleS = (String) session.getAttribute("checkRoleS");%>
-                <% String Role_ID = (String) session.getAttribute("Role_ID");%>
-                <% String User_ID = (String) session.getAttribute("User_ID");%>
+        <% String Role_id = (String) session.getAttribute("Role_id");%>
+        <% String User_ID = (String) session.getAttribute("User_ID");%>
                 
-                <% if (checkRoleS == null) { %>         <!-- If user is a guest not member -->
-                <jsp:include page="register.jsp"/>
-                <!-- Start Navbar Guest -->
-        <nav class="navbar navbar-default ">
-            <div class="container">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigation">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="index.html"><img src="assets/img/logo.png" alt=""></a>
-                </div>
-
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse yamm" id="navigation">
-                    <div class="button navbar-right">
-                        <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.open('register.jsp')" data-wow-delay="0.45s">Sign In</button>
-                    
-                        
-                        <button class="navbar-btn nav-button wow fadeInRight" onclick=" window.open('submit-property.html')" data-wow-delay="0.48s">Submit</button>
-                    </div>
-                    <ul class="main-nav nav navbar-nav navbar-right">
-                        <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="index.jsp">Home</a></li>
-                        <li class="wow fadeInDown" data-wow-delay="0.2s"><a class="" href="properties.html">Type</a></li>
-                        <!-- ???????? About -->
-                        <li class="wow fadeInDown" data-wow-delay="0.3s"><a class="" href="#about" id="about" data-scroll="true">About</a></li>
-                        <li class="wow fadeInDown" data-wow-delay="0.5s"><a href="contact.html">Contact</a></li>
-                    </ul>
-                </div><!-- /.navbar-collapse -->
-            </div><!-- /.container-fluid -->
-        </nav>
-        <!-- End Navbar -->
-                
-                
-                <% } else if (checkRoleS.equals("MEM")) {%>       
-                <!-- Start Navbar Member -->
+        <% if (Role_id == null) { %>       <!-- If user is a guest not member -->
+        <!-- Start Navbar Guest -->
         <nav class="navbar navbar-default ">
             <div class="container">
                 <!-- Brand and toggle get grouped for better mobile display -->
@@ -110,8 +78,40 @@
                 <div class="collapse navbar-collapse yamm" id="navigation">
                     <div class="button navbar-right">
                         <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.open('register.jsp')" data-wow-delay="0.45s">Sign In</button>
-                    
-                        
+                        <button class="navbar-btn nav-button wow fadeInRight" onclick=" window.open('submit-property.html')" data-wow-delay="0.48s">Submit</button>
+                    </div>
+                    <ul class="main-nav nav navbar-nav navbar-right">
+                        <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="index.jsp">Home</a></li>
+                        <li class="wow fadeInDown" data-wow-delay="0.2s"><a class="" href="properties.html">Type</a></li>
+                        <!-- ???????? About -->
+                        <li class="wow fadeInDown" data-wow-delay="0.3s"><a class="" href="#about" id="about" data-scroll="true">About</a></li>
+                        <li class="wow fadeInDown" data-wow-delay="0.5s"><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+        <!-- End Navbar -->
+                
+                
+        <% } else if (Role_id.equals("MEM")) {%>       
+        <!-- Start Navbar Member -->
+        <nav class="navbar navbar-default ">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigation">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.jsp"><img src="assets/img/logo.png" alt=""></a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse yamm" id="navigation">
+                    <div class="button navbar-right">
+                        <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.open('register.jsp')" data-wow-delay="0.45s">Sign In</button>
                         <button class="navbar-btn nav-button wow fadeInRight" onclick=" window.open('submit-property.html')" data-wow-delay="0.48s">Submit</button>
                     </div>
                     <ul class="main-nav nav navbar-nav navbar-right">
@@ -131,7 +131,7 @@
         
         
         
-        <% } else if (checkRoleS.equals("ADM")) {%>
+        <% } else if (Role_id.equals("ADM")) {%>
                 <!-- Start Navbar Admin -->
         <nav class="navbar navbar-default ">
             <div class="container">
@@ -165,15 +165,8 @@
             </div><!-- /.container-fluid -->
         </nav>
         <!-- End Navbar -->
-        
-        
-        
-        
-        
-        
-        
-        
-        <% } else if (checkRoleS.equals("ENT")) {%>
+
+        <% } else if (Role_id.equals("ENT")) {%>
                 <!-- Start Navbar ENT -->
         <nav class="navbar navbar-default ">
             <div class="container">
@@ -206,8 +199,14 @@
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </nav>
+        <% } %>
         <!-- End Navbar -->
 
+        
+        
+        
+        
+        
         <div class="page-head"> 
             <div class="container">
                 <div class="row">
@@ -236,7 +235,7 @@
                                 <div class="form-group">
                                     <label for="email">Email</label>
                                     <input type="text" class="form-control" id="email">
-                                </div
+                                </div>
                                 <div class="form-group">
                                     <label for="password">Password</label>
                                     <input type="password" class="form-control" id="password">
@@ -248,15 +247,14 @@
                         </div>
                     </div>
                 </div>
-                
 
                 <div class="col-md-6">
                     <div class="box-for overflow">                         
                         <div class="col-md-12 col-xs-12 login-blocks">
                             <h2>Sign in : </h2> 
-                            <form action="SigninServlet" method="post">
+                            <form action="" method="post">
                                 <div class="form-group">
-                                    <label for="email">Email</label>
+                                    <label for="email">Username</label>
                                     <input type="text" class="form-control" id="email">
                                 </div>
                                 <div class="form-group">
@@ -282,7 +280,7 @@
                 </div>
 
             </div>
-        </div>      
+        </div>          
 
           <!-- Footer area-->
         <div class="footer-area">
