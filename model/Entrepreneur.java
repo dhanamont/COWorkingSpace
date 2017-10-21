@@ -112,7 +112,7 @@ public class Entrepreneur {
     public void ShowOnlyAcceptedEntrepreneur(ArrayList<String> User_ID, ArrayList<String> Company_Name, ArrayList<Timestamp> Date_Time) {
         try {
             Statement stmt = conn.createStatement();
-            String sql = "SELECT User_ID, Company_Name, Datetime FROM Entrepreneur WHERE Status = 'ACCEPTED' ORDER BY Date_Time DESC;;";
+            String sql = "SELECT User_ID, Company_Name, Datetime FROM Entrepreneur WHERE Status = 'ACCEPTED' ORDER BY Date_Time DESC;";
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
                 User_ID.add(rs.getString("User_ID"));
