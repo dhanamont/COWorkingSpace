@@ -1,3 +1,4 @@
+
 <%-- 
     Document   : register
     Created on : Oct 12, 2017, 10:17:44 PM
@@ -72,10 +73,10 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse yamm" id="navigation">
                     <div class="button navbar-right">
-                        <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.open('register.jsp')" data-wow-delay="0.45s">Sign In</button>
+                        <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.open('RegisterMember.jsp')" data-wow-delay="0.45s">Sign In</button>
                     
                         
-                        <button class="navbar-btn nav-button wow fadeInRight" onclick=" window.open('submit-property.html')" data-wow-delay="0.48s">Submit</button>
+                        <button class="navbar-btn nav-button wow fadeInRight" onclick=" window.open('RegisterEn.html')" data-wow-delay="0.48s">Submit</button>
                     </div>
                     <ul class="main-nav nav navbar-nav navbar-right">
                         <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="index.jsp">Home</a></li>
@@ -157,11 +158,11 @@
                             <form action="" method="post">
                                 <div class="form-group">
                                     <label for="email">Email</label>
-                                    <input type="text" class="form-control" id="email">
+                                    <input type="text" class="form-control" name="email">
                                 </div>
                                 <div class="form-group">
                                     <label for="password">Password</label>
-                                    <input type="password" class="form-control" id="password">
+                                    <input type="password" class="form-control" name="password">
                                 </div>
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-default"> Sign in</button>
