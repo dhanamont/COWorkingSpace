@@ -53,13 +53,10 @@
         <div id="preloader">
             <div id="status">&nbsp;</div>
         </div>
-         <!-- Start Check NavBar -->  
-       <% String Role_ID = (String) session.getAttribute("Role_ID");%>
-       <% String User_ID = (String) session.getAttribute("User_ID");%>
-     
-
         
-            <nav class="navbar navbar-default ">
+
+       <!-- Start Navbar -->
+        <nav class="navbar navbar-default ">
             <div class="container">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
@@ -69,7 +66,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.jsp"><img src="assets/img/logo.png" alt=""></a>
+                    <a class="navbar-brand" href="index.html"><img src="assets/img/logo.png" alt=""></a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
@@ -90,9 +87,17 @@
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </nav>
-        
-        
-        
+        <!-- End Navbar -->
+
+        <div class="page-head"> 
+            <div class="container">
+                <div class="row">
+                    <div class="page-head-content">
+                        <h1 class="page-title">New account / Sign in </h1>               
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- End page header -->
  
 
@@ -104,38 +109,38 @@
                     <div class="box-for overflow">
                         <div class="col-md-12 col-xs-12 register-blocks">
                             <h2>New account : </h2> 
-                            <form name="SignUpEnt" method="post" action="SignUpEntrepreneur">
+                            <form name="SignUpMem" method="post" action="SignUpMem">
                                 <div class="form-group">
                                     <label for="Username">Username</label>
-                                    <input type="text" class="form-control" id="username">
+                                    <input type="text" class="form-control" name="usernameM">
                                 </div>
                                 <div class="form-group">
                                     <label for="Password">Password</label>
-                                    <input type="password" class="form-control" id="password">
+                                    <input type="password" class="form-control" name="passwordM">
                                 </div>
                                 <div class="form-group">
                                     <label for="FirstName">FirstName</label>
-                                    <input type="text" class="form-control" id="Fname">
+                                    <input type="text" class="form-control" name="FnameM">
                                 </div>
                                 <div class="form-group">
                                     <label for="LastName">LastName</label>
-                                    <input type="text" class="form-control" id="Lname">
+                                    <input type="text" class="form-control" name="LnameM">
                                 </div>
                                 <div class="form-group">
                                     <label for="Email">Email</label>
-                                    <input type="text" class="form-control" id="Email">
+                                    <input type="text" class="form-control" name="EmailM">
                                 </div>
                                 <div class="form-group">
                                     <label for="Address">Address</label>
-                                    <input type="text" class="form-control" id="Address">
+                                    <input type="text" class="form-control" name="AddressM">
                                 </div>
                                 <div class="form-group">
                                     <label for="PhoneNumber">PhoneNumber</label>
-                                    <input type="text" class="form-control" id="PhoneNumber">
+                                    <input type="text" class="form-control" name="PhoneNumberM">
                                 </div>
                                 <div class="form-group">
                                     <label for="IDCard">IDCard</label>
-                                    <input type="text" class="form-control" id="IDcard">
+                                    <input type="text" class="form-control" name="IDcardM">
                                 </div>
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-default">Register</button>
