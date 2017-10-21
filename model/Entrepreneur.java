@@ -14,11 +14,17 @@ import java.sql.Statement;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
+/**
+ *
+ * @author test
+ */
 public class Entrepreneur {
 
     Connection conn;
 
-    public Entrepreneur() throws SQLException {
+    public Entrepreneur() throws SQLException, ClassNotFoundException {
+        
+        Class.forName("com.mysql.jdbc.Driver");
         this.conn = DriverManager.getConnection("jdbc:mysql://ihost.it.kmitl.ac.th:3306/coworking_db",
                 "it58070122_se",
                 "chFKW9lGV");
@@ -43,7 +49,7 @@ public class Entrepreneur {
     public void insertEntrepreneur(String User_ID, String comName, String phoneCom, String status) {
         try {
             Statement stmt = conn.createStatement();
-            String sql3 = "Insert into Entrepreneur values('" + User_ID + "', '" + comName + "', '" + phoneCom + "', '" + status + "')";
+            String sql3 = "Insert into Entrepreneur values('" + User_ID + "', '" + comName + "', '" + phoneCom + "', '" + status + "', NOW())";
             stmt.executeUpdate(sql3);
         } catch (SQLException ex) {
         }
