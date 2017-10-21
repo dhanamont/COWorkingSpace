@@ -14,11 +14,15 @@ import java.sql.Statement;
 public class User {
      Connection conn;
 
-    public User() throws SQLException {
-        this.conn = DriverManager.getConnection("jdbc:mysql://ihost.it.kmitl.ac.th:3306/coworking_db", 
+    public User() throws SQLException, ClassNotFoundException {
+        
+        Class.forName("com.mysql.jdbc.Driver");
+        
+        this.conn = DriverManager.getConnection("jdbc:mysql://ihost.it.kmitl.ac.th:3306/it58070122_se?zeroDateTimeBehavior=convertToNull&amp;characterEncoding=utf8", 
                 "it58070122_se",
                 "chFKW9lGV");
     }
+    
     private String User_ID;
     private String Fname;
     private String Lname;
