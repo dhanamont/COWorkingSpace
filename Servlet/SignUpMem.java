@@ -68,7 +68,7 @@ public class SignUpMem extends HttpServlet {
                 user.insertUser(User_IDM, fnameM, lnameM, emailM);
                 member.insertMember(User_IDM, phoneNumM, addressM, idCardM);
                 
-                request.getRequestDispatcher("index").forward(request, response);
+                request.getRequestDispatcher("index.jsp").forward(request, response);
             
                 
             } catch (SQLException ex) {
