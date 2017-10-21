@@ -8,6 +8,7 @@ package servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -52,24 +53,28 @@ public class SignUpMem extends HttpServlet {
             String addressM = request.getParameter("AddressM");
             String idCardM = request.getParameter("IDcardM");
             
-            try{
+            
+            try {
                 //Create object 
                 Account account = new Account();
                 User user = new User();
                 Member member = new Member();
                 
                 //Create User_ID จาก java class
-                User_IDM = account.createUser_ID();
+                User_IDM = account.createMemUser_ID();
                 
                 //เอาค่าต่างๆเข้า java class
-                account.insertUser(User_IDM, "MEM", usernameM, passwordM);
+                account.insertAccount(User_IDM, "MEM", usernameM, passwordM);
                 user.insertUser(User_IDM, fnameM, lnameM, emailM);
                 member.insertMember(User_IDM, phoneNumM, addressM, idCardM);
                 
                 request.getRequestDispatcher("index").forward(request, response);
-            } catch (Exception ex) {
-                //....
+            
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(SignUpMem.class.getName()).log(Level.SEVERE, null, ex);
             }
+                
         }
     }
 
