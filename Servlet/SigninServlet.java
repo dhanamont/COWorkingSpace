@@ -36,27 +36,32 @@ public class SigninServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             
-//            รับค่าจาก jsp          
+            boolean loginFlag = false;
+            
+//            รับค่าจาก jsp            
             String username = request.getParameter("Username");
             String password = request.getParameter("Password");
-            
+
             try {
                 HttpSession session = request.getSession();
-                
+
 //                สร้าง Object
                 Account account = new Account();
 //                User user = new User();
-                
+
                 String Username = account.getUsername(username);
                 String Password = account.getPassword(username);
                 String User_ID = account.getUser_ID(username);
                 String Role_ID = account.getRole_ID(username);
-                
+
                 if (Username.equals(username) && Password.equals(password)) {
-                    
+
+                    loginFlag = true;
+
                     session.setAttribute("Username", Username);
                     session.setAttribute("User_ID", User_ID);
                     session.setAttribute("Role_ID", Role_ID);
+                    session.setAttribute("loginFlag", loginFlag);
 
                     response.sendRedirect("index.jsp");
                 } else {
