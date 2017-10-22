@@ -160,14 +160,14 @@
                     <div class="box-for overflow">                         
                         <div class="col-md-12 col-xs-12 login-blocks">
                             <h2>Sign in : </h2> 
-                            <form action="" method="post">
+                            <form action="SigninServlet" method="post">
                                 <div class="form-group">
                                     <label for="Username">Username</label>
                                     <input type="text" class="form-control" name="Username">
                                 </div>
                                 <div class="form-group">
                                     <label for="Password">Password</label>
-                                    <input type="password" class="form-control" name="Passowrd">
+                                    <input type="password" class="form-control" name="Password">
                                 </div>
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-default">Sign in</button>
