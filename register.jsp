@@ -92,8 +92,6 @@
         <!-- End Navbar -->
 
         
-        
-        
         <div class="page-head"> 
             <div class="container">
                 <div class="row">
@@ -106,7 +104,7 @@
         <!-- End page header -->
  
 
-        <!-- register-area -->
+        <!-- Register part -->
         <div class="register-area" style="background-color: rgb(249, 249, 249);">
             <div class="container">
 
@@ -153,14 +151,14 @@
                             </form>
                         </div>
                     </div>
-                </div>      <!-- End register part -->
+                </div>      <!-- End Register part -->
                 
-                <!-- Sign in part //TEM -->
+                <!-- Sign in part-->
                 <div class="col-md-6">   
                     <div class="box-for overflow">                         
                         <div class="col-md-12 col-xs-12 login-blocks">
                             <h2>Sign in : </h2> 
-                            <form action="SigninServlet" method="post">
+                            <form name="SigninServlet" action="SigninServlet" method="post">
                                 <div class="form-group">
                                     <label for="Username">Username</label>
                                     <input type="text" class="form-control" name="Username">
@@ -174,21 +172,13 @@
                                 </div>
                             </form>
                             <br>
-                            
-                            <h2>Social Sign in :  </h2> 
-                            
-                            <p>
-                            <a class="login-social" href="#"><i class="fa fa-facebook"></i>&nbsp;Facebook</a> 
-                            <a class="login-social" href="#"><i class="fa fa-google-plus"></i>&nbsp;Gmail</a> 
-                            <a class="login-social" href="#"><i class="fa fa-twitter"></i>&nbsp;Twitter</a>  
-                            </p> 
                         </div>
                         
                     </div>
                 </div>
 
             </div>
-        </div>         <!-- END Sign in part //TEM --> 
+        </div>         <!-- END Sign in part--> 
 
           <!-- Footer area-->
         <div class="footer-area">
