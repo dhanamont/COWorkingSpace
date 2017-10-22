@@ -7,9 +7,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
+<%@ page import="java.util.List"%>
 
 <!DOCTYPE html>
-<html class="no-js">
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
     
     <head>
         <meta charset="utf-8">
@@ -88,6 +92,8 @@
         <!-- End Navbar -->
 
         
+        
+        
         <div class="page-head"> 
             <div class="container">
                 <div class="row">
@@ -100,7 +106,7 @@
         <!-- End page header -->
  
 
-        <!-- Register part -->
+        <!-- register-area -->
         <div class="register-area" style="background-color: rgb(249, 249, 249);">
             <div class="container">
 
@@ -118,11 +124,11 @@
                                     <input type="password" class="form-control" name="passwordM">
                                 </div>
                                 <div class="form-group">
-                                    <label for="FirstName">FirstName</label>
+                                    <label for="FirstName">First name</label>
                                     <input type="text" class="form-control" name="FnameM">
                                 </div>
                                 <div class="form-group">
-                                    <label for="LastName">LastName</label>
+                                    <label for="LastName">Last name</label>
                                     <input type="text" class="form-control" name="LnameM">
                                 </div>
                                 <div class="form-group">
@@ -130,15 +136,7 @@
                                     <input type="text" class="form-control" name="EmailM">
                                 </div>
                                 <div class="form-group">
-                                    <label for="Address">Address</label>
-                                    <input type="text" class="form-control" name="AddressM">
-                                </div>
-                                <div class="form-group">
-                                    <label for="PhoneNumber">PhoneNumber</label>
-                                    <input type="text" class="form-control" name="PhoneNumberM">
-                                </div>
-                                <div class="form-group">
-                                    <label for="IDCard">IDCard</label>
+                                    <label for="IDCard">ID Card</label>
                                     <input type="text" class="form-control" name="IDcardM">
                                 </div>
                                 <div class="text-center">
@@ -147,15 +145,14 @@
                             </form>
                         </div>
                     </div>
-                </div>      
-                <!-- End Register part -->
+                </div>      <!-- End register part -->
                 
-                <!-- Sign in part-->
+                <!-- Sign in part //TEM -->
                 <div class="col-md-6">   
                     <div class="box-for overflow">                         
                         <div class="col-md-12 col-xs-12 login-blocks">
                             <h2>Sign in : </h2> 
-                            <form name="SigninServlet" action="SigninServlet" method="post">
+                            <form name="Servlet" action="SigninServlet" method="post">
                                 <div class="form-group">
                                     <label for="Username">Username</label>
                                     <input type="text" class="form-control" name="Username">
@@ -169,13 +166,14 @@
                                 </div>
                             </form>
                             <br>
+                            
                         </div>
                         
                     </div>
                 </div>
 
             </div>
-        </div>         <!-- END Sign in part--> 
+        </div>         <!-- END Sign in part //TEM --> 
 
           <!-- Footer area-->
         <div class="footer-area">
@@ -212,7 +210,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-md-3 col-sm-6 wow fadeInRight animated">
+                    <!--    <div class="col-md-3 col-sm-6 wow fadeInRight animated">
                             <div class="single-footer">
                                 <h4>Last News</h4>
                                 <div class="footer-title-line"></div>
@@ -275,9 +273,9 @@
                                         <span class="input-group-btn">
                                             <button class="btn btn-primary subscribe" type="button"><i class="pe-7s-paper-plane pe-2x"></i></button>
                                         </span>
-                                    </div>
+                                    </div>-->
                                     <!-- /input-group -->
-                                </form> 
+                                <!--</form> 
 
                                 <div class="social pull-right"> 
                                     <ul>
@@ -289,29 +287,12 @@
                                     </ul> 
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
 
                     </div>
                 </div>
             </div>
 
-            <div class="footer-copy text-center">
-                <div class="container">
-                    <div class="row">
-                        <div class="pull-left">
-                            <span> (C) <a href="http://www.KimaroTec.com">KimaroTheme</a> , All rights reserved 2016  </span> 
-                        </div> 
-                        <div class="bottom-menu pull-right"> 
-                            <ul> 
-                                <li><a class="wow fadeInUp animated" href="#" data-wow-delay="0.2s">Home</a></li>
-                                <li><a class="wow fadeInUp animated" href="#" data-wow-delay="0.3s">Property</a></li>
-                                <li><a class="wow fadeInUp animated" href="#" data-wow-delay="0.4s">Faq</a></li>
-                                <li><a class="wow fadeInUp animated" href="#" data-wow-delay="0.6s">Contact</a></li>
-                            </ul> 
-                        </div>
-                    </div>
-                </div>
-            </div>
 
         </div>
 
