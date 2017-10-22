@@ -151,9 +151,18 @@
                             
                             
                             
-                            <div class="form-group">
+                            
+                            
+                            
+                            
+                            <% boolean login = (Boolean) session.getAttribute("loginFlag").booleanValue(); %>
+                            <%if(loginFlag.booleanValue() == false) { %>
+                                <div class="form-group">
                                     <font color="red"><label for="">Invalid login, please try again</label></font>
                                 </div>
+                            <% } %>
+                            
+                            
                             
                             
                             <form name="Servlet" action="SigninServlet" method="post">
