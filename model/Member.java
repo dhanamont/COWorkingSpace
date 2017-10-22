@@ -7,6 +7,7 @@ package model;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -34,10 +35,14 @@ public class Member {
 
     public void insertMember(String User_ID, String phone, String address, String card) {
         try {
-            Statement stmt = conn.createStatement();
-            String sql = "Insert into Member values('" + User_ID + "', '" + phone + "', '" + address + "', '" + card + "')";
-            
-            stmt.executeUpdate(sql);
+            PreparedStatement insertMem = conn.prepareStatement("insert into Member values(?,?,?,?)");
+      
+            insertMem.setString(1, User_ID);
+            insertMem.setString(2, phone);
+            insertMem.setString(3, address);
+            insertMem.setString(4, card);
+            insertMem.executeUpdate();
+            conn.close();
         } catch (SQLException ex) {
         }
     }
