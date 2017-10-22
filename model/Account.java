@@ -7,6 +7,7 @@ package model;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -71,10 +72,19 @@ public class Account {
 
     public void insertAccount(String UserID, String role, String username, String password) {
         try {
-            Statement stmt = conn.createStatement();
-            String sql1 = "Insert into Account values('" + username + "', '" + password + "', '" + role + "', '" + UserID + "')";
             
-            stmt.executeUpdate(sql1);
+            PreparedStatement inAcc = conn.prepareStatement("insert into Account values(?,?,?,?)");
+      
+            inAcc.setString(1, username);
+            inAcc.setString(2, password);
+            inAcc.setString(3, role);
+            inAcc.setString(4, UserID);
+            inAcc.executeUpdate();
+            conn.close();
+            //Statement stmt = conn.createStatement();
+            //String sql1 = "Insert into Account values('" + username + "', '" + password + "', '" + role + "', '" + UserID + "')";
+            
+            //stmt.executeUpdate(sql1);
         } catch (SQLException ex) {
             
             System.out.println("Account SQL ERROR");
@@ -93,7 +103,6 @@ public class Account {
 
     public String createEntUser_ID() {
         numAccountEnt();
-        Role_ID = "ENT";
         User_ID = "2";
         for (int i = numAccountEnt.length(); i < 3; i++) {
             User_ID += "0";
