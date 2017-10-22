@@ -81,10 +81,6 @@ public class Account {
             inAcc.setString(4, UserID);
             inAcc.executeUpdate();
             conn.close();
-            //Statement stmt = conn.createStatement();
-            //String sql1 = "Insert into Account values('" + username + "', '" + password + "', '" + role + "', '" + UserID + "')";
-            
-            //stmt.executeUpdate(sql1);
         } catch (SQLException ex) {
             
             System.out.println("Account SQL ERROR");
