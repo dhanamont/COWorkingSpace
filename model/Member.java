@@ -33,13 +33,13 @@ public class Member {
         }
     }
 
-    public void insertMember(String User_ID, String phone, String address, String card) {
+    public void insertMember(String User_ID, String card) {
         try {
             PreparedStatement insertMem = conn.prepareStatement("insert into Member values(?,?,?,?)");
       
             insertMem.setString(1, User_ID);
-            insertMem.setString(2, phone);
-            insertMem.setString(3, address);
+            insertMem.setString(2, "");
+            insertMem.setString(3, "");
             insertMem.setString(4, card);
             insertMem.executeUpdate();
             conn.close();
