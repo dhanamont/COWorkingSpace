@@ -36,7 +36,7 @@ public class SignUpMem extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, ClassNotFoundException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
                            
@@ -49,8 +49,6 @@ public class SignUpMem extends HttpServlet {
             String fnameM = request.getParameter("FnameM");
             String lnameM = request.getParameter("LnameM");
             String emailM = request.getParameter("EmailM");
-            String phoneNumM = request.getParameter("PhoneNumberM");
-            String addressM = request.getParameter("AddressM");
             String idCardM = request.getParameter("IDcardM");
             
             
@@ -66,7 +64,7 @@ public class SignUpMem extends HttpServlet {
                 //เอาค่าต่างๆเข้า java class
                 account.insertAccount(User_IDM, "MEM", usernameM, passwordM);
                 user.insertUser(User_IDM, fnameM, lnameM, emailM);
-                member.insertMember(User_IDM, phoneNumM, addressM, idCardM);
+                member.insertMember(User_IDM, idCardM);
                 
                 request.getRequestDispatcher("index.jsp").forward(request, response);
             
@@ -90,7 +88,11 @@ public class SignUpMem extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(SignUpMem.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -104,7 +106,11 @@ public class SignUpMem extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(SignUpMem.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
