@@ -18,8 +18,9 @@ public class User {
     public User() throws SQLException, ClassNotFoundException {
         
         Class.forName("com.mysql.jdbc.Driver");
-        
-        this.conn = DriverManager.getConnection("jdbc:mysql://ihost.it.kmitl.ac.th:3306/it58070122_se?zeroDateTimeBehavior=convertToNull&amp;characterEncoding=utf8", 
+        java.util.Properties prop = new java.util.Properties();
+        prop.put("charSet","UTF-8");
+        this.conn = DriverManager.getConnection("jdbc:mysql://ihost.it.kmitl.ac.th:3306/it58070122_se?zeroDateTimeBehavior=convertToNull&characterEncoding=utf-8", 
                 "it58070122_se",
                 "chFKW9lGV");
     }
@@ -46,14 +47,15 @@ public class User {
         try {
             
             PreparedStatement insertUser = conn.prepareStatement("insert into User values(?,?,?,?)");
-      
             insertUser.setString(1, User_ID1);
             insertUser.setString(2, fname);
             insertUser.setString(3, lname);
             insertUser.setString(4, email);
+            System.out.println(insertUser.toString());
             insertUser.executeUpdate();
             conn.close();
         } catch (SQLException ex) {
+            System.out.println(ex);
         }
     }
 
