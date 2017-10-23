@@ -18,7 +18,9 @@ public class Account {
 
     public Account() throws SQLException, ClassNotFoundException {
         Class.forName("com.mysql.jdbc.Driver");
-        this.conn = DriverManager.getConnection("jdbc:mysql://ihost.it.kmitl.ac.th:3306/it58070122_se?zeroDateTimeBehavior=convertToNull&amp;characterEncoding=utf8", 
+        java.util.Properties prop = new java.util.Properties();
+        prop.put("charSet","UTF-8");
+        this.conn = DriverManager.getConnection("jdbc:mysql://ihost.it.kmitl.ac.th:3306/it58070122_se?zeroDateTimeBehavior=convertToNull&characterEncoding=utf-8", 
                 "it58070122_se",
                 "chFKW9lGV");
     }
@@ -66,24 +68,24 @@ public class Account {
             numAccountEnt = num1.getString("count(User_ID)");
             return numAccountEnt;
         } catch (SQLException ex) {
+            System.out.println(ex);
         }
         return null;
     }
 
     public void insertAccount(String UserID, String role, String username, String password) {
         try {
-            
             PreparedStatement inAcc = conn.prepareStatement("insert into Account values(?,?,?,?)");
-      
-            inAcc.setString(1, username);
-            inAcc.setString(2, password);
-            inAcc.setString(3, role);
-            inAcc.setString(4, UserID);
+            inAcc.setString(1, UserID);
+            inAcc.setString(2, username);
+            inAcc.setString(3, password);
+            inAcc.setString(4, role);
+            
             inAcc.executeUpdate();
             conn.close();
         } catch (SQLException ex) {
             
-            System.out.println("Account SQL ERROR");
+            System.out.println(ex);
         }
     }
 
