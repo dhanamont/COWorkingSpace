@@ -25,7 +25,9 @@ public class Entrepreneur {
     public Entrepreneur() throws SQLException, ClassNotFoundException {
         
         Class.forName("com.mysql.jdbc.Driver");
-        this.conn = DriverManager.getConnection("jdbc:mysql://ihost.it.kmitl.ac.th:3306/coworking_db",
+        java.util.Properties prop = new java.util.Properties();
+        prop.put("charSet","UTF-8");
+        this.conn = DriverManager.getConnection("jdbc:mysql://ihost.it.kmitl.ac.th:3306/it58070122_se?zeroDateTimeBehavior=convertToNull&characterEncoding=utf-8", 
                 "it58070122_se",
                 "chFKW9lGV");
     }
