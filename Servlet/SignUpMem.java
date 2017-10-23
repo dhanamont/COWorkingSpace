@@ -8,6 +8,7 @@ package servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -36,13 +37,11 @@ public class SignUpMem extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ClassNotFoundException {
-        
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=UTF-8");
-        
         try (PrintWriter out = response.getWriter()) {
-                           
+                       
             /** Create String **/
             String User_IDM;
             
@@ -65,9 +64,11 @@ public class SignUpMem extends HttpServlet {
                 User_IDM = account.createMemUser_ID();
                 
                 //เอาค่าต่างๆเข้า java class
-                account.insertAccount(User_IDM, "MEM", usernameM, passwordM);
+                
                 user.insertUser(User_IDM, fnameM, lnameM, emailM);
+                account.insertAccount(User_IDM, "MEM", usernameM, passwordM);
                 member.insertMember(User_IDM, idCardM);
+                
                 
                 request.getRequestDispatcher("index.jsp").forward(request, response);
             
