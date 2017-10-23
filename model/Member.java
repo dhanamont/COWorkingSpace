@@ -16,17 +16,18 @@ public class Member {
 
     public Member() throws SQLException, ClassNotFoundException {
         
-        Class.forName("com.mysql.jdbc.Driver");        
-        
-        this.conn = DriverManager.getConnection("jdbc:mysql://ihost.it.kmitl.ac.th:3306/it58070122_se?zeroDateTimeBehavior=convertToNull&amp;characterEncoding=utf8", 
+        Class.forName("com.mysql.jdbc.Driver");       
+        java.util.Properties prop = new java.util.Properties();
+        prop.put("charSet","UTF-8");
+        this.conn = DriverManager.getConnection("jdbc:mysql://ihost.it.kmitl.ac.th:3306/it58070122_se?zeroDateTimeBehavior=convertToNull&characterEncoding=utf-8", 
                 "it58070122_se",
                 "chFKW9lGV");
     }
     
-    public void UpdateMember(String strPhoneNum, String strGen, String strAddress, String strIDcard, String strBDate, String LoginID) {
+    public void UpdateMember(String strPhoneNum, String strAddress, String strIDcard, String UserID) {
         try {
             Statement stmt = conn.createStatement();
-            String sql1 = "Update Member set Phone_Number='" + strPhoneNum + "', Gender='" + strGen + "', Address='" + strAddress + "',IDcard='" + strIDcard + "', Birth_Date='" + strBDate + "' where User_ID='" + LoginID + "';";
+            String sql1 = "Update Member set Phone_Number='" + strPhoneNum + "', Address='" + strAddress + "',IDcard='" + strIDcard + "' where User_ID='" + UserID + "';";
             stmt.executeUpdate(sql1);
 
         } catch (SQLException ex) {
@@ -38,12 +39,14 @@ public class Member {
             PreparedStatement insertMem = conn.prepareStatement("insert into Member values(?,?,?,?)");
       
             insertMem.setString(1, User_ID);
-            insertMem.setString(2, "");
-            insertMem.setString(3, "");
+            insertMem.setString(2, " ");
+            insertMem.setString(3, " ");
             insertMem.setString(4, card);
             insertMem.executeUpdate();
             conn.close();
         } catch (SQLException ex) {
+            System.out.println(ex);
+            System.out.println("MEMBER SQL ERROR");
         }
     }
 }
