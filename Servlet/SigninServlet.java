@@ -36,7 +36,7 @@ public class SigninServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             
-            boolean loginFlag = false;
+            String loginFlag = "false";
             
 //            รับค่าจาก jsp            
             String username = request.getParameter("Username");
@@ -56,17 +56,19 @@ public class SigninServlet extends HttpServlet {
 
                 if (Username.equals(username) && Password.equals(password)) {
 
-                    loginFlag = true;
+                    loginFlag = "true";
 
                     session.setAttribute("Username", Username);
                     session.setAttribute("User_ID", User_ID);
                     session.setAttribute("Role_ID", Role_ID);
+                    
+                   
+                } else {               
                     session.setAttribute("loginFlag", loginFlag);
-
-                    response.sendRedirect("index.jsp");
-                } else {
-                    response.sendRedirect("register.jsp");
                 }
+                
+                response.sendRedirect("register.jsp");
+                
             } catch (SQLException ex) {
                 Logger.getLogger(SigninServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
