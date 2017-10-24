@@ -87,8 +87,7 @@
                     <ul class="main-nav nav navbar-nav navbar-right">
                         <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="index.jsp">Home</a></li>
                         <li class="wow fadeInDown" data-wow-delay="0.2s"><a class="" href="properties.html">Type</a></li>
-                        <!-- ???????? About -->
-                        <li class="wow fadeInDown" data-wow-delay="0.3s"><a class="" href="#about" id="about" data-scroll="true">About</a></li>
+                        <li class="wow fadeInDown" data-wow-delay="0.3s"><a href="#about" data-scroll="true">About</a></li>
                         <li class="wow fadeInDown" data-wow-delay="0.5s"><a href="contact.html">Contact</a></li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
@@ -120,8 +119,7 @@
                     <ul class="main-nav nav navbar-nav navbar-right">
                         <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="index.jsp">Home</a></li>
                         <li class="wow fadeInDown" data-wow-delay="0.2s"><a class="" href="properties.html">Type</a></li>
-                        <!-- ???????? About -->
-                        <li class="wow fadeInDown" data-wow-delay="0.3s"><a class="" href="#about" id="about" data-scroll="true">About</a></li>
+                        <li class="wow fadeInDown" data-wow-delay="0.3s"><a href="#about" data-scroll="true">About</a></li>
                         <li class="wow fadeInDown" data-wow-delay="0.5s"><a href="contact.html">Contact</a></li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
@@ -155,8 +153,7 @@
                     <ul class="main-nav nav navbar-nav navbar-right">
                         <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="index.jsp">Home</a></li>
                         <li class="wow fadeInDown" data-wow-delay="0.2s"><a class="" href="properties.html">Type</a></li>
-                        <!-- ???????? About -->
-                        <li class="wow fadeInDown" data-wow-delay="0.3s"><a class="" href="#about" id="about" data-scroll="true">About</a></li>
+                        <li class="wow fadeInDown" data-wow-delay="0.3s"><a href="#about" data-scroll="true">About</a></li>
                         <li class="wow fadeInDown" data-wow-delay="0.5s"><a href="contact.html">Contact</a></li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
@@ -190,8 +187,7 @@
                     <ul class="main-nav nav navbar-nav navbar-right">
                         <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="index.jsp">Home</a></li>
                         <li class="wow fadeInDown" data-wow-delay="0.2s"><a class="" href="properties.html">Type</a></li>
-                        <!-- ???????? About -->
-                        <li class="wow fadeInDown" data-wow-delay="0.3s"><a class="" href="#about" id="about" data-scroll="true">About</a></li>
+                        <li class="wow fadeInDown" data-wow-delay="0.3s"><a href="#about" data-scroll="true">About</a></li>
                         <li class="wow fadeInDown" data-wow-delay="0.5s"><a href="contact.html">Contact</a></li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
