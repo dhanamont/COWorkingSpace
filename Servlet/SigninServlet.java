@@ -16,7 +16,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import model.User;
 import model.Account;
 
 @WebServlet(name = "SigninServlet", urlPatterns = {"/SigninServlet"})
@@ -36,39 +35,36 @@ public class SigninServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             
-            String loginFlag = "false";
+//            รับค่าจาก jsp          
+            String usernameIn = request.getParameter("Username");              
+            String passwordIn = request.getParameter("Password");
             
-//            รับค่าจาก jsp            
-            String username = request.getParameter("Username");
-            String password = request.getParameter("Password");
-
             try {
                 HttpSession session = request.getSession();
-
+                
 //                สร้าง Object
                 Account account = new Account();
-//                User user = new User();
-
-                String Username = account.getUsername(username);
-                String Password = account.getPassword(username);
-                String User_ID = account.getUser_ID(username);
-                String Role_ID = account.getRole_ID(username);
-
-                if (Username.equals(username) && Password.equals(password)) {
-
-                    loginFlag = "true";
-
+                String Username = account.getUsername(usernameIn);
+                String Password = account.getPassword(usernameIn);
+                String User_ID = account.getUser_ID(usernameIn);
+                String Role_ID = account.getRole_ID(usernameIn);      
+                System.out.println(Username+" "+Password);
+                System.out.println(usernameIn+" "+passwordIn);
+                if(Username == null || Username.isEmpty()){
+                    session.setAttribute("error","Invalid username");
+                    response.sendRedirect("register.jsp");
+                }
+                else if (Username.equals(usernameIn) && Password.equals(passwordIn)) {
+                    
                     session.setAttribute("Username", Username);
                     session.setAttribute("User_ID", User_ID);
                     session.setAttribute("Role_ID", Role_ID);
-                    
-                   
-                } else {               
-                    session.setAttribute("loginFlag", loginFlag);
+
+                    response.sendRedirect("index.jsp");
+                } else {
+                    session.setAttribute("error","Invalid password");
+                    response.sendRedirect("register.jsp");
                 }
-                
-                response.sendRedirect("register.jsp");
-                
             } catch (SQLException ex) {
                 Logger.getLogger(SigninServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
