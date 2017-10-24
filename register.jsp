@@ -3,13 +3,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
-<%@ page import="java.util.List"%>
 
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
     
     <head>
         <meta charset="utf-8">
@@ -45,13 +40,13 @@
     <body>
 
         <div id="preloader">
-            <div id="status">&nbsp;</div>
+            <div id="status"></div>
         </div>
         
         <sql:setDataSource var="it58070122_se" driver="com.mysql.jdbc.Driver" 
                            url="jdbc:mysql://ihost.it.kmitl.ac.th:3306/it58070122_se" 
                            user="it58070122_se" password="chFKW9IGV"/>
-        
+       
         <% String Role_ID = (String) session.getAttribute("Role_ID");%>
         <% String User_ID = (String) session.getAttribute("User_ID");%>
                 
@@ -72,12 +67,12 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse yamm" id="navigation">
                     <div class="button navbar-right">
-                        <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.open('register.jsp')" data-wow-delay="0.45s">Sign In</button>
-                        <button class="navbar-btn nav-button wow fadeInRight" onclick=" window.open('submit-property.html')" data-wow-delay="0.48s">Submit</button>
+                        <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.open('register.jsp')" data-wow-delay="0.45s">Register / Sign In</button>
+                       
                     </div>
                     <ul class="main-nav nav navbar-nav navbar-right">
                         <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="index.jsp">Home</a></li>
-                        <li class="wow fadeInDown" data-wow-delay="0.2s"><a class="" href="properties.html">Type</a></li>
+                        <li class="wow fadeInDown" data-wow-delay="0.2s"><a class="" href="properties.jsp">Properties</a></li>
                         <!-- ???????? About -->
                         <li class="wow fadeInDown" data-wow-delay="0.3s"><a class="" href="#about" id="about" data-scroll="true">About</a></li>
                         <li class="wow fadeInDown" data-wow-delay="0.5s"><a href="contact.html">Contact</a></li>
@@ -138,33 +133,23 @@
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-default">Register</button>
                                 </div>
+                                <button type="submit" class="btn btn-default"><a href="submit-property.html">Submit to Entrepreneur</a></button>
                             </form>
                         </div>
                     </div>
-                </div>      <!-- End register part -->
+                </div>      
+                <!-- End register part -->
                 
-                <!-- Sign in part //TEM -->
+                <!-- Sign in part  -->
                 <div class="col-md-6">   
                     <div class="box-for overflow">                         
                         <div class="col-md-12 col-xs-12 login-blocks">
-                            <h2>Sign in : </h2>
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            <% boolean login = (Boolean) session.getAttribute("loginFlag").booleanValue(); %>
-                            <%if(loginFlag.booleanValue() == false) { %>
+                            <h2>Sign in : </h2> 
+                            <% if (session.getAttribute("error") != null){ %>
                                 <div class="form-group">
-                                    <font color="red"><label for="">Invalid login, please try again</label></font>
-                                </div>
-                            <% } %>
-                            
-                            
-                            
-                            
+                                    <font color="red"><label>
+                                        <% out.println(session.getAttribute("error")); %></label></font>
+                                </div><% } %>
                             <form name="Servlet" action="SigninServlet" method="post">
                                 <div class="form-group">
                                     <label for="Username">Username</label>
@@ -186,7 +171,8 @@
                 </div>
 
             </div>
-        </div>         <!-- END Sign in part //TEM --> 
+        </div>         
+        <!-- END Sign in part  --> 
 
           <!-- Footer area-->
         <div class="footer-area">
