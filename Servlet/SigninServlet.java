@@ -48,8 +48,7 @@ public class SigninServlet extends HttpServlet {
                 String Password = account.getPassword(usernameIn);
                 String User_ID = account.getUser_ID(usernameIn);
                 String Role_ID = account.getRole_ID(usernameIn);      
-                System.out.println(Username+" "+Password);
-                System.out.println(usernameIn+" "+passwordIn);
+                
                 if(Username == null || Username.isEmpty()){
                     session.setAttribute("error","Invalid username");
                     response.sendRedirect("register.jsp");
