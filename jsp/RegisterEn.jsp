@@ -139,7 +139,7 @@
                                  
                                  
                                      <div class="tab-pane" id="step1">
-                                         <form name="SignUpEnt" method="POST" action="SignUpEnt">
+                                         <form name="SignUpEnt" method="POST" action="SignUpEnt"><br>
                                                 
                                                 
                                                 
@@ -157,7 +157,7 @@
                                      </div>
                                     
 
-                                    <div class="tab-pane" id="step2">
+                                    <div class="tab-pane" id="step2"><br>
                                         <div class="row p-b-15  ">
                                             
                                             <div class="col-sm-6">
@@ -181,7 +181,7 @@
                                     </div>
                                     <!--  End step 2 -->
 
-                                    <div class="tab-pane" id="step3">
+                                    <div class="tab-pane" id="step3"><br>
                                         <h4 class="info-text"> How much your Property is Beautiful ? </h4>
                                             <div class="form-group">
                                                     <label>Username<small>(required)</small></label>
@@ -195,7 +195,7 @@
                                            
                                     </div>
                                     <!-- End step 3 -->
-                                    <div class="tab-pane" id="step4">                                        
+                                    <div class="tab-pane" id="step4"><br>                                        
                                         <h4 class="info-text"> Finished and submit </h4>
                                         <div class="row">  
                                             <div class="col-sm-12">
