@@ -38,7 +38,9 @@ public class SignUpEnt extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, ClassNotFoundException {
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /** Create String **/
@@ -63,8 +65,8 @@ public class SignUpEnt extends HttpServlet {
                 User_IDE = account.createEntUser_ID();
                 
                 //เอาค่าเข้า java class
-                account.insertAccount(User_IDE, "ENT", usernameE, passwordE);
                 user.insertUser(User_IDE, fnameE, lnameE, emailE);
+                account.insertAccount(User_IDE, "ENT", usernameE, passwordE);             
                 entrepreneur.insertEntrepreneur(User_IDE, companyName, phoneCompany, "WAITING");
                 
 
@@ -89,7 +91,11 @@ public class SignUpEnt extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(SignUpEnt.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -103,7 +109,11 @@ public class SignUpEnt extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(SignUpEnt.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
