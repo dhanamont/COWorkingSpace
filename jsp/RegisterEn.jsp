@@ -118,7 +118,7 @@
             <div class="container">
                 <div class="row">
                     <div class="page-head-content">
-                        <h1 class="page-title">Submit new property</h1>               
+                        <h1 class="page-title">SUBMIT NEW ENTREPRENEUR</h1>               
                     </div>
                 </div>
             </div>
@@ -179,12 +179,12 @@
                                             
                                             
                                                  <div class="form-group">
-                                                    <label>Firstname<small>(required)</small></label>
+                                                    <label>First Name<small>(required)</small></label>
                                                     <input name="Fname" type="text" class="form-control" placeholder="Sirawich..">
                                                 </div>
                                      
                                                  <div class="form-group">
-                                                    <label>Lastname<small>(required)</small></label>
+                                                    <label>Last Name<small>(required)</small></label>
                                                     <input name="Lname" type="text" class="form-control" placeholder="Sandee...">
                                                 </div>
                                                 
