@@ -147,8 +147,8 @@
                                     <li><a href="#step4" data-toggle="tab">Finished </a></li>
                                 </ul>
 
-                                <div class="tab-content">
-
+                                                                <div class="tab-content">
+                                    <form name="RegisterEn" method="post" action="SignUpEnt">
                                     <div class="tab-pane" id="step1">
                                         <div class="row p-b-15  ">
                                             <h4 class="info-text"> Let's start with the basic information (with validation)</h4>
@@ -244,7 +244,7 @@
                                         </div>
                                     </div>
                                     <!--  End step 4 -->
-
+                                    </form>
                                 </div>
 
                                 <div class="wizard-footer">
