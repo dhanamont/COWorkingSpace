@@ -131,12 +131,12 @@
                                             
                                                 <div class="form-group">
                                                      <label>Company Name<small>(required)</small></label>
-                                                    <input name="Company_name" type="text" class="form-control" placeholder="CentaraGroup...">
+                                                    <input name="Company_Name" type="text" class="form-control" placeholder="CentaraGroup...">
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label>Phone Company<small>(required)</small></label>
-                                                    <input name="Phone_company" type="text" class="form-control" placeholder="0XXXXXXXX">
+                                                    <input name="Phone_Company" type="text" class="form-control" placeholder="0XXXXXXXX">
                                                 </div> 
                                                
                                             </div>
@@ -153,17 +153,17 @@
                                             
                                                  <div class="form-group">
                                                     <label>First Name<small>(required)</small></label>
-                                                    <input name="Fname" type="text" class="form-control" placeholder="Sirawich..">
+                                                    <input name="FnameE" type="text" class="form-control" placeholder="Sirawich..">
                                                 </div>
                                      
                                                  <div class="form-group">
                                                     <label>Last Name<small>(required)</small></label>
-                                                    <input name="Lname" type="text" class="form-control" placeholder="Sandee...">
+                                                    <input name="LnameE" type="text" class="form-control" placeholder="Sandee...">
                                                 </div>
                                                 
                                                 <div class="form-group">
                                                     <label>Email<small>(required)</small></label>
-                                                    <input name="Email" type="text" class="form-control" placeholder="kamikaze_2552@hotmail.com..">
+                                                    <input name="EmailE" type="text" class="form-control" placeholder="kamikaze_2552@hotmail.com..">
                                                 </div>
                                                
                                             </div>
@@ -179,12 +179,12 @@
                                             
                                                 <div class="form-group">
                                                      <label>Username<small>(required)</small></label>
-                                                    <input name="username" type="text" class="form-control" placeholder="maymie1234">
+                                                    <input name="usernameE" type="text" class="form-control" placeholder="maymie1234">
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label>Password<small>(required)</small></label>
-                                                    <input name="password" type="text" class="form-control" placeholder="1234567">
+                                                    <input name="passwordE" type="text" class="form-control" placeholder="1234567">
                                                 </div> 
                                                
                                             </div>
@@ -223,7 +223,7 @@
                                 <div class="wizard-footer">
                                     <div class="pull-right">
                                         <input type='button' class='btn btn-next btn-primary' name='next' value='Next' />
-                                        <input type='button' class='btn btn-finish btn-primary ' name='finish' value='Finish' />
+                                        <input type="submit" class='btn btn-finish btn-primary ' name='finish' value='Finish' />
                                     </div>
 
                                     <div class="pull-left">
