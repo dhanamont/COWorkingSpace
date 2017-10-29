@@ -135,7 +135,7 @@
                             <form action="" method="">                        
                                 <div class="wizard-header">
                                     <h3>
-                                        <b>SUBMIT</b> TO ENTREPRENEUR <br>
+                                        <b>SUBMIT</b> NEW ENTREPRENEUR <br>
                                         <small>Lorem ipsum dolor sit amet, consectetur adipisicing.</small>
                                     </h3>
                                 </div>
