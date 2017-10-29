@@ -10,11 +10,15 @@
 
 
 <!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> 
 <html class="no-js"> <!--<![endif]-->
-       <head>
+    <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>GARO ESTATE | Register page</title>
+        <title>GARO ESTATE | Submit property Page</title>
         <meta name="description" content="GARO is a real-estate template">
         <meta name="author" content="Kimarotec">
         <meta name="keyword" content="html5, css, bootstrap, property, real-estate theme , bootstrap template">
@@ -31,30 +35,53 @@
         <link rel="stylesheet" href="assets/css/fontello.css">
         <link href="assets/fonts/icon-7-stroke/css/pe-icon-7-stroke.css" rel="stylesheet">
         <link href="assets/fonts/icon-7-stroke/css/helper.css" rel="stylesheet">
-        <link href="assets/css/animate.css" rel="stylesheet" media="screen">
+        <link href="css/animate.css" rel="stylesheet" media="screen">
         <link rel="stylesheet" href="assets/css/bootstrap-select.min.css"> 
         <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="assets/css/icheck.min_all.css">
         <link rel="stylesheet" href="assets/css/price-range.css">
         <link rel="stylesheet" href="assets/css/owl.carousel.css">  
         <link rel="stylesheet" href="assets/css/owl.theme.css">
-        <link rel="stylesheet" href="assets/css/owl.transitions.css">
+        <link rel="stylesheet" href="assets/css/owl.transitions.css"> 
+        <link rel="stylesheet" href="assets/css/wizard.css"> 
         <link rel="stylesheet" href="assets/css/style.css">
         <link rel="stylesheet" href="assets/css/responsive.css">
     </head>
     <body>
 
         <div id="preloader">
-            <div id="status"></div>
+            <div id="status">&nbsp;</div>
         </div>
-        
-        <sql:setDataSource var="it58070122_se" driver="com.mysql.jdbc.Driver" 
-                           url="jdbc:mysql://ihost.it.kmitl.ac.th:3306/it58070122_se" 
-                           user="it58070122_se" password="chFKW9IGV"/>
-       
-        <% String Role_ID = (String) session.getAttribute("Role_ID");%>
-        <% String User_ID = (String) session.getAttribute("User_ID");%>
-                
+        <!-- Body content -->
+
+        <div class="header-connect">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5 col-sm-8  col-xs-12">
+                        <div class="header-half header-call">
+                            <p>
+                                <span><i class="pe-7s-call"></i> +1 234 567 7890</span>
+                                <span><i class="pe-7s-mail"></i> your@company.com</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-md-offset-5  col-sm-3 col-sm-offset-1  col-xs-12">
+                        <div class="header-half header-social">
+                            <ul class="list-inline">
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-vine"></i></a></li>
+                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>              
+        <!--End top header -->
+
         <!-- Start Navbar Guest -->
         <nav class="navbar navbar-default ">
             <div class="container">
@@ -87,21 +114,6 @@
         </nav>
         <!-- End Navbar -->
 
-        
-        
-        
-        <div class="page-head"> 
-            <div class="container">
-                <div class="row">
-                    <div class="page-head-content">
-                        <h1 class="page-title">New account / Sign in </h1>               
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End page header -->
-        
-
         <div class="page-head"> 
             <div class="container">
                 <div class="row">
@@ -123,7 +135,7 @@
                             <form action="" method="">                        
                                 <div class="wizard-header">
                                     <h3>
-                                        <b>Submit</b> YOUR PROPERTY <br>
+                                        <b>SUBMIT</b> TO ENTREPRENEUR <br>
                                         <small>Lorem ipsum dolor sit amet, consectetur adipisicing.</small>
                                     </h3>
                                 </div>
@@ -131,44 +143,48 @@
                                 <ul>
                                     <li><a href="#step1" data-toggle="tab">Step 1 </a></li>
                                     <li><a href="#step2" data-toggle="tab">Step 2 </a></li>
-                                    <li><a href="#step3" data-toggle="tab">Step 3 </a></li>                               
+                                    <li><a href="#step3" data-toggle="tab">Step 3 </a></li>
                                     <li><a href="#step4" data-toggle="tab">Finished </a></li>
                                 </ul>
-                                
+
                                 <div class="tab-content">
-                                 
-                                 
-                                     <div class="tab-pane" id="step1">
-                                         <form name="SignUpEnt" method="POST" action="SignUpEnt"><br>
+
+                                    <div class="tab-pane" id="step1">
+                                        <div class="row p-b-15  ">
+                                            <h4 class="info-text"> Let's start with the basic information (with validation)</h4>
+                                            <div class="col-sm-4 col-sm-offset-1">
                                                 
-                                                
-                                                
-                                                
+                                            
+                                            
                                                 <div class="form-group">
-                                                    <label>CompanyName<small>(required)</small></label>
+                                                     <label>Company Name<small>(required)</small></label>
                                                     <input name="Company_name" type="text" class="form-control" placeholder="CentaraGroup...">
                                                 </div>
-                                                
+
                                                 <div class="form-group">
-                                                    <label>PhoneCompany<small>(required)</small></label>
-                                                    <input name="Phone_company" type="text" class="form-control" placeholder="0XXXXXXXX..">
-                                                </div>
-                                        </form>
-                                     </div>
-                                    
+                                                    <label>Phone Company<small>(required)</small></label>
+                                                    <input name="Phone_company" type="text" class="form-control" placeholder="0XXXXXXXX">
+                                                </div> 
+                                               
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--  End step 1 -->
 
-                                    <div class="tab-pane" id="step2"><br>
-                                        <div class="row p-b-15  ">
+                                    <div class="tab-pane" id="step2">
+                                        <h4 class="info-text"> How much your Property is Beautiful ? </h4>
+                                        <div class="row"> 
+                                       <div class="col-sm-4 col-sm-offset-1">
+                                                
                                             
-                                            <div class="col-sm-6">
-
+                                            
                                                  <div class="form-group">
-                                                    <label>FirstName<small>(required)</small></label>
+                                                    <label>Firstname<small>(required)</small></label>
                                                     <input name="Fname" type="text" class="form-control" placeholder="Sirawich..">
                                                 </div>
                                      
                                                  <div class="form-group">
-                                                    <label>LastName<small>(required)</small></label>
+                                                    <label>Lastname<small>(required)</small></label>
                                                     <input name="Lname" type="text" class="form-control" placeholder="Sandee...">
                                                 </div>
                                                 
@@ -176,26 +192,34 @@
                                                     <label>Email<small>(required)</small></label>
                                                     <input name="Email" type="text" class="form-control" placeholder="kamikaze_2552@hotmail.com..">
                                                 </div>
+                                               
                                             </div>
                                         </div>
                                     </div>
-                                    <!--  End step 2 -->
+                                    <!-- End step 2 -->
 
-                                    <div class="tab-pane" id="step3"><br>
-                                        <h4 class="info-text"> How much your Property is Beautiful ? </h4>
-                                            <div class="form-group">
-                                                    <label>Username<small>(required)</small></label>
-                                                    <input name="Username" type="text" class="form-control" placeholder="maymiezz...">
-                                                </div>
+                                    <div class="tab-pane" id="step3">                                        
+                                        <h4 class="info-text">Give us somme images and videos ? </h4>
+                                       <div class="col-sm-4 col-sm-offset-1">
                                                 
+                                            
+                                            
+                                                <div class="form-group">
+                                                     <label>Username<small>(required)</small></label>
+                                                    <input name="username" type="text" class="form-control" placeholder="maymie1234">
+                                                </div>
+
                                                 <div class="form-group">
                                                     <label>Password<small>(required)</small></label>
-                                                    <input name="Password" type="text" class="form-control" placeholder="123456..">
-                                                </div>
-                                           
+                                                    <input name="password" type="text" class="form-control" placeholder="1234567">
+                                                </div> 
+                                               
+                                            </div>
                                     </div>
-                                    <!-- End step 3 -->
-                                    <div class="tab-pane" id="step4"><br>                                        
+                                    <!--  End step 3 -->
+
+
+                                    <div class="tab-pane" id="step4">                                        
                                         <h4 class="info-text"> Finished and submit </h4>
                                         <div class="row">  
                                             <div class="col-sm-12">
@@ -401,4 +425,3 @@
 
     </body>
 </html>
-
