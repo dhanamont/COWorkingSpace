@@ -1,4 +1,3 @@
-
 <html class="no-js"> <!--<![endif]-->
     <head>
         <meta charset="utf-8">
@@ -35,9 +34,10 @@
     <body>
 
         <div id="preloader">
-            <div id="status">&nbsp;</div>
+            <div id="status"></div>
         </div>
-           <!-- DataSource Connect -->
+        
+        <!-- DataSource Connect -->
         <sql:setDataSource var="it58070122_se" driver="com.mysql.jdbc.Driver" 
                            url="jdbc:mysql://ihost.it.kmitl.ac.th:3306/it58070122_se" 
                            user="it58070122_se" password="chFKW9IGV"/>
@@ -45,8 +45,11 @@
         <% String Role_ID = (String) session.getAttribute("Role_ID");%>
         <% String Username = (String) session.getAttribute("Username");%>
 
+        <!-- Check Role Entrepreneur-->
+        <% if (Role_ID == null) { %>
+            <% response.sendRedirect("index.jsp");%>
+        <% } else if (Role_ID.equals("ENT")) {%>
         <!-- Start Navbar Entrepreneur -->
-        <% if (Role_ID.equals("ENT")) {%>
         <nav class="navbar navbar-default ">
             <div class="container">
                 <!-- Brand and toggle get grouped for better mobile display -->
@@ -90,6 +93,7 @@
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </nav>
+        <% } %>
         <!-- End Navbar Entrepreneur -->
 
         <div class="page-head"> 
@@ -101,7 +105,6 @@
                 </div>
             </div>
         </div>
-        <% } %>
         <!-- End page header -->
 
         <!-- property area -->
