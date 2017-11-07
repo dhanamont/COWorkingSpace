@@ -71,15 +71,15 @@ public class OrderServlet extends HttpServlet {
             //******** End input *********
             
             try {
-                //Room
+                //Create Object
                 Room room = new Room();
-
-                //Create OrderID
                 Order order = new Order();
+                Table table = new Table();
+                
+                //Create OrderID
                 String orderID = order.getOrderID();
                 
                 //Table เอาไว้หาว่า table นี้อยู่ room ไหน จะได้รู้ราคา ไปคิด total price
-                Table table = new Table();
                 String roomID = table.getRoomID(tableID);
                 
                 //Price_of_Ticket จากตาราง Room
