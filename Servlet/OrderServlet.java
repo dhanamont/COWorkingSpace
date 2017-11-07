@@ -80,17 +80,15 @@ public class OrderServlet extends HttpServlet {
                 
                 //Table เอาไว้หาว่า table นี้อยู่ room ไหน จะได้รู้ราคา ไปคิด total price
                 Table table = new Table();
-                String roomID = table.getRoomID();
+                String roomID = table.getRoomID(tableID);
                 
-                //Price_of_Ticket จากตาราง room
+                //Price_of_Ticket จากตาราง Room
                 Float price = room.getPrice(roomID); 
                 Float totalPrice = price * numOfPeople;
                 
                 //ส่งค่าไปให้ java class เอาเข้า DB
                 order.insertOrder(orderID, orderStatus, totalPrice, numOfPeople, orderDate, startOrderTime, endOrderTime, userID, tableID);
-                
-                
-                
+               
                 //Set Attribute
                 session.setAttribute("userID", userID);
                 session.setAttribute("spaceID", spaceID);
@@ -158,4 +156,3 @@ public class OrderServlet extends HttpServlet {
     }// </editor-fold>
 
 }
-
