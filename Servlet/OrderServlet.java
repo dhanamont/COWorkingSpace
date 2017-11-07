@@ -82,7 +82,7 @@ public class OrderServlet extends HttpServlet {
                 Table table = new Table();
                 String roomID = table.getRoomID();
                 
-                //Price_of_Ticket จากตาราง Zone
+                //Price_of_Ticket จากตาราง room
                 Float price = room.getPrice(roomID); 
                 Float totalPrice = price * numOfPeople;
                 
