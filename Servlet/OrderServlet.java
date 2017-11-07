@@ -57,10 +57,7 @@ public class OrderServlet extends HttpServlet {
             //Order_Date
             String orderDate = request.getParameter("order_date").substring(request.getParameter("order_date").indexOf("xxx"));
             
-            //Number of People --> หรือว่านับโต๊ะ?????
-            String numPeople = request.getParameter("number_of_people").substring(0, request.getParameter("number_of_people").indexOf("xxx"));
-            int numOfPeople = Integer.parseInt(request.getParameter("numPeople"));
-            
+                        
             //Start Time & End Time
             String startOrderTime = request.getParameter("StartTime");
             String endOrderTime = request.getParameter("EndTime");
@@ -83,11 +80,10 @@ public class OrderServlet extends HttpServlet {
                 String roomID = table.getRoomID(tableID);
                 
                 //Price_of_Ticket จากตาราง Room
-                Float price = room.getPrice(roomID); 
-                Float totalPrice = price * numOfPeople;
-                
+                Float totalPrice = room.getPrice(roomID); 
+                                
                 //ส่งค่าไปให้ java class เอาเข้า DB
-                order.insertOrder(orderID, orderStatus, totalPrice, numOfPeople, orderDate, startOrderTime, endOrderTime, userID, tableID);
+                order.insertOrder(orderID, orderStatus, totalPrice, orderDate, startOrderTime, endOrderTime, userID, tableID);
                
                 //Set Attribute
                 session.setAttribute("userID", userID);
@@ -95,7 +91,6 @@ public class OrderServlet extends HttpServlet {
                 session.setAttribute("orderID", orderID);
                 session.setAttribute("orderStatus", orderStatus);
                 session.setAttribute("totalPrice", totalPrice);
-                session.setAttribute("numOfPeople", numOfPeople);
                 session.setAttribute("orderDate", orderDate);
                 session.setAttribute("orderDatetime", order.getDateTime());
                 session.setAttribute("startTime", startOrderTime);
