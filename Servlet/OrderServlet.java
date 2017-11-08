@@ -8,6 +8,7 @@ package servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -56,11 +57,11 @@ public class OrderServlet extends HttpServlet {
             
             //Order_Date
             String orderDate = request.getParameter("order_date").substring(request.getParameter("order_date").indexOf("xxx"));
-            
-                        
+                                  
             //Start Time & End Time
-            String startOrderTime = request.getParameter("StartTime");
-            String endOrderTime = request.getParameter("EndTime");
+            int startOrderTime = Integer.parseInt(request.getParameter("StartTime"));
+            int endOrderTime = Integer.parseInt(request.getParameter("EndTime"));
+            String dot = ".00";
             
             // Order status --> WAITING, PAID ไว้ให้ผปก.เปลี่ยนสถานะการจ่ายเงินของลูกค้า
             String orderStatus = "WAITING";
@@ -80,10 +81,19 @@ public class OrderServlet extends HttpServlet {
                 String roomID = table.getRoomID(tableID);
                 
                 //Price_of_Ticket จากตาราง Room
-                Float totalPrice = room.getPrice(roomID); 
+                Float totalPrice = room.getPrice(roomID);
+                
+                //สร้าง Array ของ Start to End Time
+                ArrayList<String> orderTime = new ArrayList<>();
+                
+                for(int countTime = startOrderTime ; startOrderTime <= endOrderTime; countTime++ ){                   
+                    String hour = String.valueOf(countTime);
+                    String time = hour.concat(dot);
+                    orderTime.add(time);
+                }
                                 
                 //ส่งค่าไปให้ java class เอาเข้า DB
-                order.insertOrder(orderID, orderStatus, totalPrice, orderDate, startOrderTime, endOrderTime, userID, tableID);
+                order.insertOrder(orderID, orderStatus, totalPrice, orderDate, orderTime, userID, tableID);
                
                 //Set Attribute
                 session.setAttribute("userID", userID);
