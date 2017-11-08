@@ -74,18 +74,18 @@ public class SubmitPropertiesServlet extends HttpServlet {
 
 //            ArrayList ของ Time
             ArrayList<String> alltime = new ArrayList<>();
-            alltime.add("8.00-8.59");
-            alltime.add("9.00-9.59");
-            alltime.add("10.00-10.59");
-            alltime.add("11.00-11.59");
-            alltime.add("12.00-12.59");
-            alltime.add("13.00-13.59");
-            alltime.add("14.00-14.59");
-            alltime.add("15.00-15.59");
-            alltime.add("16.00-16.59");
-            alltime.add("17.00-17.59");
-            alltime.add("18.00-18.59");
-            alltime.add("19.00-19.59");
+            alltime.add("8.00");
+            alltime.add("9.00");
+            alltime.add("10.00");
+            alltime.add("11.00");
+            alltime.add("12.00");
+            alltime.add("13.00");
+            alltime.add("14.00");
+            alltime.add("15.00");
+            alltime.add("16.00");
+            alltime.add("17.00");
+            alltime.add("18.00");
+            alltime.add("19.00");
             
 //            Arraylist ไว้เก็บข้อมูลวันเปิด-ปิด & เวลาเปิด-ปิด
             ArrayList<String> open_close_Date = new ArrayList<>();
