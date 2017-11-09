@@ -132,34 +132,167 @@
                                 <div class="tab-content">
 
                                     <div class="tab-pane" id="step1">
-                                        <div class="row p-b-15  ">
-                                            <h4 class="info-text"> Let's start with the basic information (with validation)</h4>
-                                            <div class="col-sm-4 col-sm-offset-1">
-                                                <div class="picture-container">
-                                                    <div class="picture">
-                                                        <img src="assets/img/default-property.jpg" class="picture-src" id="wizardPicturePreview" title=""/>
-                                                        <input type="file" id="wizard-picture">
+                                        <h4 class="info-text"> Let's start with the basic information </h4>
+                                        <div class="row">
+                                            <div class="col-sm-12"> 
+                                                <div class="col-sm-12"> 
+                                                    <div class="form-group">
+                                                        <label>Co-working Space name :</label>
+                                                        <textarea name="discrition" class="form-control" ></textarea>
                                                     </div> 
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <label>Co-working Space name <small>(required)</small></label>
-                                                    <input name="propertyname" type="text" class="form-control" placeholder="Super villa ...">
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label>Co-working Space price <small>(required)</small></label>
-                                                    <input name="propertyprice" type="text" class="form-control" placeholder="3330000">
                                                 </div> 
-                                                <div class="form-group">
-                                                    <label>Telephone <small>(empty if you wanna use default phone number)</small></label>
-                                                    <input name="phone" type="text" class="form-control" placeholder="+66 81 2345678">
+                                            </div>
+
+                                            <div class="col-sm-12">
+                                                <div class="col-sm-3">
+                                                    <div class="form-group">
+                                                        <label>Place :</label>
+                                                        <select id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Select your place">
+                                                            <option>Sukhumvit</option>
+                                                            <option>Silom</option>
+                                                            <option>Siam</option>
+                                                            <option>Rangsit</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <div class="form-group">
+                                                        <label>Picture poster (img):</label>
+                                                        <input class="form-control" type="file" id="property-images">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <div class="form-group">
+                                                        <label>Picture cover (img):</label>
+                                                        <input class="form-control" type="file" id="property-images" multiple>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <div class="form-group">
+                                                        <label>Property Statue  :</label>
+                                                        <select id="basic" class="selectpicker show-tick form-control" multiple>
+                                                            <option> -Status- </option>
+                                                            <option>Rent </option>
+                                                            <option>Boy</option>
+                                                            <option>used</option>  
+
+                                                        </select>
+                                                    </div>
                                                 </div>
                                             </div>
+                                            
+                                            <div class="col-sm-12">
+                                                <div class="col-sm-3">
+                                                    <div class="form-group">
+                                                        <label>Open date :</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="col-sm-12 padding-top-15">
+                                                <div class="col-sm-3">
+                                                    <div class="form-group">
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox"> Monday
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div> 
+                                                <div class="col-sm-3">
+                                                    <div class="form-group">
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox"> Tuesday
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>                                                 
+                                                <div class="col-sm-3">
+                                                    <div class="form-group">
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox"> Wednesday
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>                                                 
+                                                <div class="col-sm-3">
+                                                    <div class="form-group">
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox"> Thursday
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div> 
+                                            </div> 
+                                            <div class="col-sm-12 padding-bottom-15">
+                                                <div class="col-sm-3">
+                                                    <div class="form-group">
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox"> Friday
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <div class="form-group">
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox"> Saturday
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <div class="form-group">
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox">  Sunday
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="col-sm-12">
+                                            <div class="col-sm-3">
+                                                    <div class="form-group">
+                                                        <label>Open time</label>
+                                                        <select id="lunchBegins" class="selectpicker" title="Select open time">
+                                                            <option>0</option>
+                                                            <option>1</option>
+                                                            <option>2</option>
+                                                            <option>3</option>
+                                                            <option>4</option>
+                                                            <option>5</option>
+                                                            <option>6</option>
+                                                            <option>7</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            <div class="col-sm-3">
+                                                    <div class="form-group">
+                                                        <label>Close time</label>
+                                                        <select id="lunchBegins" class="selectpicker" title="Select close time">
+                                                            <option>18</option>
+                                                            <option>19</option>
+                                                            <option>20</option>
+                                                            <option>21</option>
+                                                            <option>22</option>
+                                                            <option>23</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            
+                                            <br>
                                         </div>
                                     </div>
-                                    <!--  End step 1 -->
+                                    <!-- End step 1 -->
 
                                     <div class="tab-pane" id="step2">
                                         <h4 class="info-text"> How much your Property is Beautiful ? </h4>
