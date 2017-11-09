@@ -288,6 +288,53 @@
                                                 </div>
                                             </div>
                                             
+                                            <div class="col-sm-12">
+                                                <div class="col-sm-3">
+                                                    <div class="form-group">
+                                                        <label>Open date :</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="col-sm-12 padding-top-15">
+                                                <div class="col-sm-3">
+                                                    <div class="form-group">
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox"> Wi-Fi
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div> 
+                                                <div class="col-sm-3">
+                                                    <div class="form-group">
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox"> Cafe
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <div class="form-group">
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox"> Parking lot
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div> 
+                                                <div class="col-sm-3">
+                                                    <div class="form-group">
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox"> Photocopier
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div> 
+                                            </div> 
+                                            
                                             
                                             <br>
                                         </div>
