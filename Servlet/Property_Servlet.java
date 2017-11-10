@@ -7,6 +7,7 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -37,14 +38,18 @@ public class Property_Servlet extends HttpServlet {
 
             HttpSession session = request.getSession();
 
-            String space_ID = request.getParameter("Space_ID");
-            request.setAttribute("Space_ID", space_ID);
+            String Space_ID = request.getParameter("Space_ID");
+            request.setAttribute("Space_ID", Space_ID);
+            
+            String Type_ID = request.getParameter("Type_ID");
+            request.setAttribute("Type_ID", Type_ID);
 
             Space space = new Space();
-            space.SpaceDetail(space_ID);
-            space.getOrderingSpace(type_id);
-                    
-//            ตรงนี้ต้องใส่ space_ID ใน () ปะ
+            space.SpaceDetail(Space_ID);
+            
+            ArrayList<String> openDate = space.getOpenDate(Type_ID);
+            ArrayList<String> openTime = space.getOpenTime(Type_ID);
+
             request.setAttribute("Space_Name", space.getSpaceName());
             request.setAttribute("Location", space.getLocation());
             request.setAttribute("Picture_poster", space.getPicturePoster());
@@ -54,8 +59,8 @@ public class Property_Servlet extends HttpServlet {
             request.setAttribute("Start_Time", space.getStartTime());
             request.setAttribute("End_Time", space.getEndTime());
             request.setAttribute("Description", space.getDescription());
-            request.setAttribute("Date", open_close_Date);
-            request.setAttribute("Time", open_close_Time);
+            request.setAttribute("Date", openDate);
+            request.setAttribute("Time", openTime);
 
 //            ส่งไปหน้านี้ถูกปะ หรือต้อง MyProperty.jsp
             request.getRequestDispatcher("Property.jsp").forward(request, response);
