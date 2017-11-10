@@ -42,7 +42,8 @@ public class Property_Servlet extends HttpServlet {
 
             Space space = new Space();
             space.SpaceDetail(space_ID);
-
+            space.getOrderingSpace(type_id);
+                    
 //            ตรงนี้ต้องใส่ space_ID ใน () ปะ
             request.setAttribute("Space_Name", space.getSpaceName());
             request.setAttribute("Location", space.getLocation());
@@ -53,6 +54,8 @@ public class Property_Servlet extends HttpServlet {
             request.setAttribute("Start_Time", space.getStartTime());
             request.setAttribute("End_Time", space.getEndTime());
             request.setAttribute("Description", space.getDescription());
+            request.setAttribute("Date", open_close_Date);
+            request.setAttribute("Time", open_close_Time);
 
 //            ส่งไปหน้านี้ถูกปะ หรือต้อง MyProperty.jsp
             request.getRequestDispatcher("Property.jsp").forward(request, response);
