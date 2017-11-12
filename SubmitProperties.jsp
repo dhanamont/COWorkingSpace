@@ -114,11 +114,11 @@
                     <div class="wizard-container"> 
 
                         <div class="wizard-card ct-wizard-orange" id="wizardProperty">
-                            <form action="" method="">                        
+                            <form action="SubmitPropertiesServlet" method="POST">                        
                                 <div class="wizard-header">
                                     <h3>
                                         <b>Submit</b> YOUR CO-WORKING SPACE<br><br>
-                                        <small>Unlike in a typical office environment, those coworking are usually not employed by the same organization.</small>
+                                        <small>It's free and always will be</small>
                                     </h3>
                                 </div><br>
 
@@ -157,13 +157,13 @@
                                                 </div>
                                                 <div class="col-sm-3">
                                                     <div class="form-group">
-                                                        <label>Picture poster (img):</label>
+                                                        <label>Picture poster :</label>
                                                         <input class="form-control" type="file" id="property-images">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-3">
                                                     <div class="form-group">
-                                                        <label>Picture cover (img):</label>
+                                                        <label>Picture cover :</label>
                                                         <input class="form-control" type="file" id="property-images" multiple>
                                                     </div>
                                                 </div>
@@ -194,7 +194,7 @@
                                                     <div class="form-group">
                                                         <div class="checkbox">
                                                             <label>
-                                                                <input type="checkbox"> Monday
+                                                                <input type="checkbox" value="Monday" name="openDate"> Monday
                                                             </label>
                                                         </div>
                                                     </div>
@@ -203,7 +203,7 @@
                                                     <div class="form-group">
                                                         <div class="checkbox">
                                                             <label>
-                                                                <input type="checkbox"> Tuesday
+                                                                <input type="checkbox" value="Tuesday" name="openDate"> Tuesday
                                                             </label>
                                                         </div>
                                                     </div>
@@ -212,7 +212,7 @@
                                                     <div class="form-group">
                                                         <div class="checkbox">
                                                             <label>
-                                                                <input type="checkbox"> Wednesday
+                                                                <input type="checkbox" value="Wednesday" name="openDate"> Wednesday
                                                             </label>
                                                         </div>
                                                     </div>
@@ -221,7 +221,7 @@
                                                     <div class="form-group">
                                                         <div class="checkbox">
                                                             <label>
-                                                                <input type="checkbox"> Thursday
+                                                                <input type="checkbox" value="Thursday" name="openDate"> Thursday
                                                             </label>
                                                         </div>
                                                     </div>
@@ -232,7 +232,7 @@
                                                     <div class="form-group">
                                                         <div class="checkbox">
                                                             <label>
-                                                                <input type="checkbox"> Friday
+                                                                <input type="checkbox" value="Friday" name="openDate"> Friday
                                                             </label>
                                                         </div>
                                                     </div>
@@ -241,7 +241,7 @@
                                                     <div class="form-group">
                                                         <div class="checkbox">
                                                             <label>
-                                                                <input type="checkbox"> Saturday
+                                                                <input type="checkbox" value="Saturday" name="openDate"> Saturday
                                                             </label>
                                                         </div>
                                                     </div>
@@ -250,7 +250,7 @@
                                                     <div class="form-group">
                                                         <div class="checkbox">
                                                             <label>
-                                                                <input type="checkbox">  Sunday
+                                                                <input type="checkbox" value="Sunday" name="openDate">  Sunday
                                                             </label>
                                                         </div>
                                                     </div>
@@ -262,14 +262,20 @@
                                                     <div class="form-group">
                                                         <label>Open time</label>
                                                         <select id="lunchBegins" class="selectpicker" title="Select open time">
-                                                            <option>0</option>
-                                                            <option>1</option>
-                                                            <option>2</option>
-                                                            <option>3</option>
-                                                            <option>4</option>
-                                                            <option>5</option>
-                                                            <option>6</option>
-                                                            <option>7</option>
+                                                            <option value="8" name="openTime">8</option>
+                                                            <option value="9" name="openTime">9</option>
+                                                            <option value="10" name="openTime">10</option>
+                                                            <option value="11" name="openTime">11</option>
+                                                            <option value="12" name="openTime">12</option>
+                                                            <option value="13" name="openTime">13</option>
+                                                            <option value="14" name="openTime">14</option>
+                                                            <option value="15" name="openTime">15</option>
+                                                            <option value="16" name="openTime">16</option>
+                                                            <option value="17" name="openTime">17</option>
+                                                            <option value="18" name="openTime">18</option>
+                                                            <option value="19" name="openTime">19</option>
+                                                            <option value="20" name="openTime">20</option>
+                                                            <option value="21" name="openTime">21</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -277,12 +283,20 @@
                                                     <div class="form-group">
                                                         <label>Close time</label>
                                                         <select id="lunchBegins" class="selectpicker" title="Select close time">
-                                                            <option>18</option>
-                                                            <option>19</option>
-                                                            <option>20</option>
-                                                            <option>21</option>
-                                                            <option>22</option>
-                                                            <option>23</option>
+                                                            <option value="8" name="closeTime">8</option>
+                                                            <option value="9" name="closeTime">9</option>
+                                                            <option value="10" name="closeTime">10</option>
+                                                            <option value="11" name="closeTime">11</option>
+                                                            <option value="12" name="closeTime">12</option>
+                                                            <option value="13" name="closeTime">13</option>
+                                                            <option value="14" name="closeTime">14</option>
+                                                            <option value="15" name="closeTime">15</option>
+                                                            <option value="16" name="closeTime">16</option>
+                                                            <option value="17" name="closeTime">17</option>
+                                                            <option value="18" name="closeTime">18</option>
+                                                            <option value="19" name="closeTime">19</option>
+                                                            <option value="20" name="closeTime">20</option>
+                                                            <option value="21" name="closeTime">21</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -520,31 +534,32 @@
                                     </div>
                                     <!-- End step 2 -->
 
-                                    <div class="tab-pane" id="step3">                                        
-                                        <h4 class="info-text">Give us somme images and videos ? </h4>
-                                        <div class="row">  
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <label for="property-images">Chose Images :</label>
-                                                    <input class="form-control" type="file" id="property-images">
-                                                    <p class="help-block">Select multipel images for your property .</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6"> 
-                                                <div class="form-group">
-                                                    <label for="property-video">Property video :</label>
-                                                    <input class="form-control" value="" placeholder="http://www.youtube.com, http://vimeo.com" name="property_video" type="text">
-                                                </div> 
+                                    <div class="tab-pane" id="step3">
+                                        <h4 class="info-text">All change will be appear to your article</h4>
+                                    <div class="profiel-header">
+                                <hr>
+                            </div>
 
-                                                <div class="form-group">
-                                                    <input class="form-control" value="" placeholder="http://www.youtube.com, http://vimeo.com" name="property_video" type="text">
-                                                </div>
+                            <div class="clear">
 
-                                                <div class="form-group">
-                                                    <input class="form-control" value="" placeholder="http://www.youtube.com, http://vimeo.com" name="property_video" type="text">
-                                                </div>
-                                            </div>
-                                        </div>
+                                <div class="col-sm-10 col-sm-offset-1">
+                                    <div class="form-group">
+                                        <label>Description <small>(required)</small></label><br>                                
+                                        <textarea type="input" rows="4" cols="127" name="Description"></textarea>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label>Link Map <small>(required)</small></label>
+                                        <input type="input" class="form-control" name="Map">
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label>Address <small>(required)</small></label>
+                                        <input type="input" class="form-control" name="Address">
+                                    </div>
+                                </div>
+                                
+                            </div>
                                     </div>
                                     <!--  End step 3 -->
 
