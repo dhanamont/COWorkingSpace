@@ -138,7 +138,7 @@
                                                 <div class="col-sm-12"> 
                                                     <div class="form-group">
                                                         <label>Co-working Space name :</label>
-                                                        <textarea name="discrition" class="form-control" ></textarea>
+                                                        <textarea type="input" class="form-control" name="Space_Name"></textarea>
                                                     </div> 
                                                 </div> 
                                             </div>
@@ -147,7 +147,7 @@
                                                 <div class="col-sm-3">
                                                     <div class="form-group">
                                                         <label>Place :</label>
-                                                        <select id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Select your place">
+                                                        <select id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Select your place" name="Location">
                                                             <option>Sukhumvit</option>
                                                             <option>Silom</option>
                                                             <option>Siam</option>
@@ -158,25 +158,13 @@
                                                 <div class="col-sm-3">
                                                     <div class="form-group">
                                                         <label>Picture poster :</label>
-                                                        <input class="form-control" type="file" id="property-images">
+                                                        <input class="form-control" type="file" id="property-images" name="Picture_poster">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-3">
                                                     <div class="form-group">
                                                         <label>Picture cover :</label>
-                                                        <input class="form-control" type="file" id="property-images" multiple>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-3">
-                                                    <div class="form-group">
-                                                        <label>Property Statue  :</label>
-                                                        <select id="basic" class="selectpicker show-tick form-control" multiple>
-                                                            <option> -Status- </option>
-                                                            <option>Rent </option>
-                                                            <option>Boy</option>
-                                                            <option>used</option>  
-
-                                                        </select>
+                                                        <input class="form-control" type="file" id="property-images" name="Picture_cover" multiple>
                                                     </div>
                                                 </div>
                                             </div>
