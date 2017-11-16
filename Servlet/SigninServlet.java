@@ -60,16 +60,14 @@ public class SigninServlet extends HttpServlet {
                     
                     if(Role_ID.equals("ENT") && (Status.equals("WAITING")||Status.equals("CANCELED")) ){
                         session.setAttribute("error","Invalid Username and Password");
+                        response.sendRedirect("register.jsp");
                     }
                     else {
                         session.setAttribute("Username", Username);
                         session.setAttribute("User_ID", User_ID);
                         session.setAttribute("Role_ID", Role_ID);
-                        
+                        response.sendRedirect("index.jsp");
                     }
-                    
-                    response.sendRedirect("register.jsp");
-                    
                 } else {
                     session.setAttribute("error","Invalid password");
                     response.sendRedirect("register.jsp");
