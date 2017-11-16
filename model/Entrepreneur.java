@@ -60,11 +60,11 @@ public class Entrepreneur {
     public void EntrepreneurDetail(String User_ID) {
         try {
             Statement stmt = conn.createStatement();
-            String Ent_table = "SELECT User_ID, Company_name, u.Fname, u.Lname, u.Email, Phone_company, Status"
-                    + "FROM Entrepreneur "
-                    + "JOIN User u "
-                    + "USING(User_ID)"
-                    + "WHERE User_ID = '" + User_ID + "';";
+            String Ent_table = "SELECT User_ID, Company_name, u.Fname, u.Lname, u.Email, Phone_company, Status\n" +
+                    "FROM Entrepreneur\n" +
+                    "JOIN User u\n" +
+                    "USING(User_ID)\n" +
+                    "WHERE User_ID = '"+User_ID+"'";
             ResultSet rs5 = stmt.executeQuery(Ent_table);
             rs5.next();
             //--------- Entrepreneur's Detail
@@ -74,17 +74,18 @@ public class Entrepreneur {
             Email = rs5.getString("Email");
             Phone = rs5.getString("Phone_company");
         } catch (SQLException ex) {
+            System.out.println(ex);
         }
     }
     public void showAllRequests(ArrayList<String> Company_Name, ArrayList<String> Status, ArrayList<Timestamp> Date_Time, ArrayList<String> Contact_name) {
         try {
             Statement stmt = conn.createStatement();
-            String Concert_table = "SELECT Company_Name, Status, DateTime, u.Fname, u.Lname "
+            String Company_table = "SELECT Company_name, Status, DateTime, u.Fname, u.Lname "
                     + "FROM Entrepreneur JOIN User u USING (User_ID) ORDER BY Date_Time DESC;";
-            ResultSet rs1 = stmt.executeQuery(Concert_table);
+            ResultSet rs1 = stmt.executeQuery(Company_table);
 
             while (rs1.next()) {
-                Company_Name.add(rs1.getString("Concert_Name"));
+                Company_Name.add(rs1.getString("Company_Name"));
                 Status.add(rs1.getString("Status"));
                 Date_Time.add(rs1.getTimestamp("DateTime"));
                 Contact_name.add(rs1.getString("Fname") + " " + rs1.getString("Lname"));
