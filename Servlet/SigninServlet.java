@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.Account;
+import model.Entrepreneur;
 
 @WebServlet(name = "SigninServlet", urlPatterns = {"/SigninServlet"})
 public class SigninServlet extends HttpServlet {
@@ -44,22 +45,31 @@ public class SigninServlet extends HttpServlet {
                 
 //                สร้าง Object
                 Account account = new Account();
+                Entrepreneur ent = new Entrepreneur();
                 String Username = account.getUsername(usernameIn);
                 String Password = account.getPassword(usernameIn);
                 String User_ID = account.getUser_ID(usernameIn);
-                String Role_ID = account.getRole_ID(usernameIn);      
-                
+                String Role_ID = account.getRole_ID(usernameIn);
+                String Status = ent.getStatus(User_ID);
+                System.out.println(Status);
                 if(Username == null || Username.isEmpty()){
                     session.setAttribute("error","Invalid username");
                     response.sendRedirect("register.jsp");
                 }
                 else if (Username.equals(usernameIn) && Password.equals(passwordIn)) {
                     
-                    session.setAttribute("Username", Username);
-                    session.setAttribute("User_ID", User_ID);
-                    session.setAttribute("Role_ID", Role_ID);
-
-                    response.sendRedirect("index.jsp");
+                    if(Role_ID.equals("ENT") && (Status.equals("WAITING")||Status.equals("CANCELED")) ){
+                        session.setAttribute("error","Invalid Username and Password");
+                    }
+                    else {
+                        session.setAttribute("Username", Username);
+                        session.setAttribute("User_ID", User_ID);
+                        session.setAttribute("Role_ID", Role_ID);
+                        
+                    }
+                    
+                    response.sendRedirect("register.jsp");
+                    
                 } else {
                     session.setAttribute("error","Invalid password");
                     response.sendRedirect("register.jsp");
