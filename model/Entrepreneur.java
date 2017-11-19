@@ -114,7 +114,7 @@ public class Entrepreneur {
 
     public void updateStatusCANCELED(String User_ID) {
         try {
-            String status = "UPDATE Entreprener\n"
+            String status = "UPDATE Entrepreneur\n"
                     + "SET Status = 'CANCELED'\n"
                     + "WHERE User_ID = '" + User_ID + "' ;";
             PreparedStatement preparedStmt = conn.prepareStatement(status);
