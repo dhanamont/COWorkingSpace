@@ -166,10 +166,10 @@
                                     <a href="index-2.html">Properties list</a>
                                 </li>
                                 <li>
-                                    <a href="index-3.html">Application list</a>
+                                    <a href="EntRequestList">Entrepreneur Request list</a>
                                 </li>
                                 <li>
-                                    <a href="index-4.html">Sign out</a>
+                                    <a href="SignOutServlet">Sign out</a>
                                 </li>
 
                             </ul>
