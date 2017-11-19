@@ -121,7 +121,7 @@
         </div>
         <!-- End page header --> 
         
-        <!-- property area -->
+        <!-- Table area -->
         <div class="content-area user-profiel" style="background-color: #FCFCFC;">&nbsp;
             <div class="container">   
                 <div class="row">
@@ -145,7 +145,7 @@
                     <!-- Tab panes -->
                     <div class="tab-content">
                         
-                        <!-- SHOW ALL CONCERT REQUEST -->
+                        <!-- SHOW ALL ENTREPRENEUR REQUEST -->
                         <div role="tabpanel" class="tab-pane fade in active" id="allre1">
                             <p><h2>All Request</h2></p>
                             <table id="allre1-dt" class="table table-striped" cellspacing="0" width="100%">
@@ -186,7 +186,7 @@
                             </table>
                         </div>
                                     
-                       <!-- SHOW ALL ACCEPTED CONCERT -->
+                       <!-- SHOW ALL ACCEPTED ENTREPRENEUR -->
                         <div role="tabpanel" class="tab-pane fade" id="accept1">
                             <p><h2>Accepted Request</h2></p>
                             <table id="accept1-dt" class="table table-striped" cellspacing="0" width="100%">
