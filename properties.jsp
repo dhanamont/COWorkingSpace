@@ -47,7 +47,7 @@
         
 
         <!-- Check Role Entrepreneur-->
-        <% if (Role_ID == null) { %>
+        <% if (Role_ID == null || Role_ID.equals("MEM") || Role_ID.equals("ADM")) { %>
             <% response.sendRedirect("index.jsp");%>
         <% } else if (Role_ID.equals("ENT")) {%>
         <!-- Start Navbar Entrepreneur -->
