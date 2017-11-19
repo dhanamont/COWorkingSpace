@@ -66,22 +66,23 @@ public class Entrepreneur {
                     "USING(User_ID)\n" +
                     "WHERE User_ID = '"+User_ID+"'";
             ResultSet rs5 = stmt.executeQuery(Ent_table);
-            rs5.next();
+            while (rs5.next()){
             //--------- Entrepreneur's Detail
             Company_name = rs5.getString("Company_name");
             Contact_name = rs5.getString("Fname") + " " + rs5.getString("Lname");
             Status = rs5.getString("Status");
             Email = rs5.getString("Email");
             Phone = rs5.getString("Phone_company");
+            }
         } catch (SQLException ex) {
             System.out.println(ex);
         }
     }
-    public void showAllRequests(ArrayList<String> Company_Name, ArrayList<String> Status, ArrayList<Timestamp> Date_Time, ArrayList<String> Contact_name) {
+     public void showAllRequests(ArrayList<String> Company_Name, ArrayList<String> Status, ArrayList<Timestamp> Date_Time, ArrayList<String> Contact_name) {
         try {
             Statement stmt = conn.createStatement();
             String Company_table = "SELECT Company_name, Status, DateTime, u.Fname, u.Lname "
-                    + "FROM Entrepreneur JOIN User u USING (User_ID) ORDER BY Date_Time DESC;";
+                    + "FROM Entrepreneur JOIN User u USING (User_ID) ORDER BY DateTime DESC;";
             ResultSet rs1 = stmt.executeQuery(Company_table);
 
             while (rs1.next()) {
@@ -90,46 +91,63 @@ public class Entrepreneur {
                 Date_Time.add(rs1.getTimestamp("DateTime"));
                 Contact_name.add(rs1.getString("Fname") + " " + rs1.getString("Lname"));
             }
+            rs1.close();
+        } catch (SQLException ex) {
+        }
+    }
+     
+     public void AcceptedRequests(ArrayList<String> Company_NameAc, ArrayList<Timestamp> Date_TimeAc, ArrayList<String> Contact_nameAc) {
+        try {
+            Statement stmt = conn.createStatement();
+            String ConcertAc_table = "SELECT Company_Name, DateTime, Fname, Lname "
+                    + "FROM Entrepreneur JOIN User USING (User_ID) WHERE Status = 'ACCEPTED' ORDER BY DateTime DESC;";
+            ResultSet rs2 = stmt.executeQuery(ConcertAc_table);
+            while (rs2.next()) {
+                Company_NameAc.add(rs2.getString("Company_Name"));
+                Date_TimeAc.add(rs2.getTimestamp("DateTime"));
+                Contact_nameAc.add(rs2.getString("Fname") + " " + rs2.getString("Lname"));
+            }
+            rs2.close();
         } catch (SQLException ex) {
         }
     }
 
     public void updateStatusCANCELED(String User_ID) {
         try {
-            Statement stmt = conn.createStatement();
             String status = "UPDATE Entreprener\n"
                     + "SET Status = 'CANCELED'\n"
                     + "WHERE User_ID = '" + User_ID + "' ;";
             PreparedStatement preparedStmt = conn.prepareStatement(status);
             preparedStmt.executeUpdate();
         } catch (SQLException ex) {
+            System.out.println(ex);
         }
     }
 
     public void updateStatusACCEPTED(String User_ID) {
         try {
-            Statement stmt = conn.createStatement();
             String status = "UPDATE Entrepreneur\n"
                     + "SET Status = 'ACCEPTED'\n"
                     + "WHERE User_ID = '" + User_ID + "' ;";
             PreparedStatement preparedStmt = conn.prepareStatement(status);
             preparedStmt.executeUpdate();
         } catch (SQLException ex) {
+            System.out.println(ex);
         }
     }
-
-    public void ShowOnlyAcceptedEntrepreneur(ArrayList<String> User_ID, ArrayList<String> Company_Name, ArrayList<Timestamp> Date_Time) {
+    
+       public String getUser_ID(String CompanyName) {
         try {
             Statement stmt = conn.createStatement();
-            String sql = "SELECT User_ID, Company_Name, Datetime FROM Entrepreneur WHERE Status = 'ACCEPTED' ORDER BY Date_Time DESC;";
-            ResultSet rs = stmt.executeQuery(sql);
-            while (rs.next()) {
-                User_ID.add(rs.getString("User_ID"));
-                Date_Time.add(rs.getTimestamp("DateTime"));
-                Company_Name.add(rs.getString("Company_Name"));
+            String Concert_table = "SELECT User_ID FROM Entrepreneur WHERE Company_name = '" + CompanyName + "';";
+            ResultSet rs1 = stmt.executeQuery(Concert_table);
+            while(rs1.next()){
+                String User_ID = rs1.getString("User_ID");
+                return User_ID;
             }
         } catch (SQLException ex) {
         }
+        return null;
     }
 
     public String getCompany_name(String User_ID) {
