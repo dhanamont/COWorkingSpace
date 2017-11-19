@@ -168,6 +168,11 @@
                                     <input class="btn btn-finish btn-danger" id="cancel" type="submit" name="btn" value="CANCEL"></button>
                                 </div>
                             </c:when>
+                            <c:when test="${requestScope.Status == 'ACCEPTED'}">
+                                <div class=".col-md-3 .col-md-offset-3 text-right">
+                                    <input class="btn btn-finish btn-danger" id="cancel" type="submit" name="btn" value="CANCEL"></button>
+                                </div>
+                            </c:when>
                         </c:choose>
                         <input type="hidden" name="id" value="${requestScope.Company_name}">
                             </div>       
