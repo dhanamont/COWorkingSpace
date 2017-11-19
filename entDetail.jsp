@@ -121,7 +121,7 @@
         </div>
         <!-- End page header --> 
         
-        <!-- property area -->
+        <!-- Entrepreneur's Detail area -->
         <div class="content-area user-profiel" style="background-color: #FCFCFC;">&nbsp;
             <div class="container">   
                 <div class="row">
@@ -131,7 +131,7 @@
                             <div class="profiel-header">
                                 <h3>
                                     <b>ENTREPRENEUR</b> REQUEST<br>
-                                    <small>Manage entrepreneur request list.</small>
+                                    <small>Manage entrepreneur request.</small>
                                 </h3>
                                 <hr>
                             </div>
