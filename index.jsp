@@ -265,7 +265,7 @@
                                 <div class="form-group">                                     
                                     <select id="basic" class="selectpicker show-tick form-control">
                                         <option> -Type Space- </option>
-                                        <option>Co-working Space</option>
+                                        <option>Common Room</option>
                                         <option>Meeting Room</option>
                                         <option>Private Office</option>
                                     </select>
