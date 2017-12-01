@@ -302,17 +302,31 @@
                                         <div class="form-group">
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox"> Cafe(3100)
+                                                    <input type="checkbox"> Cafe
                                                 </label>
                                             </div>
                                         </div>     
                                         <div class="form-group">
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox"> Wifi(3100)
+                                                    <input type="checkbox"> Wi-fi
                                                 </label>
                                             </div>
-                                        </div>             
+                                        </div>  
+                                        <div class="form-group">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"> Parking lot
+                                                </label>
+                                            </div>
+                                        </div>  
+                                        <div class="form-group">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"> Photocopier
+                                                </label>
+                                            </div>
+                                        </div>  
                                         <br>
                                         <hr>
                                     </div>
