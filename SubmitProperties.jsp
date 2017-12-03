@@ -343,22 +343,38 @@
                                     <!-- End step 1 -->
 
                                     <div class="tab-pane" id="step2">
-                                        <h4 class="info-text"> How much your Property is Beautiful ? </h4>
-                                        <div class="input_fields_wrap">
+                                    <h4 class="info-text"> Add type of co-working space </h4>
+                                    <div class="input_fields_wrap">
                                     <div class="row">
-                                        <p><b>Add Zone</b> <a class="btn btn-success glyphicons glyphicon-plus add_field_button1"></a>
-                                                            <div class="well input_fields_wrap2">
-                                                    <div class="row">
-                                                        <div class="col-sm-3">
-                                                            <p>Zone Name: <input type="text" class="form-control" name="zoneName[]">
-                                                            <p>Number of seats: <input type="text" class="form-control" name="numOfview[]">
-                                                            <p>Price: <input type="text" class="form-control" name="price[]">
+                                        <p><b>Type Space</b> <a class="btn btn-success glyphicons glyphicon-plus add_field_button1"></a>
+                                            <div class="well input_fields_wrap2">
+                                                <div class="row">
+                                                    <div class="col-sm-10 col-sm-offset-1">
+                                                        <label>Type name: <small>(required)</small></label><br>  
+                                                        <div class="form-group">
+                                                        <select id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Select type of space" name="Location">
+                                                            <option>Common Room</option>
+                                                            <option>Meeting Room</option>
+                                                            <option>Private Office</option>
+                                                            <option>others</option>
+                                                        </select>
                                                         </div>
+                                                        <label>Number of room: <small>(required)</small></label><br>  
+                                                        <input type="text" class="form-control" name="numOfview[]">
+                                                        <label>Prototype: <small>(required)</small></label><br>  
+                                                        <input class="form-control" type="file" id="property-images" name="Picture_cover" multiple>
+                                                        
+                                                        <label>Number of table: <small>(required)</small></label><br>  
+                                                        <input type="text" class="form-control" name="zoneName[]">
+                                                        <label>Price: <small>(Bath)</small></label><br>  
+                                                        <input type="text" class="form-control" name="numOfview[]">
+                                                        <label>Picture room: <small>(required)</small></label><br>  
+                                                        <input class="form-control" type="file" id="property-images" name="Picture_cover" multiple>
+                                                        <label>Person/Table: <small>(required)</small></label><br>  
+                                                        <input type="text" class="form-control" name="price[]">
                                                     </div>
-                                </div>
-                                            
-                                             
-                                            
+                                                </div>
+                                            </div>
                                             <br>
                                         </div>
                                     
@@ -384,8 +400,8 @@
                                             x--;
                                         });
                                     });
-                                </script>
-                                </div>
+                                    </script>
+                                    </div>
                                     </div>
                                     <!-- End step 2 -->
 
@@ -418,7 +434,6 @@
                                     </div>
                                     <!--  End step 3 -->
 
-
                                     <div class="tab-pane" id="step4">                                        
                                         <h4 class="info-text"> Finished and submit </h4>
                                         <div class="row">  
@@ -426,8 +441,8 @@
                                                 <div class="">
                                                     <p>
                                                         <label><strong>Terms and Conditions</strong></label>
-                                                        By accessing or using  GARO ESTATE services, such as 
-                                                        posting your property advertisement with your personal 
+                                                        By accessing or using  CO-WORKING SPACE Service, such as 
+                                                        posting your co-working space advertisement with your personal 
                                                         information on our website you agree to the
                                                         collection, use and disclosure of your personal information 
                                                         in the legal proper manner
@@ -466,7 +481,7 @@
             </div>
         </div>
 
-          <!-- Footer area-->
+        <!-- Footer area-->
         <div class="footer-area">
 
             <div class=" footer">
@@ -508,15 +523,10 @@
                     </div>
                 </div>
             </div>
-
-           
-
         </div>
          <!-- jQuery -->
         <script src="js/jquery.js"></script>
-        
-        
-        
+
         
         <script src="assets/js/vendor/modernizr-2.6.2.min.js"></script>
         <script src="assets/js//jquery-1.10.2.min.js"></script>
