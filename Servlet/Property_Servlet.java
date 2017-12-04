@@ -62,7 +62,6 @@ public class Property_Servlet extends HttpServlet {
             request.setAttribute("Date", openDate);
             request.setAttribute("Time", openTime);
 
-//            ส่งไปหน้านี้ถูกปะ หรือต้อง MyProperty.jsp
             request.getRequestDispatcher("Property.jsp").forward(request, response);
         }
     }
