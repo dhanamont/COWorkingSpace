@@ -524,13 +524,10 @@
                 </div>
             </div>
 
-           
-
+          
         </div>
          <!-- jQuery -->
         <script src="js/jquery.js"></script>
-
-        
         <script src="assets/js/vendor/modernizr-2.6.2.min.js"></script>
         <script src="assets/js//jquery-1.10.2.min.js"></script>
         <script src="bootstrap/js/bootstrap.min.js"></script>
