@@ -134,7 +134,7 @@
                                         <h4 class="info-text"> Let's start with the basic information </h4>
                                         <div class="row">
                                             <div class="col-sm-12"> 
-                                                <div class="col-sm-12"> 
+                                                <div class="col-sm-12">
                                                     <div class="form-group">
                                                         <label>Co-working Space name :</label>
                                                         <textarea type="input" class="form-control" name="Space_Name"></textarea>
@@ -181,7 +181,7 @@
                                                     <div class="form-group">
                                                         <div class="checkbox">
                                                             <label>
-                                                                <input type="checkbox" value="Monday" name="openDate"> Monday
+                                                                <input type="checkbox" value="Monday" name="Start_Date"> Monday
                                                             </label>
                                                         </div>
                                                     </div>
@@ -190,7 +190,7 @@
                                                     <div class="form-group">
                                                         <div class="checkbox">
                                                             <label>
-                                                                <input type="checkbox" value="Tuesday" name="openDate"> Tuesday
+                                                                <input type="checkbox" value="Tuesday" name="Start_Date"> Tuesday
                                                             </label>
                                                         </div>
                                                     </div>
@@ -199,7 +199,7 @@
                                                     <div class="form-group">
                                                         <div class="checkbox">
                                                             <label>
-                                                                <input type="checkbox" value="Wednesday" name="openDate"> Wednesday
+                                                                <input type="checkbox" value="Wednesday" name="Start_Date"> Wednesday
                                                             </label>
                                                         </div>
                                                     </div>
@@ -208,7 +208,7 @@
                                                     <div class="form-group">
                                                         <div class="checkbox">
                                                             <label>
-                                                                <input type="checkbox" value="Thursday" name="openDate"> Thursday
+                                                                <input type="checkbox" value="Thursday" name="Start_Date"> Thursday
                                                             </label>
                                                         </div>
                                                     </div>
@@ -219,7 +219,7 @@
                                                     <div class="form-group">
                                                         <div class="checkbox">
                                                             <label>
-                                                                <input type="checkbox" value="Friday" name="openDate"> Friday
+                                                                <input type="checkbox" value="Friday" name="Start_Date"> Friday
                                                             </label>
                                                         </div>
                                                     </div>
@@ -228,7 +228,7 @@
                                                     <div class="form-group">
                                                         <div class="checkbox">
                                                             <label>
-                                                                <input type="checkbox" value="Saturday" name="openDate"> Saturday
+                                                                <input type="checkbox" value="Saturday" name="Start_Date"> Saturday
                                                             </label>
                                                         </div>
                                                     </div>
@@ -237,7 +237,7 @@
                                                     <div class="form-group">
                                                         <div class="checkbox">
                                                             <label>
-                                                                <input type="checkbox" value="Sunday" name="openDate">  Sunday
+                                                                <input type="checkbox" value="Sunday" name="Start_Date">  Sunday
                                                             </label>
                                                         </div>
                                                     </div>
@@ -249,20 +249,20 @@
                                                     <div class="form-group">
                                                         <label>Open time</label>
                                                         <select id="lunchBegins" class="selectpicker" title="Select open time">
-                                                            <option value="8" name="openTime">8</option>
-                                                            <option value="9" name="openTime">9</option>
-                                                            <option value="10" name="openTime">10</option>
-                                                            <option value="11" name="openTime">11</option>
-                                                            <option value="12" name="openTime">12</option>
-                                                            <option value="13" name="openTime">13</option>
-                                                            <option value="14" name="openTime">14</option>
-                                                            <option value="15" name="openTime">15</option>
-                                                            <option value="16" name="openTime">16</option>
-                                                            <option value="17" name="openTime">17</option>
-                                                            <option value="18" name="openTime">18</option>
-                                                            <option value="19" name="openTime">19</option>
-                                                            <option value="20" name="openTime">20</option>
-                                                            <option value="21" name="openTime">21</option>
+                                                            <option value="8" name="Start_Time">8</option>
+                                                            <option value="9" name="Start_Time">9</option>
+                                                            <option value="10" name="Start_Time">10</option>
+                                                            <option value="11" name="Start_Time">11</option>
+                                                            <option value="12" name="Start_Time">12</option>
+                                                            <option value="13" name="Start_Time">13</option>
+                                                            <option value="14" name="Start_Time">14</option>
+                                                            <option value="15" name="Start_Time">15</option>
+                                                            <option value="16" name="Start_Time">16</option>
+                                                            <option value="17" name="Start_Time">17</option>
+                                                            <option value="18" name="Start_Time">18</option>
+                                                            <option value="19" name="Start_Time">19</option>
+                                                            <option value="20" name="Start_Time">20</option>
+                                                            <option value="21" name="Start_Time">21</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -270,20 +270,20 @@
                                                     <div class="form-group">
                                                         <label>Close time</label>
                                                         <select id="lunchBegins" class="selectpicker" title="Select close time">
-                                                            <option value="8" name="closeTime">8</option>
-                                                            <option value="9" name="closeTime">9</option>
-                                                            <option value="10" name="closeTime">10</option>
-                                                            <option value="11" name="closeTime">11</option>
-                                                            <option value="12" name="closeTime">12</option>
-                                                            <option value="13" name="closeTime">13</option>
-                                                            <option value="14" name="closeTime">14</option>
-                                                            <option value="15" name="closeTime">15</option>
-                                                            <option value="16" name="closeTime">16</option>
-                                                            <option value="17" name="closeTime">17</option>
-                                                            <option value="18" name="closeTime">18</option>
-                                                            <option value="19" name="closeTime">19</option>
-                                                            <option value="20" name="closeTime">20</option>
-                                                            <option value="21" name="closeTime">21</option>
+                                                            <option value="8" name="End_Time">8</option>
+                                                            <option value="9" name="End_Time">9</option>
+                                                            <option value="10" name="End_Time">10</option>
+                                                            <option value="11" name="End_Time">11</option>
+                                                            <option value="12" name="End_Time">12</option>
+                                                            <option value="13" name="End_Time">13</option>
+                                                            <option value="14" name="End_Time">14</option>
+                                                            <option value="15" name="End_Time">15</option>
+                                                            <option value="16" name="End_Time">16</option>
+                                                            <option value="17" name="End_Time">17</option>
+                                                            <option value="18" name="End_Time">18</option>
+                                                            <option value="19" name="End_Time">19</option>
+                                                            <option value="20" name="End_Time">20</option>
+                                                            <option value="21" name="End_Time">21</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -292,7 +292,7 @@
                                             <div class="col-sm-12">
                                                 <div class="col-sm-3">
                                                     <div class="form-group">
-                                                        <label>Open date :</label>
+                                                        <label>Services :</label>
                                                     </div>
                                                 </div>
                                             </div>
@@ -302,7 +302,7 @@
                                                     <div class="form-group">
                                                         <div class="checkbox">
                                                             <label>
-                                                                <input type="checkbox"> Wi-Fi
+                                                                <input type="checkbox" value="wifi" name="Service_Name" > Wi-Fi
                                                             </label>
                                                         </div>
                                                     </div>
@@ -311,7 +311,7 @@
                                                     <div class="form-group">
                                                         <div class="checkbox">
                                                             <label>
-                                                                <input type="checkbox"> Cafe
+                                                                <input type="checkbox" value="cafe" name="Service_Name" > Cafe
                                                             </label>
                                                         </div>
                                                     </div>
@@ -320,7 +320,7 @@
                                                     <div class="form-group">
                                                         <div class="checkbox">
                                                             <label>
-                                                                <input type="checkbox"> Parking lot
+                                                                <input type="checkbox"  value="parking" name="Service_Name" > Parking lot
                                                             </label>
                                                         </div>
                                                     </div>
@@ -329,7 +329,7 @@
                                                     <div class="form-group">
                                                         <div class="checkbox">
                                                             <label>
-                                                                <input type="checkbox"> Photocopier
+                                                                <input type="checkbox" value="photocopier" name="Service_Name" > Photocopier
                                                             </label>
                                                         </div>
                                                     </div>
@@ -352,7 +352,7 @@
                                                     <div class="col-sm-10 col-sm-offset-1">
                                                         <label>Type name: <small>(required)</small></label><br>  
                                                         <div class="form-group">
-                                                        <select id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Select type of space" name="Location">
+                                                        <select id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Select type of space" name="Type_name">
                                                             <option>Common Room</option>
                                                             <option>Meeting Room</option>
                                                             <option>Private Office</option>
@@ -360,18 +360,18 @@
                                                         </select>
                                                         </div>
                                                         <label>Number of room: <small>(required)</small></label><br>  
-                                                        <input type="text" class="form-control" name="numOfview[]">
+                                                        <input type="text" class="form-control" name="NumberofRoom">
                                                         <label>Prototype: <small>(required)</small></label><br>  
-                                                        <input class="form-control" type="file" id="property-images" name="Picture_cover" multiple>
+                                                        <input class="form-control" type="file" id="property-images" name="Prototype" multiple>
                                                         
                                                         <label>Number of table: <small>(required)</small></label><br>  
-                                                        <input type="text" class="form-control" name="zoneName[]">
+                                                        <input type="text" class="form-control" name="NumberofTable">
                                                         <label>Price: <small>(Bath)</small></label><br>  
-                                                        <input type="text" class="form-control" name="numOfview[]">
+                                                        <input type="text" class="form-control" name="Price">
                                                         <label>Picture room: <small>(required)</small></label><br>  
-                                                        <input class="form-control" type="file" id="property-images" name="Picture_cover" multiple>
+                                                        <input class="form-control" type="file" id="property-images" name="Picture_room" multiple>
                                                         <label>Person/Table: <small>(required)</small></label><br>  
-                                                        <input type="text" class="form-control" name="price[]">
+                                                        <input type="text" class="form-control" name="NumofPeople">
                                                     </div>
                                                 </div>
                                             </div>
@@ -523,6 +523,9 @@
                     </div>
                 </div>
             </div>
+
+           
+
         </div>
          <!-- jQuery -->
         <script src="js/jquery.js"></script>
