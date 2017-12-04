@@ -141,7 +141,7 @@ public class SubmitPropertiesServlet extends HttpServlet {
 //            รับข้อมูล Room
             String price = request.getParameter("Price");
             String room_Name = request.getParameter("Room_Name");
-            String num_Table = request.getParameter("End_Time");
+            String num_Table = request.getParameter("NumberofTable");
             String pic_room = request.getParameter("Picture_room");
 
 //            รับข้อมูล Table
