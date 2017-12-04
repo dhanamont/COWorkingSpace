@@ -48,26 +48,38 @@ public class OrderServlet extends HttpServlet {
             
             //User_ID จะได้รู้ว่าเป็น Order ของใคร
             String userID = (String) request.getAttribute("User_ID");
+            //String userID = "Oliveoil";
             
             //Space_ID
             String spaceID = (String)session.getAttribute("id");
-
+            //String spaceID = "S001";
+            
             //Table_ID --> จะได้รู้ว่าเป็นโต๊ะไหน 
-            String tableID = request.getParameter("table").substring(request.getParameter("table").indexOf("xxx"));
+            String tableID = request.getParameter("table").substring(request.getParameter("table").indexOf("xxx") + 1);
             
             //Order_Date
-            String orderDate = request.getParameter("order_date").substring(request.getParameter("order_date").indexOf("xxx"));
+            String orderDate = request.getParameter("order_date").substring(request.getParameter("order_date").indexOf("xxx")+ 1);
                                   
             //Start Time & End Time
-            int startOrderTime = Integer.parseInt(request.getParameter("StartTime"));
-            int endOrderTime = Integer.parseInt(request.getParameter("EndTime"));
-            String dot = ".00";
+            String startOrderTime = request.getParameter("StartTime");
+            String endOrderTime = request.getParameter("EndTime");
+//            int startOrderTime = Integer.parseInt(request.getParameter("StartTime"));
+//            int endOrderTime = Integer.parseInt(request.getParameter("EndTime"));
+//            String dot = ".00";
             
             // Order status --> WAITING, PAID ไว้ให้ผปก.เปลี่ยนสถานะการจ่ายเงินของลูกค้า
             String orderStatus = "WAITING";
             
             //******** End input *********
-            
+//            //-------------- Test print Input -------------
+//            out.println("user id " + userID);
+//            out.println("space id " + spaceID);
+//            out.println("table id " + tableID);
+//            out.println("order date " + orderDate);
+//            out.println("start " + startOrderTime);
+//            out.println("end " + endOrderTime);
+//            out.println("order " + orderStatus);
+                     
             try {
                 //Create Object
                 Room room = new Room();
@@ -75,32 +87,24 @@ public class OrderServlet extends HttpServlet {
                 Table table = new Table();
                 
                 //Create OrderID
-                String orderID = order.getOrderID();
+                String orderID = order.getOrder_ID();
                 
                 //Table เอาไว้หาว่า table นี้อยู่ room ไหน จะได้รู้ราคา ไปคิด total price
                 String roomID = table.getRoomID(tableID);
                 
                 //Price_of_Ticket จากตาราง Room
-                Float totalPrice = room.getPrice(roomID);
+                Float price = room.getPrice(roomID);
                 
-                //สร้าง Array ของ Start to End Time
-                ArrayList<String> orderTime = new ArrayList<>();
-                
-                for(int countTime = startOrderTime ; startOrderTime <= endOrderTime; countTime++ ){                   
-                    String hour = String.valueOf(countTime);
-                    String time = hour.concat(dot);
-                    orderTime.add(time);
-                }
-                                
+                                                
                 //ส่งค่าไปให้ java class เอาเข้า DB
-                order.insertOrder(orderID, orderStatus, totalPrice, orderDate, orderTime, userID, tableID);
-               
+                order.insertOrder(orderID, orderStatus, orderDate, startOrderTime, endOrderTime, price, userID, tableID);
+                               
                 //Set Attribute
                 session.setAttribute("userID", userID);
                 session.setAttribute("spaceID", spaceID);
                 session.setAttribute("orderID", orderID);
                 session.setAttribute("orderStatus", orderStatus);
-                session.setAttribute("totalPrice", totalPrice);
+                session.setAttribute("price", price);
                 session.setAttribute("orderDate", orderDate);
                 session.setAttribute("orderDatetime", order.getDateTime());
                 session.setAttribute("startTime", startOrderTime);
