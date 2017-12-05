@@ -8,7 +8,12 @@ package servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.sql.Time;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -38,90 +43,75 @@ public class OrderServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, ParseException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             
             HttpSession session = request.getSession();
             
             //********* Start Input ***********
-            
-            //User_ID จะได้รู้ว่าเป็น Order ของใคร
             String userID = (String) request.getAttribute("User_ID");
-            //String userID = "Oliveoil";
-            
-            //Space_ID
             String spaceID = (String)session.getAttribute("id");
-            //String spaceID = "S001";
-            
-            //Table_ID --> จะได้รู้ว่าเป็นโต๊ะไหน 
             String tableID = request.getParameter("table").substring(request.getParameter("table").indexOf("xxx") + 1);
+            //order date
+            DateFormat df = new SimpleDateFormat("yyyy-mm-dd");
+            String date = request.getParameter("order_date").substring(request.getParameter("order_date").indexOf("xxx")+ 1);   
+            Date orderDate = (Date) df.parse(date);
             
-            //Order_Date
-            String orderDate = request.getParameter("order_date").substring(request.getParameter("order_date").indexOf("xxx")+ 1);
-                                  
             //Start Time & End Time
-            String startOrderTime = request.getParameter("StartTime");
-            String endOrderTime = request.getParameter("EndTime");
-//            int startOrderTime = Integer.parseInt(request.getParameter("StartTime"));
-//            int endOrderTime = Integer.parseInt(request.getParameter("EndTime"));
-//            String dot = ".00";
-            
-            // Order status --> WAITING, PAID ไว้ให้ผปก.เปลี่ยนสถานะการจ่ายเงินของลูกค้า
+            DateFormat df2 = new SimpleDateFormat("HH:mm");
+            String startTime = request.getParameter("StartTime"); 
+            Time startOrderTime = new Time(df2.parse(startTime).getTime());
+            String endTime = request.getParameter("EndTime");
+            Time endOrderTime = new Time(df2.parse(endTime).getTime());
             String orderStatus = "WAITING";
-            
             //******** End input *********
-//            //-------------- Test print Input -------------
-//            out.println("user id " + userID);
-//            out.println("space id " + spaceID);
-//            out.println("table id " + tableID);
-//            out.println("order date " + orderDate);
-//            out.println("start " + startOrderTime);
-//            out.println("end " + endOrderTime);
-//            out.println("order " + orderStatus);
-                     
+          
             try {
                 //Create Object
-                Room room = new Room();
                 Order order = new Order();
-                Table table = new Table();
+
+                //check overlap time and time error
+                String result = order.checkTable(startOrderTime, endOrderTime, orderDate, tableID);
                 
-                //Create OrderID
-                String orderID = order.getOrder_ID();
-                
-                //Table เอาไว้หาว่า table นี้อยู่ room ไหน จะได้รู้ราคา ไปคิด total price
-                String roomID = table.getRoomID(tableID);
-                
-                //Price_of_Ticket จากตาราง Room
-                Float price = room.getPrice(roomID);
-                
-                                                
-                //ส่งค่าไปให้ java class เอาเข้า DB
-                order.insertOrder(orderID, orderStatus, orderDate, startOrderTime, endOrderTime, price, userID, tableID);
-                               
+                if(result.equals("false")){ //false = ไม่ overlap
+                    //create order_id
+                    String orderID = order.getOrder_ID();
+                    float totalPrice = order.getTotalPrice(orderID);
+                    
+                    //insert data in DB
+                    order.insertOrder(orderID, orderStatus, orderDate, startOrderTime, endOrderTime, totalPrice, userID, tableID);
+                    
+                    //setAttribute
+                    session.setAttribute("orderID", orderID);
+                    session.setAttribute("price", totalPrice);
+                    
+                }
+                else if(result.equals("true")){
+                    response.sendRedirect("index.jsp");    
+                }
+                else{
+                    response.sendRedirect("index.jsp");  
+                }
+
                 //Set Attribute
                 session.setAttribute("userID", userID);
                 session.setAttribute("spaceID", spaceID);
-                session.setAttribute("orderID", orderID);
                 session.setAttribute("orderStatus", orderStatus);
-                session.setAttribute("price", price);
                 session.setAttribute("orderDate", orderDate);
-                session.setAttribute("orderDatetime", order.getDateTime());
                 session.setAttribute("startTime", startOrderTime);
                 session.setAttribute("endTime", endOrderTime);
-                session.setAttribute("orderID", orderID);
-                session.setAttribute("tableID", tableID);                           
-                session.setAttribute("roomID", roomID);
-                session.setAttribute("roomName", room.getRoomName());
+                session.setAttribute("tableID", tableID);
                 
+
                 // ส่งข้อมูลการจองไป Show หน้า Ordering เพื่อให้ตรวจสอบ
                 RequestDispatcher obj = request.getRequestDispatcher("Ordering.jsp");
                 obj.forward(request, response);
-                
+
             } catch (Exception ex) {
                 Logger.getLogger(OrderServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
+
         }
     }
 
@@ -137,7 +127,11 @@ public class OrderServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ParseException ex) {
+            Logger.getLogger(OrderServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -151,7 +145,11 @@ public class OrderServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ParseException ex) {
+            Logger.getLogger(OrderServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
