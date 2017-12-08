@@ -10,7 +10,11 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Time;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -36,7 +40,7 @@ public class Order {
     public void createOrder_ID() {
         try {
             Statement stmt = con.createStatement();
-            String numOrd = "Select count(Order_ID) from Order";
+            String numOrd = "Select count(Order_ID) from Ordering";
             ResultSet numOrd1 = stmt.executeQuery(numOrd);
             numOrd1.next();
             String numOrder = numOrd1.getString("count(Order_ID)");
@@ -54,33 +58,36 @@ public class Order {
         return Order_ID;
     }
 
-    public float getTotalPrice(String Order_ID) {
-        try {
-            Statement stmt = con.createStatement();
-            String sql = "Select Total_Price from Order where Order_ID = '" + Order_ID + "'";
-            ResultSet rs1 = stmt.executeQuery(sql);
-            rs1.next();
-            float Total_Price = rs1.getFloat("Total_Price");
-            return Total_Price;
-        } catch (SQLException ex) {
-        }
-        return 0;
-    }
+//    public float getTotalPrice(String Order_ID) {
+//        try {
+//            Statement stmt = con.createStatement();
+//            String sql = "Select Total_Price from Ordering where Order_ID = '" + Order_ID + "'";
+//            ResultSet rs1 = stmt.executeQuery(sql);
+//            rs1.next();
+//            float Total_Price = rs1.getFloat("Total_Price");
+//            return Total_Price;
+//        } catch (SQLException ex) {
+//        }
+//        return 0;
+//    }
 
-    public void insertOrder(String Order_ID, String Order_Status,String Order_Date,String Start_Time,String End_Time, float Total_Price, String User_ID, String Table_ID) {
+    public void insertOrder(String Order_ID, String Order_Status,float Total_Price,Date Order_Date,Time Start_Time,Time End_Time, String User_ID, String Table_ID) {
         try {
+            DateFormat toDate = new SimpleDateFormat("yyyy-MM-dd");
             Statement stmt = con.createStatement();
-            String insorder = "Insert into Order values('" + Order_ID + "', '" + Order_Status + "', '" + Total_Price + "',NOW(), '" + User_ID + "', '" + Order_Date + "', '" + Start_Time 
+            String insorder = "Insert into Ordering values('" + Order_ID + "', '" 
+                    + Order_Status + "', '" + Total_Price + "',NOW(), '" + toDate.format(Order_Date) + "', '" + Start_Time 
                     + "', '" + End_Time+ "', '" + User_ID + "', '" + Table_ID + "')";
             stmt.executeUpdate(insorder);
         } catch (SQLException ex) {
+            System.out.println(ex);
         }
     }
 
     public void deleteOrder(String Order_ID) {
         try {
             Statement stmt = con.createStatement();
-            String delorder = "Delete From Order Where Order_ID = '" + Order_ID + "'";
+            String delorder = "Delete From Ordering Where Order_ID = '" + Order_ID + "'";
             stmt.executeUpdate(delorder);
 
         } catch (SQLException ex) {
@@ -127,11 +134,64 @@ public class Order {
     public void UpdateStatusPAID(String Order_ID) {
         try {
             Statement stmt = con.createStatement();
-            String sqls = "Update Order SET Order_Status = 'PAID' WHERE Order_ID = '" + Order_ID + "'";
+            String sqls = "Update Ordering SET Order_Status = 'PAID' WHERE Order_ID = '" + Order_ID + "'";
             stmt.executeUpdate(sqls);
 
         } catch (SQLException ex) {
         }
     }
-
+    
+    //*-- test check table avaliable
+    public String checkTable(Time Start_Time,Time End_Time, Date Order_Date, String Table_ID) throws SQLException, ClassNotFoundException{
+        String check = "false";
+        
+        /* 1.ถ้าเวลา end อยู่ก่อนเวลา start */
+        if(Start_Time.after(End_Time)){
+            return check;
+        }
+        
+        /* 2.check overlap time */
+        check = new Order().isOverlap(Start_Time, End_Time, Order_Date, Table_ID);
+        
+    return check;           
+    }
+    
+    
+    public String isOverlap(Time Start_Time, Time End_Time, Date Order_Date, String Table_ID) throws SQLException {
+        
+        DateFormat toDate = new SimpleDateFormat("yyyy-MM-dd");
+        String check = "true";
+        
+        Statement stmt = con.createStatement();
+        String sql = "SELECT Order_ID FROM Ordering\n"
+                + "WHERE (Order_Date ='" + toDate.format(Order_Date) + "')AND(Table_ID ='" + Table_ID + "') \n"
+                + "AND (\n"
+                + "((Start_Time <= '" + Start_Time + "') AND (End_Time > '" + Start_Time + "'))\n"
+                + "OR\n"
+                + "((Start_Time < '" + End_Time + "') AND (End_Time >= '" + End_Time + "'))\n"
+                + "OR\n"
+                + "((Start_Time >= '" + Start_Time + "') AND (End_Time <= '" + End_Time + "'))\n"
+                + "oR\n"
+                + "((Start_Time <= '" + Start_Time + "') AND (End_Time >= '" + End_Time + "'))\n"
+                + ");\n";
+        
+        ResultSet ch = stmt.executeQuery(sql);
+        String list = "";
+        while (ch.next()) {
+            System.out.println("Following reservation list is overlapped");
+            list += ch.getString("Order_ID") + " \n";
+            //System.out.println(ch.getInt("Order_ID"));
+        }
+        ch.last();
+        Integer count = ch.getRow();
+        if (count == 0) {
+            check = "false"; //There isn't overlapped.
+            System.out.println("There isn't overlapped");
+        } else {
+            check += count + " Order ID : " + list + ")";
+        }
+        return check;
+    }
+  
+    
 }
