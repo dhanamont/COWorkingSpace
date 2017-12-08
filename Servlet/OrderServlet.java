@@ -50,8 +50,13 @@ public class OrderServlet extends HttpServlet {
             HttpSession session = request.getSession();
             
             //********* Start Input ***********
-            String userID = (String) request.getAttribute("User_ID");
-            String spaceID = (String)session.getAttribute("id");
+//            String userID = (String) session.getAttribute("User_ID");
+//            String username = (String) session.getAttribute("Username");
+//            String spaceID = (String)session.getAttribute("id");
+//            String spaceName = (String) session.getAttribute("spaceName");
+//            String roomID = (String) session.getAttribute("roomID");
+//            String roomName = (String) session.getAttribute("roomName");
+            String userID = "M001";
             String tableID = request.getParameter("table").substring(request.getParameter("table").indexOf("xxx") + 1);
             //order date
             DateFormat df = new SimpleDateFormat("yyyy-mm-dd");
@@ -70,24 +75,31 @@ public class OrderServlet extends HttpServlet {
             try {
                 //Create Object
                 Order order = new Order();
+                //Room room = new Room();
 
                 //check overlap time and time error
                 String result = order.checkTable(startOrderTime, endOrderTime, orderDate, tableID);
+                String check = "eiei";
                 
                 if(result.equals("false")){ //false = ไม่ overlap
                     //create order_id
-                    String orderID = order.getOrder_ID();
-                    float totalPrice = order.getTotalPrice(orderID);
+                    //String orderID = order.getOrder_ID();
+                    String orderID = "R001";
+                    //ขาด java class
+                    //float price = room.getPrice("Room_ID");
+                    float price = 500;
+                    check = "YESSSSSS";
                     
                     //insert data in DB
-                    order.insertOrder(orderID, orderStatus, orderDate, startOrderTime, endOrderTime, totalPrice, userID, tableID);
+                    order.insertOrder(orderID, orderStatus, price, orderDate, startOrderTime, endOrderTime, userID, tableID);
                     
                     //setAttribute
                     session.setAttribute("orderID", orderID);
-                    session.setAttribute("price", totalPrice);
+                    session.setAttribute("price", price);
                     
                 }
                 else if(result.equals("true")){
+                    check = "NO";
                     response.sendRedirect("index.jsp");    
                 }
                 else{
@@ -96,12 +108,14 @@ public class OrderServlet extends HttpServlet {
 
                 //Set Attribute
                 session.setAttribute("userID", userID);
-                session.setAttribute("spaceID", spaceID);
+                //session.setAttribute("spaceID", spaceID);
                 session.setAttribute("orderStatus", orderStatus);
                 session.setAttribute("orderDate", orderDate);
                 session.setAttribute("startTime", startOrderTime);
                 session.setAttribute("endTime", endOrderTime);
                 session.setAttribute("tableID", tableID);
+                session.setAttribute("result", result);
+                session.setAttribute("check", check);
                 
 
                 // ส่งข้อมูลการจองไป Show หน้า Ordering เพื่อให้ตรวจสอบ
