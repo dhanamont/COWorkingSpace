@@ -9,6 +9,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800' rel='stylesheet' type='text/css'>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
 
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
@@ -145,13 +146,28 @@
                                             <div class="col-sm-12">
                                                 <div class="col-sm-3">
                                                     <div class="form-group">
+                                                        
                                                         <label>Place :</label>
-                                                        <select id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Select your place" name="Location">
-                                                            <option>Sukhumvit</option>
-                                                            <option>Silom</option>
-                                                            <option>Siam</option>
-                                                            <option>Rangsit</option>
-                                                        </select>
+                                                        <select id="Place" name="table" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Select your place">
+                                                            <option> -Table- </option>
+                                                        <!--????????????????dropdown ??????? ArrayList-->
+                                                        <c:forEach items="${TableList}" var="table">
+
+                                                            <option value="${[table.index]}">${[table.index]}</option>
+                                                        </c:forEach>
+
+                                                        <%--<c:forEach items="${databaseList}" var="databaseValue">
+                                                            <option value="${databaseValue}">
+                                                                ${databaseValue}
+                                                            </option>
+                                                        </c:forEach>--%>
+                                                        <%-- <select name="s1">
+                                                            <c:forEach items="${listOfValues}" var="actualbean">
+                                                                <option value="${actualbean.value}"><c:out value="${actualbean.value}"/></option>
+                                                        </c:forEach>--%>
+                                                        <%--ArrayList databaseArrayList = new ArrayList();...
+                                                          request.setAttribute("databaseList", databaseArrayList); --%>
+                                                    </select>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-3">
@@ -345,8 +361,9 @@
                                     <div class="tab-pane" id="step2">
                                     <h4 class="info-text"> Add type of co-working space </h4>
                                     <div class="input_fields_wrap">
+                                        <b>Type Space &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b><a class="btn btn-success glyphicons glyphicon-plus add_field_button1"></a>
                                     <div class="row">
-                                        <p><b>Type Space</b> <a class="btn btn-success glyphicons glyphicon-plus add_field_button1"></a>
+
                                             <div class="well input_fields_wrap2">
                                                 <div class="row">
                                                     <div class="col-sm-10 col-sm-offset-1">
@@ -391,7 +408,7 @@
                                             e.preventDefault();
                                             if (x < max_fields) { //max input box allowed
                                                 x++; //text box increment
-                                                $(this).closest(wrapper).append('<div class="well input_fields_wrap2"><a href="#" class="btn btn-danger remove_field" style="float:right;"><i class="glyphicon glyphicon-remove"></i></a><div class="row"><div class="col-sm-3"><p>Zone Name: <input type="text" class="form-control" name="zoneName[]"><p>Number of seats: <input type="text" class="form-control" name="numOfview[]"><p>Price: <input type="text" class="form-control" name="price[]"></div></div></div>'); //add input box
+                                                $(this).closest(wrapper).append('<div class="well input_fields_wrap2"><a href="#" class="btn btn-danger remove_field" style="float:right;"><i class="glyphicon glyphicon-remove"></i></a><div class="row"><div class="col-sm-10 col-sm-offset-1"><label>Type name: <small>(required)</small></label><br><div class="form-group"><select id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Select type of space" name="Type_name"><option>Common Room</option><option>Meeting Room</option><option>Private Office</option><option>others</option></select></div><label>Number of room: <small>(required)</small></label><br><input type="text" class="form-control" name="NumberofRoom"><label>Prototype: <small>(required)</small></label><br><input class="form-control" type="file" id="property-images" name="Prototype" multiple><label>Number of table: <small>(required)</small></label><br><input type="text" class="form-control" name="NumberofTable"><label>Price: <small>(Bath)</small></label><br><input type="text" class="form-control" name="Price"><label>Picture room: <small>(required)</small></label><br><input class="form-control" type="file" id="property-images" name="Picture_room" multiple><label>Person/Table: <small>(required)</small></label><br><input type="text" class="form-control" name="NumofPeople"></div></div></div>'); //add input box
                                             }
                                         });
                                         $(wrapper).on("click", removeField, function (e) { //user click on remove text
@@ -465,7 +482,7 @@
                                 <div class="wizard-footer">
                                     <div class="pull-right">
                                         <input type='button' class='btn btn-next btn-primary' name='next' value='Next' />
-                                        <input type='button' class='btn btn-finish btn-primary ' name='finish' value='Finish' />
+                                        <input type='submit' class='btn btn-finish btn-primary ' name='finish' value='Finish' />
                                     </div>
 
                                     <div class="pull-left">
