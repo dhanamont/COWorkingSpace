@@ -24,6 +24,7 @@
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
         <link rel="icon" href="favicon.ico" type="image/x-icon">
+
         <link rel="stylesheet" href="assets/css/normalize.css">
         <link rel="stylesheet" href="assets/css/font-awesome.min.css">
         <link rel="stylesheet" href="assets/css/fontello.css">
@@ -39,16 +40,21 @@
         <link rel="stylesheet" href="assets/css/owl.transitions.css">
         <link rel="stylesheet" href="assets/css/lightslider.min.css">
         <link rel="stylesheet" href="assets/css/style.css">
-        <link rel="stylesheet" href="assets/css/responsive.css">
-        
+
+
         <link rel="stylesheet" href="assets/css/datepicker.css">
         <script type="text/javascript" src="assets/js/bootstrap-datepicker.js"></script>
 
         <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script> 
         <script src="http://code.gijgo.com/1.5.0/js/gijgo.js" type="text/javascript"></script> 
-       
+
         <link href="http://code.gijgo.com/1.5.0/css/gijgo.css" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css" />
+
+        <script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
+
+
+
     </head>
     <body>
 
@@ -67,6 +73,7 @@
         <% String Role_ID = (String) session.getAttribute("Role_ID");%>
         <% String Username = (String) session.getAttribute("Username");%>
         <% String id = (String) session.getAttribute("Space_ID");%>
+        <% String roomID  = (String) session.getAttribute("Room_ID");%>
 
         <!-- Start Navbar Guest -->
         <% if (Role_ID == null) { %>
@@ -218,7 +225,7 @@
                                     <a href="index-2.html">Edit Profile</a>
                                 </li>
                                 <li>
-                                    <a href="SubmitProperties.jsp">Submit properties</a>
+                                    <a href="submitproperties.jsp">Submit properties</a>
                                 </li>
                                 <li>
                                     <a href="index-4.html">Reservation list</a>
@@ -282,48 +289,84 @@
                         </div>
 
                         <div class="single-property-wrapper">
-                            <div class="single-property-header">                                          
-                                <h1 class="property-title pull-left"><%= request.getAttribute("Space_Name")%></h1>
-                                <span class="property-price pull-right"><%= request.getAttribute("Price")%></span>
-                            </div>
 
-                            
+
+
                             <!-- .property-meta -->
+
+                            <div class="section">
+                                <h4 class="s-property-title">Description</h4>
+                                <div class="s-property-content">
+                                    <p><%= request.getAttribute("Description")%></p>
+                                </div>
+                            </div>
+                            <div>
+                                 <table id="allre1-dt" class="table table-striped" cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                                <th>Room Name</th>
+                                <th>Price</th>
+                                <th></th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <c:forEach var="room" items="${requestScope.Room_Name}" varStatus="loop" >
+                                <tr>
+                                    <td>${requestScope.Room_Name[loop.index]}</td>
+                                    <td>${requestScope.Price[loop.index]}</td>                               
+                                </tr>
+                            </c:forEach>
+                        </tbody>
+                    </table>
+                            </div>
+                            <!-- End description area  -->
 
                             <div class="section additional-details">
 
-                                <h4 class="s-property-title">Services</h4>
+                                <h4 class="s-property-title">Additional Details</h4>
 
                                 <ul class="additional-details-list clearfix">
                                     <li>
-                                        <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Wi-Fi</span>
-                                        <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry"><%= request.getAttribute("Service_Name")%></span>
+                                        <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Waterfront</span>
+                                        <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">Yes</span>
                                     </li>
 
                                     <li>
-                                        <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Cafe</span>
-                                        <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry"><%= request.getAttribute("Service_Name")%></span>
+                                        <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Built In</span>
+                                        <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">2003</span>
                                     </li>
                                     <li>
-                                        <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Parking lot</span>
-                                        <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry"><%= request.getAttribute("Service_Name")%></span>
+                                        <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Parking</span>
+                                        <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">2 Or More Spaces,Covered Parking,Valet Parking</span>
                                     </li>
 
                                     <li>
-                                        <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Photocopier</span>
-                                        <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry"><%= request.getAttribute("Service_Name")%></span>
+                                        <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Waterfront</span>
+                                        <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">Yes</span>
                                     </li>
+
+                                    <li>
+                                        <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">View</span>
+                                        <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">Intracoastal View,Direct ew</span>
+                                    </li>
+
+                                    <li>
+                                        <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Waterfront Description:</span>
+                                        <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">Intracoastal Front,Ocean Access</span>
+                                    </li> 
+
                                 </ul>
                             </div>  
-                            <!-- End services area  -->
+                            <!-- End additional-details area  -->
 
 
-                            <div class="section property-video"> 
-                                <h4 class="s-property-title">Property Video</h4> 
-                                <div class="video-thumb">
-                                    <a class="video-popup" href="yout" title="Virtual Tour">
-                                        <img src="assets/img/property-video.jpg" class="img-responsive wp-post-image" alt="Exterior">            
-                                    </a>
+
+
+                            <div class="section propertmap"> 
+                                <h4 class="s-property-title"><i class="fa fa-map-marker">Maps</i></h4> 
+                                <div>
+                                    <%= request.getAttribute("Map")%>
                                 </div>
                             </div>
                             <!-- End video area  -->
@@ -332,17 +375,17 @@
 
                     <div class="col-md-4 p0">
                         <aside class="sidebar sidebar-property blog-asside-right">
-                         <!------------------------ข้อมูลผู้ประกอบการ--->
+                            <!------------------------ข้อมูลผู้ประกอบการ--->
                             <div class="dealer-widget">
                                 <div class="dealer-content">
                                     <div class="inner-wrapper">
 
                                         <div class="clear">
-                                            
+
                                             <div class="col-xs-8 col-sm-8 ">
                                                 <h3 class="dealer-name">
                                                     <a><%= request.getAttribute("Fname")%>  <%= request.getAttribute("Lname")%></a><br>
-                                                         
+
                                                 </h3>
                                                 <div class="dealer-social-media">
                                                     <a class="twitter" target="_blank" href="">
@@ -371,15 +414,15 @@
                                                 <li><i class="pe-7s-mail strong"> </i> <%= request.getAttribute("Email")%></li>
                                                 <li><i class="pe-7s-call strong"> </i> <%= request.getAttribute("Phone_company")%></li>
                                             </ul>
-                                           
+
                                         </div>
 
                                     </div>
                                 </div>
                             </div>
-                    
-                    
-                    
+
+
+
 
                             <!------------------------------------ส่วนจอง------------------------------------------------------->
                             <div class="panel panel-default sidebar-menu similar-property-wdg wow fadeInRight animated">
@@ -423,7 +466,7 @@
                                                         <script>
                                                             $('#datepicker').datepicker({
                                                                 format: 'yyyy-mm-dd',
-                                                                
+
                                                             });
                                                         </script> 
                                                     </div>
@@ -479,8 +522,7 @@
             </div>
 
         </div>
-        <script>
-        </script>
+
 
         <!-- Footer area-->
         <div class="footer-area">
@@ -635,21 +677,21 @@
         <script src="assets/js/main.js"></script>
 
         <script>
-                            $(document).ready(function () {
+                                                            $(document).ready(function () {
 
-                                $('#image-gallery').lightSlider({
-                                    gallery: true,
-                                    item: 1,
-                                    thumbItem: 9,
-                                    slideMargin: 0,
-                                    speed: 500,
-                                    auto: true,
-                                    loop: true,
-                                    onSliderLoad: function () {
-                                        $('#image-gallery').removeClass('cS-hidden');
-                                    }
-                                });
-                            });
+                                                                $('#image-gallery').lightSlider({
+                                                                    gallery: true,
+                                                                    item: 1,
+                                                                    thumbItem: 9,
+                                                                    slideMargin: 0,
+                                                                    speed: 500,
+                                                                    auto: true,
+                                                                    loop: true,
+                                                                    onSliderLoad: function () {
+                                                                        $('#image-gallery').removeClass('cS-hidden');
+                                                                    }
+                                                                });
+                                                            });
         </script>
 
     </body>
