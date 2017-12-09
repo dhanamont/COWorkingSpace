@@ -76,10 +76,10 @@
                             <a class="dropdown-toggle active" data-toggle="dropdown" data-hover="dropdown" data-delay="200"><%= session.getAttribute("Username")%> <b class="caret"></b></a>
                             <ul class="dropdown-menu navbar-nav">
                                 <li>
-                                    <a href="index-2.html">Edit Profile</a>
+                                    <a href="">Edit Profile</a>
                                 </li>
                                 <li>
-                                    <a href="index-3.html">Submit Co-working</a>
+                                    <a href="SubmitProperties.jsp">Submit Co-working</a>
                                 </li>
                                 <li>
                                     <a href="index-4.html">Reservation list</a>
@@ -265,6 +265,7 @@
                                                     <div class="form-group">
                                                         <label>Open time</label>
                                                         <select id="lunchBegins" class="selectpicker" title="Select open time">
+                                                            <option value="7" name="Start_Time">7.00</option>
                                                             <option value="8" name="Start_Time">8.00</option>
                                                             <option value="9" name="Start_Time">9.00</option>
                                                             <option value="10" name="Start_Time">10.00</option>
@@ -286,6 +287,7 @@
                                                     <div class="form-group">
                                                         <label>Close time</label>
                                                         <select id="lunchBegins" class="selectpicker" title="Select close time">
+                                                            <option value="7" name="End_Time">7.00</option>
                                                             <option value="8" name="End_Time">8.00</option>
                                                             <option value="9" name="End_Time">9.00</option>
                                                             <option value="10" name="End_Time">10.00</option>
