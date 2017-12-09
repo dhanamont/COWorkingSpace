@@ -47,13 +47,17 @@ public class OrderServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             
+           
+            
             HttpSession session = request.getSession();
+            
             String userID = (String) session.getAttribute("userID");
             String username = (String) session.getAttribute("username");
             String spaceName = (String) session.getAttribute("spaceName");
             String typeName = (String) session.getAttribute("typeName");
             String tableID = (String) session.getAttribute("tableID");
             String roomID = (String) session.getAttribute("roomID");
+            String roomName = (String) session.getAttribute("roomName");
             
             //************order date***************
             DateFormat df = new SimpleDateFormat("yyyy-mm-dd");
@@ -71,7 +75,7 @@ public class OrderServlet extends HttpServlet {
             //System.out.println("roomID");
             //System.out.println(orderDate);
             //System.out.println(startOrderTime);
-          
+            
             try {
                 //*******Create Object**********
                 Order order = new Order();
@@ -85,8 +89,7 @@ public class OrderServlet extends HttpServlet {
                 if(check.equals("false")){ //false = ไม่ overlap
                     //*****create order_id*******
                     
-                    //String orderID = order.getOrder_ID();
-                    String orderID = "R001";
+                    String orderID = order.getOrder_ID();
                     
                     //float price = room.getPrice("Room_ID");
                     float price = 500;
@@ -111,8 +114,16 @@ public class OrderServlet extends HttpServlet {
                 }
                 
                 //********Test set attribute**********
-                session.setAttribute("loop", loop);
-                session.setAttribute("check", check);
+                request.setAttribute("spaceName", spaceName);
+                request.setAttribute("typeName", typeName);
+                request.setAttribute("roomID", roomID);
+                request.setAttribute("roomName", roomName);
+                //request.setAttribute("tableID", tableID); 
+                //request.setAttribute("orderDate", roomID);
+                //request.setAttribute("startTime", startTime);
+                //request.setAttribute("endTime", endTime);
+                request.setAttribute("loop", loop);
+                request.setAttribute("check", check);
                 
                 //********ส่งข้อมูลการจองไป Show หน้า Ordering เพื่อให้ตรวจสอบ**********
                 RequestDispatcher obj = request.getRequestDispatcher("Test.jsp");
