@@ -38,19 +38,28 @@ public class PropertiesServlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
 
             HttpSession session = request.getSession();
+
 //            สร้าง Object
             Space space = new Space();
 
 //            ดึงข้อมูลจาก Java Class
             space.Properties();
 
-//            สร้าง ArrayList แล้วเก็บข้อมูลเข้า ArrayList
+//            สร้าง ArrayList
             ArrayList<ArrayList<String>> SpaceSet = new ArrayList<ArrayList<String>>();
+
+//            เก็บข้อมูลเข้า ArrayList
             SpaceSet = space.getSpaceSet();
 
             request.setAttribute("SpaceSet", SpaceSet);
 
-//            ตรงนี้ยังไม่แน่ใจ
+//            for (int j = 0; j < SpaceSet.size(); j++) {
+//                out.println(SpaceSet.size() + "<br>");
+//                out.println(SpaceSet.get(1).get(0) + "<br>");
+//                out.println(SpaceSet.get(1).get(1) + "<br>");
+//                out.println(SpaceSet.get(1).get(2) + "<br>");
+//                out.println(SpaceSet.get(1).get(3) + "<br>");
+//            }
             out.println(SpaceSet.get(1));
 
 //            ส่งไปหน้า properties.jsp
