@@ -121,50 +121,48 @@
                                     </h3>
                                 </div>
                                 <div class="tab-pane" id="step3">
-                                        <h4 class="info-text">Please check your reservation to ensure your reservation is correct.</h4>
+                                    <h4 class="info-text">Please check your reservation to ensure your reservation is correct.</h4>
                                     <div class="profiel-header">
                                 <hr>
-                            </div>
+                                </div>
 
-                            <div class="clear">
-
-                                <div class="col-sm-10 col-sm-offset-1">
-                                    <div class="form-group">
-                                        <label><h4><b>Reservation name </b>: <%= request.getAttribute("User_ID")%></h4></label><br>                                
-                                    </div>
+                                <div class="clear">
+                                    <div class="col-sm-10 col-sm-offset-1">                    
+                                        <div class="form-group">
+                                            <label><h4><b>Reservation name </b>: <%= request.getAttribute("User_ID")%></h4></label><br>                                
+                                        </div>
                                     
-                                    <div class="form-group">
-                                        <label><h4><b>Co-Working Space name </b>: <%= request.getAttribute("Space_Name")%></h4></label>                 
-                                    </div>
+                                        <div class="form-group">
+                                            <label><h4><b>Co-Working Space name </b>: <%= request.getAttribute("Space_Name")%></h4></label>                 
+                                        </div>
                                     
-                                    <div class="form-group">
-                                        <label><h4><b>Type of space </b>: <%= request.getAttribute("Type_Name")%></h4></label>                        
-                                    </div>
+                                        <div class="form-group">
+                                            <label><h4><b>Type of space </b>: <%= request.getAttribute("Type_Name")%></h4></label>                        
+                                        </div>
                                     
-                                    <div class="form-group">
-                                        <label><h4><b>Name of room </b>: <%= request.getAttribute("Room_Name")%></h4></label>                                    
-                                    </div>
+                                        <div class="form-group">
+                                            <label><h4><b>Name of room </b>: <%= request.getAttribute("Room_Name")%></h4></label>                                    
+                                        </div>
                                     
-                                    <div class="form-group">
-                                        <label><h4><b>Price </b>: <%= request.getAttribute("Price")%></h4></label>
-                                    </div>
+                                        <div class="form-group">
+                                            <label><h4><b>Price </b>: <%= request.getAttribute("Price")%></h4></label>
+                                        </div>
                                     
-                                    <div class="form-group">
-                                        <label><h4><b>Start time </b>: <%= request.getAttribute("Start_Time")%></h4></label><br>
-                                    </div>
+                                        <div class="form-group">
+                                            <label><h4><b>Start time </b>: <%= request.getAttribute("Start_Time")%></h4></label><br>
+                                        </div>
                                     
-                                    <div class="form-group">
-                                        <label><h4><b>End time </b>: <%= request.getAttribute("End_Time")%></h4></label>
-                                    </div>
+                                        <div class="form-group">
+                                            <label><h4><b>End time </b>: <%= request.getAttribute("End_Time")%></h4></label>
+                                        </div>
+                                        </div>
+                                        
+                                        <div class="col-md-10 col-md-offset-1 col-sm-12 text-center page-title">
+                                            <a href="OrderServlet.java" class="btn btn-default">Confirm</a>                        
+                                        </div>
 
                                 </div>
-                                
-                            </div>
-                                    </div>
-                                
-                                
-                                
-                                
+                                </div>
                             </form>
                         </div>
                         <!-- End submit form -->
