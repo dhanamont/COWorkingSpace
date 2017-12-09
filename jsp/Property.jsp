@@ -41,6 +41,9 @@
         <link rel="stylesheet" href="assets/css/lightslider.min.css">
         <link rel="stylesheet" href="assets/css/style.css">
         <link rel="stylesheet" href="assets/css/responsive.css">
+        
+        <script type="text/javascript" src="bootstrap-datepicker.js"></script>
+        <script type="text/javascript" src="bootstrap-datepicker.min.js"></script>
     </head>
     <body>
 
@@ -48,7 +51,6 @@
             <div id="status">&nbsp;</div>
         </div>
         <!-- Body content -->
-
 
 
 
@@ -265,7 +267,7 @@
                                     </div> 
 
                                     <ul id="image-gallery" class="gallery list-unstyled cS-hidden">
-                                        <li data-thumb="assets/img/property-1/property1.jpg"> 
+                                        <li data-thumb=<%= request.getAttribute("Picture_poster")%>> 
                                             <%= request.getAttribute("Space_Name")%>
                                         </li>
 
@@ -276,7 +278,7 @@
 
                         <div class="single-property-wrapper">
                             <div class="single-property-header">                                          
-                                <h1 class="property-title pull-left">Villa in Coral Gables</h1>
+                                <h1 class="property-title pull-left"><%= request.getAttribute("Space_Name")%></h1>
                                 <span class="property-price pull-right">$825,000</span>
                             </div>
 
@@ -429,215 +431,89 @@
 
                     <div class="col-md-4 p0">
                         <aside class="sidebar sidebar-property blog-asside-right">
-                            <div class="dealer-widget">
-                                <div class="dealer-content">
-                                    <div class="inner-wrapper">
 
-                                        <div class="clear">
-                                            <div class="col-xs-4 col-sm-4 dealer-face">
-                                                <a href="">
-                                                    <img src="assets/img/client-face1.png" class="img-circle">
-                                                </a>
-                                            </div>
-                                            <div class="col-xs-8 col-sm-8 ">
-                                                <h3 class="dealer-name">
-                                                    <a href="">Nathan James</a>
-                                                    <span>Real Estate Agent</span>        
-                                                </h3>
-                                                <div class="dealer-social-media">
-                                                    <a class="twitter" target="_blank" href="">
-                                                        <i class="fa fa-twitter"></i>
-                                                    </a>
-                                                    <a class="facebook" target="_blank" href="">
-                                                        <i class="fa fa-facebook"></i>
-                                                    </a>
-                                                    <a class="gplus" target="_blank" href="">
-                                                        <i class="fa fa-google-plus"></i>
-                                                    </a>
-                                                    <a class="linkedin" target="_blank" href="">
-                                                        <i class="fa fa-linkedin"></i>
-                                                    </a> 
-                                                    <a class="instagram" target="_blank" href="">
-                                                        <i class="fa fa-instagram"></i>
-                                                    </a>       
+                            <!------------------------------------ส่วนจอง------------------------------------------------------->
+                            <div class="panel panel-default sidebar-menu similar-property-wdg wow fadeInRight animated">
+
+                                <div class="panel panel-default sidebar-menu wow fadeInRight animated" >
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">Reserving</h3>
+                                        <h4><b><%= request.getAttribute("Space_Name")%></b></h4>
+                                    </div>
+                                    <div class="panel-body search-widget">
+
+                                        <form action="OrderServlet" method="POST" class=" form-inline">
+
+                                            <fieldset>
+                                                <div class="row">
+                                                    <div class="col-xs-6">
+
+                                                        <select id="TableID" name="table" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Select Your Table">
+                                                            <option> -Table- </option>
+                                                            <!--ดึงข้อมูลมาใส่ในdropdown ต้องใช้ ArrayList-->
+                                                            <c:forEach items="${TableList}" var="table">
+                                                                <option value="${[table.index]}">${[table.index]}</option>
+                                                            </c:forEach>
+
+                                                            <%--<c:forEach items="${databaseList}" var="databaseValue">
+                                                                <option value="${databaseValue}">
+                                                                    ${databaseValue}
+                                                                </option>
+                                                            </c:forEach>--%>
+                                                            <%-- <select name="s1">
+                                                                <c:forEach items="${listOfValues}" var="actualbean">
+                                                                    <option value="${actualbean.value}"><c:out value="${actualbean.value}"/></option>
+                                                            </c:forEach>--%>
+                                                            <%--ArrayList databaseArrayList = new ArrayList();...
+                                                              request.setAttribute("databaseList", databaseArrayList); --%>
+                                                        </select>
+
+                                                    </div>
+                                                    <div class="col-xs-6">
+
+                                                        <input type="text" name="Date" value="" id="datepicker1"/>
+                                                       
+                                                    </div>
+                                                    
                                                 </div>
+                                            </fieldset>
 
-                                            </div>
-                                        </div>
+                                            <fieldset>
+                                                <div class="row">
+                                                    <div class="col-xs-6">
 
-                                        <div class="clear">
-                                            <ul class="dealer-contacts">                                       
-                                                <li><i class="pe-7s-map-marker strong"> </i> 9089 your adress her</li>
-                                                <li><i class="pe-7s-mail strong"> </i> email@yourcompany.com</li>
-                                                <li><i class="pe-7s-call strong"> </i> +1 908 967 5906</li>
-                                            </ul>
-                                            <p>Duis mollis  blandit tempus porttitor curabiturDuis mollis  blandit tempus porttitor curabitur , est non…</p>
-                                        </div>
+                                                        <select id="Start Time" name="StartTime" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Select Your Start Time">
+                                                            <option> -Start Time- </option>
+                                                            <c:forEach items="${TimeList}" var="Stime">
+                                                                <option value="${[time.index]}">${[time.index]}></option>
+                                                            </c:forEach>
 
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-xs-6">
+
+                                                        <select id="End_Time" name="EndTime" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Select Your Time">
+                                                            <option> -End Time- </option>
+                                                            <c:forEach items="${TimeList}" var="Etime">
+                                                                <option value="${[time.index]}">${[time.index]}></option>
+                                                            </c:forEach>
+
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+
+                                            <fieldset >
+                                                <div class="row">
+                                                    <div class="col-xs-12">  
+                                                        <input class="button btn largesearch-btn" value="Reserve" type="submit">
+                                                    </div>  
+                                                </div>
+                                            </fieldset>                                     
+                                        </form>
                                     </div>
                                 </div>
                             </div>
-
-
-                            <div class="panel panel-default sidebar-menu similar-property-wdg wow fadeInRight animated">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title">Similar Properties</h3>
-                                </div>
-                                <div class="panel-body recent-property-widget">
-                                    <ul>
-                                        <li>
-                                            <div class="col-md-3 col-sm-3 col-xs-3 blg-thumb p0">
-                                                <a href="single.html"><img src="assets/img/demo/small-property-2.jpg"></a>
-                                                <span class="property-seeker">
-                                                    <b class="b-1">A</b>
-                                                    <b class="b-2">S</b>
-                                                </span>
-                                            </div>
-                                            <div class="col-md-8 col-sm-8 col-xs-8 blg-entry">
-                                                <h6> <a href="single.html">Super nice villa </a></h6>
-                                                <span class="property-price">3000000$</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="col-md-3 col-sm-3  col-xs-3 blg-thumb p0">
-                                                <a href="single.html"><img src="assets/img/demo/small-property-1.jpg"></a>
-                                                <span class="property-seeker">
-                                                    <b class="b-1">A</b>
-                                                    <b class="b-2">S</b>
-                                                </span>
-                                            </div>
-                                            <div class="col-md-8 col-sm-8 col-xs-8 blg-entry">
-                                                <h6> <a href="single.html">Super nice villa </a></h6>
-                                                <span class="property-price">3000000$</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="col-md-3 col-sm-3 col-xs-3 blg-thumb p0">
-                                                <a href="single.html"><img src="assets/img/demo/small-property-3.jpg"></a>
-                                                <span class="property-seeker">
-                                                    <b class="b-1">A</b>
-                                                    <b class="b-2">S</b>
-                                                </span>
-                                            </div>
-                                            <div class="col-md-8 col-sm-8 col-xs-8 blg-entry">
-                                                <h6> <a href="single.html">Super nice villa </a></h6>
-                                                <span class="property-price">3000000$</span>
-                                            </div>
-                                        </li>
-
-                                        <li>
-                                            <div class="col-md-3 col-sm-3 col-xs-3 blg-thumb p0">
-                                                <a href="single.html"><img src="assets/img/demo/small-property-2.jpg"></a>
-                                                <span class="property-seeker">
-                                                    <b class="b-1">A</b>
-                                                    <b class="b-2">S</b>
-                                                </span>
-                                            </div>
-                                            <div class="col-md-8 col-sm-8 col-xs-8 blg-entry">
-                                                <h6> <a href="single.html">Super nice villa </a></h6>
-                                                <span class="property-price">3000000$</span>
-                                            </div>
-                                        </li>
-
-                                    </ul>
-                                </div>
-                            </div>
-
-
-
-                            <div class="panel panel-default sidebar-menu wow fadeInRight animated">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title">Ads her  </h3>
-                                </div>
-                                <div class="panel-body recent-property-widget">
-                                    <img src="assets/img/ads.jpg">
-                                </div>
-                            </div>
-                            <!------------------------------------ส่วนจอง------------------------------------------------------->
-
-                            <div class="panel panel-default sidebar-menu wow fadeInRight animated" >
-                                <div class="panel-heading">
-                                    <h3 class="panel-title">Reserving</h3>
-                                    <h4><b><%= request.getAttribute("Space_Name")%></b></h4>
-                                </div>
-                                <div class="panel-body search-widget">
-
-                                    <form action="OrderServlet" method="POST" class=" form-inline">
-
-                                        <fieldset>
-                                            <div class="row">
-                                                <div class="col-xs-6">
-
-                                                    <select id="TableID" name="table" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Select Your Table">
-                                                        <option> -Table- </option>
-                                                        <!--ดึงข้อมูลมาใส่ในdropdown ต้องใช้ ArrayList-->
-                                                        <c:forEach items="${TableList}" var="table">
-
-                                                            <option value="${[table.index]}">${[table.index]}</option>
-                                                        </c:forEach>
-
-                                                        <%--<c:forEach items="${databaseList}" var="databaseValue">
-                                                            <option value="${databaseValue}">
-                                                                ${databaseValue}
-                                                            </option>
-                                                        </c:forEach>--%>
-                                                        <%-- <select name="s1">
-                                                            <c:forEach items="${listOfValues}" var="actualbean">
-                                                                <option value="${actualbean.value}"><c:out value="${actualbean.value}"/></option>
-                                                        </c:forEach>--%>
-                                                        <%--ArrayList databaseArrayList = new ArrayList();...
-                                                          request.setAttribute("databaseList", databaseArrayList); --%>
-                                                    </select>
-
-                                                </div>
-                                                <div class="col-xs-6">
-
-                                                    <select id="OrderDate" name="order_date" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Select Your Order Date">
-                                                        <option> -Order Date- </option>
-                                                        <c:forEach items="${DateList}" var="date">
-                                                            <option value="${[date.index]}">${[date.index]}></option>
-                                                        </c:forEach>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </fieldset>
-
-                                        <fieldset>
-                                            <div class="row">
-                                                <div class="col-xs-6">
-
-                                                    <select id="Start Time" name="StartTime" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Select Your Start Time">
-                                                        <option> -Start Time- </option>
-                                                        <c:forEach items="${TimeList}" var="Stime">
-                                                            <option value="${[time.index]}">${[time.index]}></option>
-                                                        </c:forEach>
-
-                                                    </select>
-                                                </div>
-                                                <div class="col-xs-6">
-
-                                                    <select id="End_Time" name="EndTime" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Select Your Time">
-                                                        <option> -End Time- </option>
-                                                        <c:forEach items="${TimeList}" var="Etime">
-                                                            <option value="${[time.index]}">${[time.index]}></option>
-                                                        </c:forEach>
-
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </fieldset>
-
-                                        <fieldset >
-                                            <div class="row">
-                                                <div class="col-xs-12">  
-                                                    <input class="button btn largesearch-btn" value="Reserve" type="submit">
-                                                </div>  
-                                            </div>
-                                        </fieldset>                                     
-                                    </form>
-                                </div>
-                            </div>
-
 
                         </aside>
                     </div>
@@ -646,7 +522,8 @@
             </div>
 
         </div>
-
+        <script>
+        </script>
 
         <!-- Footer area-->
         <div class="footer-area">
