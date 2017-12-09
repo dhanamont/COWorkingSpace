@@ -47,13 +47,16 @@ public class CheckOrderServlet extends HttpServlet {
             
             HttpSession session = request.getSession();
             
+//            String spaceName = "";
+//            String 
+//            
             /********* Start Input ***********/
             String userID = (String) session.getAttribute("User_ID");
             String username = (String) session.getAttribute("Username");
-            String spaceName = (String) session.getAttribute("spaceName");
-            String typeName = (String) session.getAttribute("typeName");
-            String roomID = (String) session.getAttribute("roomID");
-            String roomName = (String) session.getAttribute("roomName");
+            String spaceName = (String) request.getAttribute("spaceName");
+            String typeName = (String) request.getAttribute("typeName");
+            String roomID = (String) request.getAttribute("roomID");
+            String roomName = (String) request.getAttribute("roomName");
             String tableID = request.getParameter("table").substring(request.getParameter("table").indexOf("xxx") + 1);
             //order date
            
@@ -76,15 +79,27 @@ public class CheckOrderServlet extends HttpServlet {
                 //Set Attribute
                 session.setAttribute("userID", userID);
                 session.setAttribute("username", username);
-                session.setAttribute("spaceName", spaceName);
-                session.setAttribute("typeName", typeName);
-                session.setAttribute("roomID", roomID);
-                session.setAttribute("roomName", roomName);
-                session.setAttribute("tableID", tableID);
-                session.setAttribute("price", price);
                 session.setAttribute("orderDate", orderDate);
                 session.setAttribute("startTime", startTime);
                 session.setAttribute("endTime", endTime);
+                session.setAttribute("tableID", tableID);
+                
+                request.setAttribute("spaceName", spaceName);
+                request.setAttribute("typeName", typeName);
+                request.setAttribute("roomID", roomID);
+                request.setAttribute("roomName", roomName);
+                request.setAttribute("price", price);
+                
+                
+//                session.setAttribute("spaceName", spaceName);
+//                session.setAttribute("typeName", typeName);
+//                session.setAttribute("roomID", roomID);
+//                session.setAttribute("roomName", roomName);
+//                session.setAttribute("tableID", tableID);
+//                session.setAttribute("price", price);
+//                session.setAttribute("orderDate", orderDate);
+//                session.setAttribute("startTime", startTime);
+//                session.setAttribute("endTime", endTime);
 
                 // ส่งข้อมูลการจองไป Show หน้า Ordering เพื่อให้ตรวจสอบ
                 RequestDispatcher obj = request.getRequestDispatcher("Ordering.jsp");
@@ -145,4 +160,3 @@ public class CheckOrderServlet extends HttpServlet {
     }// </editor-fold>
 
 }
-
