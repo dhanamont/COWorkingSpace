@@ -48,78 +48,74 @@ public class OrderServlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             
             HttpSession session = request.getSession();
+            String userID = (String) session.getAttribute("userID");
+            String username = (String) session.getAttribute("username");
+            String spaceName = (String) session.getAttribute("spaceName");
+            String typeName = (String) session.getAttribute("typeName");
+            String tableID = (String) session.getAttribute("tableID");
+            String roomID = (String) session.getAttribute("roomID");
             
-            //********* Start Input ***********
-//            String userID = (String) session.getAttribute("User_ID");
-//            String username = (String) session.getAttribute("Username");
-//            String spaceID = (String)session.getAttribute("id");
-//            String spaceName = (String) session.getAttribute("spaceName");
-//            String roomID = (String) session.getAttribute("roomID");
-//            String roomName = (String) session.getAttribute("roomName");
-            String userID = "M001";
-            String tableID = request.getParameter("table").substring(request.getParameter("table").indexOf("xxx") + 1);
-            //order date
+            //************order date***************
             DateFormat df = new SimpleDateFormat("yyyy-mm-dd");
-            String date = request.getParameter("order_date").substring(request.getParameter("order_date").indexOf("xxx")+ 1);   
-            Date orderDate = (Date) df.parse(date);
-            
-            //Start Time & End Time
+            String dateS = (String) session.getAttribute("orderDate");
+            Date orderDate = (Date) df.parse(dateS);
+           
+            //***********Start Time & End Time*************
             DateFormat df2 = new SimpleDateFormat("HH:mm");
-            String startTime = request.getParameter("StartTime"); 
+            String startTime = (String) session.getAttribute("startTime");
             Time startOrderTime = new Time(df2.parse(startTime).getTime());
-            String endTime = request.getParameter("EndTime");
+            String endTime = (String) session.getAttribute("endTime");
             Time endOrderTime = new Time(df2.parse(endTime).getTime());
             String orderStatus = "WAITING";
             //******** End input *********
+            //System.out.println("roomID");
+            //System.out.println(orderDate);
+            //System.out.println(startOrderTime);
           
             try {
-                //Create Object
+                //*******Create Object**********
                 Order order = new Order();
-                //Room room = new Room();
-
-                //check overlap time and time error
-                String result = order.checkTable(startOrderTime, endOrderTime, orderDate, tableID);
-                String check = "eiei";
+                Room room = new Room();
+                               
                 
-                if(result.equals("false")){ //false = ไม่ overlap
-                    //create order_id
+                //*******check overlap time and time error******
+                String check = order.checkTable(startOrderTime, endOrderTime, orderDate, tableID);
+                String loop = "eiei";
+                
+                if(check.equals("false")){ //false = ไม่ overlap
+                    //*****create order_id*******
+                    
                     //String orderID = order.getOrder_ID();
                     String orderID = "R001";
-                    //ขาด java class
+                    
                     //float price = room.getPrice("Room_ID");
                     float price = 500;
-                    check = "YESSSSSS";
+                    loop = "YESSSSSS";
                     
-                    //insert data in DB
+                    //*********insert data in DB***********
                     order.insertOrder(orderID, orderStatus, price, orderDate, startOrderTime, endOrderTime, userID, tableID);
                     
-                    //setAttribute
+                    //*********set attribute**********
                     session.setAttribute("orderID", orderID);
                     session.setAttribute("price", price);
                     
                 }
-                else if(result.equals("true")){
-                    check = "NO";
-                    response.sendRedirect("index.jsp");    
+                else if(check.equals("true")){
+                    loop = "NO";
+                    response.sendRedirect("index.jsp");
+                    return;
                 }
                 else{
-                    response.sendRedirect("index.jsp");  
+                    response.sendRedirect("index.jsp");
+                    return;
                 }
-
-                //Set Attribute
-                session.setAttribute("userID", userID);
-                //session.setAttribute("spaceID", spaceID);
-                session.setAttribute("orderStatus", orderStatus);
-                session.setAttribute("orderDate", orderDate);
-                session.setAttribute("startTime", startOrderTime);
-                session.setAttribute("endTime", endOrderTime);
-                session.setAttribute("tableID", tableID);
-                session.setAttribute("result", result);
+                
+                //********Test set attribute**********
+                session.setAttribute("loop", loop);
                 session.setAttribute("check", check);
                 
-
-                // ส่งข้อมูลการจองไป Show หน้า Ordering เพื่อให้ตรวจสอบ
-                RequestDispatcher obj = request.getRequestDispatcher("Ordering.jsp");
+                //********ส่งข้อมูลการจองไป Show หน้า Ordering เพื่อให้ตรวจสอบ**********
+                RequestDispatcher obj = request.getRequestDispatcher("Test.jsp");
                 obj.forward(request, response);
 
             } catch (Exception ex) {
