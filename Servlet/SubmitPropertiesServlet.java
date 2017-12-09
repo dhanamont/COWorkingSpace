@@ -7,12 +7,20 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Space;
+import model.Date;
+import model.Time;
+import model.Type_Space;
+import model.Room;
+import model.Table;
+import model.Service;
 
 /**
  *
@@ -42,6 +50,7 @@ public class SubmitPropertiesServlet extends HttpServlet {
             String type_ID;
             String room_ID;
             String table_ID;
+            String service_ID;
 
 //            สร้าง Object
             Space space = new Space();
@@ -50,88 +59,18 @@ public class SubmitPropertiesServlet extends HttpServlet {
             Type_Space type_space = new Type_Space();
             Room room = new Room();
             Table table = new Table();
+            Service service = new Service();
 
 //            รับรายละเอียดผู้ประกอบการ
             String space_Name = request.getParameter("Space_Name");
-            String location = request.getParameter("Location");
+            String address = request.getParameter("Address");
+            String place = request.getParameter("Place");
             String pic_poster = request.getParameter("Picture_poster");
             String pic_cover = request.getParameter("Picture_cover");
-            String start_date = request.getParameter("Start_Date");
-            String end_date = request.getParameter("End_Date");
             String start_time = request.getParameter("Start_Time");
             String end_time = request.getParameter("End_Time");
+            String map = request.getParameter("Map");
             String description = request.getParameter("Description");
-
-//            ArrayList ของ Date
-            ArrayList<String> alldate = new ArrayList<>();
-            alldate.add("Monday");
-            alldate.add("Tuesday");
-            alldate.add("Wednesday");
-            alldate.add("Thursday");
-            alldate.add("Friday");
-            alldate.add("Saturday");
-            alldate.add("Sunday");
-
-//            ArrayList ของ Time
-            ArrayList<String> alltime = new ArrayList<>();
-            alltime.add("8.00");
-            alltime.add("9.00");
-            alltime.add("10.00");
-            alltime.add("11.00");
-            alltime.add("12.00");
-            alltime.add("13.00");
-            alltime.add("14.00");
-            alltime.add("15.00");
-            alltime.add("16.00");
-            alltime.add("17.00");
-            alltime.add("18.00");
-            alltime.add("19.00");
-            
-//            Arraylist ไว้เก็บข้อมูลวันเปิด-ปิด & เวลาเปิด-ปิด
-            ArrayList<String> open_close_Date = new ArrayList<>();
-            ArrayList<String> open_close_Time = new ArrayList<>();
-
-//            ตัวแปรเอาไว้เก็บ index ของวันเปิด-ปิด
-            int saveStartDate;
-            int saveEndDate;
-            
-//            Loop เช็คว่าวันเปิด-ปิดตรงกับลำดับที่เท่าไหร่ใน Arraylist
-            for (int i = 0; i <= alldate.size(); i++) {                
-                if (start_date.equals(alldate.get(i))) {                    
-                    saveStartDate = i;
-                    
-                    for (int j =  0; j <= alldate.size(); j++) {
-                        if (end_date.equals(alldate.get(j))) {
-                            saveEndDate = j;
-                            
-                            for (int dateRange = saveStartDate; dateRange <= saveEndDate; dateRange++) {
-                                open_close_Date.add(alldate.get(dateRange));
-                            }
-                        }
-                    }
-                }
-            }
-            
-//            ตัวแปรเอาไว้เก็บ index ของเวลาเปิด-ปิด
-            int saveStartTime;
-            int saveEndTime;
-            
-//            Loop เช็คว่าเวลาเปิด-ปิดตรงกับลำดับที่เท่าไหร่ใน Arraylist
-            for (int k = 0; k <= alltime.size(); k++) {
-                if (start_time.equals(alltime.get(k))) {
-                    saveStartTime = k;
-                    
-                    for (int l = 0; l <= alltime.size(); l++) {                        
-                        if (end_time.equals(alltime.get(l))) {
-                            saveEndTime = l;
-                            
-                            for(int timeRange = saveStartTime; timeRange <= saveEndTime; timeRange++) {
-                                open_close_Time.add(alltime.get(timeRange));
-                            }
-                        }
-                    }
-                }
-            }
 
 //            รับข้อมูล Type Space
             String type_name = request.getParameter("Type_name");
@@ -156,17 +95,28 @@ public class SubmitPropertiesServlet extends HttpServlet {
             table_ID = table.createTable_ID();
 
 //            ส่งค่าไป Java Class
-            space.insertSpace(space_ID, space_Name, location, pic_poster, pic_cover, start_date, end_date, start_time, end_time, description);
-            date.insertDate(date_ID, open_close_Date);
-            time.insertTime(time_ID, open_close_Time);
+            space.insertSpace(space_ID, space_Name, address, place, pic_poster, pic_cover, start_time, end_time, map, description);
             type_space.insertType_Space(type_ID, type_name, num_Room, prototype);
             room.insertRoom(room_ID, price, room_Name, num_Table, pic_room);
             table.insertTable(table_ID, num_People);
-
-//            2 อันนี้เหมือนกันปะ?? ส่งถูกมั้ยช่วยดูโหน่ย
-            request.getRequestDispatcher("MyProperty.jsp").forward(request, response);
             
-            response.sendRedirect("MyProperty.jsp");
+            String[] open = request.getParameterValues("Open_Date");
+            List<String> openDateList = Arrays.asList(open);
+            for (int i = 0; i <= openDateList.size(); i++) {
+                String OpenDate = openDateList.get(i);
+                String Date_ID = date.createDateID();
+                date.insertDate(Date_ID, OpenDate);
+            }
+            
+            String [] service_Name = request.getParameterValues("Service_Name");
+            List<String> serviceList = Arrays.asList(service_Name);
+            for (int j = 0; j <= serviceList.size(); j++) {
+                String Service_Name = serviceList.get(j);
+                String Service_ID = service.createServiceID();
+                service.insertService(Service_ID, Service_Name);
+            }
+
+            request.getRequestDispatcher("Property.jsp").forward(request, response);
         }
     }
 
