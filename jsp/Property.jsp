@@ -24,7 +24,6 @@
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
         <link rel="icon" href="favicon.ico" type="image/x-icon">
-
         <link rel="stylesheet" href="assets/css/normalize.css">
         <link rel="stylesheet" href="assets/css/font-awesome.min.css">
         <link rel="stylesheet" href="assets/css/fontello.css">
@@ -333,6 +332,54 @@
 
                     <div class="col-md-4 p0">
                         <aside class="sidebar sidebar-property blog-asside-right">
+                         <!------------------------ข้อมูลผู้ประกอบการ--->
+                            <div class="dealer-widget">
+                                <div class="dealer-content">
+                                    <div class="inner-wrapper">
+
+                                        <div class="clear">
+                                            
+                                            <div class="col-xs-8 col-sm-8 ">
+                                                <h3 class="dealer-name">
+                                                    <a><%= request.getAttribute("Fname")%>  <%= request.getAttribute("Lname")%></a><br>
+                                                         
+                                                </h3>
+                                                <div class="dealer-social-media">
+                                                    <a class="twitter" target="_blank" href="">
+                                                        <i class="fa fa-twitter"></i>
+                                                    </a>
+                                                    <a class="facebook" target="_blank" href="">
+                                                        <i class="fa fa-facebook"></i>
+                                                    </a>
+                                                    <a class="gplus" target="_blank" href="">
+                                                        <i class="fa fa-google-plus"></i>
+                                                    </a>
+                                                    <a class="linkedin" target="_blank" href="">
+                                                        <i class="fa fa-linkedin"></i>
+                                                    </a> 
+                                                    <a class="instagram" target="_blank" href="">
+                                                        <i class="fa fa-instagram"></i>
+                                                    </a>       
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="clear">
+                                            <ul class="dealer-contacts">                                       
+                                                <li><i class="pe-7s-map-marker strong"> </i><%= request.getAttribute("Company_name")%></li>
+                                                <li><i class="pe-7s-mail strong"> </i> <%= request.getAttribute("Email")%></li>
+                                                <li><i class="pe-7s-call strong"> </i> <%= request.getAttribute("Phone_company")%></li>
+                                            </ul>
+                                           
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                    
+                    
+                    
 
                             <!------------------------------------ส่วนจอง------------------------------------------------------->
                             <div class="panel panel-default sidebar-menu similar-property-wdg wow fadeInRight animated">
@@ -344,7 +391,7 @@
                                     </div>
                                     <div class="panel-body search-widget">
 
-                                        <form action="OrderServlet" method="POST" class=" form-inline">
+                                        <form idaction="OrderServlet" method="POST" class=" form-inline">
 
                                             <fieldset>
                                                 <div class="row">
@@ -367,27 +414,30 @@
                                                                     <option value="${actualbean.value}"><c:out value="${actualbean.value}"/></option>
                                                             </c:forEach>--%>
                                                             <%--ArrayList databaseArrayList = new ArrayList();...
-                                                              request.setAttribute("databaseList", databaseArrayList); --%>
+                                                               request.setAttribute("databaseList", databaseArrayList); --%>
                                                         </select>
 
                                                     </div>
-                                                     <div class="col-xs-6">
-                                                        <input id="datepicker" name="date" />
+                                                    <div class="col-xs-6">
+                                                        <input id="datepicker" name="Date" type="text"/>
                                                         <script>
                                                             $('#datepicker').datepicker({
-                                                                format: 'yyyy-mm-dd' 
+                                                                format: 'yyyy-mm-dd',
+                                                                
                                                             });
                                                         </script> 
                                                     </div>
-                                                    
+
                                                 </div>
                                             </fieldset>
+
+
 
                                             <fieldset>
                                                 <div class="row">
                                                     <div class="col-xs-6">
 
-                                                        <select id="Start Time" name="StartTime" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Select Your Start Time">
+                                                        <select id="Start Time" name="Start_Time" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Select Your Start Time">
                                                             <option> -Start Time- </option>
                                                             <c:forEach items="${TimeList}" var="Stime">
                                                                 <option value="${[time.index]}">${[time.index]}></option>
@@ -397,7 +447,7 @@
                                                     </div>
                                                     <div class="col-xs-6">
 
-                                                        <select id="End_Time" name="EndTime" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Select Your Time">
+                                                        <select id="End_Time" name="End_Time" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Select Your Time">
                                                             <option> -End Time- </option>
                                                             <c:forEach items="${TimeList}" var="Etime">
                                                                 <option value="${[time.index]}">${[time.index]}></option>
@@ -414,7 +464,9 @@
                                                         <input class="button btn largesearch-btn" value="Reserve" type="submit">
                                                     </div>  
                                                 </div>
-                                            </fieldset>                                     
+
+                                            </fieldset>
+
                                         </form>
                                     </div>
                                 </div>
