@@ -279,7 +279,7 @@
                         <div class="single-property-wrapper">
                             <div class="single-property-header">                                          
                                 <h1 class="property-title pull-left"><%= request.getAttribute("Space_Name")%></h1>
-                                <span class="property-price pull-right">$825,000</span>
+                                <span class="property-price pull-right"><%= request.getAttribute("Price")%></span>
                             </div>
 
                             
@@ -558,6 +558,7 @@
             </div>
 
         </div>
+
         <script src="assets/js/vendor/modernizr-2.6.2.min.js"></script>
         <script src="assets/js/jquery-1.10.2.min.js"></script>
         <script src="bootstrap/js/bootstrap.min.js"></script>
@@ -589,5 +590,6 @@
                                 });
                             });
         </script>
+
     </body>
 </html>
