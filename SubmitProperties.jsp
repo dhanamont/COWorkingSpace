@@ -76,10 +76,10 @@
                             <a class="dropdown-toggle active" data-toggle="dropdown" data-hover="dropdown" data-delay="200"><%= session.getAttribute("Username")%> <b class="caret"></b></a>
                             <ul class="dropdown-menu navbar-nav">
                                 <li>
-                                    <a href="index-2.html">Edit Profile</a>
+                                    <a href="">Edit Profile</a>
                                 </li>
                                 <li>
-                                    <a href="index-3.html">Submit Co-working</a>
+                                    <a href="SubmitProperties.jsp">Submit Co-working</a>
                                 </li>
                                 <li>
                                     <a href="index-4.html">Reservation list</a>
