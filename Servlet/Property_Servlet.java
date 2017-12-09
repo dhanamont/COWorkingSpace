@@ -51,17 +51,16 @@ public class Property_Servlet extends HttpServlet {
             ArrayList<String> openTime = space.getOpenTime(Type_ID);
 
             request.setAttribute("Space_Name", space.getSpaceName());
-            request.setAttribute("Location", space.getLocation());
+            request.setAttribute("Address", space.getAddress());
+            request.setAttribute("Place", space.getPlace());
             request.setAttribute("Picture_poster", space.getPicturePoster());
             request.setAttribute("Picture_cover", space.getPictureCover());
-            request.setAttribute("Start_Date", space.getStartDate());
-            request.setAttribute("End_Date", space.getEndDate());
             request.setAttribute("Start_Time", space.getStartTime());
             request.setAttribute("End_Time", space.getEndTime());
             request.setAttribute("Description", space.getDescription());
             request.setAttribute("Date", openDate);
             request.setAttribute("Time", openTime);
-
+            
             request.getRequestDispatcher("Property.jsp").forward(request, response);
         }
     }
