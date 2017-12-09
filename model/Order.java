@@ -44,6 +44,7 @@ public class Order {
             ResultSet numOrd1 = stmt.executeQuery(numOrd);
             numOrd1.next();
             String numOrder = numOrd1.getString("count(Order_ID)");
+            Order_ID = "R";
             for (int i = numOrder.length(); i < 3; i++) {
                 Order_ID += "0";
             }
