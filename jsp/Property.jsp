@@ -42,8 +42,14 @@
         <link rel="stylesheet" href="assets/css/style.css">
         <link rel="stylesheet" href="assets/css/responsive.css">
         
-        <script type="text/javascript" src="bootstrap-datepicker.js"></script>
-        <script type="text/javascript" src="bootstrap-datepicker.min.js"></script>
+        <link rel="stylesheet" href="assets/css/datepicker.css">
+        <script type="text/javascript" src="assets/js/bootstrap-datepicker.js"></script>
+
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script> 
+        <script src="http://code.gijgo.com/1.5.0/js/gijgo.js" type="text/javascript"></script> 
+       
+        <link href="http://code.gijgo.com/1.5.0/css/gijgo.css" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css" />
     </head>
     <body>
 
@@ -365,10 +371,13 @@
                                                         </select>
 
                                                     </div>
-                                                    <div class="col-xs-6">
-
-                                                        <input type="text" name="Date" value="" id="datepicker1"/>
-                                                       
+                                                     <div class="col-xs-6">
+                                                        <input id="datepicker" name="date" />
+                                                        <script>
+                                                            $('#datepicker').datepicker({
+                                                                format: 'yyyy-mm-dd' 
+                                                            });
+                                                        </script> 
                                                     </div>
                                                     
                                                 </div>
