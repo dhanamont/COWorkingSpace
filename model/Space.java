@@ -48,7 +48,7 @@ public class Space {
     private ArrayList<String> openDate = new ArrayList<String>();
     private ArrayList<String> openTime = new ArrayList<String>();
 
-     public void createSpace_ID() {
+    public void createSpace_ID() {
         try {
             Statement stmt = con.createStatement();
             String numSpa = "SELECT COUNT(Space_ID)+1 from Space";
@@ -85,7 +85,7 @@ public class Space {
             String Start_Date, String End_Date, String Start_Time, String End_Time, String OpenDate) {
         try {
             Statement stmt = con.createStatement();
-            String sql = "Insert into Concert values('" + Space_ID + "', '" + Space_Name + "', '" 
+            String sql = "Insert into `Space` values('" + Space_ID + "', '" + Space_Name + "', '" 
                     + Address + "', '" + Place + ", " + Picture_poster + "', '" + Picture_cover + "', NOW(), '" 
                     + OpenDate + "', '"+ Start_Date + "', '" + End_Date + "', '" + Start_Time + "', '" 
                     + End_Time + "', '" + Map + "', '" + Description + "', '" + User_ID+"';";
@@ -98,7 +98,7 @@ public class Space {
     public String getSpace_Name(String Space_ID) {
         try {
             Statement stmt = con.createStatement();
-            String sql_ = "Select Space_Name from Space where Space_ID = '" + Space_ID + "'";
+            String sql_ = "Select Space_Name from `Space` where Space_ID = '" + Space_ID + "'";
             ResultSet rs = stmt.executeQuery(sql_);
             rs.next();
             SpaceName = rs.getString("Space_Name");
@@ -113,7 +113,7 @@ public class Space {
             Statement stmt = con.createStatement();
             String SpaceDetail = "SELECT Space_Name, Start_Time, End_Time, "
                     + "Picture_Cover, Picture_Poster, Description, Address, Place, Map"
-                    + "FROM Space "
+                    + "FROM `Space` "
                     + "Where Space_ID = '" + Space_ID + "';";
             ResultSet rs2 = stmt.executeQuery(SpaceDetail);
             rs2.next();
@@ -177,7 +177,7 @@ public class Space {
         try {
             Statement stmt = con.createStatement();
             String viewTime = "SELECT Start_Time, End_Time "
-                    + "FROM Space "
+                    + "FROM `Space` "
                     + "WHERE Space_ID = '" + Space_ID + "'";
             ResultSet rs2 = stmt.executeQuery(viewTime);
             DateFormat df = new SimpleDateFormat("HH:mm");
@@ -205,7 +205,7 @@ public class Space {
         try {
             Statement stmt = con.createStatement();
             String viewDash = "select User.User_ID , Space.Space_ID , Space.Space_Name , "
-                    + "Picture_Poster from User JOIN Space Using (User_ID) Where User_ID = '" + User_ID + "'";
+                    + "Picture_Poster from User JOIN `Space` Using (User_ID) Where User_ID = '" + User_ID + "'";
             ResultSet rs2 = stmt.executeQuery(viewDash);
             while (rs2.next()) {
                 getNode_Detail().add(rs2.getString("Space_Name"));
@@ -269,7 +269,7 @@ public class Space {
     public String getSpace_ID(String Space_Name) {
         try {
             Statement stmt = con.createStatement();
-            String Space_table = "SELECT Space_ID FROM Space WHERE Space_Name = '" + Space_Name + "';";
+            String Space_table = "SELECT Space_ID FROM `Space` WHERE Space_Name = '" + Space_Name + "';";
             ResultSet rs1 = stmt.executeQuery(Space_table);
             rs1.next();
             Space_ID = rs1.getString("Space_ID");
@@ -282,7 +282,7 @@ public class Space {
     public String getUser_ID(String Space_Name) {
         try {
             Statement stmt = con.createStatement();
-            String Space_table = "SELECT User_ID FROM Space WHERE Space_Name = '" + Space_Name + "';";
+            String Space_table = "SELECT User_ID FROM `Space` WHERE Space_Name = '" + Space_Name + "';";
             ResultSet rs1 = stmt.executeQuery(Space_table);
             rs1.next();
             User_ID = rs1.getString("User_ID");
