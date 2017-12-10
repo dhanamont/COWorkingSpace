@@ -7,7 +7,10 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -31,27 +34,31 @@ public class PropertiesServlet extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
+     * @throws java.lang.ClassNotFoundException
+     * @throws java.sql.SQLException
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, ClassNotFoundException {
+            throws ServletException, IOException, ClassNotFoundException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
 
             HttpSession session = request.getSession();
-
-//            สร้าง Object
+            
             Space space = new Space();
 
-//            ดึงข้อมูลจาก Java Class
-            space.Properties();
-
-//            สร้าง ArrayList
             ArrayList<ArrayList<String>> SpaceSet = new ArrayList<ArrayList<String>>();
-
-//            เก็บข้อมูลเข้า ArrayList
             SpaceSet = space.getSpaceSet();
 
+            String Place = request.getParameter("Place");
+                       
+            String Type_Name = request.getParameter("TypeSpace");
+            
+            if (Place != null && Type_Name != null) {
+                space.PropertiesBox(Place, Type_Name);
+            }
+            
             request.setAttribute("SpaceSet", SpaceSet);
+           
 
 //            for (int j = 0; j < SpaceSet.size(); j++) {
 //                out.println(SpaceSet.size() + "<br>");
@@ -60,7 +67,7 @@ public class PropertiesServlet extends HttpServlet {
 //                out.println(SpaceSet.get(1).get(2) + "<br>");
 //                out.println(SpaceSet.get(1).get(3) + "<br>");
 //            }
-            out.println(SpaceSet.get(1));
+            //out.println(SpaceSet.get(1));
 
 //            ส่งไปหน้า properties.jsp
             request.getRequestDispatcher("properties.jsp").forward(request, response);
@@ -79,7 +86,11 @@ public class PropertiesServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(PropertiesServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -93,7 +104,11 @@ public class PropertiesServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(PropertiesServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
