@@ -58,7 +58,7 @@ public class Room {
     }
     
     
-    public void getRoomList(ArrayList<String> RoomID, ArrayList<String> RoomName,ArrayList<String> Price, String Type_ID) {
+    public void getRoomList(ArrayList<String> RoomID, ArrayList<String> RoomName,ArrayList<Float> Price, String Type_ID) {
         try {
             Statement stmt = con.createStatement();
             String table = "SELECT Room_ID, Room_Name, Price FROM Room WHERE Type_ID = '" + Type_ID + "';";
@@ -66,7 +66,7 @@ public class Room {
             while(rs1.next()){
                 RoomID.add(rs1.getString("Room_ID"));
                 RoomName.add(rs1.getString("Room_Name"));
-                Price.add(rs1.getString("Price"));
+                Price.add(rs1.getFloat("Price"));
             }
         } catch (SQLException ex) {
         }
