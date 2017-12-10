@@ -100,7 +100,7 @@
             <div class="container">
                 <div class="row">
                     <div class="page-head-content">
-                        <h1 class="page-title">Submit new Co-working Space</h1>               
+                        <h1 class="page-title">PAYMENT</h1>               
                     </div>
                 </div>
             </div>
@@ -158,18 +158,7 @@
                             <td class="col-md-1 text-center"><%= request.getAttribute("Price")%></td>
                             <td class="col-md-1 text-center"><%= request.getAttribute("Price")%></td>
                         </tr>
-                        <tr>
-                            <td>   </td>
-                            <td>   </td>
-                            <td class="text-right">
-                            <p>
-                                <strong>Subtotal: </strong>
-                            </p></td>
-                            <td class="text-center">
-                            <p>
-                                <strong><%= request.getAttribute("Price")%></strong>
-                            </p></td>
-                        </tr>
+
                         <tr>
                             <td>   </td>
                             <td>   </td>
@@ -181,13 +170,91 @@
                         
                     </tbody>
                 </table>
+                <%--<button type='submit' class='btn btn-success btn-lg btn-block' name='pay'>
+                    Pay Now   <span class="glyphicon glyphicon-chevron-right"></span>
+                </button>--%>
+            </div>
+                            <div class="wizard-header">
+            <center><h3><b>CHOOSE</b> PAYMENT METHOD</h3></center><br>
+            <div>
+                
+                
+                
+                
+                
+                
+                
+            <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#credit">Credit Card</a></li>
+                <li><a data-toggle="tab" href="#bill">Bill Payment</a></li>
+            </ul>
+
+            <!--Step1-->
+            <div class="tab-content"><br>
+
+                <div id="credit" name="tab-content" class="tab-pane fade in active">
+                       <label for="contactChoice1"><b>Credit Card</b></label>
+                       <img src="assets/img/creditcard.png" alt="" class="wow pulse" data-wow-delay="1s"><br><br>
+                       <label>Card Number</label>
+                       <input type="input" class="form-control" placeholder="Valid Card Number" name="cardnum"/>
+                       <label>CVV</label>
+                       <input type="input" class="form-control" placeholder="CVV" name="cvv"/><br>                   
+                </div>
+            
+            <!--Step2-->
+
+                <div id="bill" name="tab-content" class="tab-pane fade">
+                       <label for="contactChoice2"><b>Bill Payment</b></label><br>
+                        <label>Take your barcode to a store and follow these steps:</label><br>
+                        <label>1. Tell the cashier you want to pay any amount</label><br>
+                        <label>2. Cashier enters payment amount and presses LOAD button</label><br>
+                        <label>3. Have cashier scan this barcode:</label><br>
+                        <center><img src="assets/img/barcode.png" alt="" width="450" height="47" class="wow pulse" data-wow-delay="1s"></center><br><br>
+                                  
+                </div>
+            </div>
                 <button type='submit' class='btn btn-success btn-lg btn-block' name='pay'>
                     Pay Now   <span class="glyphicon glyphicon-chevron-right"></span>
-                </button></td>
-            </div>
+                        </button>       
+                
+                
+        
+        
+        
+        
+        
+        
+       
+        
+
+
+        
+        
+        
+        
+        
+        
+        
+
         </div>
         </div>
         </div>
+        </div>
+        </div>
+        
+        
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
         </form>
 
         <!-- Footer area-->
@@ -234,7 +301,6 @@
             </div>
 
            
-
         </div>
          <!-- jQuery -->
         <script src="js/jquery.js"></script>
