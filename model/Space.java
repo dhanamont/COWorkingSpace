@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Time;
 import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -132,14 +133,14 @@ public class Space {
         }
     }
     
-    public void PropertiesBox(String Place, String Type_Name, float minPrice, float maxPrice) {
+    public void PropertiesBox(String Place, String Type_Name) {
         try {
             Statement stmt = con.createStatement();
             String getBox = "SELECT Space_ID, Space_Name, Picture_Poster, Type_ID, Price "
                     + "FROM `Space` "
                     + "JOIN Type_Space USING (Space_ID) "
                     + "JOIN Room USING (Type_ID) "
-                    + "WHERE Place = '"+Place+"' AND Type_Name= '"+Type_Name+"' AND (Price >= "+minPrice+" AND Price <= "+maxPrice+") "
+                    + "WHERE Place = '"+Place+"' AND Type_Name= '"+Type_Name+" "
                     + "GROUP BY Space_ID";
             ResultSet rs2 = stmt.executeQuery(getBox);
             while (rs2.next()) {
@@ -187,7 +188,7 @@ public class Space {
             rs2.next();
             Time startTime = new Time(df.parse(rs2.getString("Start_Time")).getTime());
             Time endTime = new Time(df.parse(rs2.getString("End_Time")).getTime());
-            for (int ctime = 0; ctime <= time.length; ctime++){
+            for (int ctime = 0; ctime < time.length; ctime++){
                 Time spaceTime = new Time(df.parse(time[ctime]).getTime());
                 if(spaceTime.after(startTime) && spaceTime.equals(startTime)){
                     if(spaceTime.before(endTime) && spaceTime.equals(endTime)){
