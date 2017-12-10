@@ -101,6 +101,7 @@ public class Space {
         try {
             Statement stmt = con.createStatement();
             String sql_ = "Select Space_Name from `Space` where Space_ID = '" + Space_ID + "'";
+
             ResultSet rs = stmt.executeQuery(sql_);
             rs.next();
             SpaceName = rs.getString("Space_Name");
@@ -114,20 +115,20 @@ public class Space {
         try {
             Statement stmt = con.createStatement();
             String SpaceDetail = "SELECT Space_Name, Start_Time, End_Time, "
-                    + "Picture_Cover, Picture_Poster, Description, Address, Place, Map"
+                    + "Picture_Cover, Picture_Poster, Description, Address, Place, Map "
                     + "FROM `Space` "
                     + "Where Space_ID = '" + Space_ID + "';";
             ResultSet rs2 = stmt.executeQuery(SpaceDetail);
             rs2.next();
             SpaceName = rs2.getString("Space_Name");
-            Place = rs2.getString("Place");
-            Start_Time = rs2.getString("Start_Time");
-            End_Time = rs2.getString("End_Time");
-            Address = rs2.getString("Address");
-            Map = rs2.getString("Map");
-            Description = rs2.getString("Description");
-            Picture_Cover = rs2.getString("Picture_Cover");
-            Picture_Poster = rs2.getString("Picture_Poster");
+            this.Place = rs2.getString("Place");
+            this.Start_Time = rs2.getString("Start_Time");
+            this.End_Time = rs2.getString("End_Time");
+            this.Address = rs2.getString("Address");
+            this.Map = rs2.getString("Map");
+            this.Description = rs2.getString("Description");
+            this.Picture_Cover = rs2.getString("Picture_Cover");
+            this.Picture_Poster = rs2.getString("Picture_Poster");
 
         } catch (SQLException ex) {
         }
@@ -138,7 +139,7 @@ public class Space {
             Statement stmt = con.createStatement();
             String getBox = "SELECT Space_ID, Space_Name, Picture_Poster, Type_ID, Price "
                     + "FROM `Space` "
-                    + "JOIN Type_Space USING (Space_ID) "
+                    + "JOIN Type_Space c (Space_ID) "
                     + "JOIN Room USING (Type_ID) "
                     + "WHERE Place = '"+Place+"' AND Type_Name= '"+Type_Name+" "
                     + "GROUP BY Space_ID";
@@ -169,10 +170,11 @@ public class Space {
             while(rs2.next()){
                 openDate.add(rs2.getString("OpenDate"));
             }
-            
+            System.out.println("Date: "+openDate);
+        return openDate;
         } catch (SQLException ex) {
         }
-        return openDate;
+        return null;
     }
     
     public void SpaceOpenTime(String Space_ID) throws ParseException {
@@ -182,21 +184,26 @@ public class Space {
                     + "FROM `Space` "
                     + "WHERE Space_ID = '" + Space_ID + "'";
             ResultSet rs2 = stmt.executeQuery(viewTime);
-            DateFormat df = new SimpleDateFormat("HH:mm");
-            String[] time = {"7:00","8:00","9:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00",
-            "17:00","18:00","19:00","20:00","21:00","22:00"};
+            
+            DateFormat df = new SimpleDateFormat("HH:mm:ss");
+            String[] time = {"7:00:00","8:00:00","9:00:00","10:00:00","11:00:00","12:00:00","13:00:00","14:00:00","15:00:00","16:00:00",
+            "17:00:00","18:00:00","19:00:00","20:00:00","21:00:00","22:00:00"};
             rs2.next();
             Time startTime = new Time(df.parse(rs2.getString("Start_Time")).getTime());
             Time endTime = new Time(df.parse(rs2.getString("End_Time")).getTime());
             for (int ctime = 0; ctime < time.length; ctime++){
                 Time spaceTime = new Time(df.parse(time[ctime]).getTime());
-                if(spaceTime.after(startTime) && spaceTime.equals(startTime)){
-                    if(spaceTime.before(endTime) && spaceTime.equals(endTime)){
+                //System.out.println("จากลิส "+spaceTime);
+                //System.out.println("เริ่ม "+startTime+" จบ "+endTime);
+                if(spaceTime.after(startTime) || spaceTime.equals(startTime)){
+                    //System.out.println("เข้า "+spaceTime);
+                    if(spaceTime.before(endTime) || spaceTime.equals(endTime)){
                         openTime.add(spaceTime.toString());
                     }
                 }
+                
             }
-            System.out.println(openTime);
+           //System.out.println("Time: "+openTime);
 
         } catch (SQLException ex) {
             System.out.println(ex);
