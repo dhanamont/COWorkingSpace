@@ -57,34 +57,19 @@ public class Room {
         }
     }
     
-    public ArrayList<String> getRoom_NameList(String Type_ID) {
-        try {
-            Statement stmt = con.createStatement();
-            String table = "SELECT Room_Name FROM Room WHERE Type_ID = '" + Type_ID + "';";
-            ResultSet rs1 = stmt.executeQuery(table);
-            while(rs1.next()){
-                Room_Name.add(rs1.getString("Room_Name"));
-            }
-            
-        return Room_Name;
-        } catch (SQLException ex) {
-        }
-        return null;
-    }
     
-    public ArrayList<String> getRoom_IDList(String Type_ID) {
+    public void getRoomList(ArrayList<String> RoomID, ArrayList<String> RoomName,ArrayList<String> Price, String Type_ID) {
         try {
             Statement stmt = con.createStatement();
-            String table = "SELECT Room_ID FROM Room WHERE Type_ID = '" + Type_ID + "';";
+            String table = "SELECT Room_ID, Room_Name, Price FROM Room WHERE Type_ID = '" + Type_ID + "';";
             ResultSet rs1 = stmt.executeQuery(table);
             while(rs1.next()){
                 RoomID.add(rs1.getString("Room_ID"));
+                RoomName.add(rs1.getString("Room_Name"));
+                Price.add(rs1.getString("Price"));
             }
-            
-        return RoomID;
         } catch (SQLException ex) {
         }
-        return null;
     }
     
     public void RoomDetail(String Type_ID){
@@ -100,7 +85,6 @@ public class Room {
         } catch (SQLException ex) {
         }
     }
-    
 
     public String getRoom_ID(String Type_ID) {
         RoomDetail(Type_ID);
