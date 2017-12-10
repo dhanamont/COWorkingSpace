@@ -78,7 +78,7 @@ public class SubmitPropertiesServlet extends HttpServlet {
 
 //            รับข้อมูล Type Space
             String Type_Name = request.getParameter("Type_name");
-            String NumofRoom = request.getParameter("NumberofRoom");
+            int NumofRoom = Integer.parseInt(request.getParameter("NumberofRoom"));
             String Prototype = request.getParameter("Prototype");
 
 //            รับข้อมูล Room
@@ -98,7 +98,7 @@ public class SubmitPropertiesServlet extends HttpServlet {
 
 //            ส่งค่าไป Java Class
             space.insertSpace(Space_ID, Space_Name, Address, Place, User_ID, Map, Description, Picture_cover, Picture_poster, Start_Date, End_Date, Start_Time, End_Time, OpenDate);
-            type_space.insertType_Space(Type_ID, Type_Name, NumofRoom, Prototype);
+            type_space.insertType_Space(Type_ID, Type_Name, NumofRoom, Prototype, Space_ID);
             room.insertRoom(Room_ID, Room_Name, NumofTable, Picture_room, Price);
             table.insertTable(Table_ID, NumofPeople);
 
