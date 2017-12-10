@@ -45,7 +45,7 @@ public class Type_Space {
     public void insertType_Space(String Type_ID, String Type_Name, int NumofRoom, String Prototype, String Space_ID) {
         try {
             Statement stmt = con.createStatement();
-            String sql = "Insert into Type_ID values('" + Type_ID + "', '" + Type_Name + "', '" 
+            String sql = "Insert into Type_Space values('" + Type_ID + "', '" + Type_Name + "', '" 
                     + NumofRoom + "', '" + Prototype + ", " + Space_ID +"';";
             stmt.executeUpdate(sql);
         } catch (SQLException ex) {
