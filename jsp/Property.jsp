@@ -292,7 +292,7 @@
 
 
 
-                            <!-- .property-meta -->
+                             <!-- .property-meta -->
 
                             <div class="section">
                                 <h4 class="s-property-title">Description</h4>
@@ -301,81 +301,71 @@
                                 </div>
                             </div>
                             <div>
-                                 <table id="allre1-dt" class="table table-striped" cellspacing="0" width="100%">
-                        <thead>
-                            <tr>
-                                <th>Room Name</th>
-                                <th>Price</th>
-                                <th></th>
+                                <table id="allre1-dt" class="table table-striped" cellspacing="0" width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th>Room Name</th>
+                                            <th>Price</th>
+                                            <th></th>
 
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <c:forEach var="room" items="${requestScope.Room_Name}" varStatus="loop" >
-                                <tr>
-                                    <td>${requestScope.Room_Name[loop.index]}</td>
-                                    <td>${requestScope.Price[loop.index]}</td>                               
-                                </tr>
-                            </c:forEach>
-                        </tbody>
-                    </table>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <c:forEach var="rname" items="${requestScope.Room_Name}" varStatus="loop1" >
+                                            <tr>
+                                                <td>${rname}</td>
+                                                <td>${requestScope.Price[loop1.index]}</td>                               
+                                            </tr>
+                                        </c:forEach>
+                                    </tbody>
+                                </table>
                             </div>
                             <!-- End description area  -->
 
                             <div class="section additional-details">
 
-                                <h4 class="s-property-title">Additional Details</h4>
+                                <h4 class="s-property-title">Service Details</h4>
 
                                 <ul class="additional-details-list clearfix">
                                     <li>
-                                        <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Waterfront</span>
-                                        <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">Yes</span>
-                                    </li>
+                                        <table id="allre1-dt" class="table table-striped" cellspacing="0" width="100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>Service Name</th>                            
+                                                    <th></th>
 
-                                    <li>
-                                        <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Built In</span>
-                                        <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">2003</span>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <c:forEach var="sname" items="${requestScope.Service_Name}" >
+                                                    <tr>
+                                                        <td>${sname}</td>
+                                
+                                                    </tr>
+                                                </c:forEach>
+                                            </tbody>
+                                        </table>
                                     </li>
-                                    <li>
-                                        <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Parking</span>
-                                        <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">2 Or More Spaces,Covered Parking,Valet Parking</span>
-                                    </li>
-
-                                    <li>
-                                        <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Waterfront</span>
-                                        <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">Yes</span>
-                                    </li>
-
-                                    <li>
-                                        <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">View</span>
-                                        <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">Intracoastal View,Direct ew</span>
-                                    </li>
-
-                                    <li>
-                                        <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Waterfront Description:</span>
-                                        <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">Intracoastal Front,Ocean Access</span>
-                                    </li> 
-
                                 </ul>
                             </div>  
                             <!-- End additional-details area  -->
 
 
 
-
+                            <!------------------------map----------------------->
                             <div class="section propertmap"> 
                                 <h4 class="s-property-title"><i class="fa fa-map-marker">Maps</i></h4> 
                                 <div>
                                     <%= request.getAttribute("Map")%>
                                 </div>
                             </div>
-                            <!-- End video area  -->
+                            <!-- End map area  -->
                         </div>
                     </div>
 
                     <div class="col-md-4 p0">
                         <aside class="sidebar sidebar-property blog-asside-right">
-                            <!------------------------ข้อมูลผู้ประกอบการ--->
+                            <!------------------------ข้อมูลผู้ประกอบการ------------------------>
                             <div class="dealer-widget">
                                 <div class="dealer-content">
                                     <div class="inner-wrapper">
@@ -441,28 +431,19 @@
                                                     <div class="col-xs-6">
 
                                                         <select id="TableID" name="table" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Select Your Table">
-                                                            <option> -Table- </option>
-                                                            <!--ดึงข้อมูลมาใส่ในdropdown ต้องใช้ ArrayList-->
-                                                            <c:forEach items="${TableList}" var="table">
-                                                                <option value="${[table.index]}">${[table.index]}</option>
-                                                            </c:forEach>
+                                                            <option> -Table_ID- </option>
+                                                            <!--ดึงข้อมูลมาใส่ในdropdown-------------------------------------------------->
 
-                                                            <%--<c:forEach items="${databaseList}" var="databaseValue">
-                                                                <option value="${databaseValue}">
-                                                                    ${databaseValue}
-                                                                </option>
-                                                            </c:forEach>--%>
-                                                            <%-- <select name="s1">
-                                                                <c:forEach items="${listOfValues}" var="actualbean">
-                                                                    <option value="${actualbean.value}"><c:out value="${actualbean.value}"/></option>
-                                                            </c:forEach>--%>
-                                                            <%--ArrayList databaseArrayList = new ArrayList();...
-                                                               request.setAttribute("databaseList", databaseArrayList); --%>
+                                                            <c:forEach items="${requestScope.Table_ID}" var="table">
+                                                                <option value="${[table.index]}">${[table.index]}></option>
+                                                            </c:forEach>
+                                                            <!------------------------------------------------------------------------>
                                                         </select>
 
                                                     </div>
+                                                    <!----------------Calendar------------------------------------------------>
                                                     <div class="col-xs-6">
-                                                        <input id="datepicker" name="Date" type="text"/>
+                                                        <input id="datepicker" name="Date" type="text" placeholder="Select your Date"/>
                                                         <script>
                                                             $('#datepicker').datepicker({
                                                                 format: 'yyyy-mm-dd',
@@ -470,7 +451,7 @@
                                                             });
                                                         </script> 
                                                     </div>
-
+                                                    <!------------------------------------------------------------------------>
                                                 </div>
                                             </fieldset>
 
@@ -481,21 +462,22 @@
                                                     <div class="col-xs-6">
 
                                                         <select id="Start Time" name="Start_Time" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Select Your Start Time">
-                                                            <option> -Start Time- </option>
-                                                            <c:forEach items="${TimeList}" var="Stime">
-                                                                <option value="${[time.index]}">${[time.index]}></option>
+                                                            <!--ดึงข้อมูลมาใส่ในdropdown------------------------------------------------------->
+                                                            <c:forEach items="${requestScope.Start_Time}" var="Stime">
+                                                                <option value="${requestScope.Stime}">${requestScope.Stime}></option>
                                                             </c:forEach>
-
+                                                            <!------------------------------------------------------------------------>
                                                         </select>
                                                     </div>
                                                     <div class="col-xs-6">
 
                                                         <select id="End_Time" name="End_Time" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Select Your Time">
-                                                            <option> -End Time- </option>
-                                                            <c:forEach items="${TimeList}" var="Etime">
-                                                                <option value="${[time.index]}">${[time.index]}></option>
-                                                            </c:forEach>
 
+                                                            <!--ดึงข้อมูลมาใส่ในdropdown--------------------------------------------------->
+                                                            <c:forEach items="${requestScope.End_Time}" var="Etime">
+                                                                <option value="${requestScope.Etime}">${requestScope.Etime}></option>
+                                                            </c:forEach>
+                                                            <!------------------------------------------------------------------------>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -522,7 +504,6 @@
             </div>
 
         </div>
-
 
         <!-- Footer area-->
         <div class="footer-area">
