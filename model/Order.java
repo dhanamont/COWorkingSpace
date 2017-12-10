@@ -36,6 +36,10 @@ public class Order {
                 "chFKW9lGV");
     }
     private String Order_ID;
+    private String Order_Date;
+    private String Start_Time;
+    private String End_Time;
+    private String Order_Status;
 
     public void createOrder_ID() {
         try {
@@ -96,41 +100,49 @@ public class Order {
     }
 
 
-    public void showAllOrder(String Space_ID, ArrayList<String> User_ID, ArrayList<String> Order_ID, ArrayList<String> Order_Status, ArrayList<String> Order_Datetime, ArrayList<String> Total_Price) {
-        try {
-            Statement stmt = con.createStatement();
-            String sh = "SELECT DISTINCT User.User_ID, r.User_ID , Order_ID, Order_Datetime, Order_Status, Total_Price, Concert_ID, Concert_Name "
-                    + "FROM User "
-                    + "JOIN Order r USING (User_ID) "
-                    + "JOIN Table USING (Table_ID) "
-                    + "JOIN Room USING (Room_ID) "
-                    + "JOIN Type_space USING (Type_ID) "
-                    + "JOIN Space USING (Space_ID) "
-                    + "WHERE (User.User_ID = r.User_ID ) and (Space_ID = '" + Space_ID + "');";
-            ResultSet cn = stmt.executeQuery(sh);
-
-            while (cn.next()) {
-                Space_Name = cn.getString("Space_Name");
-                SpaceID = cn.getString("Space_ID");
-                Order_ID.add(cn.getString("Order_ID"));
-                User_ID.add(cn.getString("User_ID"));
-                Order_Datetime.add(cn.getString("Order_Datetime"));
-                Order_Status.add(cn.getString("Order_Status"));
-                Total_Price.add(cn.getString("Total_Price"));
-            }
-
-        } catch (SQLException ex) {
-        }
-    }
-
-    public String getSpaceID() {
-        return SpaceID;
-    }
-
-    public String getSpace_Name() {
-        return Space_Name;
-    }
-
+//    public void showAllOrder(String userID, ArrayList<String> User_ID, ArrayList<String> Order_ID, ArrayList<String> Order_Status, ArrayList<String> Order_Datetime, ArrayList<String> Total_Price) {
+//        try {
+//            Statement stmt = con.createStatement();
+//            String sh = "Select Order_Date, Start_Time, End_Time, Order_Status from Ordering where User_ID = '" + userID + "' ";
+//            ResultSet cn = stmt.executeQuery(sh);
+//            
+//            while (cn.next()) {
+//                Space_Name = cn.getString("Space_Name");
+//                SpaceID = cn.getString("Space_ID");
+//                Order_ID.add(cn.getString("Order_ID"));
+//                User_ID.add(cn.getString("User_ID"));
+//                Order_Datetime.add(cn.getString("Order_Datetime"));
+//                Order_Status.add(cn.getString("Order_Status"));
+//                
+//            }
+//
+//        } catch (SQLException ex) {
+//        }
+//    }
+//
+//    public String getSpaceID() {
+//        return SpaceID;
+//    }
+//
+//    public String getSpace_Name() {
+//        return Space_Name;
+//    }
+//    
+//    public String getOrder_Date(){
+//        return Order_Date;
+//    }
+//    
+//    public String getStart_Time(){
+//        return Start_Time;
+//    }
+//    
+//    public String getEnd_Time(){
+//        return End_Time;
+//    }
+//    
+//    public String getOrder_Status(){
+//        return Order_Status;
+//    }
 
     public void UpdateStatusPAID(String Order_ID) {
         try {
@@ -141,6 +153,16 @@ public class Order {
         } catch (SQLException ex) {
         }
     }
+    public void UpdateStatusCancel(String Order_ID) {
+        try {
+            Statement stmt = con.createStatement();
+            String sqls = "Update Ordering SET Order_Status = 'CANCEL' WHERE Order_ID = '" + Order_ID + "'";
+            stmt.executeUpdate(sqls);
+
+        } catch (SQLException ex) {
+        }
+    }
+    
     
     //*-- test check table avaliable
     public String checkTable(Time Start_Time,Time End_Time, Date Order_Date, String Table_ID) throws SQLException, ClassNotFoundException{
@@ -193,6 +215,22 @@ public class Order {
         }
         return check;
     }
+    
+//    public void getHistory(String userID) {
+//        try {
+//            Statement stmt = con.createStatement();
+//            String sql = "Select Order_Date, Start_Time, End_Time, Order_Status from Ordering where User_ID = '" + userID + "' ";
+//            ResultSet rs = stmt.executeQuery(sql);
+//            rs.next();
+//            Order_Date = rs.getString("Order_Date");
+//            Start_Time = rs.getString("Start_Time");
+//            End_Time = rs.getString("End_Time");
+//            Order_Status = rs.getString("Order_Status");
+//        } catch (SQLException ex) {
+//            
+//        }
+//    }
+//    
    
 }
 
