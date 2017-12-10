@@ -38,9 +38,10 @@ public class Table {
             numSpa1.next();
             Table_ID = numSpa1.getString("count(Table_ID)+1");
 
+        return Table_ID;
         } catch (SQLException ex) {
         }
-        return Table_ID;
+        return null;
     }
     
     public void insertTable(String TableID, int NumofPeople, String Room_ID) {
@@ -60,8 +61,9 @@ public class Table {
             while (rs1.next()){
                 tableID.add(rs1.getString("Type_ID"));
             }
+            return tableID;
         } catch (SQLException ex) {
         }
-        return tableID;
+        return null;
     }
 }
