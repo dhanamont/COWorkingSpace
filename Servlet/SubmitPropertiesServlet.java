@@ -7,8 +7,11 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,7 +19,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Space;
 import model.Date;
-import model.Time;
 import model.Type_Space;
 import model.Room;
 import model.Table;
@@ -37,78 +39,78 @@ public class SubmitPropertiesServlet extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
+     * @throws java.lang.ClassNotFoundException
+     * @throws java.sql.SQLException
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, ClassNotFoundException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
 
 //            สร้าง String
-            String space_ID;
-            String date_ID;
-            String time_ID;
-            String type_ID;
-            String room_ID;
-            String table_ID;
-            String service_ID;
+            String Space_ID;
+            String Type_ID;
+            String Room_ID;
+            String Table_ID;
 
 //            สร้าง Object
             Space space = new Space();
             Date date = new Date();
-            Time time = new Time();
             Type_Space type_space = new Type_Space();
             Room room = new Room();
             Table table = new Table();
             Service service = new Service();
 
 //            รับรายละเอียดผู้ประกอบการ
-            String space_Name = request.getParameter("Space_Name");
-            String address = request.getParameter("Address");
-            String place = request.getParameter("Place");
-            String pic_poster = request.getParameter("Picture_poster");
-            String pic_cover = request.getParameter("Picture_cover");
-            String start_time = request.getParameter("Start_Time");
-            String end_time = request.getParameter("End_Time");
-            String map = request.getParameter("Map");
-            String description = request.getParameter("Description");
+            String Space_Name = request.getParameter("Space_Name");
+            String Address = request.getParameter("Address");
+            String Place = request.getParameter("Place");
+            String User_ID = request.getParameter("User_ID");
+            String Map = request.getParameter("Map");
+            String Description = request.getParameter("Description");
+            String Picture_poster = request.getParameter("Picture_poster");
+            String Picture_cover = request.getParameter("Picture_cover");
+            String Start_Date = request.getParameter("Start_Date");
+            String End_Date = request.getParameter("End_Date");
+            String Start_Time = request.getParameter("Start_Time");
+            String End_Time = request.getParameter("End_Time");
+            String OpenDate = request.getParameter("OpenDate");
 
 //            รับข้อมูล Type Space
-            String type_name = request.getParameter("Type_name");
-            String num_Room = request.getParameter("NumberofRoom");
-            String prototype = request.getParameter("Prototype");
+            String Type_Name = request.getParameter("Type_name");
+            String NumofRoom = request.getParameter("NumberofRoom");
+            String Prototype = request.getParameter("Prototype");
 
 //            รับข้อมูล Room
-            String price = request.getParameter("Price");
-            String room_Name = request.getParameter("Room_Name");
-            String num_Table = request.getParameter("NumberofTable");
-            String pic_room = request.getParameter("Picture_room");
-
+            String Room_Name = request.getParameter("Room_Name");
+            String NumofTable = request.getParameter("NumberofTable");
+            String Picture_room = request.getParameter("Picture_room");
+            String Price = request.getParameter("Price");
+            
 //            รับข้อมูล Table
-            String num_People = request.getParameter("NumofPeople");
+            String NumofPeople = request.getParameter("NumofPeople");
 
 //            สร้าง ID จาก Java Class
-            space_ID = space.createSpace_ID();
-            date_ID = date.createDate_ID();
-            time_ID = time.createTime_ID();
-            type_ID = type_space.createType_ID();
-            room_ID = room.createRoom_ID();
-            table_ID = table.createTable_ID();
+            Space_ID = space.createSpace_ID();
+            Type_ID = type_space.createType_ID();
+            Room_ID = room.createRoom_ID();
+            Table_ID = table.createTable_ID();
 
 //            ส่งค่าไป Java Class
-            space.insertSpace(space_ID, space_Name, address, place, pic_poster, pic_cover, start_time, end_time, map, description);
-            type_space.insertType_Space(type_ID, type_name, num_Room, prototype);
-            room.insertRoom(room_ID, price, room_Name, num_Table, pic_room);
-            table.insertTable(table_ID, num_People);
-            
-            String[] open = request.getParameterValues("Open_Date");
-            List<String> openDateList = Arrays.asList(open);
-            for (int i = 0; i <= openDateList.size(); i++) {
-                String OpenDate = openDateList.get(i);
+            space.insertSpace(Space_ID, Space_Name, Address, Place, User_ID, Map, Description, Picture_cover, Picture_poster, Start_Date, End_Date, Start_Time, End_Time, OpenDate);
+            type_space.insertType_Space(Type_ID, Type_Name, NumofRoom, Prototype);
+            room.insertRoom(Room_ID, Room_Name, NumofTable, Picture_room, Price);
+            table.insertTable(Table_ID, NumofPeople);
+
+            String[] Open_in = request.getParameterValues("Open_Date");
+            List<String> Open_inList = Arrays.asList(Open_in);
+            for (int i = 0; i <= Open_inList.size(); i++) {
+                String OpenDateList = Open_inList.get(i);
                 String Date_ID = date.createDateID();
-                date.insertDate(Date_ID, OpenDate);
+                date.insertDate(Date_ID, OpenDateList);
             }
-            
-            String [] service_Name = request.getParameterValues("Service_Name");
+
+            String[] service_Name = request.getParameterValues("Service_Name");
             List<String> serviceList = Arrays.asList(service_Name);
             for (int j = 0; j <= serviceList.size(); j++) {
                 String Service_Name = serviceList.get(j);
@@ -132,7 +134,11 @@ public class SubmitPropertiesServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(SubmitPropertiesServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -146,7 +152,11 @@ public class SubmitPropertiesServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(SubmitPropertiesServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
