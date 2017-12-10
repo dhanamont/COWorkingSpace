@@ -83,12 +83,12 @@ public class SubmitPropertiesServlet extends HttpServlet {
 
 //            รับข้อมูล Room
             String Room_Name = request.getParameter("Room_Name");
-            String NumofTable = request.getParameter("NumberofTable");
+            int NumofTable = Integer.parseInt(request.getParameter("NumberofTable"));
             String Picture_room = request.getParameter("Picture_room");
             String Price = request.getParameter("Price");
             
 //            รับข้อมูล Table
-            String NumofPeople = request.getParameter("NumofPeople");
+            int NumofPeople = Integer.parseInt(request.getParameter("NumofPeople"));
 
 //            สร้าง ID จาก Java Class
             Space_ID = space.createSpace_ID();
@@ -100,7 +100,7 @@ public class SubmitPropertiesServlet extends HttpServlet {
             space.insertSpace(Space_ID, Space_Name, Address, Place, User_ID, Map, Description, Picture_cover, Picture_poster, Start_Date, End_Date, Start_Time, End_Time, OpenDate);
             type_space.insertType_Space(Type_ID, Type_Name, NumofRoom, Prototype, Space_ID);
             room.insertRoom(Room_ID, Room_Name, NumofTable, Picture_room, Price);
-            table.insertTable(Table_ID, NumofPeople);
+            table.insertTable(Table_ID, NumofPeople, Room_ID);
 
             String[] Open_in = request.getParameterValues("Open_Date");
             List<String> Open_inList = Arrays.asList(Open_in);
