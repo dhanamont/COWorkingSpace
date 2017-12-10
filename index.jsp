@@ -249,90 +249,30 @@
                         <p>Unlike in a typical office environment, those coworking are usually not employed by the same organization.</p>
                         <div class="search-form wow pulse" data-wow-delay="0.8s">
 
-                            <form action="" class=" form-inline">
-                                <button class="btn  toggle-btn" type="button"><i class="fa fa-bars"></i></button>
+                            <form name = "PropertiesServlet" action="PropertiesServlet" class=" form-inline" method="POST">
+                                <!--button class="btn  toggle-btn" type="button"><i class="fa fa-bars"></i></button-->
 
                                 <div class="form-group">
                                     <!--<select id="lunchBegins" class="selectpicker show-tick form-control" data-live-search="false" data-live-search-style="begins" title="Select your city">-->
-                                    <select id="basic" class="selectpicker show-tick form-control">
-                                        <option> -Location- </option>
-                                        <option>Siam</option>
-                                        <option>Silom</option>
-                                        <option>Asok</option>
+                                    <select name="Place" id="basic" class="selectpicker show-tick form-control">
+                                        <option> -Place- </option>
+                                        <option value="Siam">Siam</option>
+                                        <option value="Silom">Silom</option>
+                                        <option value="Asok">Asok</option>
                                       
                                     </select>
                                 </div>
                                 <div class="form-group">                                     
-                                    <select id="basic" class="selectpicker show-tick form-control">
+                                    <select name="TypeSpace" id="basic" class="selectpicker show-tick form-control">
                                         <option> -Type Space- </option>
-                                        <option>Common Room</option>
-                                        <option>Meeting Room</option>
-                                        <option>Private Office</option>
+                                        <option value="CommonRoom">Common Room</option>
+                                        <option value="MeetingRoom">Meeting Room</option>
+                                        <option value="PrivateOffice">Private Office</option>
                                     </select>
                                 </div>
                                 <button class="btn search-btn" type="submit"><i class="fa fa-search"></i></button>
 
-                                <div style="display: none;" class="search-toggle">
-
-                                    <div class="search-row">   
-
-                                        <div class="form-group mar-r-20">
-                                            <label for="price-range">Price range (Baht):</label>
-                                            <input type="text" class="span2" value="" data-slider-min="50" 
-                                                   data-slider-max="1000" data-slider-step="5" 
-                                                   data-slider-value="[50,1000]" id="price-range" ><br />
-                                            <b class="pull-left color">50 Baht</b> 
-                                            <b class="pull-right color">1000 Baht</b>
-                                        </div>
-                                        <!-- End of  -->  
-
-                                        <div class="form-group mar-l-20">
-                                            <label for="property-geo">Person :</label>
-                                            <input type="text" class="span2" value="" data-slider-min="1" 
-                                                   data-slider-max="10" data-slider-step="1" 
-                                                   data-slider-value="[1,10]" id="property-geo" ><br />
-                                            <b class="pull-left color">1 person</b> 
-                                            <b class="pull-right color">10 person</b>
-                                        </div>
-                                        <!-- End of  --> 
-                                    </div>
-                                    <br>
-                                    <!-- Start option service -->
-                                    <div class="search-row">  
-                                        <div class="form-group">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox"> Cafe
-                                                </label>
-                                            </div>
-                                        </div>     
-                                        <div class="form-group">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox"> Wi-fi
-                                                </label>
-                                            </div>
-                                        </div>  
-                                        <div class="form-group">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox"> Parking lot
-                                                </label>
-                                            </div>
-                                        </div>  
-                                        <div class="form-group">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox"> Photocopier
-                                                </label>
-                                            </div>
-                                        </div>  
-                                        <br>
-                                        <hr>
-                                    </div>
-                                    <!-- End option service -->                                
-                                    <button class="btn search-btn prop-btm-sheaerch" type="submit"><i class="fa fa-search"></i></button>  
-                                </div>                    
+                                       
                             </form>                            
                         </div>
                     </div>
