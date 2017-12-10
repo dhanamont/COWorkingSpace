@@ -7,7 +7,11 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,8 +19,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.Space;
-import model.Room;
-import model.Table;
+//import model.Room;
+//import model.Table;
 
 /**
  *
@@ -46,36 +50,38 @@ public class Property_Servlet extends HttpServlet {
 
             String Type_ID = request.getParameter("Type_ID");
             request.setAttribute("Type_ID", Type_ID);
-            
-            Room room = new Room();
-            Space space = new Space();
-            Table table = new Table();
 
-            String Room_ID = room.getRoomID();
-            
-            ArrayList<String> Price = room.getPrice(Type_ID);
-            ArrayList<String> Room_Name = room.getRoomName(Type_ID);
+            //Room room = new Room();
+            Space space = new Space();
+            //Table table = new Table();
+
+            //String Room_ID = room.getRoomID();
+
+            //ArrayList<String> Price = room.getPrice(Type_ID);
+            //ArrayList<String> Room_Name = room.getRoomName(Type_ID);
 
             ArrayList<String> openDate = space.getOpenDate(Space_ID);
             ArrayList<String> openTime = space.getOpenTime(Space_ID);
-            
-            ArrayList<String> Table_ID = space.getTableID(Room_ID);
 
-            request.setAttribute("Space_Name", space.getSpaceName(Space_ID));
+            //ArrayList<String> Table_ID = table.getTableID(Room_ID);
+
+            request.setAttribute("Space_Name", space.getSpace_Name(Space_ID));
             request.setAttribute("Address", space.getAddress(Space_ID));
             request.setAttribute("Place", space.getPlace(Space_ID));
-            request.setAttribute("Picture_poster", space.getPicturePoster(Space_ID));
-            request.setAttribute("Picture_cover", space.getPictureCover(Space_ID));
-            request.setAttribute("Start_Time", space.getStartTime(Space_ID));
-            request.setAttribute("End_Time", space.getEndTime(Space_ID));
+            request.setAttribute("Picture_poster", space.getPicture_Poster(Space_ID));
+            request.setAttribute("Picture_cover", space.getPicture_Cover(Space_ID));
+            request.setAttribute("Start_Time", space.getStart_Time(Space_ID));
+            request.setAttribute("End_Time", space.getEnd_Time(Space_ID));
             request.setAttribute("Description", space.getDescription(Space_ID));
             request.setAttribute("Date", openDate);
             request.setAttribute("Time", openTime);
-            request.setAttribute("Price", Price);
-            request.setAttribute("Room_Name", Room_Name);
-            request.setAttribute("Table_ID", Table_ID);
+//            request.setAttribute("Price", Price);
+//            request.setAttribute("Room_Name", Room_Name);
+//            request.setAttribute("Table_ID", Table_ID);
 
             request.getRequestDispatcher("Property.jsp").forward(request, response);
+        } catch (SQLException | ClassNotFoundException | ParseException ex) {
+            Logger.getLogger(Property_Servlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
