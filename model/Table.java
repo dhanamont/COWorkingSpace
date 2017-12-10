@@ -28,7 +28,6 @@ public class Table {
     }
     
     private String Table_ID;
-    private ArrayList<String> tableID = new ArrayList<String>();
     
     public String createTable_ID() {
         try {
@@ -53,17 +52,16 @@ public class Table {
         }
     }
     
-    public ArrayList<String> getTable_ID(String Room_ID) {
+    public void getTable_ID(ArrayList<String> TableID, String Room_ID) {
         try {
             Statement stmt = con.createStatement();
             String table = "SELECT Table_ID FROM `Table` WHERE Room_ID = '" + Room_ID + "';";
             ResultSet rs1 = stmt.executeQuery(table);
             while (rs1.next()){
-                tableID.add(rs1.getString("Type_ID"));
+                TableID.add(rs1.getString("Type_ID"));
             }
-            return tableID;
         } catch (SQLException ex) {
         }
-        return null;
+        
     }
 }
