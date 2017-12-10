@@ -10,6 +10,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 /**
  *
@@ -26,7 +27,8 @@ public class Table {
                 "chFKW9lGV");
     }
     
-    String Table_ID;
+    private String Table_ID;
+    private ArrayList<String> tableID = new ArrayList<String>();
     
     public String createTable_ID() {
         try {
@@ -50,15 +52,15 @@ public class Table {
         }
     }
     
-    public String getTable_ID(String Room_ID) {
+    public ArrayList<String> getTable_ID(String Room_ID) {
         try {
             Statement stmt = con.createStatement();
-            String table = "SELECT Table_ID FROM `Table` JOIN Room_ID) = '" + Room_ID + "';";
+            String table = "SELECT Table_ID FROM `Table` WHERE Room_ID = '" + Room_ID + "';";
             ResultSet rs1 = stmt.executeQuery(table);
             rs1.next();
             Table_ID = rs1.getString("Type_ID");
         } catch (SQLException ex) {
         }
-        return Table_ID;
+        return tableID;
     }
 }
