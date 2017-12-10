@@ -48,16 +48,17 @@ public class Space {
     private ArrayList<String> openDate = new ArrayList<String>();
     private ArrayList<String> openTime = new ArrayList<String>();
 
-    public void createSpace_ID() {
+    public String createSpace_ID() {
         try {
             Statement stmt = con.createStatement();
             String numSpa = "SELECT COUNT(Space_ID)+1 from Space";
             ResultSet numSpa1 = stmt.executeQuery(numSpa);
             numSpa1.next();
-            String numSpace = numSpa1.getString("count(Space_ID)+1");
+            String Space_ID = numSpa1.getString("count(Space_ID)+1");
 
         } catch (SQLException ex) {
         }
+        return Space_ID;
     }
 
     
