@@ -204,7 +204,10 @@
             <!--Step2-->
 
                 <div id="bill" name="tab-content" class="tab-pane fade">
-                       <label for="contactChoice2"><b>Bill Payment</b></label><br>
+                        <label for="contactChoice2"><b>Bill Payment</b></label>&nbsp;
+                        <a class="printer-icon " href="javascript:window.print()">
+                            <i class="fa fa-print"></i> 
+                        </a><br>
                         <label>Take your barcode to a store and follow these steps:</label><br>
                         <label>1. Tell the cashier you want to pay any amount</label><br>
                         <label>2. Cashier enters payment amount and presses LOAD button</label><br>
@@ -216,45 +219,12 @@
                 <button type='submit' class='btn btn-success btn-lg btn-block' name='pay'>
                     Pay Now   <span class="glyphicon glyphicon-chevron-right"></span>
                         </button>       
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
                 
-                
-        
-        
-        
-        
-        
-        
-       
-        
-
-
-        
-        
-        
-        
-        
-        
-        
-
-        </div>
-        </div>
-        </div>
-        </div>
-        </div>
-        
-        
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
         </form>
 
         <!-- Footer area-->
@@ -268,40 +238,21 @@
                             <div class="single-footer">
                                 <h4>About us </h4>
                                 <div class="footer-title-line"></div>
-
                                 <img src="assets/img/footer-logo.png" alt="" class="wow pulse" data-wow-delay="1s">
-                                <p>Lorem ipsum dolor cum necessitatibus su quisquam molestias. Vel unde, blanditiis.</p>
                                 <ul class="footer-adress">
-                                    <li><i class="pe-7s-map-marker strong"> </i> 9089 your adress her</li>
-                                    <li><i class="pe-7s-mail strong"> </i> email@yourcompany.com</li>
-                                    <li><i class="pe-7s-call strong"> </i> +1 908 967 5906</li>
+                                    <li><i class="pe-7s-map-marker strong"> </i> 3 Thanon Chalong Krung Lat Krabang, BKK 10520 </li>
+                                    <li><i class="pe-7s-call strong"> </i> Phone: (02) 329 8000</li>
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-md-3 col-sm-6 wow fadeInRight animated">
-                            <div class="single-footer">
-                                <h4>Quick links </h4>
-                                <div class="footer-title-line"></div>
-                                <ul class="footer-menu">
-                                    <li><a href="properties.html">Properties</a>  </li> 
-                                    <li><a href="#">Services</a>  </li> 
-                                    <li><a href="submit-property.html">Submit Co-working </a></li> 
-                                    <li><a href="contact.html">Contact us</a></li> 
-                                    <li><a href="faq.html">fqa</a>  </li> 
-                                    <li><a href="faq.html">Terms </a>  </li> 
-                                </ul>
-                            </div>
-                        </div>
+
                        
                             </div>
                         </div>
 
                     </div>
                 </div>
-            </div>
 
-           
-        </div>
          <!-- jQuery -->
         <script src="js/jquery.js"></script>
 
