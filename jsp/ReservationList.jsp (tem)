@@ -137,6 +137,7 @@
                         <th><center>Name</center></th>
                         <th><center>Type Name</center></th>
                         <th><center>Order Status</center></th>
+                        <th><center>View Detail</center></th>
                     </tr>
                 </thead>
                 <c:forEach var="row" items="${orderList.rows}">
@@ -146,7 +147,8 @@
                         
                         <td><c:out value="${row.Name}"/></td>
                         <td><c:out value="${row.Type_Name}"/></td>
-                        <td><c:out value="${row.Order_Status}"/></td> 
+                        <td><c:out value="${row.Order_Status}"/></td>
+                        <td><input type="image" src="submit.gif" alt="Submit"></td> 
                         </c:forEach>
                     </tr>                                                                   
                 </tbody>
