@@ -4,6 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
+
 <html class="no-js"> <!--<![endif]-->
     <head>
         <meta charset="utf-8">
@@ -43,11 +44,12 @@
         </div>
         <!-- Body content -->
         <!-- DataSource Connect -->
-        <sql:setDataSource var="it58070122_se" driver="com.mysql.jdbc.Driver" 
-                           url="jdbc:mysql://ihost.it.kmitl.ac.th:3306/it58070122_se" 
-                           user="it58070122_se" password="chFKW9IGV"/>
+        <sql:setDataSource var="it58070122_se" driver="com.mysql.jdbc.Driver"
+                           url="jdbc:mysql://ihost.it.kmitl.ac.th:3306/it58070122_se"
+                           user="it58070122_se" password="chFKW9lGV"/>
 
         <% String Role_ID = (String) session.getAttribute("Role_ID");%>
+        <% String User_ID = (String) session.getAttribute("User_ID");%>
         <% String Username = (String) session.getAttribute("Username");%>
         <% String id = (String) session.getAttribute("Space_ID");%>
 
@@ -239,11 +241,11 @@
                                             <div class="col-xs-9">
 
 
-                                                <select id="lunchBegins" name="Location" class="selectpicker show-tick form-control">
+                                                <select id="lunchBegins" name="Place" class="selectpicker show-tick form-control">
                                                     <option>-Location-</option>
                                                     <!--ดึงข้อมูลมาใส่ในdropdown------------------------------------------------------->
-                                                    <c:forEach items="${requestScope.Location}" var="location">
-                                                        <option value="${requestScope.location}">${requestScope.location}></option>
+                                                    <c:forEach items="${requestScope.Location}" var="place">
+                                                        <option value="${requestScope.place}">${requestScope.place}></option>
                                                     </c:forEach>
                                                     <!------------------------------------------------------------------------>
                                                 </select><br><br>
@@ -296,6 +298,13 @@
                     <!-------------------------------------------End Smart search----------------------------------------------------------------------------------------> 
 
                     <!-------------------------------------Loop all space----------------------------------------->
+       <sql:query var="loop" dataSource="${it58070122_se}">
+            SELECT s.Space_Name, s.Place, s.Picture_poster, s.Space_ID
+            From `User` u
+            JOIN `Space` s USING (User_ID)
+            WHERE u.User_ID = ? ;
+            <sql:param value="${User_ID}"/>
+        </sql:query>
 
                     <div class="col-md-9  pr0 padding-top-40 properties-page">
                         
@@ -307,19 +316,20 @@
                             <div id="list-type" class="proerty-th">
 
                                 <div class="col-sm-6 col-md-4 p0">
-                                    <%--<c:forEach var="space" items="${requestScope.Space}">--%>
+                                    
+                                    <c:forEach var="row" items="${loop.rows}">
                                     <div class="box-two proerty-item">
-                                        <div class="item-thumb">
-                                            <a><img src="${space.Picture_poster}"></a>
+                                        <div>
+                                            <a><img src="${row.Picture_poster}"></a>
                                         </div>
 
-                                        <div class="item-entry overflow">
-                                            <h5><a href="Property?id=${space.Space_ID}">${space.Space_Name}</a></h5>
-                                            <h5>${space.Place}</h5>
+                                        <div>
+                                            <h5><a href="Property_Servlet?id=${row.Space_ID}">${row.Space_Name}</a></h5>
+                                            <h5>${row.Place}</h5>
                                         </div>
 
                                     </div>
-                                    <%--</c:forEach>--%>
+                                    </c:forEach>
                                 </div> 
 
                             </div>
@@ -448,7 +458,7 @@
 
                     </div>
                 </div>
-            </div>
+            </div>        
 
             <div class="footer-copy text-center">
                 <div class="container">
