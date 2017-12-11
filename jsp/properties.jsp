@@ -4,7 +4,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
-
 <html class="no-js"> <!--<![endif]-->
     <head>
         <meta charset="utf-8">
@@ -298,39 +297,55 @@
                     <!-------------------------------------------End Smart search----------------------------------------------------------------------------------------> 
 
                     <!-------------------------------------Loop all space----------------------------------------->
-       <sql:query var="loop" dataSource="${it58070122_se}">
-            SELECT s.Space_Name, s.Place, s.Picture_poster, s.Space_ID
-            From `User` u
-            JOIN `Space` s USING (User_ID)
-            WHERE u.User_ID = ? ;
-            <sql:param value="${User_ID}"/>
-        </sql:query>
-
+       <%--sql:query var="loop" dataSource="${it58070122_se}">
+            SELECT Space_Name, Place, Picture_poster, Space_ID, Type_ID, Type_Name
+            FROM `Space` JOIN Type_Space USING (Space_ID) ORDER BY Space_ID DESC;
+        </sql:query--%>
+                    
                     <div class="col-md-9  pr0 padding-top-40 properties-page">
+                        <div class="col-md-12 clear"> 
+                        <div class="col-xs-10 page-subheader sorting pl0">
+                           
+
+                            <div class="items-per-page">
+                                <label for="items_per_page"><b>Property per page :</b></label>
+                                <div class="sel">
+                                    <select id="items_per_page" name="per_page">
+                                        <option value="3">3</option>
+                                        <option value="6">6</option>
+                                        <option value="9">9</option>
+                                        <option selected="selected" value="12">12</option>
+                                        <option value="15">15</option>
+                                        <option value="30">30</option>
+                                        <option value="45">45</option>
+                                        <option value="60">60</option>
+                                    </select>
+                                </div><!--/ .sel-->
+                            </div><!--/ .items-per-page-->
+                        </div>
                         
-                        <div class="col-xs-9">
-                            <h6>Search:<input type="text" name="resultSearch" value="<%= request.getAttribute("Type_Name")%>, <%= request.getAttribute("Place")%>" disabled="disabled"/></h6>
-                        </div> 
               
                         <div class="col-md-12 clear"> 
                             <div id="list-type" class="proerty-th">
-
-                                <div class="col-sm-6 col-md-4 p0">
-                                    
-                                    <c:forEach var="row" items="${loop.rows}">
-                                    <div class="box-two proerty-item">
-                                        <div>
-                                            <a><img src="${row.Picture_poster}"></a>
+                                    <c:forEach step="6" var="SpaceSet" items="${requestScope.SpaceSet.get(0)}" varStatus="theSpace">
+                                        <div class="col-sm-6 col-md-4 p0">
+                                            <div class="box-two proerty-item">
+                                                <div>
+                                                    <img src="<c:url value="${requestScope.SpaceSet.get(0).get(theSpace.index)}"/>">
+                                                </div>
+                                               
+                                                <div class="item-entry overflow">
+                                                    <h5><a href="Property_Servlet?id=${requestScope.SpaceSet.get(0).get(theSpace.index+1)}">${requestScope.SpaceSet.get(0).get(theSpace.index+2)}</a></h5>
+                                                    <div class="dot-hr"></div>
+                                                    <span class="pull-left"><b>Place: </b>${requestScope.SpaceSet.get(0).get(theSpace.index+3)}</span><br>
+                                                    <span class="pull-left"><b>${requestScope.SpaceSet.get(0).get(theSpace.index+5)}</b></span>
+                                                    <input type="hidden" name="Type_ID" value="${requestScope.SpaceSet.get(0).get(theSpace.index+4)}">
+                                                       
+                                                </div>
+                                            </div>
                                         </div>
-
-                                        <div>
-                                            <h5><a href="Property_Servlet?id=${row.Space_ID}">${row.Space_Name}</a></h5>
-                                            <h5>${row.Place}</h5>
-                                        </div>
-
-                                    </div>
                                     </c:forEach>
-                                </div> 
+                                 
 
                             </div>
                         </div>
