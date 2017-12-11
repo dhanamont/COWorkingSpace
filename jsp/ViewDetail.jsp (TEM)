@@ -1,4 +1,4 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+\<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
@@ -142,47 +142,49 @@
                         <ul class="additional-details-list clearfix" style="background-color:#FFFFFF;">
                                         <li>
                                             <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Name</span>
-                                            <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry"><%= request.getAttribute("Name")%></span>
+                                            <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry"><c:out value="${Name}"/></span>
                                         </li>
 
                                         <li>
                                             <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Type Name</span>
-                                            <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry"><%= request.getAttribute("Name")%></span>
+                                            <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry"><c:out value="${Type_Name}"/></span>
                                         </li>
                                         <li>
                                             <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Room Name</span>
-                                            <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry"><%= request.getAttribute("o.Room_Name")%></span>
+                                            <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry"><c:out value="${o.Room_Name}"/></span>
                                         </li>
 
                                         <li>
                                             <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Table ID</span>
-                                            <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry"><%= request.getAttribute("t.Table_ID")%></span>
+                                            <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry"><c:out value="${t.Table_ID}"/></span>
                                         </li>
 
                                         <li>
                                             <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Order Status</span>
-                                            <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry"><%= request.getAttribute("r.Order_Status")%></span>
+                                            <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry"><c:out value="${r.Order_Status}"/></span>
                                         </li>
 
                                         <li>
                                             <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Total Price</span>
-                                            <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry"><%= request.getAttribute("r.Total_Price")%></span>
+                                            <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry"><c:out value="${r.Total_Price}"/></span>
                                         </li> 
                                         
                                         <li>
                                             <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Order Date</span>
-                                            <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry"><%= request.getAttribute("r.Order_Date")%></span>
+                                            <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">${r.Order_Date}</span>
                                         </li>
                                         
                                         
                                         
                                         </ul><br>
-                                        <button type='submit' class='btn btn-success btn-lg btn-block' name='buttonValue' value="PAID">
+                                        <center>
+                                        <button type='submit' class='btn btn-success btn-lg btn-block' name='buttonValue' value="PAID" style="height:50px;width:140px">
                                             PAID   
                                         </button>
-                                        <button type='submit' class='btn btn-success btn-lg btn-block' name='buttonValue' value="CANCEL">
+                                        <button type='submit' class='btn btn-success btn-lg btn-block' name='buttonValue' value="CANCEL" style="height:50px;width:140px">
                                             CANCEL   
-                                        </button> 
+                                        </button>
+                                        </center>
                                     </div>
                     </div>
                 </div>
