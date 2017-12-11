@@ -47,12 +47,6 @@ public class SubmitPropertiesServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
 
-//            สร้าง String
-            String Space_ID;
-            String Type_ID;
-            String Room_ID;
-            String Table_ID;
-
 //            สร้าง Object
             Space space = new Space();
             Date date = new Date();
@@ -91,10 +85,10 @@ public class SubmitPropertiesServlet extends HttpServlet {
             int NumofPeople = Integer.parseInt(request.getParameter("NumofPeople"));
 
 //            สร้าง ID จาก Java Class
-            Space_ID = space.createSpace_ID();
-            Type_ID = type_space.createType_ID();
-            Room_ID = room.createRoom_ID();
-            Table_ID = table.createTable_ID();
+            String Space_ID = space.createSpace_ID();
+            String Type_ID = type_space.createType_ID();
+            String Room_ID = room.createRoom_ID();
+            String Table_ID = table.createTable_ID();
 
 //            ส่งค่าไป Java Class
             space.insertSpace(Space_ID, Space_Name, Address, Place, User_ID, Map, Description, Picture_cover, Picture_poster, Start_Date, End_Date, Start_Time, End_Time, OpenDate);
