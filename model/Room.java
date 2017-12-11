@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  *
@@ -34,56 +35,10 @@ public class Room {
     private int i = -1, j = 0;
     private String comp = "";
     private String[] propRoom = new String[50];
-    private String[][] roomTableList = new String[50][50];
+    private String[][] tableList = new String[50][50];
     
     private ArrayList<String> Room_Name = new ArrayList<String>();
     private ArrayList<String> RoomID = new ArrayList<String>();
-    
-    
-    public void getListProp(String Type_ID) throws SQLException{
-        try {
-            Statement stmt = con.createStatement();
-            String sql =  "SELECT y.Type_ID, y.NumofRoom, r.Room_Name, r.NumofTable, t.Table_ID \n"
-                    + "FROM Type_Space y\n"
-                    + "JOIN Room r USING (Type_ID)\n"
-                    + "JOIN `Table` t USING (Room_ID)\n"
-                    + "Where y.Type_ID = '" + Type_ID + "'\n";
-            ResultSet rs = stmt.executeQuery(sql);
-            while (rs.next()) {
-                 System.out.println("ก่อน if comp: "+comp);
-                System.out.println("Date: "+rs.getString("r.Room_Name"));
-                if (!comp.equals(rs.getString("r.Room_Name"))) {
-                    i++;
-                    propRoom[i] = rs.getString("r.Room_Name");
-                    comp = rs.getString("r.Room_Name");
-                    j = 0;
-                }
-                roomTableList[i][j] = rs.getString("t.Table_ID");
-                System.out.println(roomTableList[i][j]);
-                j++;
-                System.out.println("i :"+i+" j: "+j+" comp: "+comp);
-            }
-            
-/*               int NumofRoom = Integer.parseInt(rs.getString("NumofRoom"));
-                int NumofTable = Integer.parseInt(rs.getString("NumofTable"));
-                for(int i=0; i <= NumofRoom ; i++){
-                    
-                    for(int j=0; j <= NumofTable ; j++){
-                       
-                       
-                       
-                    }
-                }         
-            }*/
-        } catch (SQLException ex) {
-        }   
-    }
-    
-    //***************** Return usable value ******************************//
-    public String[][] getRoomTableList(String Type_ID) throws SQLException {
-        getListProp(Type_ID);
-        return roomTableList;
-    }
     
     public String createRoom_ID() {
         try {
@@ -108,14 +63,17 @@ public class Room {
         }
     }
     
-    public void getRoomList(ArrayList<String> RoomID, ArrayList<String> RoomName,ArrayList<Float> Price, String Type_ID) {
+    
+    
+    public void getRoomList(ArrayList<String> RoomID, ArrayList<String> RoomName,ArrayList<Float> Price,ArrayList<String> Picture_room, String Type_ID) {
         try {
             Statement stmt = con.createStatement();
-            String table = "SELECT Room_ID, Room_Name, Price FROM Room WHERE Type_ID = '" + Type_ID + "';";
+            String table = "SELECT Room_ID, Room_Name, Price, Picture_room FROM Room WHERE Type_ID = '" + Type_ID + "';";
             ResultSet rs1 = stmt.executeQuery(table);
             while(rs1.next()){
                 RoomID.add(rs1.getString("Room_ID"));
                 RoomName.add(rs1.getString("Room_Name"));
+                Picture_room.add(rs1.getString("Picture_room"));
                 Price.add(rs1.getFloat("Price"));
             }
         } catch (SQLException ex) {
@@ -138,6 +96,19 @@ public class Room {
         }
     }
     
+    public String getRoomID(String Room_Name) {
+         try {
+            Statement stmt = con.createStatement();
+            String room = "SELECT Room_ID FROM Room WHERE Room_Name = '" + Room_Name + "';";
+            ResultSet rs1 = stmt.executeQuery(room);
+            rs1.next();
+            Room_ID = rs1.getString("Room_ID");
+            
+        } catch (SQLException ex) {
+            System.out.println("getRoomID: "+ex);
+        }
+        return Room_ID;
+    }
 
     public String getRoom_ID(String Type_ID) {
         RoomDetail(Type_ID);
