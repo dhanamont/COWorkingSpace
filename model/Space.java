@@ -134,23 +134,47 @@ public class Space {
         }
     }
     
-    public void PropertiesBox(String Place, String Type_Name) {
+    public void PropertiesBoxSearch(String Place, String Type_Name) {
         try {
             Statement stmt = con.createStatement();
-            String getBox = "SELECT Space_ID, Space_Name, Picture_Poster, Type_ID, Price "
+            String getBox = "SELECT Space_ID, Space_Name, Picture_Poster, Place, Type_ID, Type_Name "
                     + "FROM `Space` "
-                    + "JOIN Type_Space c (Space_ID) "
-                    + "JOIN Room USING (Type_ID) "
-                    + "WHERE Place = '"+Place+"' AND Type_Name= '"+Type_Name+" "
-                    + "GROUP BY Space_ID";
+                    + "JOIN Type_Space USING (Space_ID) "
+                    + "WHERE Place = '"+Place+"' AND Type_Name= '"+Type_Name+"' "
+                    + "ORDER BY DateTime DESC;";
             ResultSet rs2 = stmt.executeQuery(getBox);
             while (rs2.next()) {
+                getNode_Detail().add(rs2.getString("Picture_Poster"));
                 getNode_Detail().add(rs2.getString("Space_ID"));
                 getNode_Detail().add(rs2.getString("Space_Name"));
-                getNode_Detail().add(rs2.getString("Picture_Poster"));
+                getNode_Detail().add(rs2.getString("Place"));
                 getNode_Detail().add(rs2.getString("Type_ID"));
-                getNode_Detail().add(rs2.getString("Price"));
+                getNode_Detail().add(rs2.getString("Type_Name"));
                 
+                getSpaceSet().add(getNode_Detail());
+
+            }
+
+        } catch (SQLException ex) {
+            System.out.println("Error: "+ex);
+        }
+    }
+     public void PropertiesBox() {
+        try {
+            Statement stmt = con.createStatement();
+            String getBox = "SELECT Space_Name, Place, Picture_poster, Space_ID, Type_ID, Type_Name "
+                    +"FROM `Space` "
+                    + "JOIN Type_Space USING (Space_ID) "
+                    + "ORDER BY DateTime DESC;";
+            ResultSet rs2 = stmt.executeQuery(getBox);
+            while (rs2.next()) {
+                getNode_Detail().add(rs2.getString("Picture_Poster"));
+                getNode_Detail().add(rs2.getString("Space_ID"));
+                getNode_Detail().add(rs2.getString("Space_Name"));
+                getNode_Detail().add(rs2.getString("Place"));
+                getNode_Detail().add(rs2.getString("Type_ID"));
+                getNode_Detail().add(rs2.getString("Type_Name"));
+
                 getSpaceSet().add(getNode_Detail());
 
             }
@@ -158,6 +182,7 @@ public class Space {
         } catch (SQLException ex) {
         }
     }
+    
     public ArrayList<String> getOpenDate(String Space_ID) {
         try {
             Statement stmt = con.createStatement();
@@ -307,7 +332,7 @@ public class Space {
     }
 
     /**
-     * @param concertSet the concertSet to set
+     * @param spaceSet the concertSet to set
      */
     public void setSpacetSet(ArrayList<ArrayList<String>> spaceSet) {
         this.spaceSet = spaceSet;
