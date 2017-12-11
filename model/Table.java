@@ -58,9 +58,10 @@ public class Table {
             String table = "SELECT Table_ID FROM `Table` WHERE Room_ID = '" + Room_ID + "';";
             ResultSet rs1 = stmt.executeQuery(table);
             while (rs1.next()){
-                TableID.add(rs1.getString("Type_ID"));
+                TableID.add(rs1.getString("Table_ID"));
             }
         } catch (SQLException ex) {
+            System.out.println("getTableID: "+ex);
         }
         
     }
