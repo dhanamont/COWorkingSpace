@@ -50,20 +50,20 @@ public class Property_Servlet extends HttpServlet {
 
             String Type_ID = request.getParameter("Type_ID");
             request.setAttribute("Type_ID", Type_ID);
-
+            
+            ArrayList<String> Room_ID = new ArrayList<String>();
+            ArrayList<Float> Price = new ArrayList<Float>();
+            ArrayList<String> Room_Name = new ArrayList<String>();
+            
             Room room = new Room();
             Space space = new Space();
-            Table table = new Table();
-
-            String Room_ID = room.getRoom_ID(Type_ID);
-
-            String Price = room.getPrice(Type_ID);
-            String Room_Name = room.getRoomName(Type_ID);
-
+            
+            room.getRoomList(Room_ID,Room_Name,Price,Type_ID);
+            room.getListProp(Type_ID);
+            
             ArrayList<String> openDate = space.getOpenDate(Space_ID);
             ArrayList<String> openTime = space.getOpenTime(Space_ID);
 
-            ArrayList<String> Table_ID = table.getTable_ID(Room_ID);
 
             request.setAttribute("Space_Name", space.getSpace_Name(Space_ID));
             request.setAttribute("Address", space.getAddress(Space_ID));
@@ -77,7 +77,6 @@ public class Property_Servlet extends HttpServlet {
             request.setAttribute("Time", openTime);
             request.setAttribute("Price", Price);
             request.setAttribute("Room_Name", Room_Name);
-            request.setAttribute("Table_ID", Table_ID);
 
             request.getRequestDispatcher("Property.jsp").forward(request, response);
         } catch (SQLException | ClassNotFoundException | ParseException ex) {
