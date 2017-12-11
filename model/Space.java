@@ -134,6 +134,18 @@ public class Space {
         }
     }
     
+     public void getService_Name(ArrayList<String> Service_Name, String Space_ID) {
+        try {
+            Statement stmt = con.createStatement();
+            String table = "SELECT Service_Name FROM Service WHERE Space_ID = '" + Space_ID + "';";
+            ResultSet rs1 = stmt.executeQuery(table);
+            while (rs1.next()){
+                ServiceName.add(rs1.getString("Service_Name"));
+            }
+        } catch (SQLException ex) {
+        }
+    }
+    
     public void PropertiesBoxSearch(String Place, String Type_Name) {
         try {
             Statement stmt = con.createStatement();
