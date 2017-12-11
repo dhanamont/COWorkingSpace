@@ -195,7 +195,7 @@ public class Space {
         }
     }
     
-    public ArrayList<String> getOpenDate(String Space_ID) {
+    public void getOpenDate(ArrayList<String> openDate,String Space_ID) {
         try {
             Statement stmt = con.createStatement();
             String viewDate = "SELECT `Date` \n"
@@ -207,11 +207,8 @@ public class Space {
             while(rs2.next()){
                 openDate.add(rs2.getString("OpenDate"));
             }
-            System.out.println("Date: "+openDate);
-        return openDate;
         } catch (SQLException ex) {
         }
-        return null;
     }
     
     public void SpaceOpenTime(String Space_ID) throws ParseException {
@@ -244,23 +241,6 @@ public class Space {
 
         } catch (SQLException ex) {
             System.out.println(ex);
-        }
-    }
-
-    public void showSpaceBox(String User_ID) {
-        try {
-            Statement stmt = con.createStatement();
-            String viewDash = "select User.User_ID , Space.Space_ID , Space.Space_Name , "
-                    + "Picture_Poster from User JOIN `Space` Using (User_ID) Where User_ID = '" + User_ID + "'";
-            ResultSet rs2 = stmt.executeQuery(viewDash);
-            while (rs2.next()) {
-                getNode_Detail().add(rs2.getString("Space_Name"));
-                getNode_Detail().add(rs2.getString("Picture_Poster"));
-                getNode_Detail().add(rs2.getString("Space_ID"));
-                getSpaceSet().add(getNode_Detail());
-            }
-
-        } catch (SQLException ex) {
         }
     }
 
