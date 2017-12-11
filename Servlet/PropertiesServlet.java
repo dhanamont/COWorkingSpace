@@ -47,27 +47,31 @@ public class PropertiesServlet extends HttpServlet {
             Space space = new Space();
 
             ArrayList<ArrayList<String>> SpaceSet = new ArrayList<ArrayList<String>>();
-            SpaceSet = space.getSpaceSet();
-
             String Place = request.getParameter("Place");
-                       
             String Type_Name = request.getParameter("TypeSpace");
-            
+            System.out.println("Place: "+Place+" //TypeName: "+Type_Name);
             if (Place != null && Type_Name != null) {
-                space.PropertiesBox(Place, Type_Name);
+                System.out.println("เข้า");
+                space.PropertiesBoxSearch(Place, Type_Name);
+                SpaceSet = space.getSpaceSet();
+            }else{
+                space.PropertiesBox();
+                SpaceSet = space.getSpaceSet();
             }
-            
             request.setAttribute("SpaceSet", SpaceSet);
            
 
-//            for (int j = 0; j < SpaceSet.size(); j++) {
 //                out.println(SpaceSet.size() + "<br>");
-//                out.println(SpaceSet.get(1).get(0) + "<br>");
-//                out.println(SpaceSet.get(1).get(1) + "<br>");
-//                out.println(SpaceSet.get(1).get(2) + "<br>");
-//                out.println(SpaceSet.get(1).get(3) + "<br>");
+//            for (int j = 0; j < SpaceSet.size(); j++) {
+//                out.println("Poster: " + SpaceSet.get(0).get(0) + "<br>");
+//                out.println("SpaceID: " + SpaceSet.get(0).get(1) + "<br>");
+//                out.println("SpaceName: " + SpaceSet.get(0).get(2) + "<br>");
+//                out.println("Place: " + SpaceSet.get(0).get(3) + "<br>");
+//                out.println("TypeID: " + SpaceSet.get(0).get(4) + "<br>");
+//                out.println("TypeName: " + SpaceSet.get(0).get(5) + "<br>");
+//                out.println("----------------------------<br>");
 //            }
-            //out.println(SpaceSet.get(1));
+//           out.println(SpaceSet.get(1));
 
 //            ส่งไปหน้า properties.jsp
             request.getRequestDispatcher("properties.jsp").forward(request, response);
