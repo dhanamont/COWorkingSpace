@@ -52,7 +52,8 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css" />
 
         <script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
-
+        
+       
 
 
     </head>
@@ -73,9 +74,9 @@
         <% String Role_ID = (String) session.getAttribute("Role_ID");%>
         <% String Username = (String) session.getAttribute("Username");%>
         <% String id = (String) session.getAttribute("Space_ID");%>
-        <% String roomID = (String) session.getAttribute("Room_ID");%>
         <% String User_ID = (String) session.getAttribute("User_ID");%>
         
+
 
         <!-- Start Navbar Guest -->
         <% if (Role_ID == null) { %>
@@ -264,42 +265,38 @@
             <div class="container">
 
                 <div class="clearfix padding-top-40">
+
                     <div class="col-md-8 single-property-content ">
                         <div class="row">
                             <div class="light-slide-item">            
                                 <div class="clearfix">
-                                    <div class="favorite-and-print">
-                                        <a class="add-to-fav" href="#login-modal" data-toggle="modal">
-                                            <i class="fa fa-star-o"></i>
-                                        </a>
-                                        <a class="printer-icon " href="javascript:window.print()">
-                                            <i class="fa fa-print"></i> 
-                                        </a>
-                                    </div> 
-
                                     <ul id="image-gallery" class="gallery list-unstyled cS-hidden">
-                                        <li data-thumb=<%= request.getAttribute("Picture_poster")%>> 
-                                            <%= request.getAttribute("Space_Name")%>
+                                        <li data-thumb="<%= request.getAttribute("Picture_cover")%>"> 
+                                            <img src="<%= request.getAttribute("Picture_cover")%>" />
                                         </li>
-
+                                        <c:forEach var="pic" items="${requestScope.Picture_room}" varStatus="picture" >
+                                            <li data-thumb="${pic}"> 
+                                                <img src="${pic}" />
+                                            </li>
+                                        </c:forEach>
                                     </ul>
                                 </div>
                             </div>
                         </div>
 
                         <div class="single-property-wrapper">
+                            <div class="single-property-header">                                          
+                                <h1 class="property-title pull-left"><%= request.getAttribute("Space_Name")%></h1>
+                            </div>
 
-
-
-                            <!-- .property-meta -->
-                            <% System.out.println(id);%> 
-
-                            <div class="section">
+                            <div class="property-meta entry-meta clearfix ">   
                                 <h4 class="s-property-title">Description</h4>
                                 <div class="s-property-content">
                                     <p><%= request.getAttribute("Description")%></p>
                                 </div>
                             </div>
+                            <!-- .property-meta -->
+                            <% System.out.println(id);%>
                             <div>
                                 <table id="allre1-dt" class="table table-striped" cellspacing="0" width="100%">
                                     <thead>
@@ -329,34 +326,26 @@
                                 <ul class="additional-details-list clearfix">
                                     <li>
                                         <table id="allre1-dt" class="table table-striped" cellspacing="0" width="100%">
-                                            <thead>
-                                                <tr>
-                                                    <th>Service Name</th>                            
-                                                   
-
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <c:forEach var="sname" items="${requestScope.Service_Name}" >
+                                            <c:forEach var="sname" items="${requestScope.Service_Name}" >
+                                                <tbody>
                                                     <tr>
                                                         <td>${sname}</td>
-                                
                                                     </tr>
-                                                </c:forEach>
-                                            </tbody>
+                                                </tbody>
+                                            </c:forEach>
                                         </table>
                                     </li>
                                 </ul>
                             </div>  
                             <!-- End additional-details area  -->
                             <!---------------------ภาพพิมพ์เขียว----------------------->
-                             <div class="section propertmap"> 
+                            <div class="section propertmap"> 
                                 <h4 class="s-property-title">Prototype</h4> 
                                 <div>
-                                   <img src="<%= request.getAttribute("Prototype")%>"> 
+                                    <img src="<%= request.getAttribute("Prototype")%>"> 
                                 </div>
                             </div>
-                            
+
                             <!------------------------------------------------------->
 
 
@@ -382,27 +371,8 @@
 
                                             <div class="col-xs-8 col-sm-8 ">
                                                 <h3 class="dealer-name">
-                                                    <a><%= request.getAttribute("Fname")%>  <%= request.getAttribute("Lname")%></a><br>
-
+                                                    <a><%= request.getAttribute("Contact_name")%></a><br>
                                                 </h3>
-                                                <div class="dealer-social-media">
-                                                    <a class="twitter" target="_blank" href="">
-                                                        <i class="fa fa-twitter"></i>
-                                                    </a>
-                                                    <a class="facebook" target="_blank" href="">
-                                                        <i class="fa fa-facebook"></i>
-                                                    </a>
-                                                    <a class="gplus" target="_blank" href="">
-                                                        <i class="fa fa-google-plus"></i>
-                                                    </a>
-                                                    <a class="linkedin" target="_blank" href="">
-                                                        <i class="fa fa-linkedin"></i>
-                                                    </a> 
-                                                    <a class="instagram" target="_blank" href="">
-                                                        <i class="fa fa-instagram"></i>
-                                                    </a>       
-                                                </div>
-
                                             </div>
                                         </div>
 
@@ -410,7 +380,7 @@
                                             <ul class="dealer-contacts">                                       
                                                 <li><i class="pe-7s-map-marker strong"> </i><%= request.getAttribute("Company_name")%></li>
                                                 <li><i class="pe-7s-mail strong"> </i> <%= request.getAttribute("Email")%></li>
-                                                <li><i class="pe-7s-call strong"> </i> <%= request.getAttribute("Phone_company")%></li>
+                                                <li><i class="pe-7s-call strong"> </i> <%= request.getAttribute("Phone")%></li>
                                             </ul>
 
                                         </div>
@@ -431,76 +401,40 @@
                                         <h4><b><%= request.getAttribute("Space_Name")%></b></h4>
                                     </div>
                                     <div class="panel-body search-widget">
-
-                                        <form idaction="OrderServlet" method="POST" class=" form-inline">
-
-                                            <fieldset>
-                                                <div class="row">
-                                                    <div class="col-xs-6">
-
-                                                        <select id="TableID" name="table" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Select Your Table">
-                                                            <option> -Table_ID- </option>
-                                                            <!--ดึงข้อมูลมาใส่ในdropdown-------------------------------------------------->
-
-                                                            <c:forEach items="${Table_ID}" var="item1" varStatus="tableid">
-                                                                <option value="${Table_ID[Stime.index]}">${Time[Stime.index]}</option>
-                                                            </c:forEach>
-                                                            <!------------------------------------------------------------------------>
-                                                        </select>
-
-                                                    </div>
-                                                    <!----------------Calendar------------------------------------------------>
-                                                    <div class="col-xs-6">
-                                                        <input id="datepicker" name="Date" type="text" placeholder="Select your Date"/>
-                                                        <script>
-                                                            $('#datepicker').datepicker({
-                                                                format: 'yyyy-mm-dd',
-
-                                                            });
-                                                        </script> 
-                                                    </div>
-                                                    <!------------------------------------------------------------------------>
-                                                </div>
-                                            </fieldset>
-
-
+                                        
+                                        
+                                            <form action="CheckSelectedServlet" method="POST" class="form-inline">
 
                                             <fieldset>
                                                 <div class="row">
-                                                    <div class="col-xs-6">
+                                                    <!-----------------------------Room------------------------------>
+                                                    
+                                                        <div class="col-xs-12">
 
-                                                        <select id="Start Time" name="Time" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Select Your Start Time">
-                                                            <!--ดึงข้อมูลมาใส่ในdropdown------------------------------------------------------->
-                                                            <c:forEach items="${Time}" var="item2" varStatus="Stime">
-                                                                <option value="${Time[Stime.index]}">${Time[Stime.index]}</option>
-                                                            </c:forEach>
-                                                            <!------------------------------------------------------------------------>
-                                                        </select>
-                                                    </div>
-                                                    <div class="col-xs-6">
+                                                            <select id="room" name="roomName" class="selectpicker" >
+                                                                <option value selected disabled>Select Your Room</option>
+                                                                <!--ดึงข้อมูลมาใส่ในdropdown-------------------------------------------------->
 
-                                                        <select id="End_Time" name="Time" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Select Your Time">
-
-                                                            <!--ดึงข้อมูลมาใส่ในdropdown--------------------------------------------------->
-                                                            <c:forEach items="${Time}" var="item3" varStatus="Etime">
-                                                                <option value="${Time[Etime.index]}">${Time[Etime.index]}</option>
-                                                            </c:forEach>
-                                                            <!------------------------------------------------------------------------>
-                                                        </select>
-                                                    </div>
-                                                </div>
+                                                                <c:forEach var="rname" items="${requestScope.Room_Name}" >
+                                                                        <option value="${rname}">${rname}</option>
+                                                                </c:forEach>
+                                                                <!------------------------------------------------------------------------>
+                                                            </select>
+                                                            <fieldset>
+                                                                <div class="row">
+                                                                    <div class="col-xs-12">
+                                                                        <input type="hidden" name="id" value="<%=request.getAttribute("Space_ID")%>">
+                                                                        <% System.out.println(id);%>
+                                                                        <input class="button btn largesearch-btn" value="Select" type="submit">
+                                                                    </div>  
+                                                                </div>
+                                                            </fieldset>
+                                                        </div>
+                                                        
+                                                    
+                                                     </div>
                                             </fieldset>
-
-                                            <fieldset >
-                                                <div class="row">
-                                                    <div class="col-xs-12">  
-                                                        <input class="button btn largesearch-btn" value="Reserve" type="submit">
-                                                    </div>  
-                                                </div>
-
-                                            </fieldset>
-
-                                        </form>
+                                                    </form>
                                     </div>
                                 </div>
                             </div>
@@ -535,98 +469,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-md-3 col-sm-6 wow fadeInRight animated">
-                            <div class="single-footer">
-                                <h4>Quick links </h4>
-                                <div class="footer-title-line"></div>
-                                <ul class="footer-menu">
-                                    <li><a href="properties.html">Properties</a>  </li> 
-                                    <li><a href="#">Services</a>  </li> 
-                                    <li><a href="submit-property.html">Submit property </a></li> 
-                                    <li><a href="contact.html">Contact us</a></li> 
-                                    <li><a href="faq.html">fqa</a>  </li> 
-                                    <li><a href="faq.html">Terms </a>  </li> 
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 wow fadeInRight animated">
-                            <div class="single-footer">
-                                <h4>Last News</h4>
-                                <div class="footer-title-line"></div>
-                                <ul class="footer-blog">
-                                    <li>
-                                        <div class="col-md-3 col-sm-4 col-xs-4 blg-thumb p0">
-                                            <a href="single.html">
-                                                <img src="assets/img/demo/small-proerty-2.jpg">
-                                            </a>
-                                            <span class="blg-date">12-12-2016</span>
-
-                                        </div>
-                                        <div class="col-md-8  col-sm-8 col-xs-8  blg-entry">
-                                            <h6> <a href="single.html">Add news functions </a></h6> 
-                                            <p style="line-height: 17px; padding: 8px 2px;">Lorem ipsum dolor sit amet, nulla ...</p>
-                                        </div>
-                                    </li> 
-
-                                    <li>
-                                        <div class="col-md-3 col-sm-4 col-xs-4 blg-thumb p0">
-                                            <a href="single.html">
-                                                <img src="assets/img/demo/small-proerty-2.jpg">
-                                            </a>
-                                            <span class="blg-date">12-12-2016</span>
-
-                                        </div>
-                                        <div class="col-md-8  col-sm-8 col-xs-8  blg-entry">
-                                            <h6> <a href="single.html">Add news functions </a></h6> 
-                                            <p style="line-height: 17px; padding: 8px 2px;">Lorem ipsum dolor sit amet, nulla ...</p>
-                                        </div>
-                                    </li> 
-
-                                    <li>
-                                        <div class="col-md-3 col-sm-4 col-xs-4 blg-thumb p0">
-                                            <a href="single.html">
-                                                <img src="assets/img/demo/small-proerty-2.jpg">
-                                            </a>
-                                            <span class="blg-date">12-12-2016</span>
-
-                                        </div>
-                                        <div class="col-md-8  col-sm-8 col-xs-8  blg-entry">
-                                            <h6> <a href="single.html">Add news functions </a></h6> 
-                                            <p style="line-height: 17px; padding: 8px 2px;">Lorem ipsum dolor sit amet, nulla ...</p>
-                                        </div>
-                                    </li> 
-
-
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 wow fadeInRight animated">
-                            <div class="single-footer news-letter">
-                                <h4>Stay in touch</h4>
-                                <div class="footer-title-line"></div>
-                                <p>Lorem ipsum dolor sit amet, nulla  suscipit similique quisquam molestias. Vel unde, blanditiis.</p>
-
-                                <form>
-                                    <div class="input-group">
-                                        <input class="form-control" type="text" placeholder="E-mail ... ">
-                                        <span class="input-group-btn">
-                                            <button class="btn btn-primary subscribe" type="button"><i class="pe-7s-paper-plane pe-2x"></i></button>
-                                        </span>
-                                    </div>
-                                    <!-- /input-group -->
-                                </form> 
-
-                                <div class="social pull-right"> 
-                                    <ul>
-                                        <li><a class="wow fadeInUp animated" href="https://twitter.com/kimarotec"><i class="fa fa-twitter"></i></a></li>
-                                        <li><a class="wow fadeInUp animated" href="https://www.facebook.com/kimarotec" data-wow-delay="0.2s"><i class="fa fa-facebook"></i></a></li>
-                                        <li><a class="wow fadeInUp animated" href="https://plus.google.com/kimarotec" data-wow-delay="0.3s"><i class="fa fa-google-plus"></i></a></li>
-                                        <li><a class="wow fadeInUp animated" href="https://instagram.com/kimarotec" data-wow-delay="0.4s"><i class="fa fa-instagram"></i></a></li>
-                                        <li><a class="wow fadeInUp animated" href="https://instagram.com/kimarotec" data-wow-delay="0.6s"><i class="fa fa-dribbble"></i></a></li>
-                                    </ul> 
-                                </div>
-                            </div>
-                        </div>
+                        
 
                     </div>
                 </div>
@@ -651,12 +494,14 @@
             </div>
 
         </div>
-
+        
+        
         <script src="assets/js/vendor/modernizr-2.6.2.min.js"></script>
         <script src="assets/js/jquery-1.10.2.min.js"></script>
         <script src="bootstrap/js/bootstrap.min.js"></script>
         <script src="assets/js/bootstrap-select.min.js"></script>
         <script src="assets/js/bootstrap-hover-dropdown.js"></script>
+        <script src="assets/js/category.js"></script>
         <script src="assets/js/easypiechart.min.js"></script>
         <script src="assets/js/jquery.easypiechart.min.js"></script>
         <script src="assets/js/owl.carousel.min.js"></script>
@@ -683,6 +528,6 @@
                                                                 });
                                                             });
         </script>
-
+        
     </body>
 </html>
