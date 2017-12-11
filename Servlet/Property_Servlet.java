@@ -57,8 +57,8 @@ public class Property_Servlet extends HttpServlet {
 
             String Room_ID = room.getRoom_ID(Type_ID);
 
-            ArrayList<String> Price = room.getPrice(Type_ID);
-            ArrayList<String> Room_Name = room.getRoomName(Type_ID);
+            String Price = room.getPrice(Type_ID);
+            String Room_Name = room.getRoomName(Type_ID);
 
             ArrayList<String> openDate = space.getOpenDate(Space_ID);
             ArrayList<String> openTime = space.getOpenTime(Space_ID);
