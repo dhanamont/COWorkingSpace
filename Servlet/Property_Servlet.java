@@ -19,8 +19,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.Space;
-import model.Room;
 import model.Table;
+//import model.Room;
+//import model.Table;
 
 /**
  *
@@ -45,25 +46,26 @@ public class Property_Servlet extends HttpServlet {
 
             HttpSession session = request.getSession();
 
-            String Space_ID = request.getParameter("Space_ID");
+            String Space_ID = "1"; //request.getParameter("Space_ID");
             request.setAttribute("Space_ID", Space_ID);
 
             String Type_ID = request.getParameter("Type_ID");
             request.setAttribute("Type_ID", Type_ID);
 
-            Room room = new Room();
+            //Room room = new Room();
             Space space = new Space();
             Table table = new Table();
 
-            String Room_ID = room.getRoomID();
+            //String Room_ID = room.getRoomID();
 
-            ArrayList<String> Price = room.getPrice(Type_ID);
-            ArrayList<String> Room_Name = room.getRoomName(Type_ID);
+            //ArrayList<String> Price = room.getPrice(Type_ID);
+            //ArrayList<String> Room_Name = room.getRoomName(Type_ID);
 
             ArrayList<String> openDate = space.getOpenDate(Space_ID);
             ArrayList<String> openTime = space.getOpenTime(Space_ID);
 
-            ArrayList<String> Table_ID = table.getTable_ID(Room_ID);
+            //ArrayList<String> Table_ID = table.getTableID(Room_ID);
+
 
             request.setAttribute("Space_Name", space.getSpace_Name(Space_ID));
             request.setAttribute("Address", space.getAddress(Space_ID));
@@ -75,9 +77,9 @@ public class Property_Servlet extends HttpServlet {
             request.setAttribute("Description", space.getDescription(Space_ID));
             request.setAttribute("Date", openDate);
             request.setAttribute("Time", openTime);
-            request.setAttribute("Price", Price);
-            request.setAttribute("Room_Name", Room_Name);
-            request.setAttribute("Table_ID", Table_ID);
+//            request.setAttribute("Price", Price);
+//            request.setAttribute("Room_Name", Room_Name);
+            //request.setAttribute("Table_ID", Table_ID);
 
             request.getRequestDispatcher("Property.jsp").forward(request, response);
         } catch (SQLException | ClassNotFoundException | ParseException ex) {
