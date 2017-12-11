@@ -131,7 +131,7 @@
                 <div class="wizard-header">
                     <h3>
                         <b>View</b> YOUR CO-WORKING SPACE DETAIL<br><br>
-                        <small>let's see the detail</small>
+                        <small>Let's see the detail</small>
                     </h3>
                 </div>
             </div>
@@ -173,18 +173,19 @@
                                             <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Order Date</span>
                                             <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry"><%= request.getAttribute("r.Order_Date")%></span>
                                         </li>
-                                    </ul>
+                                        
+                                        
+                                        
+                                        </ul><br>
+                                        <button type='submit' class='btn btn-success btn-lg btn-block' name='buttonValue' value="PAID">
+                                            PAID   
+                                        </button>
+                                        <button type='submit' class='btn btn-success btn-lg btn-block' name='buttonValue' value="CANCEL">
+                                            CANCEL   
+                                        </button> 
                                     </div>
                     </div>
                 </div>
-                                        <center>
-                                        <div class="wizard-footer">
-                                        
-                                            <input type="submit" class="btn btn-next btn-primary" name="buttonValue" value="PAID">
-                                            <input type="submit" class="btn btn-finish btn-primary " name="buttonValue" value="CANCEL">
-                                        
-                                        </div>
-                                        </center>
         </div>
         </form>
 
