@@ -114,7 +114,7 @@
 
         <!-- property area -->
         <sql:query var="orderList" dataSource="${it58070122_se}">
-            SELECT CONCAT(u.Fname, " ", u.Lname) AS `Name`, y.Type_Name, o.Room_Name, t.Table_ID,
+            SELECT CONCAT(u.Fname, " ", u.Fname) AS `Name`, y.Type_Name, o.Room_Name, t.Table_ID,
             r.Order_Status, r.Total_Price, r.Order_Date
             FROM `User` u
             JOIN `Space` s USING (User_ID)
@@ -130,37 +130,43 @@
         <div class="content-area submit-property" style="background-color: #FCFCFC;">&nbsp;
                 <div class="row">
                     <div class="well col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3">
-                        <ul class="additional-details-list clearfix">
+                        <div class="section additional-details">
+                        <ul class="additional-details-list clearfix" style="background-color:#FFFFFF;">
                                         <li>
-                                            <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Waterfront</span>
-                                            <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">Yes</span>
+                                            <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Name</span>
+                                            <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry"><%= request.getAttribute("Name")%></span>
                                         </li>
 
                                         <li>
-                                            <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Built In</span>
-                                            <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">2003</span>
+                                            <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Type Name</span>
+                                            <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry"><%= request.getAttribute("Name")%></span>
                                         </li>
                                         <li>
-                                            <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Parking</span>
-                                            <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">2 Or More Spaces,Covered Parking,Valet Parking</span>
-                                        </li>
-
-                                        <li>
-                                            <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Waterfront</span>
-                                            <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">Yes</span>
+                                            <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Room Name</span>
+                                            <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry"><%= request.getAttribute("o.Room_Name")%></span>
                                         </li>
 
                                         <li>
-                                            <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">View</span>
-                                            <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">Intracoastal View,Direct ew</span>
+                                            <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Table ID</span>
+                                            <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry"><%= request.getAttribute("t.Table_ID")%></span>
                                         </li>
 
                                         <li>
-                                            <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Waterfront Description:</span>
-                                            <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">Intracoastal Front,Ocean Access</span>
+                                            <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Order Status</span>
+                                            <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry"><%= request.getAttribute("r.Order_Status")%></span>
+                                        </li>
+
+                                        <li>
+                                            <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Total Price</span>
+                                            <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry"><%= request.getAttribute("r.Total_Price")%></span>
                                         </li> 
-
+                                        
+                                        <li>
+                                            <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Order Date</span>
+                                            <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry"><%= request.getAttribute("r.Order_Date")%></span>
+                                        </li> 
                                     </ul>
+                                    </div>
                     </div>
                 </div>
         </div>
