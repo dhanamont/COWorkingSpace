@@ -232,7 +232,7 @@
         
         
 
-        <!-- Start find area & Slide main picture -->
+       <!-- Start find area & Slide main picture -->
         <div class="slider-area">
             <div class="slider">
                 <div id="bg-slider" class="owl-carousel owl-theme">
@@ -266,9 +266,9 @@
                                 <div class="form-group">                                     
                                     <select name="TypeSpace" id="basic" class="selectpicker show-tick form-control">
                                         <option> -Type Space- </option>
-                                        <option value="CommonRoom">Common Room</option>
-                                        <option value="MeetingRoom">Meeting Room</option>
-                                        <option value="PrivateOffice">Private Office</option>
+                                        <option value="Common Room">Common Room</option>
+                                        <option value="Meeting Room">Meeting Room</option>
+                                        <option value="Private Office">Private Office</option>
                                     </select>
                                 </div>
                                 <button class="btn search-btn" type="submit"><i class="fa fa-search"></i></button>
