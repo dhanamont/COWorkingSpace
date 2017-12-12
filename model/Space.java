@@ -49,17 +49,19 @@ public class Space {
     private ArrayList<String> openDate = new ArrayList<String>();
     private ArrayList<String> openTime = new ArrayList<String>();
 
-    public String createSpace_ID() {
+   public String createSpace_ID() {
         try {
             Statement stmt = con.createStatement();
-            String numSpa = "SELECT COUNT(Space_ID)+1 from Space";
+            String numSpa = "SELECT COUNT(Space_ID)+1 'ID' from Space";
             ResultSet numSpa1 = stmt.executeQuery(numSpa);
             numSpa1.next();
-            String Space_ID = numSpa1.getString("count(Space_ID)+1");
+            String Space_ID = numSpa1.getString("ID");
+            
+            return Space_ID;
 
         } catch (SQLException ex) {
         }
-        return Space_ID;
+        return null;
     }
 
     
@@ -82,20 +84,21 @@ public class Space {
         }
     }
 
-    public void insertSpace(String Space_ID, String Space_Name, String Address, String Place, 
+     public void insertSpace(String Space_ID, String Space_Name, String Address, String Place, 
             String User_ID, String Map, String Description, String Picture_cover, String Picture_poster, 
-            String Start_Date, String End_Date, String Start_Time, String End_Time, String OpenDate) {
+            Time Start_Time, Time End_Time) {
         try {
             Statement stmt = con.createStatement();
             String sql = "Insert into `Space` values('" + Space_ID + "', '" + Space_Name + "', '" 
-                    + Address + "', '" + Place + ", " + Picture_poster + "', '" + Picture_cover + "', NOW(), '" 
-                    + OpenDate + "', '"+ Start_Date + "', '" + End_Date + "', '" + Start_Time + "', '" 
-                    + End_Time + "', '" + Map + "', '" + Description + "', '" + User_ID+"';";
+                    + Address + "', '" + Place + "', '" + Picture_poster + "', '" + Picture_cover + "', NOW(), '" 
+                    + Start_Time + "', '" + End_Time + "', '" + Map + "', '" + Description + "', '" + User_ID+"');";
 
             stmt.executeUpdate(sql);
         } catch (SQLException ex) {
+            System.out.println("insertSpace: "+ex);
         }
     }
+
 
     public String getSpace_Name(String Space_ID) {
         try {
