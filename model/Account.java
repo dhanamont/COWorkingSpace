@@ -46,7 +46,7 @@ public class Account {
         } catch (SQLException ex) {
         }
     }
-        public String numAccountMem() {
+    public String numAccountMem() {
         try {
             Statement stmt = conn.createStatement();
             String num = "Select count(User_ID) from Account where Role_ID Like'MEM'";
@@ -83,6 +83,10 @@ public class Account {
             
             inAcc.executeUpdate();
             conn.close();
+            //Statement stmt = conn.createStatement();
+            //String sql1 = "Insert into Account values('" + username + "', '" + password + "', '" + role + "', '" + UserID + "')";
+            
+            //stmt.executeUpdate(sql1);
         } catch (SQLException ex) {
             
             System.out.println(ex);
