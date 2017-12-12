@@ -54,6 +54,9 @@ public class User {
             System.out.println(insertUser.toString());
             insertUser.executeUpdate();
             conn.close();
+//            Statement stmt = conn.createStatement();
+//            String sql2 = "Insert into User values('" + User_ID1 + "', '" + fname + "', '" + lname + "', '" + email + "')";
+//            stmt.executeUpdate(sql2);
         } catch (SQLException ex) {
             System.out.println(ex);
         }
