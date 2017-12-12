@@ -59,9 +59,10 @@ public class Table {
             ResultSet rs1 = stmt.executeQuery(table);
             while (rs1.next()){
                 TableID.add(rs1.getString("Table_ID"));
+                
             }
         } catch (SQLException ex) {
-            System.out.println("getTableID: "+ex);
+            System.out.println(ex);
         }
         
     }
