@@ -84,13 +84,12 @@ public class Space {
 
     public void insertSpace(String Space_ID, String Space_Name, String Address, String Place, 
             String User_ID, String Map, String Description, String Picture_cover, String Picture_poster, 
-            String Start_Date, String End_Date, String Start_Time, String End_Time, String OpenDate) {
+            Time Start_Time, Time End_Time) {
         try {
             Statement stmt = con.createStatement();
             String sql = "Insert into `Space` values('" + Space_ID + "', '" + Space_Name + "', '" 
                     + Address + "', '" + Place + ", " + Picture_poster + "', '" + Picture_cover + "', NOW(), '" 
-                    + OpenDate + "', '"+ Start_Date + "', '" + End_Date + "', '" + Start_Time + "', '" 
-                    + End_Time + "', '" + Map + "', '" + Description + "', '" + User_ID+"';";
+                    + Start_Time + "', '" + End_Time + "', '" + Map + "', '" + Description + "', '" + User_ID+"';";
 
             stmt.executeUpdate(sql);
         } catch (SQLException ex) {
@@ -134,13 +133,14 @@ public class Space {
         }
     }
     
-     public void getService_Name(ArrayList<String> Service_Name, String Space_ID) {
+    
+    public void getService_Name(ArrayList<String> Service_Name, String Space_ID) {
         try {
             Statement stmt = con.createStatement();
             String table = "SELECT Service_Name FROM Service WHERE Space_ID = '" + Space_ID + "';";
             ResultSet rs1 = stmt.executeQuery(table);
             while (rs1.next()){
-                ServiceName.add(rs1.getString("Service_Name"));
+                Service_Name.add(rs1.getString("Service_Name"));
             }
         } catch (SQLException ex) {
         }
@@ -244,6 +244,23 @@ public class Space {
         }
     }
 
+    public void showSpaceBox(String User_ID) {
+        try {
+            Statement stmt = con.createStatement();
+            String viewDash = "select User.User_ID , Space.Space_ID , Space.Space_Name , "
+                    + "Picture_Poster from User JOIN `Space` Using (User_ID) Where User_ID = '" + User_ID + "'";
+            ResultSet rs2 = stmt.executeQuery(viewDash);
+            while (rs2.next()) {
+                getNode_Detail().add(rs2.getString("Space_Name"));
+                getNode_Detail().add(rs2.getString("Picture_Poster"));
+                getNode_Detail().add(rs2.getString("Space_ID"));
+                getSpaceSet().add(getNode_Detail());
+            }
+
+        } catch (SQLException ex) {
+        }
+    }
+
    
 
     public String getPlace(String Space_ID) {
@@ -305,10 +322,10 @@ public class Space {
         return null;
     }
 
-    public String getUser_ID(String Space_Name) {
+    public String getUser_ID(String Space_ID) {
         try {
             Statement stmt = con.createStatement();
-            String Space_table = "SELECT User_ID FROM `Space` WHERE Space_Name = '" + Space_Name + "';";
+            String Space_table = "SELECT User_ID FROM `Space` WHERE Space_ID = '" + Space_ID + "';";
             ResultSet rs1 = stmt.executeQuery(Space_table);
             rs1.next();
             User_ID = rs1.getString("User_ID");
