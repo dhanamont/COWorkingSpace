@@ -11,7 +11,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  *
@@ -31,12 +30,9 @@ public class Room {
     private String Room_ID;
     private String RoomName;
     private String Price;
+    private String RoomName2;
+    private String Price2;
     private String NumofTable;
-    private int i = -1, j = 0;
-    private String comp = "";
-    private String[] propRoom = new String[50];
-    private String[][] tableList = new String[50][50];
-    
     private ArrayList<String> Room_Name = new ArrayList<String>();
     private ArrayList<String> RoomID = new ArrayList<String>();
     
@@ -64,8 +60,7 @@ public class Room {
     }
     
     
-    
-    public void getRoomList(ArrayList<String> RoomID, ArrayList<String> RoomName,ArrayList<Float> Price,ArrayList<String> Picture_room, String Type_ID) {
+   public void getRoomList(ArrayList<String> RoomID, ArrayList<String> RoomName,ArrayList<Float> Price,ArrayList<String> Picture_room, String Type_ID) {
         try {
             Statement stmt = con.createStatement();
             String table = "SELECT Room_ID, Room_Name, Price, Picture_room FROM Room WHERE Type_ID = '" + Type_ID + "';";
@@ -80,9 +75,20 @@ public class Room {
         }
     }
     
-    
-    
-    public void RoomDetail(String Type_ID){
+//    public void RoomDetail(String Room_ID1){
+//        try {
+//            Statement stmt = con.createStatement();
+//            String room = "SELECT Room_ID, Room_Name, NumofTable, Price FROM Room WHERE Room_ID = '" + Room_ID1 + "';";
+//            ResultSet rs1 = stmt.executeQuery(room);
+//            rs1.next();
+//            Room_ID = rs1.getString("Room_ID");
+//            RoomName = rs1.getString("Room_Name");
+//            NumofTable = rs1.getString("NumofTable");
+//            Price = rs1.getString("Price");
+//        } catch (SQLException ex) {
+//        }
+//    }
+   public void RoomDetail(String Type_ID){
         try {
             Statement stmt = con.createStatement();
             String room = "SELECT Room_ID, Room_Name, NumofTable, Price FROM Room WHERE Type_ID = '" + Type_ID + "';";
@@ -120,9 +126,35 @@ public class Room {
         return RoomName;
     }
 
-    public String getPrice(String Type_ID) {
-        RoomDetail(Type_ID);
+    public String getPrice(String Room_ID1) {
+        RoomDetail(Room_ID1);
         return Price;
+    }
+    
+    public void checkRoomName2(String Room_ID){
+        try {
+            Statement stmt = con.createStatement();
+            String room = "SELECT Room_Name, Price FROM Room WHERE Room_ID = '" + Room_ID + "';";
+            ResultSet rs1 = stmt.executeQuery(room);
+            rs1.next();
+            RoomName2 = rs1.getString("Room_Name");
+            Price2 = Float.toString((rs1.getFloat("Price")));
+            
+            System.out.println("null Price : " + Price2);
+        } catch (SQLException ex) {
+            System.out.print(ex);
+        }
+    }
+    
+    public String getRoomName2(String Room_ID){
+        checkRoomName2(Room_ID);
+        return RoomName2;
+        
+    }
+    
+    public String getPrice2(String Room_ID){
+        checkRoomName2(Room_ID);
+        return Price2;
     }
    
 }
