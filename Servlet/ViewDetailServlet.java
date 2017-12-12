@@ -18,10 +18,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import model.Account;
-import model.Member;
 import model.Order;
-import model.User;
+
 
 /**
  *
@@ -40,34 +38,58 @@ public class ViewDetailServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, SQLException, ClassNotFoundException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             
             HttpSession session = request.getSession();
-            
-            //String orderID = (String) request.getAttribute("orderID");
-            String orderID = "R001";
-            
-            String buttonValue = request.getParameter("buttonValue"); 
-            //out.println("status = " + buttonValue);
-            
-            try {
-                //Create objecct
+            String orderID = request.getParameter("id");
+            System.out.println("Order ID = " + orderID);
+            //Create object
                 Order order = new Order();
+                order.viewDetailOrder(orderID);
+            
+            String Type_Name = order.getType_Name(orderID);
+            String Room_Name = order.getRoom_Name(orderID);
+            String Table_ID = order.getTable_ID(orderID);
+            String Total_price = order.getTotal_price(orderID);
+            String Order_Status = order.getOrder_Status(orderID);
+            String Order_Date = order.getOrder_Date(orderID);
+            
                 
-                if(buttonValue.equals("PAID")) {
+                
+            //------ Change Status
+            String buttonValue = request.getParameter("buttonValue");
+            System.out.println("BUTTON : " + buttonValue);
+            
+            if (buttonValue != null) {
+                System.out.println(buttonValue);
+                System.out.println(orderID);
+                if (buttonValue.equals("CANCEL")) {
+                    order.UpdateStatusCancel(orderID);
+                } else if (buttonValue.equals("PAID")) {
                     order.UpdateStatusPAID(orderID);
                 }
-                else if(buttonValue.equals("CANCEL")){
-                    order.UpdateStatusCancel(orderID);
-                }
-                
-                RequestDispatcher obj = request.getRequestDispatcher("ReservationList.jsp");
-                obj.forward(request, response);
-            } catch (Exception ex) {
-                
+                response.sendRedirect("OrderListServlet");
+                return;
+            } else {
+                buttonValue = Order_Status;
+                System.out.println("button: null change to "+buttonValue);
             }
+            
+            //------ set attribute request  
+            request.setAttribute("Order_ID", orderID);
+            request.setAttribute("Type_Name", Type_Name);
+            request.setAttribute("Room_Name", Room_Name);
+            request.setAttribute("Table_ID", Table_ID);
+            request.setAttribute("Total_price", Total_price);
+            request.setAttribute("Order_Status", Order_Status);
+            request.setAttribute("Order_Date", Order_Date);
+            
+            //----- send to data-concert.jsp
+            request.getRequestDispatcher("ViewDetail.jsp").forward(request, response);
+                
+            
         }
     }
 
@@ -83,7 +105,13 @@ public class ViewDetailServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(ViewDetailServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ViewDetailServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -97,7 +125,13 @@ public class ViewDetailServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(ViewDetailServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ViewDetailServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
