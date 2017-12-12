@@ -40,6 +40,10 @@ public class Order {
     private String Start_Time;
     private String End_Time;
     private String Order_Status;
+    private String Type_Name;
+    private String Room_Name;
+    private String Table_ID;
+    private String Total_price;
 
     public void createOrder_ID() {
         try {
@@ -100,26 +104,90 @@ public class Order {
     }
 
 
-//    public void showAllOrder(String userID, ArrayList<String> User_ID, ArrayList<String> Order_ID, ArrayList<String> Order_Status, ArrayList<String> Order_Datetime, ArrayList<String> Total_Price) {
-//        try {
-//            Statement stmt = con.createStatement();
-//            String sh = "Select Order_Date, Start_Time, End_Time, Order_Status from Ordering where User_ID = '" + userID + "' ";
-//            ResultSet cn = stmt.executeQuery(sh);
-//            
-//            while (cn.next()) {
-//                Space_Name = cn.getString("Space_Name");
-//                SpaceID = cn.getString("Space_ID");
-//                Order_ID.add(cn.getString("Order_ID"));
-//                User_ID.add(cn.getString("User_ID"));
-//                Order_Datetime.add(cn.getString("Order_Datetime"));
-//                Order_Status.add(cn.getString("Order_Status"));
-//                
-//            }
-//
-//        } catch (SQLException ex) {
-//        }
-//    }
-//
+    public void showAllOrderEnt(String User_ID, ArrayList<String> Order_ID, ArrayList<String> Type_Name, ArrayList<String> Order_Status) {
+        try {
+            Statement stmt = con.createStatement();
+            String sh = "Select y.Type_Name, r.Order_Status, r.Order_ID\n"
+                    + "FROM `User` u JOIN `Space` s USING (User_ID)\n"
+                    + "JOIN Type_Space y USING (Space_ID)\n"
+                    + "JOIN Room o USING (Type_ID)\n"
+                    + "JOIN `Table` t USING (Room_ID)\n"
+                    + "JOIN Ordering r USING (Table_ID)\n"
+                    + "WHERE u.User_ID = '" + User_ID + "' ";
+            ResultSet cn = stmt.executeQuery(sh);
+            while (cn.next()) {
+                Order_ID.add(cn.getString("Order_ID"));
+                Type_Name.add(cn.getString("Type_Name"));
+                Order_Status.add(cn.getString("Order_Status"));
+                
+           }
+            System.out.print(Order_ID);
+                System.out.print(Type_Name);
+                System.out.print(Order_Status);
+            cn.close();
+        } catch (SQLException ex){
+            System.out.print(ex);
+        }
+    }
+    
+    public void viewDetailOrder(String Order_ID) {
+        try {
+            Statement stmt = con.createStatement();
+            String sh = "SELECT CONCAT(u.Fname, \" \", u.Fname) AS `Name`, y.Type_Name, o.Room_Name, t.Table_ID,\n" +
+                        "r.Order_Status, r.Total_Price, r.Order_Date\n" +
+                        "FROM `User` u\n" +
+                        "JOIN `Space` s USING (User_ID)\n" +
+                        "JOIN Type_Space y USING (Space_ID)\n" +
+                        "JOIN Room o USING (Type_ID)\n" +
+                        "JOIN `Table` t USING (Room_ID)\n" +
+                        "JOIN Ordering r USING (Table_ID)\n" +
+                        "WHERE r.Order_ID = '"+Order_ID+"' ;";
+            ResultSet cn = stmt.executeQuery(sh);
+            cn.next();
+                Type_Name = cn.getString("Type_Name");
+                Room_Name = cn.getString("Room_Name");
+                Table_ID = cn.getString("Table_ID");
+                Order_Status = cn.getString("Order_Status");
+                Total_price = cn.getString("Total_Price");
+                Order_Date = cn.getString("Order_Date");
+            cn.close();
+        } catch (SQLException ex){
+            System.out.print(ex);
+        }
+    }
+
+    public String getOrder_Date(String Order_ID) {
+        viewDetailOrder(Order_ID);
+        return Order_Date;
+    }
+
+    public String getOrder_Status(String Order_ID) {
+        viewDetailOrder(Order_ID);
+        return Order_Status;
+    }
+
+    public String getType_Name(String Order_ID) {
+        viewDetailOrder(Order_ID);
+        return Type_Name;
+    }
+
+    public String getRoom_Name(String Order_ID) {
+        viewDetailOrder(Order_ID);
+        return Room_Name;
+    }
+
+    public String getTable_ID(String Order_ID) {
+        viewDetailOrder(Order_ID);
+        return Table_ID;
+    }
+
+    public String getTotal_price(String Order_ID) {
+        viewDetailOrder(Order_ID);
+        return Total_price;
+    }
+    
+    
+
 //    public String getSpaceID() {
 //        return SpaceID;
 //    }
@@ -149,7 +217,6 @@ public class Order {
             Statement stmt = con.createStatement();
             String sqls = "Update Ordering SET Order_Status = 'PAID' WHERE Order_ID = '" + Order_ID + "'";
             stmt.executeUpdate(sqls);
-
         } catch (SQLException ex) {
         }
     }
@@ -158,7 +225,6 @@ public class Order {
             Statement stmt = con.createStatement();
             String sqls = "Update Ordering SET Order_Status = 'CANCEL' WHERE Order_ID = '" + Order_ID + "'";
             stmt.executeUpdate(sqls);
-
         } catch (SQLException ex) {
         }
     }
