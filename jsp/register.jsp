@@ -72,11 +72,12 @@
                 <div class="collapse navbar-collapse yamm" id="navigation">
                     <div class="button navbar-right">
                         <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.open('register.jsp')" data-wow-delay="0.45s">Sign In</button>
-                        <button class="navbar-btn nav-button wow fadeInRight" onclick=" window.open('submit-property.html')" data-wow-delay="0.48s">Submit</button>
+                        <%--<button class="navbar-btn nav-button wow fadeInRight" onclick=" window.open('submit-property.html')" data-wow-delay="0.48s">Submit</button>--%>
+                        
                     </div>
                     <ul class="main-nav nav navbar-nav navbar-right">
                         <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="index.jsp">Home</a></li>
-                        <li class="wow fadeInDown" data-wow-delay="0.2s"><a class="" href="properties.html">Type</a></li>
+                        <li class="wow fadeInDown" data-wow-delay="0.2s"><a class="" href="PropertiesServlet">Properties</a></li>
                         <!-- ???????? About -->
                         <li class="wow fadeInDown" data-wow-delay="0.3s"><a class="" href="#about" id="about" data-scroll="true">About</a></li>
                         <li class="wow fadeInDown" data-wow-delay="0.5s"><a href="contact.html">Contact</a></li>
@@ -168,6 +169,7 @@
                                 </div>
                             </form>
                             <br>
+                            <h7>Register to be Entrepreneur?</h7> <a href="registerEn.jsp">Click Here</a>
                             
                         </div>
                         
