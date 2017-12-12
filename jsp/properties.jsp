@@ -1,3 +1,9 @@
+<%-- 
+    Document   : properties
+    Created on : Dec 1, 2017, 2:27:11 PM
+    Author     : lenovo
+--%>
+
 <!DOCTYPE html>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -240,44 +246,26 @@
                                             <div class="col-xs-9">
 
 
-                                                <select id="lunchBegins" name="Place" class="selectpicker show-tick form-control">
-                                                    <option>-Location-</option>
-                                                    <!--ดึงข้อมูลมาใส่ในdropdown------------------------------------------------------->
-                                                    <c:forEach items="${requestScope.Location}" var="place">
-                                                        <option value="${requestScope.place}">${requestScope.place}></option>
-                                                    </c:forEach>
-                                                    <!------------------------------------------------------------------------>
+                                                <select name="Place" id="basic" class="selectpicker show-tick form-control">
+                                                    <option> -Place- </option>
+                                                    <option value="Siam">Siam</option>
+                                                    <option value="Silom">Silom</option>
+                                                    <option value="Asok">Asok</option>
+
                                                 </select><br><br>
 
 
 
-                                                <select id="basic" name="Type_Sapace" class="selectpicker show-tick form-control">
+                                                
+                                                <select name="TypeSpace" id="basic" class="selectpicker show-tick form-control">
                                                     <option> -Type Space- </option>
-                                                    <!--ดึงข้อมูลมาใส่ในdropdown------------------------------------------------------->
-                                                    <c:forEach items="${requestScope.Type_Space}" var="tspace">
-                                                        <option value="${requestScope.tspace}">${requestScope.tspace}></option>
-                                                    </c:forEach>
-                                                    <!------------------------------------------------------------------------> 
-
+                                                    <option value="Common Room">Common Room</option>
+                                                    <option value="Meeting Room">Meeting Room</option>
+                                                    <option value="Private Office">Private Office</option>
                                                 </select>
 
                                             </div>
                                         </fieldset>
-
-                                        <fieldset class="padding-5">
-                                            <div class="row">
-                                                <div class="col-xs-9">
-                                                    <label for="price-range">Price range (Bath):</label>
-                                                    <input type="text" class="span2" value="" data-slider-min="20" 
-                                                           data-slider-max="1000" data-slider-step="5" 
-                                                           data-slider-value="[20,1000]" id="price-range" >
-                                                    <b class="pull-left color">20 Bath</b> 
-                                                    <b class="pull-right color">1000 Bath</b><br>                                                
-
-                                                </div>
-                                            </div>
-                                        </fieldset>                                
-
                                         <fieldset >
                                             <div class="row">
                                                 <div class="col-xs-9">
@@ -304,25 +292,7 @@
                     
                     <div class="col-md-9  pr0 padding-top-40 properties-page">
                         <div class="col-md-12 clear"> 
-                        <div class="col-xs-10 page-subheader sorting pl0">
-                           
-
-                            <div class="items-per-page">
-                                <label for="items_per_page"><b>Property per page :</b></label>
-                                <div class="sel">
-                                    <select id="items_per_page" name="per_page">
-                                        <option value="3">3</option>
-                                        <option value="6">6</option>
-                                        <option value="9">9</option>
-                                        <option selected="selected" value="12">12</option>
-                                        <option value="15">15</option>
-                                        <option value="30">30</option>
-                                        <option value="45">45</option>
-                                        <option value="60">60</option>
-                                    </select>
-                                </div><!--/ .sel-->
-                            </div><!--/ .items-per-page-->
-                        </div>
+                        
                         
               
                         <div class="col-md-12 clear"> 
@@ -339,7 +309,7 @@
                                                     <div class="dot-hr"></div>
                                                     <span class="pull-left"><b>Place: </b>${requestScope.SpaceSet.get(0).get(theSpace.index+3)}</span><br>
                                                     <span class="pull-left"><b>${requestScope.SpaceSet.get(0).get(theSpace.index+5)}</b></span>
-                                                    <input type="hidden" name="Type_ID" value="${requestScope.SpaceSet.get(0).get(theSpace.index+4)}">
+                                                    
                                                        
                                                 </div>
                                             </div>
@@ -378,120 +348,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-md-3 col-sm-6 wow fadeInRight animated">
-                            <div class="single-footer">
-                                <h4>Quick links </h4>
-                                <div class="footer-title-line"></div>
-                                <ul class="footer-menu">
-                                    <li><a href="properties.html">Properties</a>  </li> 
-                                    <li><a href="#">Services</a>  </li> 
-                                    <li><a href="submit-property.html">Submit property </a></li> 
-                                    <li><a href="contact.html">Contact us</a></li> 
-                                    <li><a href="faq.html">fqa</a>  </li> 
-                                    <li><a href="faq.html">Terms </a>  </li> 
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 wow fadeInRight animated">
-                            <div class="single-footer">
-                                <h4>Last News</h4>
-                                <div class="footer-title-line"></div>
-                                <ul class="footer-blog">
-                                    <li>
-                                        <div class="col-md-3 col-sm-4 col-xs-4 blg-thumb p0">
-                                            <a href="single.html">
-                                                <img src="assets/img/demo/small-proerty-2.jpg">
-                                            </a>
-                                            <span class="blg-date">12-12-2016</span>
-
-                                        </div>
-                                        <div class="col-md-8  col-sm-8 col-xs-8  blg-entry">
-                                            <h6> <a href="single.html">Add news functions </a></h6> 
-                                            <p style="line-height: 17px; padding: 8px 2px;">Lorem ipsum dolor sit amet, nulla ...</p>
-                                        </div>
-                                    </li> 
-
-                                    <li>
-                                        <div class="col-md-3 col-sm-4 col-xs-4 blg-thumb p0">
-                                            <a href="single.html">
-                                                <img src="assets/img/demo/small-proerty-2.jpg">
-                                            </a>
-                                            <span class="blg-date">12-12-2016</span>
-
-                                        </div>
-                                        <div class="col-md-8  col-sm-8 col-xs-8  blg-entry">
-                                            <h6> <a href="single.html">Add news functions </a></h6> 
-                                            <p style="line-height: 17px; padding: 8px 2px;">Lorem ipsum dolor sit amet, nulla ...</p>
-                                        </div>
-                                    </li> 
-
-                                    <li>
-                                        <div class="col-md-3 col-sm-4 col-xs-4 blg-thumb p0">
-                                            <a href="single.html">
-                                                <img src="assets/img/demo/small-proerty-2.jpg">
-                                            </a>
-                                            <span class="blg-date">12-12-2016</span>
-
-                                        </div>
-                                        <div class="col-md-8  col-sm-8 col-xs-8  blg-entry">
-                                            <h6> <a href="single.html">Add news functions </a></h6> 
-                                            <p style="line-height: 17px; padding: 8px 2px;">Lorem ipsum dolor sit amet, nulla ...</p>
-                                        </div>
-                                    </li> 
-
-
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 wow fadeInRight animated">
-                            <div class="single-footer news-letter">
-                                <h4>Stay in touch</h4>
-                                <div class="footer-title-line"></div>
-                                <p>Lorem ipsum dolor sit amet, nulla  suscipit similique quisquam molestias. Vel unde, blanditiis.</p>
-
-                                <form>
-                                    <div class="input-group">
-                                        <input class="form-control" type="text" placeholder="E-mail ... ">
-                                        <span class="input-group-btn">
-                                            <button class="btn btn-primary subscribe" type="button"><i class="pe-7s-paper-plane pe-2x"></i></button>
-                                        </span>
-                                    </div>
-                                    <!-- /input-group -->
-                                </form> 
-
-                                <div class="social pull-right"> 
-                                    <ul>
-                                        <li><a class="wow fadeInUp animated" href="https://twitter.com/kimarotec"><i class="fa fa-twitter"></i></a></li>
-                                        <li><a class="wow fadeInUp animated" href="https://www.facebook.com/kimarotec" data-wow-delay="0.2s"><i class="fa fa-facebook"></i></a></li>
-                                        <li><a class="wow fadeInUp animated" href="https://plus.google.com/kimarotec" data-wow-delay="0.3s"><i class="fa fa-google-plus"></i></a></li>
-                                        <li><a class="wow fadeInUp animated" href="https://instagram.com/kimarotec" data-wow-delay="0.4s"><i class="fa fa-instagram"></i></a></li>
-                                        <li><a class="wow fadeInUp animated" href="https://instagram.com/kimarotec" data-wow-delay="0.6s"><i class="fa fa-dribbble"></i></a></li>
-                                    </ul> 
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>        
-
-            <div class="footer-copy text-center">
-                <div class="container">
-                    <div class="row">
-                        <div class="pull-left">
-                            <span> (C) <a href="http://www.KimaroTec.com">KimaroTheme</a> , All rights reserved 2016  </span> 
-                        </div> 
-                        <div class="bottom-menu pull-right"> 
-                            <ul> 
-                                <li><a class="wow fadeInUp animated" href="#" data-wow-delay="0.2s">Home</a></li>
-                                <li><a class="wow fadeInUp animated" href="#" data-wow-delay="0.3s">Property</a></li>
-                                <li><a class="wow fadeInUp animated" href="#" data-wow-delay="0.4s">Faq</a></li>
-                                <li><a class="wow fadeInUp animated" href="#" data-wow-delay="0.6s">Contact</a></li>
-                            </ul> 
-                        </div>
-                    </div>
-                </div>
-            </div>
+                        
 
         </div>
 
