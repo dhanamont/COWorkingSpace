@@ -71,7 +71,7 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse yamm" id="navigation">
                     <div class="button navbar-right">
-                        <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.open('register.jsp')" data-wow-delay="0.45s">Sign In</button>
+                        <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.open('register.jsp')" data-wow-delay="0.45s">Sign In / Register</button>
                         <%--<button class="navbar-btn nav-button wow fadeInRight" onclick=" window.open('submit-property.html')" data-wow-delay="0.48s">Submit</button>--%>
                         
                     </div>
@@ -169,7 +169,7 @@
                                 </div>
                             </form>
                             <br>
-                            <h7>Register to be Entrepreneur?</h7> <a href="registerEn.jsp">Click Here</a>
+                            <h7>Register to be Entrepreneur?</h7> <a href="RegisterEn.jsp">Click Here</a>
                             
                         </div>
                         
