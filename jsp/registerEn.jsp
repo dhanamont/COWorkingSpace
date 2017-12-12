@@ -77,7 +77,7 @@
                     </div>
                     <ul class="main-nav nav navbar-nav navbar-right">
                         <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="index.jsp">Home</a></li>
-                        <li class="wow fadeInDown" data-wow-delay="0.2s"><a class="" href="properties.jsp">Properties</a></li>
+                        <li class="wow fadeInDown" data-wow-delay="0.2s"><a class="" href="PropertiesServlet">Properties</a></li>
                         <!-- ???????? About -->
                         <li class="wow fadeInDown" data-wow-delay="0.3s"><a class="" href="#about" id="about" data-scroll="true">About</a></li>
                         <li class="wow fadeInDown" data-wow-delay="0.5s"><a href="contact.html">Contact</a></li>
@@ -109,7 +109,7 @@
                                 <div class="wizard-header">
                                     <h3>
                                         <b>SUBMIT</b> NEW ENTREPRENEUR <br>
-                                        
+                                        <small>Lorem ipsum dolor sit amet, consectetur adipisicing.</small>
                                     </h3>
                                 </div>
 
@@ -145,7 +145,7 @@
                                     <!--  End step 1 -->
 
                                     <div class="tab-pane" id="step2">
-                                        <h4 class="info-text"> Enter your Name ? </h4>
+                                        <h4 class="info-text"> How much your Property is Beautiful ? </h4>
                                         <div class="row"> 
                                        <div class="col-sm-4 col-sm-offset-1">
                                                 
@@ -172,7 +172,7 @@
                                     <!-- End step 2 -->
 
                                     <div class="tab-pane" id="step3">                                        
-                                        <h4 class="info-text">Enter your Username&Password ? </h4>
+                                        <h4 class="info-text">Give us somme images and videos ? </h4>
                                        <div class="col-sm-4 col-sm-offset-1">
                                                 
                                             
