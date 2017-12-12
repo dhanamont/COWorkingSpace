@@ -306,10 +306,10 @@ public class Space {
         return null;
     }
 
-    public String getUser_ID(String Space_Name) {
+    public String getUser_ID(String Space_ID) {
         try {
             Statement stmt = con.createStatement();
-            String Space_table = "SELECT User_ID FROM `Space` WHERE Space_Name = '" + Space_Name + "';";
+            String Space_table = "SELECT User_ID FROM `Space` WHERE Space_ID = '" + Space_ID + "';";
             ResultSet rs1 = stmt.executeQuery(Space_table);
             rs1.next();
             User_ID = rs1.getString("User_ID");
