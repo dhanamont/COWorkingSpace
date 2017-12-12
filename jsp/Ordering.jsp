@@ -49,7 +49,7 @@
         <!-- Check Role Entrepreneur-->
         <% if (Role_ID == null) { %>
             <% response.sendRedirect("index.jsp");%>
-        <% } else if (Role_ID.equals("ENT")) {%>
+        <% } else if (Role_ID.equals("MEM")) {%>
         <!-- Start Navbar Entrepreneur -->
         <nav class="navbar navbar-default ">
             <div class="container">
@@ -69,23 +69,18 @@
 
                     <ul class="main-nav nav navbar-nav navbar-right">
                         <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="index.jsp">Home</a></li>
-                        <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="properties.jsp">Properties</a></li>
+                        <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="PropertiesServlet">Properties</a></li>
                         <li class="wow fadeInDown" data-wow-delay="0.3s"><a href="#about" data-scroll="true">About</a></li>
                         <li class="wow fadeInDown" data-wow-delay="0.5s"><a href="#contact">Contact</a></li>
                         <li class="dropdown ymm-sw " data-wow-delay="0.1s">
                             <a class="dropdown-toggle active" data-toggle="dropdown" data-hover="dropdown" data-delay="200"><%= session.getAttribute("Username")%> <b class="caret"></b></a>
                             <ul class="dropdown-menu navbar-nav">
+                           
                                 <li>
-                                    <a href="">Edit Profile</a>
+                                    <a href="MyOrders.jsp">My Orders</a>
                                 </li>
                                 <li>
-                                    <a href="SubmitProperties.jsp">Submit Co-working</a>
-                                </li>
-                                <li>
-                                    <a href="index-4.html">Reservation list</a>
-                                </li>
-                                <li>
-                                    <a href="index-4.html">Sign out</a>
+                                    <a href="SignOutServlet">Sign out</a>
                                 </li>
 
                             </ul>
@@ -114,7 +109,7 @@
                     <div class="wizard-container"> 
 
                         <div class="wizard-card ct-wizard-orange" id="wizardProperty">
-                            <form action="SubmitPropertiesServlet" method="POST">                        
+                                                  
                                 <div class="wizard-header">
                                     <h3>
                                         <b>Check</b> YOUR RESERVATION<br><br>
@@ -129,41 +124,47 @@
                                 <div class="clear">
                                     <div class="col-sm-10 col-sm-offset-1">                    
                                         <div class="form-group">
-                                            <label><h4><b>Reservation name </b>: <%= request.getAttribute("User_ID")%></h4></label><br>                                
+                                            <label><h4><b>Reservation name </b>: <%= session.getAttribute("username")%></h4></label><br>                                
                                         </div>
                                     
                                         <div class="form-group">
-                                            <label><h4><b>Co-Working Space name </b>: <%= request.getAttribute("Space_Name")%></h4></label>                 
+                                            <label><h4><b>Co-Working Space name </b>: <%= session.getAttribute("spaceName")%></h4></label>                 
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label><h4><b>Order Date </b>: <%= session.getAttribute("orderDate")%></h4></label>                 
                                         </div>
                                     
                                         <div class="form-group">
-                                            <label><h4><b>Type of space </b>: <%= request.getAttribute("Type_Name")%></h4></label>                        
+                                            <label><h4><b>Type of space </b>: <%= session.getAttribute("typeName")%></h4></label>                        
                                         </div>
                                     
                                         <div class="form-group">
-                                            <label><h4><b>Name of room </b>: <%= request.getAttribute("Room_Name")%></h4></label>                                    
+                                            <label><h4><b>Name of room </b>: <%= session.getAttribute("roomName")%></h4></label>                                    
                                         </div>
                                     
                                         <div class="form-group">
-                                            <label><h4><b>Price </b>: <%= request.getAttribute("Price")%></h4></label>
+                                            <label><h4><b>Price </b>: <%= session.getAttribute("price")%></h4></label>
                                         </div>
                                     
                                         <div class="form-group">
-                                            <label><h4><b>Start time </b>: <%= request.getAttribute("Start_Time")%></h4></label><br>
+                                            <label><h4><b>Start time </b>: <%= session.getAttribute("startTime")%></h4></label><br>
                                         </div>
                                     
                                         <div class="form-group">
-                                            <label><h4><b>End time </b>: <%= request.getAttribute("End_Time")%></h4></label>
+                                            <label><h4><b>End time </b>: <%= session.getAttribute("endTime")%></h4></label>
                                         </div>
                                         </div>
                                         
-                                        <div class="col-md-10 col-md-offset-1 col-sm-12 text-center page-title">
-                                            <a href="OrderServlet.java" class="btn btn-default">Confirm</a>                        
-                                        </div>
+                                        <form name="OrderServlet" action="OrderServlet" method="post">
+                                            <div class="col-md-10 col-md-offset-1 col-sm-12 text-center page-title">
+                                                <button type="submit"><a class="btn btn-default">Confirm</a></button>                       
+                                            </div>
+                                        </form>
 
                                 </div>
                                 </div>
-                            </form>
+                           
                         </div>
                         <!-- End submit form -->
                     </div> 
