@@ -31,14 +31,24 @@ public class Date {
     public String createDate_ID() {
         try {
             Statement stmt = con.createStatement();
-            String numSpa = "SELECT COUNT(Date_ID)+1 from `Date`";
+            String numSpa = "SELECT COUNT(Date_ID)+1 'ID' from `Date`";
             ResultSet numSpa1 = stmt.executeQuery(numSpa);
             numSpa1.next();
-            Date_ID = numSpa1.getString("count(Date_ID)+1");
-
+            Date_ID = numSpa1.getString("ID");
+            return Date_ID;
         } catch (SQLException ex) {
         }
-        return Date_ID;
+        return null;
+        
+    }
+    public void insertDate(String Date_ID, String Date_name, String Space_ID) {
+        try {
+            Statement stmt = con.createStatement();
+            String sql = "Insert into `Date` values('" + Date_ID + "', '" + Date_name + "', '" + Space_ID + "');";
+            stmt.executeUpdate(sql);
+        } catch (SQLException ex) {
+            System.out.println("insertDate: "+ex);
+        }
     }
     
 }
