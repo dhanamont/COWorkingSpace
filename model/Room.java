@@ -36,26 +36,29 @@ public class Room {
     private ArrayList<String> Room_Name = new ArrayList<String>();
     private ArrayList<String> RoomID = new ArrayList<String>();
     
-    public String createRoom_ID() {
+     public String createRoom_ID() {
         try {
             Statement stmt = con.createStatement();
-            String numSpa = "SELECT COUNT(Room_ID)+1 from Room";
+            String numSpa = "SELECT COUNT(Room_ID)+1 'ID' from Room";
             ResultSet numSpa1 = stmt.executeQuery(numSpa);
             numSpa1.next();
-            Room_ID = numSpa1.getString("count(Room_ID)+1");
-
+            Room_ID = numSpa1.getString("ID");
+            return Room_ID;
         } catch (SQLException ex) {
+            System.out.println("createRoomID: "+ex);
         }
-        return Room_ID;
+        return null;
+        
     }
     
-    public void insertRoom(String Room_ID, String Room_Name, int NumofTable, String Picture_room, float Price, String Type_ID) {
+   public void insertRoom(String Room_ID, String Room_Name, int NumofTable, String Picture_room, float Price, String Type_ID) {
         try {
             Statement stmt = con.createStatement();
-            String sql = "Insert into Room values('" + Room_ID + "', '" + Room_Name + "', '" + NumofTable 
-                    + "', '" + Picture_room + "', '" + Price + "', '" + Type_ID +"';";
+            String sql = "Insert into Room values('" + Room_ID + "', '" + Room_Name + "', " + NumofTable 
+                    + ", '" + Picture_room + "', " + Price + ", '" + Type_ID +"');";
             stmt.executeUpdate(sql);
         } catch (SQLException ex) {
+            System.out.println("insertRoom: "+ex);
         }
     }
     
