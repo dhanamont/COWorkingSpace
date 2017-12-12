@@ -1,3 +1,14 @@
+<%-- 
+    Document   : Myproperty
+    Created on : Nov 1, 2017, 10:17:48 AM
+    Author     : lenovo
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
+<!DOCTYPE html>
 <html class="no-js"> <!--<![endif]-->
     <head>
         <meta charset="utf-8">
@@ -41,10 +52,11 @@
         <!-- DataSource Connect -->
         <sql:setDataSource var="it58070122_se" driver="com.mysql.jdbc.Driver" 
                            url="jdbc:mysql://ihost.it.kmitl.ac.th:3306/it58070122_se" 
-                           user="it58070122_se" password="chFKW9IGV"/>
+                           user="it58070122_se" password="chFKW9lGV"/>
         
         <% String Role_ID = (String) session.getAttribute("Role_ID");%>
         <% String Username = (String) session.getAttribute("Username");%>
+        <% String User_ID = (String) session.getAttribute("User_ID");%>
 
         <!-- Check Role Entrepreneur-->
         <% if (Role_ID == null) { %>
@@ -114,7 +126,7 @@
                     <div class="wizard-container"> 
 
                         <div class="wizard-card ct-wizard-orange" id="wizardProperty">
-                            <form action="SubmitPropertiesServlet" method="POST">                        
+                            <form name="SubmitPropertiesServlet" action="SubmitPropertiesServlet" method="POST" enctype="multipart/form-data">                        
                                 <div class="wizard-header">
                                     <h3>
                                         <b>Submit</b> YOUR CO-WORKING SPACE<br><br>
@@ -138,7 +150,7 @@
                                                 <div class="col-sm-12">
                                                     <div class="form-group">
                                                         <label>Co-working Space name :</label>
-                                                        <textarea type="input" class="form-control" name="Space_Name"></textarea>
+                                                        <input type="input" class="form-control" name="Space_Name">
                                                     </div> 
                                                 </div> 
                                             </div>
@@ -148,38 +160,23 @@
                                                     <div class="form-group">
                                                         
                                                         <label>Place :</label>
-                                                        <select id="Place" name="table" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Select your place">
-                                                            <option> -Table- </option>
-                                                        <!--????????????????dropdown ??????? ArrayList-->
-                                                        <c:forEach items="${TableList}" var="table">
-
-                                                            <option value="${[table.index]}">${[table.index]}</option>
-                                                        </c:forEach>
-
-                                                        <%--<c:forEach items="${databaseList}" var="databaseValue">
-                                                            <option value="${databaseValue}">
-                                                                ${databaseValue}
-                                                            </option>
-                                                        </c:forEach>--%>
-                                                        <%-- <select name="s1">
-                                                            <c:forEach items="${listOfValues}" var="actualbean">
-                                                                <option value="${actualbean.value}"><c:out value="${actualbean.value}"/></option>
-                                                        </c:forEach>--%>
-                                                        <%--ArrayList databaseArrayList = new ArrayList();...
-                                                          request.setAttribute("databaseList", databaseArrayList); --%>
+                                                        <select id="Place" name="Place" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Select your place">
+                                                            <option>Siam</option>
+                                                            <option>Silom</option>
+                                                            <option>Asok</option>
                                                     </select>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-3">
                                                     <div class="form-group">
                                                         <label>Picture poster :</label>
-                                                        <input class="form-control" type="file" id="property-images" name="Picture_poster">
+                                                        <input type="file" id="exampleInputFile" name="Picture_poster">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-3">
                                                     <div class="form-group">
                                                         <label>Picture cover :</label>
-                                                        <input class="form-control" type="file" id="property-images" name="Picture_cover" multiple>
+                                                        <input type="file" id="exampleInputFile" name="Picture_cover">
                                                     </div>
                                                 </div>
                                             </div>
@@ -264,44 +261,46 @@
                                             <div class="col-sm-3">
                                                     <div class="form-group">
                                                         <label>Open time</label>
-                                                        <select id="lunchBegins" class="selectpicker" title="Select open time">
-                                                            <option value="7" name="Start_Time">7.00</option>
-                                                            <option value="8" name="Start_Time">8.00</option>
-                                                            <option value="9" name="Start_Time">9.00</option>
-                                                            <option value="10" name="Start_Time">10.00</option>
-                                                            <option value="11" name="Start_Time">11.00</option>
-                                                            <option value="12" name="Start_Time">12.00</option>
-                                                            <option value="13" name="Start_Time">13.00</option>
-                                                            <option value="14" name="Start_Time">14.00</option>
-                                                            <option value="15" name="Start_Time">15.00</option>
-                                                            <option value="16" name="Start_Time">16.00</option>
-                                                            <option value="17" name="Start_Time">17.00</option>
-                                                            <option value="18" name="Start_Time">18.00</option>
-                                                            <option value="19" name="Start_Time">19.00</option>
-                                                            <option value="20" name="Start_Time">20.00</option>
-                                                            <option value="21" name="Start_Time">21.00</option>
+                                                        <select class="selectpicker" name="Start_Time" title="Select open time">
+                                                            <option>07:00:00</option>
+                                                            <option>08:00:00</option>
+                                                            <option>09:00:00</option>
+                                                            <option>10:00:00</option>
+                                                            <option>11:00:00</option>
+                                                            <option>12:00:00</option>
+                                                            <option>13:00:00</option>
+                                                            <option>14:00:00</option>
+                                                            <option>15:00:00</option>
+                                                            <option>16:00:00</option>
+                                                            <option>17:00:00</option>
+                                                            <option>18:00:00</option>
+                                                            <option>19:00:00</option>
+                                                            <option>20:00:00</option>
+                                                            <option>21:00:00</option>
+                                                            <option>22:00:00</option>
                                                         </select>
                                                     </div>
                                                 </div>
                                             <div class="col-sm-3">
                                                     <div class="form-group">
                                                         <label>Close time</label>
-                                                        <select id="lunchBegins" class="selectpicker" title="Select close time">
-                                                            <option value="7" name="End_Time">7.00</option>
-                                                            <option value="8" name="End_Time">8.00</option>
-                                                            <option value="9" name="End_Time">9.00</option>
-                                                            <option value="10" name="End_Time">10.00</option>
-                                                            <option value="11" name="End_Time">11.00</option>
-                                                            <option value="12" name="End_Time">12.00</option>
-                                                            <option value="13" name="End_Time">13.00</option>
-                                                            <option value="14" name="End_Time">14.00</option>
-                                                            <option value="15" name="End_Time">15.00</option>
-                                                            <option value="16" name="End_Time">16.00</option>
-                                                            <option value="17" name="End_Time">17.00</option>
-                                                            <option value="18" name="End_Time">18.00</option>
-                                                            <option value="19" name="End_Time">19.00</option>
-                                                            <option value="20" name="End_Time">20.00</option>
-                                                            <option value="21" name="End_Time">21.00</option>
+                                                        <select id="lunchBegins" class="selectpicker" name="End_Time" title="Select close time">
+                                                            <option>07:00:00</option>
+                                                            <option>08:00:00</option>
+                                                            <option>09:00:00</option>
+                                                            <option>10:00:00</option>
+                                                            <option>11:00:00</option>
+                                                            <option>12:00:00</option>
+                                                            <option>13:00:00</option>
+                                                            <option>14:00:00</option>
+                                                            <option>15:00:00</option>
+                                                            <option>16:00:00</option>
+                                                            <option>17:00:00</option>
+                                                            <option>18:00:00</option>
+                                                            <option>19:00:00</option>
+                                                            <option>20:00:00</option>
+                                                            <option>21:00:00</option>
+                                                            <option>22:00:00</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -320,7 +319,7 @@
                                                     <div class="form-group">
                                                         <div class="checkbox">
                                                             <label>
-                                                                <input type="checkbox" value="wifi" name="Service_Name" > Wi-Fi
+                                                                <input type="checkbox" value="Wi-fi" name="Service_Name" > Wi-Fi
                                                             </label>
                                                         </div>
                                                     </div>
@@ -329,7 +328,7 @@
                                                     <div class="form-group">
                                                         <div class="checkbox">
                                                             <label>
-                                                                <input type="checkbox" value="cafe" name="Service_Name" > Cafe
+                                                                <input type="checkbox" value="Cafe" name="Service_Name" > Cafe
                                                             </label>
                                                         </div>
                                                     </div>
@@ -338,7 +337,7 @@
                                                     <div class="form-group">
                                                         <div class="checkbox">
                                                             <label>
-                                                                <input type="checkbox"  value="parking" name="Service_Name" > Parking lot
+                                                               <input type="checkbox"  value="Parking lot" name="Service_Name" > Parking lot
                                                             </label>
                                                         </div>
                                                     </div>
@@ -347,7 +346,7 @@
                                                     <div class="form-group">
                                                         <div class="checkbox">
                                                             <label>
-                                                                <input type="checkbox" value="photocopier" name="Service_Name" > Photocopier
+                                                                <input type="checkbox" value="Photocopier" name="Service_Name" > Photocopier
                                                             </label>
                                                         </div>
                                                     </div>
@@ -361,65 +360,86 @@
                                     <!-- End step 1 -->
 
                                     <div class="tab-pane" id="step2">
-                                    <h4 class="info-text"> Add type of co-working space </h4>
+                                    <h4 class="info-text"> Add Room of Co-working space Types </h4>
                                     <div class="input_fields_wrap">
-                                        <b>Type Space &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b><a class="btn btn-success glyphicons glyphicon-plus add_field_button1"></a>
-                                    <div class="row">
+                                        <b>Add Type Space</b> <a class="btn btn-success glyphicons glyphicon-plus add_field_button"></a> <br>
 
-                                            <div class="well input_fields_wrap2">
-                                                <div class="row">
-                                                    <div class="col-sm-10 col-sm-offset-1">
-                                                        <label>Type name: <small>(required)</small></label><br>  
-                                                        <div class="form-group">
-                                                        <select id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Select type of space" name="Type_name">
-                                                            <option>Common Room</option>
-                                                            <option>Meeting Room</option>
-                                                            <option>Private Office</option>
-                                                            <option>others</option>
-                                                        </select>
-                                                        </div>
-                                                        <label>Number of room: <small>(required)</small></label><br>  
-                                                        <input type="text" class="form-control" name="NumberofRoom">
-                                                        <label>Prototype: <small>(required)</small></label><br>  
-                                                        <input class="form-control" type="file" id="property-images" name="Prototype" multiple>
-                                                        
-                                                        <label>Number of table: <small>(required)</small></label><br>  
-                                                        <input type="text" class="form-control" name="NumberofTable">
-                                                        <label>Price: <small>(Bath)</small></label><br>  
-                                                        <input type="text" class="form-control" name="Price">
-                                                        <label>Picture room: <small>(required)</small></label><br>  
-                                                        <input class="form-control" type="file" id="property-images" name="Picture_room" multiple>
-                                                        <label>Person/Table: <small>(required)</small></label><br>  
-                                                        <input type="text" class="form-control" name="NumofPeople">
+                                        <div class="well input_fields_wrap1">
+                                            <div class="row">
+                                                <div class="col-sm-10 col-sm-offset-1">
+                                                    <label>Type name: <small>(required)</small></label><br>  
+                                                    <div class="form-group">
+                                                    <select id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Select type of space" name="Type_name[]">
+                                                        <option>Common Room</option>
+                                                        <option>Meeting Room</option>
+                                                        <option>Private Office</option>
+                                                    </select>
                                                     </div>
+                                                    <label>Number of room: <small>(required)</small></label><br>  
+                                                    <input type="text" class="form-control" name="NumberofRoom[]">
+                                                    <label>Prototype: <small>(required)</small></label><br>  
+                                                    <input class="form-control" type="file" id="exampleInputFile" name="Prototype">
+                                                    <label>Picture Type Space: <small>(required)</small></label><br>  
+                                                    <input class="form-control" type="file" id="exampleInputFile" name="Picture_room">
                                                 </div>
                                             </div>
-                                            <br>
                                         </div>
-                                    
-                                     <script>
-                                    $(document).ready(function () {
-                                        var max_fields = 3; //maximum input boxes allowed
-                                        var wrapper = ".input_fields_wrap"; //Fields wrapper
-                                        var zone_wrapper = ".input_fields_wrap2"; //Zone wrapper
-                                        var addZone = ".add_field_button1"; //Add zone button
-                                        var removeField = ".remove_field"; //Remove button
-                                        var x = 1; //initlal text box count
                                         
-                                        $(wrapper).on("click", addZone, function (e) { // (Zone) add zone on click
-                                            e.preventDefault();
-                                            if (x < max_fields) { //max input box allowed
-                                                x++; //text box increment
-                                                $(this).closest(wrapper).append('<div class="well input_fields_wrap2"><a href="#" class="btn btn-danger remove_field" style="float:right;"><i class="glyphicon glyphicon-remove"></i></a><div class="row"><div class="col-sm-10 col-sm-offset-1"><label>Type name: <small>(required)</small></label><br><div class="form-group"><select id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Select type of space" name="Type_name"><option>Common Room</option><option>Meeting Room</option><option>Private Office</option><option>others</option></select></div><label>Number of room: <small>(required)</small></label><br><input type="text" class="form-control" name="NumberofRoom"><label>Prototype: <small>(required)</small></label><br><input class="form-control" type="file" id="property-images" name="Prototype" multiple><label>Number of table: <small>(required)</small></label><br><input type="text" class="form-control" name="NumberofTable"><label>Price: <small>(Bath)</small></label><br><input type="text" class="form-control" name="Price"><label>Picture room: <small>(required)</small></label><br><input class="form-control" type="file" id="property-images" name="Picture_room" multiple><label>Person/Table: <small>(required)</small></label><br><input type="text" class="form-control" name="NumofPeople"></div></div></div>'); //add input box
-                                            }
-                                        });
-                                        $(wrapper).on("click", removeField, function (e) { //user click on remove text
-                                            e.preventDefault();
-                                            $(this).closest('div').remove(); // Remove cloest parent (Zone or Showtime)
-                                            x--;
-                                        });
-                                    });
-                                    </script>
+                                        <p><b>Add Room</b> <a class="btn btn-success glyphicons glyphicon-plus add_field_button1"></a>
+                                        <div class="well input_fields_wrap2">
+                                            <div class="row">
+                                                <div class="col-sm-10 col-sm-offset-1">
+                                                    <label>Type name: <small>(required)</small></label><br>  
+                                                    <div class="form-group">
+                                                    <select id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Select type of space" name="Type_name">
+                                                        <option>Common Room</option>
+                                                        <option>Meeting Room</option>
+                                                        <option>Private Office</option>
+                                                    </select>
+                                                    </div>
+                                                    <label>Number of table: <small>(required)</small></label><br>  
+                                                    <input type="text" class="form-control" name="NumberofTable[]">
+                                                    <label>Price: <small>(Bath)</small></label><br>  
+                                                    <input type="text" class="form-control" name="Price[]">
+                                                    <label>Person/Table: <small>(required)</small></label><br>  
+                                                    <input type="text" class="form-control" name="NumofPeople[]">
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <script>
+                                            $(document).ready(function () {
+                                                var max_fields = 10; //maximum input boxes allowed
+                                                var wrapper = ".input_fields_wrap"; //Fields wrapper
+                                                var showtime_wrapper = ".input_fields_wrap1"; //Showtime wrapper
+                                                var zone_wrapper = ".input_fields_wrap2"; //Zone wrapper
+                                                var addShowtime = ".add_field_button"; //Add showtime button
+                                                var addZone = ".add_field_button1"; //Add zone button
+                                                var removeField = ".remove_field"; //Remove button
+                                                var x = 1; //initlal text box count
+                                                $(wrapper).on("click", addShowtime, function (e) { // (Showtime) add Showtime on click
+                                                    e.preventDefault();
+                                                    if (x < max_fields) { //max input box allowed
+                                                        x++; //text box increment
+                                                        $(this).closest(wrapper).append('<div class="well input_fields_wrap1"><a href="#" class="btn btn-danger remove_field" style="float:right;"><i class="glyphicon glyphicon-remove"></i></a><div class="row"><div class="col-sm-10 col-sm-offset-1"><label>Type name: <small>(required)</small></label><br><div class="form-group"><select id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Select type of space" name="Type_name"><option>Common Room</option><option>Meeting Room</option><option>Private Office</option></select></div><label>Number of room: <small>(required)</small></label><br><input type="text" class="form-control" name="NumberofRoom[]"><label>Prototype: <small>(required)</small></label><br><input class="form-control" type="file" id="exampleInputFile" name="Prototype"><label>Picture Type Space: <small>(required)</small></label><br><input class="form-control" type="file" id="exampleInputFile" name="Picture_room"></div></div></div>'); //add input box
+                                                    }
+                                                });
+                                                $(wrapper).on("click", addZone, function (e) { // (Zone) add zone on click
+                                                    e.preventDefault();
+                                                    if (x < max_fields) { //max input box allowed
+                                                        x++; //text box increment
+                                                        $(this).closest(wrapper).append('<div class="well input_fields_wrap2"><a href="#" class="btn btn-danger remove_field" style="float:right;"><i class="glyphicon glyphicon-remove"></i></a><div class="row"><div class="col-sm-10 col-sm-offset-1"><label>Type name: <small>(required)</small></label><br><div class="form-group"><select id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Select type of space" name="Type_name"><option>Common Room</option><option>Meeting Room</option><option>Private Office</option></select></div><label>Number of table: <small>(required)</small></label><br><input type="text" class="form-control" name="NumberofTable[]"><label>Price: <small>(Bath)</small></label><br><input type="text" class="form-control" name="Price[]"><label>Person/Table: <small>(required)</small></label><br><input type="text" class="form-control" name="NumofPeople[]"></div></div></div>'); //add input box
+                                                    }
+                                                });
+                                                $(wrapper).on("click", removeField, function (e) { //user click on remove text
+                                                    e.preventDefault();
+                                                    $(this).closest('div').remove(); // Remove cloest parent (Zone or Showtime)
+                                                    x--;
+                                                });
+                                            });
+                                        </script>
+
                                     </div>
                                     </div>
                                     <!-- End step 2 -->
