@@ -46,35 +46,36 @@ public class CheckOrderServlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             
             HttpSession session = request.getSession();
-            
-//            String spaceName = "";
-//            String 
-//            
+
             /********* Start Input ***********/
             String userID = (String) session.getAttribute("User_ID");
             String username = (String) session.getAttribute("Username");
-            String spaceName = (String) request.getAttribute("spaceName");
-            String typeName = (String) request.getAttribute("typeName");
-            String roomID = (String) request.getAttribute("roomID");
-            String roomName = (String) request.getAttribute("roomName");
-            String tableID = request.getParameter("table").substring(request.getParameter("table").indexOf("xxx") + 1);
+            String spaceName = (String) session.getAttribute("Space_Name");
+            String typeName = (String) session.getAttribute("typeName");
+            String roomID = (String) session.getAttribute("roomID");
+            //String roomName = (String) session.getAttribute("Room_Name");
+            String tableID = request.getParameter("tableID").substring(request.getParameter("tableID").indexOf("xxx") + 1);
+            
+            
             //order date
-           
-            String orderDate = request.getParameter("order_date").substring(request.getParameter("order_date").indexOf("xxx")+ 1);   
+            String orderDate = request.getParameter("Date").substring(request.getParameter("Date").indexOf("xxx")+ 1);   
             
             
             //Start Time & End Time
-            String startTime = request.getParameter("StartTime"); 
-            String endTime = request.getParameter("EndTime");
+            String startTime = request.getParameter("Start_Time"); 
+            String endTime = request.getParameter("End_Time");
             
             
             try {
                 //Create Object
                 Room room = new Room();
                 
+                String roomName = room.getRoomName2(roomID);
+                //System.out.println("room id : " + roomID);
+                //System.out.println("roomName : " + roomName);
                 
-                //float price = room.getPrice("roomID");
-                float price = 500;
+                String price = room.getPrice2(roomID);
+                //System.out.println("Price : " + price);
                 
                 //Set Attribute
                 session.setAttribute("userID", userID);
@@ -83,12 +84,11 @@ public class CheckOrderServlet extends HttpServlet {
                 session.setAttribute("startTime", startTime);
                 session.setAttribute("endTime", endTime);
                 session.setAttribute("tableID", tableID);
-                
-                request.setAttribute("spaceName", spaceName);
-                request.setAttribute("typeName", typeName);
-                request.setAttribute("roomID", roomID);
-                request.setAttribute("roomName", roomName);
-                request.setAttribute("price", price);
+                session.setAttribute("spaceName", spaceName);
+                session.setAttribute("typeName", typeName);
+                session.setAttribute("roomID", roomID);
+                session.setAttribute("roomName", roomName);
+                session.setAttribute("price", price);
                 
                 
 //                session.setAttribute("spaceName", spaceName);
@@ -106,7 +106,7 @@ public class CheckOrderServlet extends HttpServlet {
                 obj.forward(request, response);
 
             } catch (Exception ex) {
-                Logger.getLogger(OrderServlet.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(CheckOrderServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
             
             }
