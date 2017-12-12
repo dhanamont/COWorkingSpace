@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package model;
 
 import java.sql.Connection;
@@ -10,6 +11,8 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Locale.Category;
 
 /**
  *
@@ -39,15 +42,6 @@ public class Date {
         } catch (SQLException ex) {
         }
         return Date_ID;
-    }
-    
-    public void insertDate(String Date_ID, String Date, String Space_ID) {
-        try {
-            Statement stmt = con.createStatement();
-            String sql = "Insert into `Date` values('" + Space_ID + "', '" + Date + "', '" + Space_ID + "';";
-            stmt.executeUpdate(sql);
-        } catch (SQLException ex) {
-        }
     }
     
 }
