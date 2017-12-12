@@ -33,26 +33,30 @@ public class Type_Space {
     private String Prototype;
     private String Type_ID;
     
-    public String createType_ID() {
+     public String createType_ID() {
         try {
             Statement stmt = con.createStatement();
-            String numSpa = "SELECT COUNT(Type_ID)+1 from Type_Space";
+            String numSpa = "SELECT COUNT(Type_ID)+1 'ID' from Type_Space";
             ResultSet numSpa1 = stmt.executeQuery(numSpa);
             numSpa1.next();
-            Type_ID = numSpa1.getString("count(Type_ID)+1");
-
+            Type_ID = numSpa1.getString("ID");
+            
+        return Type_ID;
         } catch (SQLException ex) {
         }
-        return Type_ID;
+        return null;
+        
     }
     
-    public void insertType_Space(String Type_ID, String Type_Name, int NumofRoom, String Prototype, String Space_ID) {
+     public void insertType_Space(String Type_ID, String Type_Name, int NumofRoom, String Prototype, String Space_ID) {
         try {
             Statement stmt = con.createStatement();
-            String sql = "Insert into Type_Space values('" + Type_ID + "', '" + Type_Name + "', '" 
-                    + NumofRoom + "', '" + Prototype + ", " + Space_ID +"';";
+            String sql = "Insert into Type_Space values('" + Type_ID + "', '" + Type_Name + "', " 
+                    + NumofRoom + ", '" + Prototype + "', '" + Space_ID +"');";
+            System.out.println(sql);
             stmt.executeUpdate(sql);
         } catch (SQLException ex) {
+            System.out.println("typespace: "+ex);
         }
     }
     
