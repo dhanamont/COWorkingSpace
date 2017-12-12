@@ -126,13 +126,15 @@
             <sql:param value="${User_ID}"/>
         </sql:query>
 
-        <form action="ViewDetail.jsp" method="POST"> 
+        <form action="ViewDetail.jsp" method="POST">
         <div class="content-area submit-property" style="background-color: #FCFCFC;">&nbsp;
+        <div class="row">
+        <div class="well col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3" style="background-color:#FFFFFF;">
         <div class="row">
         <table  class="table table-bordered table-hover" style="background-color:#FFFFFF;">
                 <thead>
                     <tr style="background-color:#d9d9d9;">
-                        <th><center>Name</center></th>
+                        <th><center>Order_ID</center></th>
                         <th><center>Type Name</center></th>
                         <th><center>Order Status</center></th>
                         <th><center>View Detail</center></th>
@@ -144,7 +146,7 @@
 
                         <tr align="center">
                             <input type="hidden" name="id" value="${row.Order_ID}">
-                            <td><c:out value="${row.Name}"/></td>
+                            <td><c:out value="${row.Order_ID}"/></td>
                             <td><c:out value="${row.Type_Name}"/></td>
                             <td><c:out value="${row.Order_Status}"/></td>
                             <td><input type="submit" value="View"/></td>
@@ -156,6 +158,8 @@
                     </tbody>
                 </c:forEach>
             </table>
+        </div>
+        </div>
         </div>
         </div>
         </form>
