@@ -74,23 +74,21 @@
 
                     <ul class="main-nav nav navbar-nav navbar-right">
                         <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="index.jsp">Home</a></li>
-                        <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="properties.jsp">Properties</a></li>
+                        <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="PropertiesServlet">Properties</a></li>
                         <li class="wow fadeInDown" data-wow-delay="0.3s"><a href="#about" data-scroll="true">About</a></li>
                         <li class="wow fadeInDown" data-wow-delay="0.5s"><a href="#contact">Contact</a></li>
                         <li class="dropdown ymm-sw " data-wow-delay="0.1s">
                             <a class="dropdown-toggle active" data-toggle="dropdown" data-hover="dropdown" data-delay="200"><%= session.getAttribute("Username")%> <b class="caret"></b></a>
                             <ul class="dropdown-menu navbar-nav">
-                                <li>
-                                    <a href="">Edit Profile</a>
+                               
+                                 <li>
+                                    <a href="SubmitProperties.jsp">Submit properties</a>
                                 </li>
                                 <li>
-                                    <a href="">Submit Co-working</a>
+                                    <a href="OrderListServlet">Reservation list</a>
                                 </li>
                                 <li>
-                                    <a href="SubmitProperties.jsp">Reservation list</a>
-                                </li>
-                                <li>
-                                    <a href="index-4.html">Sign out</a>
+                                    <a href="SignOutServlet">Sign out</a>
                                 </li>
 
                             </ul>
@@ -101,7 +99,10 @@
         <% } %>
         <!-- End Navbar Entrepreneur -->
 
-        <div class="page-head"> 
+        <!-- property area -->
+
+        <!-- Start page header -->
+         <div class="page-head"> 
             <div class="container">
                 <div class="row">
                     <div class="page-head-content">
@@ -110,60 +111,56 @@
                 </div>
             </div>
         </div>
-        <!-- End page header -->
+        <!-- End page header --> 
+        
+        <!-- Table area -->
+        <div class="content-area user-profiel" style="background-color: #FCFCFC;">&nbsp;
+            <div class="container">   
+                <div class="row">
+                    <div class="col-sm-10 col-sm-offset-1 profiel-container">
 
-        <!-- property area -->
-        <sql:query var="orderList" dataSource="${it58070122_se}">
-            SELECT CONCAT(u.Fname, " ", u.Lname) AS `Name`, y.Type_Name, o.Room_Name, t.Table_ID,
-            r.Order_Status, r.Total_Price, r.Order_Date, r.Order_ID
-            FROM `User` u
-            JOIN `Space` s USING (User_ID)
-            JOIN Type_Space y USING (Space_ID)
-            JOIN Room o USING (Type_ID)
-            JOIN `Table` t USING (Room_ID)
-            JOIN Ordering r USING (Table_ID)
-            WHERE u.User_ID = ? ;
-            <sql:param value="${User_ID}"/>
-        </sql:query>
+                        <form action="EntRequestList" method="POST">
+                            <div class="profiel-header">
+                                <h3>
+                                    <b>RESERVATION</b> LIST <br><br>
+                                    <small>Manage reservation list.</small>
+                                </h3>
+                                <hr>
+                            </div><br>
+                            <div class="clear col-sm-offset-1">
+                        <!-- SHOW ALL ENTREPRENEUR REQUEST -->
 
-        <form action="ViewDetail.jsp" method="POST">
-        <div class="content-area submit-property" style="background-color: #FCFCFC;">&nbsp;
-        <div class="row">
-        <div class="well col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3" style="background-color:#FFFFFF;">
-        <div class="row">
-        <table  class="table table-bordered table-hover" style="background-color:#FFFFFF;">
-                <thead>
-                    <tr style="background-color:#d9d9d9;">
-                        <th><center>Order_ID</center></th>
-                        <th><center>Type Name</center></th>
-                        <th><center>Order Status</center></th>
-                        <th><center>View Detail</center></th>
-                    </tr>
-                </thead>
-                
-                <c:forEach var="row" items="${orderList.rows}">
-                    <tbody>
+                            <table id="allre1-dt" class="table table-striped" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Type Name</th>
+                                        <th>Order Status</th>
+                                        <th>View Detail</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <c:forEach var="row" items="${requestScope.Order_ID}" varStatus="loop" >
+                                    <tr>
+                                        <td>${row}</td>
+                                        <td>${requestScope.Type_Name[loop.index]}</td>
+                                        <td>${requestScope.Order_Status[loop.index]}</td>
+                                        <td><a class="btn btn-finish btn-primary" href="ViewDetailServlet?id=${row}">View</a></td>
+                                    </tr>
+                                    
+                                </c:forEach>
+                                </tbody>   
+                            </table>
+                        <br>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- end row -->
 
-                        <tr align="center">
-                            <input type="hidden" name="id" value="${row.Order_ID}">
-                            <td><c:out value="${row.Order_ID}"/></td>
-                            <td><c:out value="${row.Type_Name}"/></td>
-                            <td><c:out value="${row.Order_Status}"/></td>
-                            <td><input type="submit" value="View"/></td>
-                           
-                            
-
-                        </tr>
-
-                    </tbody>
-                </c:forEach>
-            </table>
         </div>
-        </div>
-        </div>
-        </div>
-        </form>
-
+    </div>
+            
         <!-- Footer area-->
         <div class="footer-area">
 
