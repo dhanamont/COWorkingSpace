@@ -65,6 +65,9 @@ public class CheckSelectedServlet extends HttpServlet {
             String Type_ID = type.getType_ID(Space_ID);
             request.setAttribute("Type_ID", Type_ID);
             
+            //เอาค่า type name
+            String typeName = type.getType_Name(Space_ID);
+            
             ArrayList<String> Room_ID = new ArrayList<String>();
             ArrayList<Float> Price = new ArrayList<Float>();
             ArrayList<String> Room_Name = new ArrayList<String>();
@@ -80,13 +83,17 @@ public class CheckSelectedServlet extends HttpServlet {
             String roomID = room.getRoomID(roomName);
             System.out.println("roomID: "+roomID);
             table.getTable_ID(Table_ID, roomID);
+            //System.out.print("Room: " + Room_Name);
             
             //วันเวลา
             //ArrayList<String> openDate = space.getOpenDate(Space_ID);
             ArrayList<String> openTime = space.getOpenTime(Space_ID);
 
             //ส่งค่าไป jsp
-            request.setAttribute("Space_Name", space.getSpace_Name(Space_ID));
+            session.setAttribute("typeName", typeName);
+            session.setAttribute("roomID", roomID);
+            session.setAttribute("Room_Name", Room_Name);
+            session.setAttribute("Space_Name", space.getSpace_Name(Space_ID));
             request.setAttribute("Address", space.getAddress(Space_ID));
             request.setAttribute("Place", space.getPlace(Space_ID));
             request.setAttribute("Picture_cover", space.getPicture_Cover(Space_ID));
@@ -95,15 +102,16 @@ public class CheckSelectedServlet extends HttpServlet {
             request.setAttribute("Map", space.getMap(Space_ID));
             request.setAttribute("Prototype", type.getPrototype(Type_ID));
             request.setAttribute("Description", space.getDescription(Space_ID));
-            //request.setAttribute("Date", openDate);
+            //request.setAttribute("openDate", openDate);
             request.setAttribute("Time", openTime);
             request.setAttribute("Price", Price);
-            request.setAttribute("Room_Name", Room_Name);
+            
             request.setAttribute("Service_Name", Service_Name);
             request.setAttribute("Picture_room", Picture_room);
             
             //ส่ง list TableID ไป jsp
             request.setAttribute("Table_ID", Table_ID);
+            out.println(Table_ID);
             
             //------------------ผปก.
             request.setAttribute("Contact_name", ent.getContact_name(User_ID));
