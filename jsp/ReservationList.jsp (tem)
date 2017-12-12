@@ -90,7 +90,7 @@
                                     <a href="SubmitProperties.jsp">Reservation list</a>
                                 </li>
                                 <li>
-                                    <a href="index-4.html">Sign out</a>
+                                    <a href="SignOutServlet">Sign out</a>
                                 </li>
 
                             </ul>
@@ -100,17 +100,6 @@
         </nav>
         <% } %>
         <!-- End Navbar Entrepreneur -->
-
-        <div class="page-head"> 
-            <div class="container">
-                <div class="row">
-                    <div class="page-head-content">
-                        <h1 class="page-title">Reservation list</h1>               
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End page header -->
 
         <!-- property area -->
         <sql:query var="orderList" dataSource="${it58070122_se}">
@@ -126,44 +115,66 @@
             <sql:param value="${User_ID}"/>
         </sql:query>
 
-        <form action="ViewDetail.jsp" method="POST">
-        <div class="content-area submit-property" style="background-color: #FCFCFC;">&nbsp;
-        <div class="row">
-        <div class="well col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3" style="background-color:#FFFFFF;">
-        <div class="row">
-        <table  class="table table-bordered table-hover" style="background-color:#FFFFFF;">
-                <thead>
-                    <tr style="background-color:#d9d9d9;">
-                        <th><center>Name</center></th>
-                        <th><center>Type Name</center></th>
-                        <th><center>Order Status</center></th>
-                        <th><center>View Detail</center></th>
-                    </tr>
-                </thead>
-                
-                <c:forEach var="row" items="${orderList.rows}">
-                    <tbody>
-
-                        <tr align="center">
-                            <input type="hidden" name="id" value="${row.Order_ID}">
-                            <td><c:out value="${row.Name}"/></td>
-                            <td><c:out value="${row.Type_Name}"/></td>
-                            <td><c:out value="${row.Order_Status}"/></td>
-                            <td><input type="submit" value="View"/></td>
-                           
-                            
-
-                        </tr>
-
-                    </tbody>
-                </c:forEach>
-            </table>
+        <!-- Start page header -->
+         <div class="page-head"> 
+            <div class="container">
+                <div class="row">
+                    <div class="page-head-content">
+                        <h1 class="page-title">Reservation list</h1>               
+                    </div>
+                </div>
+            </div>
         </div>
-        </div>
-        </div>
-        </div>
-        </form>
+        <!-- End page header --> 
+        
+        <!-- Table area -->
+        <div class="content-area user-profiel" style="background-color: #FCFCFC;">&nbsp;
+            <div class="container">   
+                <div class="row">
+                    <div class="col-sm-10 col-sm-offset-1 profiel-container">
 
+                        <form action="EntRequestList" method="POST">
+                            <div class="profiel-header">
+                                <h3>
+                                    <b>RESERVATION</b> LIST <br><br>
+                                    <small>Manage reservation list.</small>
+                                </h3>
+                                <hr>
+                            </div><br>
+                            <div class="clear col-sm-offset-1">
+                        <!-- SHOW ALL ENTREPRENEUR REQUEST -->
+
+                            <table id="allre1-dt" class="table table-striped" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Type Name</th>
+                                        <th>Order Status</th>
+                                        <th>View Detail</th>
+                                    </tr>
+                                </thead>
+                                <c:forEach var="row" items="${orderList.rows}">
+                                    <tbody>
+                                        <tr align="center">
+                                        <input type="hidden" name="id" value="${row.Order_ID}">
+                                        <td><c:out value="${row.Name}"/></td>
+                                        <td><c:out value="${row.Type_Name}"/></td>
+                                        <td><c:out value="${row.Order_Status}"/></td>
+                                        <td><input type="submit" value="View"/></td>
+                                        </tr>
+                                    </tbody>
+                                </c:forEach>
+                            </table>
+                        <br>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- end row -->
+
+        </div>
+    </div>
+            
         <!-- Footer area-->
         <div class="footer-area">
 
