@@ -1,4 +1,4 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
@@ -251,7 +251,7 @@
             <div class="container">
                 <div class="row">
                     <div class="page-head-content">
-                        <h1 class="page-title">My History</h1>               
+                        <h1 class="page-title">My Orders</h1>               
                     </div>
                 </div>
             </div>
@@ -273,29 +273,32 @@
         </sql:query>
 
         <!--------------------------------end query------------------------------->
-
         <!-- StartHistory---->
         <!-- Start History -->
+    
                 <div id="menu2" class="tab-pane fade in active">
+                   <div class="content-area submit-property" style="background-color: #F8F8FF;">&nbsp;
                     <div class="container">
+                       
                         <div class="row" style="width: 200%; margin: 0 auto">
-                            <div class="col-xs-12 col-sm-6 col-md-4">
+                            <div class="col-sm-4 col-lg-offset-1 ">
                                 <div class="panel-body">
-                                    <div class="row ">
+                                    
+                                    <div class="row">
 
 
                                         <!--____________________________HISTORY___________________________-->
-
+                                        
                                         <div class="panel panel-default class">
-                                            <div class="panel-heading"><center><b>My HISTORY</b></center></div>
+                                            <div class="panel-heading" style="background-color #FFD700;"><center><b>My Orders</b></center></div>
                                         </div>
 
                                         <!--___Concert1 ___-->
                                         <%! int num = 1;%>
                                         <c:forEach var="row" items="${history.rows}">
 
-                                            <div class="col-lg-12">
-                                                <div class="panel panel-info" >
+                                            <div class=""> 
+                                                <div class="panel panel-info" style="background-color: #F5F5F5;" >
                                                     <div class="panel-body">
                                                         <div class="row" >
 
@@ -380,18 +383,25 @@
                                                             </div>
                                                         </div>
                                                     </div> <!-- /.panel-body-->
+                                                    
                                                 </div> <!-- /.panel panel-info-->
-                                            </div> <!-- /.End Concert1-->
+                                            </div>
+                                          <!-- /.End Concert1-->
                                             <% num += 1;%>
-                                             <hr width="100%"  size="20" color="black" align="center"><p>
+                                            
                                         </c:forEach>
                                             
                                     </div> <!-- /.row -->
+                                    
+                                
                                 </div> <!-- /.panel-body -->
                             </div> <!-- /.col-lg-12 -->
                         </div> <!-- /.row -->
+                        
                     </div> <!-- /.container-->
+                    </div>
                 </div>
+    
             <!------------------------------------------------End History----------------------------------------->
             <!-- Footer area-->
             <div class="footer-area">
@@ -547,7 +557,6 @@
 
             <script>
                             $(document).ready(function () {
-
                                 $('#image-gallery').lightSlider({
                                     gallery: true,
                                     item: 1,
