@@ -1,7 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
 <!DOCTYPE html>
 <html class="no-js"> <!--<![endif]-->
     <head>
@@ -100,7 +100,7 @@
                     <ul class="main-nav nav navbar-nav navbar-right">
                         <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="index.jsp">Home</a></li>
                         <li class="wow fadeInDown" data-wow-delay="0.3s"><a href="#about" data-scroll="true">About</a></li>
-                        <li class="wow fadeInDown" data-wow-delay="0.2s"><a class="" href="propertoes.jsp">Properties</a></li>
+                        <li class="wow fadeInDown" data-wow-delay="0.2s"><a class="" href="PropertiesServlet">Properties</a></li>
                         <li class="wow fadeInDown" data-wow-delay="0.5s"><a href="#contact">Contact</a></li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
@@ -128,21 +128,18 @@
 
                     <ul class="main-nav nav navbar-nav navbar-right">
                         <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="index.jsp">Home</a></li>
-                        <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="properties.jsp">Properties</a></li>
-                        <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="Property.jsp">Property</a></li>
+                        <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="PropertiesServlet">Properties</a></li>
                         <li class="wow fadeInDown" data-wow-delay="0.3s"><a href="#about" data-scroll="true">About</a></li>
                         <li class="wow fadeInDown" data-wow-delay="0.5s"><a href="#contact">Contact</a></li>
                         <li class="dropdown ymm-sw " data-wow-delay="0.1s">
                             <a class="dropdown-toggle active" data-toggle="dropdown" data-hover="dropdown" data-delay="200"><%= session.getAttribute("Username")%>   <b class="caret"></b></a>
                             <ul class="dropdown-menu navbar-nav">
+                                
                                 <li>
-                                    <a href="index-2.html">Edit Profile</a>
+                                    <a href="MyOrders.jsp">My orders</a>
                                 </li>
                                 <li>
-                                    <a href="index-3.html">My orders</a>
-                                </li>
-                                <li>
-                                    <a href="index-4.html">Sign out</a>
+                                    <a href="SignOutServlet">Sign out</a>
                                 </li>
 
                             </ul>
@@ -288,9 +285,9 @@
 
 
                                         <!--____________________________HISTORY___________________________-->
-                                        
+                                        <!--- style="background-color #FFD700;" -->
                                         <div class="panel panel-default class">
-                                            <div class="panel-heading" style="background-color #FFD700;"><center><b>My Orders</b></center></div>
+                                            <div class="panel-heading" ><center><b>My Orders</b></center></div>
                                         </div>
 
                                         <!--___Concert1 ___-->
