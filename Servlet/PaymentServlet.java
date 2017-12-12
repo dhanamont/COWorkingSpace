@@ -60,7 +60,7 @@ public class PaymentServlet extends HttpServlet {
                 request.setAttribute("orderID", orderID);
                 
                 //********ส่งข้อมูลการจองไป Show หน้า Ordering เพื่อให้ตรวจสอบ**********
-                RequestDispatcher obj = request.getRequestDispatcher("HistoryOrder.jsp");
+                RequestDispatcher obj = request.getRequestDispatcher("MyOrders.jsp");
                 obj.forward(request, response);
                 
             } catch (Exception ex) {
@@ -109,4 +109,3 @@ public class PaymentServlet extends HttpServlet {
     }// </editor-fold>
 
 }
-
