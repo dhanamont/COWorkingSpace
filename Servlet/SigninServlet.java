@@ -49,24 +49,24 @@ public class SigninServlet extends HttpServlet {
                 String Username = account.getUsername(usernameIn);
                 String Password = account.getPassword(usernameIn);
                 String User_ID = account.getUser_ID(usernameIn);
-                String Role_ID = account.getRole_ID(usernameIn);
+                String Role_ID = account.getRole_ID(usernameIn);  
                 String Status = ent.getStatus(User_ID);
-                System.out.println(Status);
+                
                 if(Username == null || Username.isEmpty()){
                     session.setAttribute("error","Invalid username");
                     response.sendRedirect("register.jsp");
                 }
                 else if (Username.equals(usernameIn) && Password.equals(passwordIn)) {
-                    
                     if(Role_ID.equals("ENT") && (Status.equals("WAITING")||Status.equals("CANCELED")) ){
                         session.setAttribute("error","Invalid Username and Password");
                         response.sendRedirect("register.jsp");
                     }
                     else {
-                        session.setAttribute("Username", Username);
-                        session.setAttribute("User_ID", User_ID);
-                        session.setAttribute("Role_ID", Role_ID);
-                        response.sendRedirect("index.jsp");
+                    session.setAttribute("Username", Username);
+                    session.setAttribute("User_ID", User_ID);
+                    session.setAttribute("Role_ID", Role_ID);
+                    
+                    response.sendRedirect("index.jsp");
                     }
                 } else {
                     session.setAttribute("error","Invalid password");
