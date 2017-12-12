@@ -84,10 +84,10 @@
                                     <a href="">Edit Profile</a>
                                 </li>
                                 <li>
-                                    <a href="SubmitProperties.jsp">Submit Co-working</a>
+                                    <a href="">Submit Co-working</a>
                                 </li>
                                 <li>
-                                    <a href="index-4.html">Reservation list</a>
+                                    <a href="SubmitProperties.jsp">Reservation list</a>
                                 </li>
                                 <li>
                                     <a href="index-4.html">Sign out</a>
@@ -115,7 +115,7 @@
         <!-- property area -->
         <sql:query var="orderList" dataSource="${it58070122_se}">
             SELECT CONCAT(u.Fname, " ", u.Lname) AS `Name`, y.Type_Name, o.Room_Name, t.Table_ID,
-            r.Order_Status, r.Total_Price, r.Order_Date
+            r.Order_Status, r.Total_Price, r.Order_Date, r.Order_ID
             FROM `User` u
             JOIN `Space` s USING (User_ID)
             JOIN Type_Space y USING (Space_ID)
@@ -126,8 +126,10 @@
             <sql:param value="${User_ID}"/>
         </sql:query>
 
-        <form action="ViewDetailServlet" method="POST"> 
+        <form action="ViewDetail.jsp" method="POST">
         <div class="content-area submit-property" style="background-color: #FCFCFC;">&nbsp;
+        <div class="row">
+        <div class="well col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3" style="background-color:#FFFFFF;">
         <div class="row">
         <table  class="table table-bordered table-hover" style="background-color:#FFFFFF;">
                 <thead>
@@ -138,19 +140,26 @@
                         <th><center>View Detail</center></th>
                     </tr>
                 </thead>
+                
                 <c:forEach var="row" items="${orderList.rows}">
-                <tbody>
-                    
-                    <tr align="center">
-                        
-                        <td><c:out value="${row.Name}"/></td>
-                        <td><c:out value="${row.Type_Name}"/></td>
-                        <td><c:out value="${row.Order_Status}"/></td>
-                        <td><button type="input">Detail</button></td> 
-                        </c:forEach>
-                    </tr>                                                                   
-                </tbody>
+                    <tbody>
+
+                        <tr align="center">
+                            <input type="hidden" name="id" value="${row.Order_ID}">
+                            <td><c:out value="${row.Name}"/></td>
+                            <td><c:out value="${row.Type_Name}"/></td>
+                            <td><c:out value="${row.Order_Status}"/></td>
+                            <td><input type="submit" value="View"/></td>
+                           
+                            
+
+                        </tr>
+
+                    </tbody>
+                </c:forEach>
             </table>
+        </div>
+        </div>
         </div>
         </div>
         </form>
