@@ -282,64 +282,100 @@
         </div>
         <!-- End find area & Slide main picture -->
         
-        <!-- Start About -->
+                <!-- Start About -->
         <div class="content-area home-area-1 recent-property" style="background-color: #FCFCFC; padding-bottom: 55px;">
             <div class="container" id="about">
                 <div class="row">
                     <div class="col-md-10 col-md-offset-1 col-sm-12 text-center page-title">
                         <!-- /.feature title -->
                         <h2>ABOUT</h2>
-                        <p>Nulla quis dapibus nisl. Suspendisse ultricies commodo arcu nec pretium. Nullam sed arcu ultricies . </p>
+                        <p>Co-Working Space เป็น Website ที่รวบรวมสถานที่ที่ผู้คนสามารถมานั่งทำงานร่วมกันในสถานที่เดียวกันได้ ซึ่งเป็นแนวทางการทำงาน
+                            รูปแบบใหม่ที่กำลังเติบโตอยู่ในขณะนี้ โดยสามารถจองสถานที่ในการทำงานล่วงหน้าได้ผ่าน Website ของเรา
+                            ซึ่งในแต่ละสถานที่จะแบ่งห้องเป็น 3 ประเภท ดังนี้</p>
                     </div>
                 </div>
-
-                <div class="row">
+                <!------------------------------------------รูปห้อง--------------------------------->
+                <div class="row ">
                     <div class="proerty-th">
-                        <div class="col-sm-6 col-md-3 p0">
+                        <div class="col-xs-2 col-sm-6 col-md-3 col-lg-3 col-lg-offset-2 p0">
+                            
                             <div class="box-two proerty-item">
                                 <div class="item-thumb">
-                                    <a href="property-1.html" ><img src="assets/img/demo/property-1.jpg"></a>
+                                    <a><img src="assets/img/demo/Fueled-Collective-Large-Conference-Room.jpg"></a>
                                 </div>
                                 <div class="item-entry overflow">
-                                    <h5><a href="property-1.html" >Super nice villa </a></h5>
+                                    <h5><a>Meeting Room</a></h5>
                                     <div class="dot-hr"></div>
-                                    <span class="pull-left"><b>Area :</b> 120m </span>
-                                    <span class="proerty-price pull-right">$ 300,000</span>
+                                    <span class="pull-left"><b>Meeting Room : เป็นห้องประชุมที่ใช้สำหรับประชุมหรือทำงานกลุ่ม สามารถรองรับได้ไม่เกิน 10 คน</b></span>
+
                                 </div>
                             </div>
                         </div>
 
+                    </div>
+
+                    <div class="proerty-th">
+                        <div class="col-sm-6 col-md-3 p0">
+                            <div class="box-two proerty-item">
+                                <div class="item-thumb">
+                                    <a><img src="assets/img/demo/London-WeWork-South-Bank-Lounge.jpg"></a>
+                                </div>
+                                <div class="item-entry overflow">
+                                    <h5><a>Common Room</a></h5>
+                                    <div class="dot-hr"></div>
+                                    <span class="pull-left"><b>Common Room : เป็นห้องโถงสำหรับคนที่ต้องการนั่งทำงานร่วมกับผู้อื่น สามารถรองรับคนได้จำนวนมาก</b></span>
+
+                                </div>
+                            </div>
                         </div>
-                </div>
+
+                    </div>
+
+                    <div class="proerty-th">
+                        <div class="col-sm-6 col-md-3 p0">
+                            <div class="box-two proerty-item">
+                                <div class="item-thumb">
+                                    <a><img src="assets/img/demo/SLABS2flr-14.jpg"></a>
+                                </div>
+                                <div class="item-entry overflow">
+                                    <h5><a>Private Room</a></h5>
+                                    <div class="dot-hr"></div>
+                                    <span class="pull-left"><b>Private Room : เป็นห้องสำหรับกลุ่มคนที่ต้องการทำงานแบบส่วนตัว สามารถรองรับได้ประมาณ1-5คน</b></span>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    </div>
             </div>
+            <!---------------------------------------------------------------------------------------------->   
         </div>
+
         <!-- End About -->
-        
+
         <!-- Start Contact -->
         <div class="content-area home-area-1 recent-property" style="background-color: #FCFCFC; padding-bottom: 55px;">
             <div class="container" id="contact">
                 <div class="row">
                     <div class="col-md-10 col-md-offset-1 col-sm-12 text-center page-title">
-                        <!-- /.feature title -->
-                        <h2>Contact</h2>
-                        <p>Nulla quis dapibus nisl. Suspendisse ultricies commodo arcu nec pretium. Nullam sed arcu ultricies . </p>
+
+                        <h2>Contact</h2><br>
+                        <p>Co-WorkingSpace</p>
+                        
+                        <i class="pe-7s-map-marker strong"> </i> 9089 your adress her<br>
+                        <i class="pe-7s-mail strong"> </i> email@yourcompany.com<br>
+                            <i class="pe-7s-call strong"> </i> +1 908 967 5906
+                        
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="proerty-th">
-                        <div class="col-sm-6 col-md-3 p0">
-                            <div class="box-two proerty-item">
-                                
-                            </div>
-                        </div>
-
-                        </div>
-                </div>
+                
             </div>
         </div>
         <!-- End Contact -->
-        
+
         <!-- Footer area-->
         <div class="footer-area">
 
@@ -353,7 +389,7 @@
                                 <div class="footer-title-line"></div>
 
                                 <img src="assets/img/footer-logo.png" alt="" class="wow pulse" data-wow-delay="1s">
-                                <p>Lorem ipsum dolor cum necessitatibus su quisquam molestias. Vel unde, blanditiis.</p>
+                                <p>Co-WorkingSpace</p>
                                 <ul class="footer-adress">
                                     <li><i class="pe-7s-map-marker strong"> </i> 9089 your adress her</li>
                                     <li><i class="pe-7s-mail strong"> </i> email@yourcompany.com</li>
@@ -375,26 +411,26 @@
                                 </ul>
                             </div>
                         </div>
-                     
 
-        </div>
-        
-        <!-- Start Script -->
-        <script src="assets/js/modernizr-2.6.2.min.js"></script>
-        <script src="assets/js/jquery-1.10.2.min.js"></script> 
-        <script src="bootstrap/js/bootstrap.min.js"></script>
-        <script src="assets/js/bootstrap-select.min.js"></script>
-        <script src="assets/js/bootstrap-hover-dropdown.js"></script>
-        <script src="assets/js/easypiechart.min.js"></script>
-        <script src="assets/js/jquery.easypiechart.min.js"></script>
-        <script src="assets/js/owl.carousel.min.js"></script>
-        <script src="assets/js/wow.js"></script>
-        <script src="assets/js/icheck.min.js"></script>
-        <script src="assets/js/price-range.js"></script>
-        <script src="assets/js/main.js"></script>
 
-        <script src="assets/js/scrolling.js"></script>
-        <!-- End Script -->
-    
+                    </div>
+
+                    <!-- Start Script -->
+                    <script src="assets/js/modernizr-2.6.2.min.js"></script>
+                    <script src="assets/js/jquery-1.10.2.min.js"></script> 
+                    <script src="bootstrap/js/bootstrap.min.js"></script>
+                    <script src="assets/js/bootstrap-select.min.js"></script>
+                    <script src="assets/js/bootstrap-hover-dropdown.js"></script>
+                    <script src="assets/js/easypiechart.min.js"></script>
+                    <script src="assets/js/jquery.easypiechart.min.js"></script>
+                    <script src="assets/js/owl.carousel.min.js"></script>
+                    <script src="assets/js/wow.js"></script>
+                    <script src="assets/js/icheck.min.js"></script>
+                    <script src="assets/js/price-range.js"></script>
+                    <script src="assets/js/main.js"></script>
+
+                    <script src="assets/js/scrolling.js"></script>
+                    <!-- End Script -->
+
     </body>
 </html>
