@@ -73,9 +73,11 @@ public class Property_Servlet extends HttpServlet {
             
             
             //วันเวลา
-            //ArrayList<String> openDate = space.getOpenDate(Space_ID);
+            ArrayList<String> openDate = new ArrayList<String>();
             ArrayList<String> openTime = space.getOpenTime(Space_ID);
-
+            space.getOpenDate(openDate, Space_ID);
+            //เพิ่ม3อันบน
+            
             //ส่งค่าไป jsp
             request.setAttribute("Space_Name", space.getSpace_Name(Space_ID));
             request.setAttribute("Address", space.getAddress(Space_ID));
@@ -86,7 +88,8 @@ public class Property_Servlet extends HttpServlet {
             request.setAttribute("Map", space.getMap(Space_ID));
             request.setAttribute("Prototype", type.getPrototype(Type_ID));
             request.setAttribute("Description", space.getDescription(Space_ID));
-            //request.setAttribute("Date", openDate);
+            request.setAttribute("openDate", openDate);
+            //เพิ่มdate
             request.setAttribute("Time", openTime);
             request.setAttribute("Price", Price);
             request.setAttribute("Room_Name", Room_Name);
@@ -100,7 +103,6 @@ public class Property_Servlet extends HttpServlet {
             request.setAttribute("Email", ent.getEmail(User_ID));
             request.setAttribute("Company_name", ent.getCompany_name(User_ID));
             request.setAttribute("Phone", ent.getPhone(User_ID));
-
             request.getRequestDispatcher("Property.jsp").forward(request, response);
         } catch (SQLException ex) {
             Logger.getLogger(Property_Servlet.class.getName()).log(Level.SEVERE, null, ex);
