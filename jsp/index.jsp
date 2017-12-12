@@ -282,16 +282,14 @@
         </div>
         <!-- End find area & Slide main picture -->
         
-                <!-- Start About -->
+               <!-- Start About -->
         <div class="content-area home-area-1 recent-property" style="background-color: #FCFCFC; padding-bottom: 55px;">
             <div class="container" id="about">
                 <div class="row">
                     <div class="col-md-10 col-md-offset-1 col-sm-12 text-center page-title">
                         <!-- /.feature title -->
                         <h2>ABOUT</h2>
-                        <p>Co-Working Space เป็น Website ที่รวบรวมสถานที่ที่ผู้คนสามารถมานั่งทำงานร่วมกันในสถานที่เดียวกันได้ ซึ่งเป็นแนวทางการทำงาน
-                            รูปแบบใหม่ที่กำลังเติบโตอยู่ในขณะนี้ โดยสามารถจองสถานที่ในการทำงานล่วงหน้าได้ผ่าน Website ของเรา
-                            ซึ่งในแต่ละสถานที่จะแบ่งห้องเป็น 3 ประเภท ดังนี้</p>
+                        <p>Co-Working Space is a site where people can sit together in the same place. Which is the way to work. The new model is growing now. You can book a place to work in advance through our website, where each place is divided into 3 categories.</p>
                     </div>
                 </div>
                 <!------------------------------------------รูปห้อง--------------------------------->
@@ -306,7 +304,7 @@
                                 <div class="item-entry overflow">
                                     <h5><a>Meeting Room</a></h5>
                                     <div class="dot-hr"></div>
-                                    <span class="pull-left"><b>Meeting Room : เป็นห้องประชุมที่ใช้สำหรับประชุมหรือทำงานกลุ่ม สามารถรองรับได้ไม่เกิน 10 คน</b></span>
+                                    <span class="pull-left"><b>Meeting Room : A conference room for meetings or group work. Can accommodate up to 10 people.</b></span>
 
                                 </div>
                             </div>
@@ -323,7 +321,7 @@
                                 <div class="item-entry overflow">
                                     <h5><a>Common Room</a></h5>
                                     <div class="dot-hr"></div>
-                                    <span class="pull-left"><b>Common Room : เป็นห้องโถงสำหรับคนที่ต้องการนั่งทำงานร่วมกับผู้อื่น สามารถรองรับคนได้จำนวนมาก</b></span>
+                                    <span class="pull-left"><b>Common Room : is a spacious room for people who want to sit and work with others. Can accommodate a lot of people.</b></span>
 
                                 </div>
                             </div>
@@ -340,7 +338,7 @@
                                 <div class="item-entry overflow">
                                     <h5><a>Private Room</a></h5>
                                     <div class="dot-hr"></div>
-                                    <span class="pull-left"><b>Private Room : เป็นห้องสำหรับกลุ่มคนที่ต้องการทำงานแบบส่วนตัว สามารถรองรับได้ประมาณ1-5คน</b></span>
+                                    <span class="pull-left"><b>Private Room : It is a room for people who want to work in private. Can accommodate 1-5 people</b></span>
 
                                 </div>
                             </div>
@@ -413,7 +411,7 @@
                         </div>
 
 
-                    </div>
+                   </div>
 
                     <!-- Start Script -->
                     <script src="assets/js/modernizr-2.6.2.min.js"></script>
@@ -432,5 +430,5 @@
                     <script src="assets/js/scrolling.js"></script>
                     <!-- End Script -->
 
-    </body>
+   </body>
 </html>
