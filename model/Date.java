@@ -41,4 +41,13 @@ public class Date {
         return Date_ID;
     }
     
+    public void insertDate(String Date_ID, String Date, String Space_ID) {
+        try {
+            Statement stmt = con.createStatement();
+            String sql = "Insert into `Date` values('" + Space_ID + "', '" + Date + "', '" + Space_ID + "';";
+            stmt.executeUpdate(sql);
+        } catch (SQLException ex) {
+        }
+    }
+    
 }
