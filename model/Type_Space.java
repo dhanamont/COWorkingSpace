@@ -5,6 +5,10 @@
  */
 package model;
 
+/**
+ *
+ * @author lenovo
+ */
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -52,10 +56,10 @@ public class Type_Space {
         }
     }
     
-    public void TypeDetail(String TypeID) {
+    public void TypeDetail(String SpaceID) {
         try {
             Statement stmt = con.createStatement();
-            String Type_table = "SELECT Type_ID, Type_Name, Prototype FROM Type_Space WHERE Type_ID = '" + TypeID + "';";
+            String Type_table = "SELECT Type_ID, Type_Name, Prototype FROM Type_Space WHERE Space_ID = '" + SpaceID + "';";
             ResultSet rs1 = stmt.executeQuery(Type_table);
             rs1.next();
             Type_ID = rs1.getString("Type_ID");
@@ -65,11 +69,18 @@ public class Type_Space {
         }
     }
 
-    public String getType_Name(String Type_ID) {
+    public String getType_ID(String Space_ID) {
+        TypeDetail(Space_ID);
+        return Type_ID;
+    }
+
+    public String getType_Name(String Space_ID) {
+        TypeDetail(Space_ID);
         return Type_Name;
     }
 
-    public String getPrototype(String Type_ID) {
+    public String getPrototype(String Space_ID) {
+        TypeDetail(Space_ID);
         return Prototype;
     }
 
