@@ -101,7 +101,7 @@
                     <ul class="main-nav nav navbar-nav navbar-right">
                         <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="index.jsp">Home</a></li>
                         <li class="wow fadeInDown" data-wow-delay="0.3s"><a href="#about" data-scroll="true">About</a></li>
-                        <li class="wow fadeInDown" data-wow-delay="0.2s"><a class="" href="propertoes.jsp">Properties</a></li>
+                        <li class="wow fadeInDown" data-wow-delay="0.2s"><a class="" href="PropertiesServlet">Properties</a></li>
                         <li class="wow fadeInDown" data-wow-delay="0.5s"><a href="#contact">Contact</a></li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
@@ -129,21 +129,18 @@
 
                     <ul class="main-nav nav navbar-nav navbar-right">
                         <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="index.jsp">Home</a></li>
-                        <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="properties.jsp">Properties</a></li>
-                        <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="Property.jsp">Property</a></li>
+                        <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="PropertiesServlet">Properties</a></li>
+                        
                         <li class="wow fadeInDown" data-wow-delay="0.3s"><a href="#about" data-scroll="true">About</a></li>
                         <li class="wow fadeInDown" data-wow-delay="0.5s"><a href="#contact">Contact</a></li>
                         <li class="dropdown ymm-sw " data-wow-delay="0.1s">
                             <a class="dropdown-toggle active" data-toggle="dropdown" data-hover="dropdown" data-delay="200"><%= session.getAttribute("Username")%>   <b class="caret"></b></a>
                             <ul class="dropdown-menu navbar-nav">
-                                <li>
-                                    <a href="index-2.html">Edit Profile</a>
+                               <li>
+                                    <a href="MyOrders.jsp">My orders</a>
                                 </li>
                                 <li>
-                                    <a href="index-3.html">My orders</a>
-                                </li>
-                                <li>
-                                    <a href="index-4.html">Sign out</a>
+                                    <a href="SignOutServlet">Sign out</a>
                                 </li>
 
                             </ul>
@@ -174,20 +171,17 @@
 
                     <ul class="main-nav nav navbar-nav navbar-right">
                         <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="index.jsp">Home</a></li>
-                        <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="properties.jsp">Properties</a></li>
+                        <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="PropertiesServlet">Properties</a></li>
                         <li class="wow fadeInDown" data-wow-delay="0.3s"><a href="#about" data-scroll="true">About</a></li>
                         <li class="wow fadeInDown" data-wow-delay="0.5s"><a href="#contact">Contact</a></li>
                         <li class="dropdown ymm-sw " data-wow-delay="0.1s">
                             <a class="dropdown-toggle active" data-toggle="dropdown" data-hover="dropdown" data-delay="200"><%= session.getAttribute("Username")%> <b class="caret"></b></a>
                             <ul class="dropdown-menu navbar-nav">
-                                <li>
-                                    <a href="index-2.html">Properties list</a>
+                                 <li>
+                                    <a href="EntRequestList">Entrepreneur Request list</a>
                                 </li>
                                 <li>
-                                    <a href="index-3.html">Application list</a>
-                                </li>
-                                <li>
-                                    <a href="index-4.html">Sign out</a>
+                                    <a href="SignOutServlet">Sign out</a>
                                 </li>
 
                             </ul>
@@ -218,23 +212,20 @@
 
                     <ul class="main-nav nav navbar-nav navbar-right">
                         <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="index.jsp">Home</a></li>
-                        <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="properties.jsp">Properties</a></li>
+                        <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="PropertiesServlet">Properties</a></li>
                         <li class="wow fadeInDown" data-wow-delay="0.3s"><a href="#about" data-scroll="true">About</a></li>
                         <li class="wow fadeInDown" data-wow-delay="0.5s"><a href="#contact">Contact</a></li>
                         <li class="dropdown ymm-sw " data-wow-delay="0.1s">
                             <a class="dropdown-toggle active" data-toggle="dropdown" data-hover="dropdown" data-delay="200"><%= session.getAttribute("Username")%> <b class="caret"></b></a>
                             <ul class="dropdown-menu navbar-nav">
-                                <li>
-                                    <a href="index-2.html">Edit Profile</a>
+                               <li>
+                                    <a href="SubmitProperties.jsp">Submit properties</a>
                                 </li>
                                 <li>
-                                    <a href="submitproperties.jsp">Submit properties</a>
+                                    <a href="OrderListServlet">Reservation list</a>
                                 </li>
                                 <li>
-                                    <a href="index-4.html">Reservation list</a>
-                                </li>
-                                <li>
-                                    <a href="index-4.html">Sign out</a>
+                                    <a href="SignOutServlet">Sign out</a>
                                 </li>
 
                             </ul>
@@ -252,7 +243,7 @@
             <div class="container">
                 <div class="row">
                     <div class="page-head-content">
-                        <h1 class="page-title"><%= request.getAttribute("Space_Name")%></h1>               
+                        <h1 class="page-title"><%= session.getAttribute("Space_Name")%></h1>               
                     </div>
                 </div>
             </div>
@@ -286,7 +277,7 @@
 
                         <div class="single-property-wrapper">
                             <div class="single-property-header">                                          
-                                <h1 class="property-title pull-left"><%= request.getAttribute("Space_Name")%></h1>
+                                <h1 class="property-title pull-left"><%= session.getAttribute("Space_Name")%></h1>
                             </div>
 
                             <div class="property-meta entry-meta clearfix ">   
@@ -398,11 +389,11 @@
                                 <div class="panel panel-default sidebar-menu wow fadeInRight animated" >
                                     <div class="panel-heading">
                                         <h3 class="panel-title">Reserving</h3>
-                                        <h4><b><%= request.getAttribute("Space_Name")%></b></h4>
+                                        <h4><b><%= session.getAttribute("Space_Name")%></b></h4>
                                     </div>
                                     <div class="panel-body search-widget">
                                         
-                                                    <form action="OrderServlet" method="POST" class="form-inline">
+                                                    <form action="CheckOrderServlet" method="POST" class="form-inline">
                                                     <!------------------------------------------------------------------------>
                                                
                                                     <fieldset>
@@ -441,7 +432,7 @@
                                                 <div class="row">
                                                     <div class="col-xs-6">
 
-                                                        <select id="Start Time" name="Time" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Select Your Start Time">
+                                                        <select id="Start_Time" name="Start_Time" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Select Your Start Time">
                                                             <!--ดึงข้อมูลมาใส่ในdropdown------------------------------------------------------->
                                                             <c:forEach items="${Time}" var="item2" varStatus="Stime">
                                                                 <option value="${Time[Stime.index]}">${Time[Stime.index]}</option>
@@ -451,7 +442,7 @@
                                                     </div>
                                                     <div class="col-xs-6">
 
-                                                        <select id="End_Time" name="Time" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Select Your Time">
+                                                        <select id="End_Time" name="End_Time" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Select Your Time">
 
                                                             <!--ดึงข้อมูลมาใส่ในdropdown--------------------------------------------------->
                                                             <c:forEach items="${Time}" var="item3" varStatus="Etime">
