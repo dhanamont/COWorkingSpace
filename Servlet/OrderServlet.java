@@ -63,6 +63,7 @@ public class OrderServlet extends HttpServlet {
             DateFormat df = new SimpleDateFormat("yyyy-mm-dd");
             String dateS = (String) session.getAttribute("orderDate");
             Date orderDate = (Date) df.parse(dateS);
+            System.out.println(orderDate);
            
             //***********Start Time & End Time*************
             DateFormat df2 = new SimpleDateFormat("HH:mm");
@@ -75,6 +76,7 @@ public class OrderServlet extends HttpServlet {
             //System.out.println("roomID");
             //System.out.println(orderDate);
             //System.out.println(startOrderTime);
+            
             
             try {
                 //*******Create Object**********
@@ -91,8 +93,10 @@ public class OrderServlet extends HttpServlet {
                     
                     String orderID = order.getOrder_ID();
                     
-                    //float price = room.getPrice("Room_ID");
-                    float price = 500;
+                   
+                    
+                    float price = Float.parseFloat(room.getPrice2(roomID));
+                    
                     loop = "YESSSSSS";
                     
                     //*********insert data in DB***********
@@ -114,11 +118,11 @@ public class OrderServlet extends HttpServlet {
                 }
                 
                 //********Test set attribute**********
-                request.setAttribute("spaceName", spaceName);
+                session.setAttribute("price", room.getPrice2("roomID"));
                 request.setAttribute("typeName", typeName);
                 request.setAttribute("roomID", roomID);
                 request.setAttribute("roomName", roomName);
-                //request.setAttribute("tableID", tableID); 
+                 
                 //request.setAttribute("orderDate", roomID);
                 //request.setAttribute("startTime", startTime);
                 //request.setAttribute("endTime", endTime);
@@ -126,7 +130,7 @@ public class OrderServlet extends HttpServlet {
                 request.setAttribute("check", check);
                 
                 //********ส่งข้อมูลการจองไป Show หน้า Ordering เพื่อให้ตรวจสอบ**********
-                RequestDispatcher obj = request.getRequestDispatcher("Test.jsp");
+                RequestDispatcher obj = request.getRequestDispatcher("Payment.jsp");
                 obj.forward(request, response);
 
             } catch (Exception ex) {
