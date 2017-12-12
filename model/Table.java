@@ -29,13 +29,13 @@ public class Table {
     
     private String Table_ID;
     
-    public String createTable_ID() {
+   public String createTable_ID() {
         try {
             Statement stmt = con.createStatement();
-            String numSpa = "SELECT COUNT(Table_ID)+1 from `Table`";
+            String numSpa = "SELECT COUNT(Table_ID)+1 'ID' from `Table`";
             ResultSet numSpa1 = stmt.executeQuery(numSpa);
             numSpa1.next();
-            Table_ID = numSpa1.getString("count(Table_ID)+1");
+            Table_ID = numSpa1.getString("ID");
 
         return Table_ID;
         } catch (SQLException ex) {
@@ -43,12 +43,13 @@ public class Table {
         return null;
     }
     
-    public void insertTable(String TableID, int NumofPeople, String Room_ID) {
+     public void insertTable(String TableID, int NumofPeople, String Room_ID) {
         try {
             Statement stmt = con.createStatement();
-            String sql = "Insert into `Table` values('" + TableID + "', '" + NumofPeople + "', '" + Room_ID +"';";
+            String sql = "Insert into `Table` values('" + TableID + "', " + NumofPeople + ", '" + Room_ID +"');";
             stmt.executeUpdate(sql);
         } catch (SQLException ex) {
+            System.out.println("insertTable: "+ex);
         }
     }
     
