@@ -294,6 +294,23 @@
                                 <div class="s-property-content">
                                     <p><%= request.getAttribute("Description")%></p>
                                 </div>
+                                
+                                <!----------------Date---------------------------------------------->
+                              
+                                <h4 class="s-property-title">Date</h4>
+                                <div class="s-property-content">
+                  
+                                   <c:forEach var="dname" items="${requestScope.openDate}" varStatus="loop" >
+                                       
+                                       ${dname}
+                                       <c:if test="${requestScope.openDate[loop.index+1]!= null}">
+                                           ,
+                                       </c:if>
+                                  </c:forEach>
+                              
+                                </div>
+                                 <!------------------------------------------------------------------------>
+                                
                             </div>
                             <!-- .property-meta -->
                             <% System.out.println(id);%>
