@@ -57,7 +57,6 @@ public class Property_Servlet extends HttpServlet {
             Type_Space type = new Type_Space();
             Entrepreneur ent = new Entrepreneur();
             
-            
             String Type_ID = type.getType_ID(Space_ID);
             request.setAttribute("Type_ID", Type_ID);
             
