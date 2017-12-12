@@ -85,16 +85,13 @@
 
                     <ul class="main-nav nav navbar-nav navbar-right">
                         <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="index.jsp">Home</a></li>
-                        <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="properties.jsp">Properties</a></li>
+                        <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="PropertiesServlet">Properties</a></li>
                         <li class="wow fadeInDown" data-wow-delay="0.3s"><a href="#about" data-scroll="true">About</a></li>
                         <li class="wow fadeInDown" data-wow-delay="0.5s"><a href="#contact">Contact</a></li>
                         <li class="dropdown ymm-sw " data-wow-delay="0.1s">
                             <a class="dropdown-toggle active" data-toggle="dropdown" data-hover="dropdown" data-delay="200"><%= session.getAttribute("Username")%> <b class="caret"></b></a>
                             <ul class="dropdown-menu navbar-nav">
-                                <li>
-                                    <a href="index-2.html">Properties list</a>
-                                </li>
-                                <li>
+                                 <li>
                                     <a href="EntRequestList">Entrepreneur Request list</a>
                                 </li>
                                 <li>
@@ -121,7 +118,7 @@
         </div>
         <!-- End page header --> 
         
-        <!-- Table area -->
+        <!-- property area -->
         <div class="content-area user-profiel" style="background-color: #FCFCFC;">&nbsp;
             <div class="container">   
                 <div class="row">
@@ -145,7 +142,7 @@
                     <!-- Tab panes -->
                     <div class="tab-content">
                         
-                        <!-- SHOW ALL ENTREPRENEUR REQUEST -->
+                        <!-- SHOW ALL CONCERT REQUEST -->
                         <div role="tabpanel" class="tab-pane fade in active" id="allre1">
                             <p><h2>All Request</h2></p>
                             <table id="allre1-dt" class="table table-striped" cellspacing="0" width="100%">
@@ -186,7 +183,7 @@
                             </table>
                         </div>
                                     
-                       <!-- SHOW ALL ACCEPTED ENTREPRENEUR -->
+                       <!-- SHOW ALL ACCEPTED CONCERT -->
                         <div role="tabpanel" class="tab-pane fade" id="accept1">
                             <p><h2>Accepted Request</h2></p>
                             <table id="accept1-dt" class="table table-striped" cellspacing="0" width="100%">
