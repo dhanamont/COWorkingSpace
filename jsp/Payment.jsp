@@ -49,7 +49,7 @@
         <!-- Check Role Entrepreneur-->
         <% if (Role_ID == null) { %>
             <% response.sendRedirect("index.jsp");%>
-        <% } else if (Role_ID.equals("ENT")) {%>
+        <% } else if (Role_ID.equals("MEM")) {%>
         <!-- Start Navbar Entrepreneur -->
         <nav class="navbar navbar-default ">
             <div class="container">
@@ -69,23 +69,18 @@
 
                     <ul class="main-nav nav navbar-nav navbar-right">
                         <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="index.jsp">Home</a></li>
-                        <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="properties.jsp">Properties</a></li>
+                        <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="PropertiesServlet">Properties</a></li>
                         <li class="wow fadeInDown" data-wow-delay="0.3s"><a href="#about" data-scroll="true">About</a></li>
                         <li class="wow fadeInDown" data-wow-delay="0.5s"><a href="#contact">Contact</a></li>
                         <li class="dropdown ymm-sw " data-wow-delay="0.1s">
                             <a class="dropdown-toggle active" data-toggle="dropdown" data-hover="dropdown" data-delay="200"><%= session.getAttribute("Username")%> <b class="caret"></b></a>
                             <ul class="dropdown-menu navbar-nav">
+                                
                                 <li>
-                                    <a href="">Edit Profile</a>
+                                    <a href="MyOrders.jsp">My Orders</a>
                                 </li>
                                 <li>
-                                    <a href="SubmitProperties.jsp">Submit Co-working</a>
-                                </li>
-                                <li>
-                                    <a href="index-4.html">Reservation list</a>
-                                </li>
-                                <li>
-                                    <a href="index-4.html">Sign out</a>
+                                    <a href="SignOutServlet">Sign out</a>
                                 </li>
 
                             </ul>
@@ -113,7 +108,7 @@
                 <div class="row">
         <div class="well col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3">
             <div class="row">
-                <div class="col-xs-6 col-sm-6 col-md-6">
+                <%--<div class="col-xs-6 col-sm-6 col-md-6">
                     <address>
                         <strong>Co-Working Space</strong>
                         <br>
@@ -123,17 +118,12 @@
                         <br>
                         <p>Phone: (02) 329 8000 
                     </address>
-                    
-                    
-                    
-                    
-                    
-                    
-                </div>
+                </div>--%>
+                
                 <div class="col-xs-6 col-sm-6 col-md-6 text-right">
                     <p>
                         <em><td width="100%">&nbsp;<b>Date:</b>&nbsp; <font color="#000000">
-                    <%= new java.util.Date() %></font></td></em>
+                        <%= new java.util.Date()%></font></td></em>
                     </p>
                 </div>
             </div>
@@ -150,20 +140,21 @@
                             <th class="text-center">Price</th>
                             <th class="text-center">Total</th>
                         </tr>
+                       
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="col-md-9"><em><%= request.getAttribute("Service_Name")%> (<%= request.getAttribute("Type_Name")%>, <%= request.getAttribute("Room_Name")%>, <%= request.getAttribute("Table_ID")%>) </em></h4></td>
+                            <td class="col-md-9"><em><%= session.getAttribute("spaceName")%></em></h4></td>
                             <td class="col-md-1" style="text-align: center"> 1 </td>
-                            <td class="col-md-1 text-center"><%= request.getAttribute("Price")%></td>
-                            <td class="col-md-1 text-center"><%= request.getAttribute("Price")%></td>
+                            <td class="col-md-1 text-center"><%= session.getAttribute("price")%></td>
+                            <td class="col-md-1 text-center"><%= session.getAttribute("price")%></td>
                         </tr>
 
                         <tr>
                             <td>   </td>
                             <td>   </td>
                             <td class="text-right"><h4><strong>Total: </strong></h4></td>
-                            <td class="text-center text-danger"><h4><strong><%= request.getAttribute("Price")%></strong></h4></td>
+                            <td class="text-center text-danger"><h4><strong><%= session.getAttribute("price")%></strong></h4></td>
                             
                         </tr>
                         
