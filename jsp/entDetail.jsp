@@ -85,22 +85,18 @@
 
                     <ul class="main-nav nav navbar-nav navbar-right">
                         <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="index.jsp">Home</a></li>
-                        <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="properties.jsp">Properties</a></li>
+                        <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="PropertiesServlet">Properties</a></li>
                         <li class="wow fadeInDown" data-wow-delay="0.3s"><a href="#about" data-scroll="true">About</a></li>
                         <li class="wow fadeInDown" data-wow-delay="0.5s"><a href="#contact">Contact</a></li>
                         <li class="dropdown ymm-sw " data-wow-delay="0.1s">
                             <a class="dropdown-toggle active" data-toggle="dropdown" data-hover="dropdown" data-delay="200"><%= session.getAttribute("Username")%> <b class="caret"></b></a>
                             <ul class="dropdown-menu navbar-nav">
-                                <li>
-                                    <a href="index-2.html">Properties list</a>
-                                </li>
-                                <li>
+                               <li>
                                     <a href="EntRequestList">Entrepreneur Request list</a>
                                 </li>
                                 <li>
                                     <a href="SignOutServlet">Sign out</a>
                                 </li>
-
                             </ul>
                         </li>
                     </ul>
@@ -121,7 +117,7 @@
         </div>
         <!-- End page header --> 
         
-        <!-- Entrepreneur's Detail area -->
+        <!-- property area -->
         <div class="content-area user-profiel" style="background-color: #FCFCFC;">&nbsp;
             <div class="container">   
                 <div class="row">
@@ -131,7 +127,7 @@
                             <div class="profiel-header">
                                 <h3>
                                     <b>ENTREPRENEUR</b> REQUEST<br>
-                                    <small>Manage entrepreneur request.</small>
+                                    <small>Manage entrepreneur request list.</small>
                                 </h3>
                                 <hr>
                             </div>
@@ -164,16 +160,17 @@
                         <c:choose>
                             <c:when test="${requestScope.Status == 'WAITING'}">
                                 <div class=".col-md-3 .col-md-offset-3 text-right">
-                                    <input class="btn btn-finish btn-success" id="accept" type="submit" name="btn" value="ACCEPT"></button>
-                                    <input class="btn btn-finish btn-danger" id="cancel" type="submit" name="btn" value="CANCEL"></button>
+                                    <input class="btn btn-finish btn-default" id="accept" type="submit" name="btn" value="ACCEPT"></button>
+                                    <input class="btn btn-finish btn-default" id="cancel" type="submit" name="btn" value="CANCEL"></button>
                                 </div>
                             </c:when>
-                            <c:when test="${requestScope.Status == 'ACCEPTED'}">
+                             <c:when test="${requestScope.Status == 'ACCEPTED'}">
                                 <div class=".col-md-3 .col-md-offset-3 text-right">
-                                    <input class="btn btn-finish btn-danger" id="cancel" type="submit" name="btn" value="CANCEL"></button>
+                                    <input class="btn btn-finish btn-default" id="cancel" type="submit" name="btn" value="CANCEL"></button>
                                 </div>
                             </c:when>
                         </c:choose>
+                            
                         <input type="hidden" name="id" value="${requestScope.Company_name}">
                             </div>       
                     </form>
@@ -242,4 +239,3 @@
         <!-- End Script -->
     </body>
 </html>
-
