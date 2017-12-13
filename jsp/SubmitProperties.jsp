@@ -82,8 +82,8 @@
                     <ul class="main-nav nav navbar-nav navbar-right">
                         <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="index.jsp">Home</a></li>
                         <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="properties.jsp">Properties</a></li>
-                        <li class="wow fadeInDown" data-wow-delay="0.3s"><a href="#about" data-scroll="true">About</a></li>
-                        <li class="wow fadeInDown" data-wow-delay="0.5s"><a href="#contact">Contact</a></li>
+                        <li class="wow fadeInDown" data-wow-delay="0.3s"><a class="" href="index.jsp#about" id="about" data-scroll="true">About</a></li>
+                        <li class="wow fadeInDown" data-wow-delay="0.5s"><a href="index.jsp#contact">Contact</a></li>
                         <li class="dropdown ymm-sw " data-wow-delay="0.1s">
                             <a class="dropdown-toggle active" data-toggle="dropdown" data-hover="dropdown" data-delay="200"><%= session.getAttribute("Username")%> <b class="caret"></b></a>
                             <ul class="dropdown-menu navbar-nav">
@@ -164,6 +164,8 @@
                                                             <option>Siam</option>
                                                             <option>Silom</option>
                                                             <option>Asok</option>
+                                                            <option>Onnut</option>
+                                                            <option>Ekkamai</option>
                                                     </select>
                                                     </div>
                                                 </div>
@@ -399,7 +401,7 @@
                                                     </div>
                                                     <label>Number of table: <small>(required)</small></label><br>  
                                                     <input type="text" class="form-control" name="NumberofTable[]">
-                                                    <label>Price: <small>(Bath)</small></label><br>  
+                                                    <label>Price/Hour: <small>(Bath)</small></label><br>  
                                                     <input type="text" class="form-control" name="Price[]">
                                                     <label>Person/Table: <small>(required)</small></label><br>  
                                                     <input type="text" class="form-control" name="NumofPeople[]">
@@ -538,20 +540,6 @@
                                     <li><i class="pe-7s-map-marker strong"> </i> 9089 your adress her</li>
                                     <li><i class="pe-7s-mail strong"> </i> email@yourcompany.com</li>
                                     <li><i class="pe-7s-call strong"> </i> +1 908 967 5906</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 wow fadeInRight animated">
-                            <div class="single-footer">
-                                <h4>Quick links </h4>
-                                <div class="footer-title-line"></div>
-                                <ul class="footer-menu">
-                                    <li><a href="properties.html">Properties</a>  </li> 
-                                    <li><a href="#">Services</a>  </li> 
-                                    <li><a href="submit-property.html">Submit Co-working </a></li> 
-                                    <li><a href="contact.html">Contact us</a></li> 
-                                    <li><a href="faq.html">fqa</a>  </li> 
-                                    <li><a href="faq.html">Terms </a>  </li> 
                                 </ul>
                             </div>
                         </div>
