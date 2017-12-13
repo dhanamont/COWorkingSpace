@@ -101,8 +101,8 @@
                     <ul class="main-nav nav navbar-nav navbar-right">
                         <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="index.jsp">Home</a></li>
                         <li class="wow fadeInDown" data-wow-delay="0.3s"><a href="#about" data-scroll="true">About</a></li>
-                        <li class="wow fadeInDown" data-wow-delay="0.2s"><a class="" href="PropertiesServlet">Properties</a></li>
-                        <li class="wow fadeInDown" data-wow-delay="0.5s"><a href="#contact">Contact</a></li>
+                        <li class="wow fadeInDown" data-wow-delay="0.3s"><a class="" href="index.jsp#about" id="about" data-scroll="true">About</a></li>
+                        <li class="wow fadeInDown" data-wow-delay="0.5s"><a href="index.jsp#contact">Contact</a></li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
@@ -480,24 +480,6 @@
                         </div>
                         
 
-                    </div>
-                </div>
-            </div>
-
-            <div class="footer-copy text-center">
-                <div class="container">
-                    <div class="row">
-                        <div class="pull-left">
-                            <span> (C) <a href="http://www.KimaroTec.com">KimaroTheme</a> , All rights reserved 2016  </span> 
-                        </div> 
-                        <div class="bottom-menu pull-right"> 
-                            <ul> 
-                                <li><a class="wow fadeInUp animated" href="#" data-wow-delay="0.2s">Home</a></li>
-                                <li><a class="wow fadeInUp animated" href="#" data-wow-delay="0.3s">Property</a></li>
-                                <li><a class="wow fadeInUp animated" href="#" data-wow-delay="0.4s">Faq</a></li>
-                                <li><a class="wow fadeInUp animated" href="#" data-wow-delay="0.6s">Contact</a></li>
-                            </ul> 
-                        </div>
                     </div>
                 </div>
             </div>
